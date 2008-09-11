@@ -1,0 +1,2 @@
+module AwsHelper
+end

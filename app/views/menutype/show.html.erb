@@ -1,0 +1,11 @@
+<h2>Type de menu</h2>
+<% for column in Menutype.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @menutype.send(column.name) %>
+</p>
+<% end %>
+
+<p class="post-footer align-right">	
+<%= link_to 'Editer', :action => 'edit', :id => @menutype %> |
+<%= link_to 'Retour', :action => 'list' %>
+</p>

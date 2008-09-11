@@ -1,0 +1,11 @@
+<% form_tag session_path do -%>
+<p><label for="login">Login</label>
+<%= text_field_tag 'login', '', :size => 15 %></p>
+
+<p><label for="password">Password</label>
+<%= password_field_tag 'password' , '', :size => 15 %></p>
+
+<p><%= check_box_tag 'remember_me' %>Se souvenir</p>
+
+<p><%= submit_tag 'Connexion' , :class => 'button' %></p>
+<% end -%>

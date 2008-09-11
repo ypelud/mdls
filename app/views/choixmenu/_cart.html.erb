@@ -1,0 +1,9 @@
+<% session[:choix].each do |menu_id, quantity| %>
+   <div id="item_<%=menu_id%>" class="menu-items"> 
+      <div class="cart_elt">
+         <%= link_to Menu.find(menu_id).title, "/menu/show/#{menu_id}", 
+             :style => "position:relative;" %>
+      </div>
+   </div>
+   <%= draggable_element "item_#{menu_id}", :revert => true %>
+<% end %>

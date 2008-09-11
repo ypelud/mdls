@@ -1,0 +1,3 @@
+﻿<blockquote><%= User.find(comment.user_id).login %> : <%= comment.created_at.to_formatted_s(:short) %> <br />
+  <%= comment.comment %>
+</blockquote>

@@ -1,0 +1,10 @@
+﻿<% for column in Menu.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @menu.send(column.name) %>
+</p>
+<% end %>
+
+<%= link_to 'Editer', :action => 'edit', :id => @menu %> |
+<%= link_to 'Retour', :action => 'list' %>
+
+      

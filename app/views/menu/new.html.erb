@@ -1,0 +1,9 @@
+﻿<h1>Nouveau</h1>
+<% form_tag :action => 'create' do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag "Créer" %>
+<% end %>
+
+<p class="post-footer align-right">	
+<%= link_to 'Retour', :action => 'list' %>
+</p>

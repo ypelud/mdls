@@ -1,0 +1,27 @@
+﻿<div id="cart" class="cart">   
+<div id="msg_cart">Veuillez déposer votre choix ici.</div>
+   <div id="items">
+      <%= render :partial => "cart" %>
+   </div>
+</div>
+<div id="wastebin" class="wastebin">
+   Déposer ici pour supprimer 
+</div>
+<div style="height:40px;padding-top:10px;">
+<p id="indicator" style="display:none;margin-top:0px;">
+        <%= image_tag "/images/indicator.gif" %> Mise à jour ...
+</p>
+</div>   
+
+<%= drop_receiving_element "cart", 
+      :update => "items", :url => {:controller => "choixmenu", :action => "add" },
+      :accept => "menu_cart", :hoverclass => "cart-active",
+      :loading => "Element.show('indicator')",
+      :complete => "Element.hide('indicator')" %>
+
+<%= drop_receiving_element "wastebin", 
+      :update => "items", :url => {:controller => "choixmenu", :action => "remove" },
+      :accept => "menu-items", :hoverclass => "wastebin-active",
+      :before => "Element.hide(element)",
+      :loading => "Element.show('indicator')",
+      :complete => "Element.hide('indicator')" %>

@@ -1,0 +1,9 @@
+<h1>Nouveau type</h1>
+<% form_tag :action => 'create' do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag "Create" %>
+<% end %>
+
+<p class="post-footer align-right">	
+<%= link_to 'Back', :action => 'list' %>
+</p>

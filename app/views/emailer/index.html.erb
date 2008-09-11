@@ -1,0 +1,8 @@
+﻿<h1>Contact</h1>
+<% form_tag :action => 'sendmail' do %>
+<p><label for="email_subject">Sujet</label><%= text_field 'email', 'subject' %></p>
+<p><%= check_box_tag  'cc_mail' %> M'envoyer une copie</p>
+<p><label for="email_message">Message</label><br/>
+<%= text_area 'email', 'message' %></p>
+<%= submit_tag "Envoyer" %>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>Editer</h1>
+<% form_tag :action => 'update', :id => @menutype do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<p class="post-footer align-right">	
+<%= link_to 'Show', :action => 'show', :id => @menutype %> |
+<%= link_to 'Back', :action => 'list' %>
+</p>

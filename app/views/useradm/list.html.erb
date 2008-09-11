@@ -1,0 +1,22 @@
+﻿<h1>Liste des utilisateurs</h1>
+
+<% if logged_in? && (current_user.login==APP_CONFIG['super_user']) %>
+<table class="user" border=1 width="100%">
+    <tr class="titre" align="center">
+      <th><em>Utilisateur</em> </th>
+      <th><em>Créer le</em> </th>
+      <th><em>Activé le</em> </th>
+   </tr>
+   <% for user in @users %>
+      <tr class="liste">
+         <td><%= user.login %></td>
+         <td><%= user.created_at %></td>
+         <td><%= user.created_at %></td>
+      </tr>  
+<% end %>
+</table>
+<% end %>
+
+<%= will_paginate @users %>
+
+

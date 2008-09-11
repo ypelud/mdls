@@ -1,0 +1,42 @@
+﻿<h1>Bienvenue</h1>
+
+ <table class="menu">
+   <tr class="titre">
+      <th width="14%"><em>Lundi</em</th>
+      <th width="14%"><em>Mardi</em</th>
+      <th width="14%"><em>Mercredi</em</th>
+      <th width="14%"><em>Jeudi</em</th>
+      <th width="14%"><em>Vendredi</em</th>
+      <th width="14%"><em>Samedi</em</th>
+      <th width="14%"><em>Dimanche</em</th>
+   </tr>   
+   <tr class="midi">  
+   <% for menu in @menuMidi %>
+      <td>
+         <div id="mnuMidi_<%=menu.id%>" class="menu_cart">
+            <div class="mnu_elt">
+            <%= link_to %Q{#{menu.title}}, :controller => 'menu',  :action => "show", :id => menu %>
+            </div>
+            <%= draggable_element("mnuMidi_" + menu.id.to_s, :revert => true) %>
+         </div>
+      </td>
+   <% end %>
+   </tr>  
+
+   <tr class="soir">  
+   <% for menu in @menuSoir %>
+      <td>
+         <div id="mnuSoir_<%=menu.id%>" class="menu_cart">
+            <div class="mnu_elt">
+            <%= link_to %Q{#{menu.title}}, :controller => 'menu',  :action => "show", :id => menu %>
+            </div>
+            <%= draggable_element("mnuSoir_" + menu.id.to_s, :revert => true) %>
+         </div>
+      </td>
+   <% end %>
+   </tr>  
+</table>
+
+
+
+

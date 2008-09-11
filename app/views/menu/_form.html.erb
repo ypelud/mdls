@@ -1,0 +1,13 @@
+﻿<%= error_messages_for 'menu' %>
+
+<!--[form:menu]-->
+<p><label for="menu_title">Titre</label><br/>
+<%= text_field 'menu', 'title'  %></p>
+
+<p><label for="menu_title">Menu type</label><br/>
+<%= select("menu", "menutype_id", Menutype.find(:all).collect {|c| [c.name, c.id]})  %></p>
+
+<p><label for="menu_description">Description</label><br/>
+<%= text_area 'menu', 'description'  %></p>
+<!--[eoform:menu]-->
+

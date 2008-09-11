@@ -1,0 +1,25 @@
+<h1>Types de menus</h1>
+<% if logged_in? && (current_user.login==APP_CONFIG['super_user']) %>
+<table class="menu">
+  <tr>  
+    <th><em>Type</em></th>
+  </tr>
+  
+<% for menutype in @menutypes %>
+  <tr>
+    <td><%= link_to %Q{#{menutype.name}}, :action => 'show', :id => menutype %>
+        <%= link_to '(delete)', { :action => 'destroy', :id => menutype },
+								:confirm => 'Are you sure?', :post => true %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @menutype_pages.current.previous } if @menutype_pages.current.previous %>
+<%= link_to 'Next page', { :page => @menutype_pages.current.next } if @menutype_pages.current.next %> 
+
+<br />
+
+<p class="post-footer align-right">	
+<%= link_to 'Nouveau type', :action => 'new' %>
+</p>
+<% if logged_in? && (current_user.login==APP_CONFIG['super_user']) %>
