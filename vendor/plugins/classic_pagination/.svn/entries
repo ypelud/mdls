@@ -1,0 +1,94 @@
+8
+
+dir
+413
+svn://errtheblog.com/svn/plugins/classic_pagination
+svn://errtheblog.com/svn/plugins
+
+
+
+2007-06-11T16:12:10.975455Z
+256
+mislav
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+1eaa51fe-a21a-0410-9c2e-ae7a00a434c4
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2007-11-07T19:40:43.375000Z
+b14424b71d2f606a775061237c8226f1
+2007-05-20T22:22:52.242875Z
+227
+mislav
+
+init.rb
+file
+
+
+
+
+2007-11-07T19:40:43.390625Z
+181539722e198d92992a94f40310f4fc
+2007-05-20T23:46:03.172656Z
+230
+mislav
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2007-11-07T19:40:43.390625Z
+3ef206f381b42341342908fcc0001210
+2007-05-20T23:58:29.716136Z
+231
+mislav
+
+install.rb
+file
+
+
+
+
+2007-11-07T19:40:43.390625Z
+1c88d6bc27aa809cd6ef26543c18b1e6
+2007-06-06T12:06:36.663502Z
+251
+mislav
+
+README
+file
+
+
+
+
+2007-11-07T19:40:43.406250Z
+f1df690ff1ea0da74f8fe161f50722ad
+2007-06-11T12:48:20.459397Z
+255
+mislav
+

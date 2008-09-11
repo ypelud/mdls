@@ -1,0 +1,65 @@
+﻿/* liste de menus */
+.menu .titre {text-align: center; }
+.menu .titrea td {vertical-align: top}
+
+.menu_cart {
+  background: #FAFAFA;
+  border: 1px solid #f2f2f2;  
+  border-left: 4px solid #FF9966; 
+  vertical-align: top
+  
+  }
+
+.adrag_elt {background-color: #f2f3b6; text-align: center}
+.mnu_elt {height: 80px; text-align: center; }
+
+/*configuration du panier */
+div.cart-active {
+  color: #333;	
+  background: url(/images/menu-hover-bg.gif) repeat-x;
+}
+
+
+div.cart {
+  clear:both;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#msg_cart,   #wastebin {
+  padding:2px;
+  color:#ccc;
+  border:1px dashed #888;
+  font-size:8px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.cart_elt {
+  text-align: center; 
+  background: #FAFAFA;
+  border: 1px solid #f2f2f2;  
+  border-left: 4px solid #FF9966;
+}
+
+
+#ewastebin {
+  padding:2px;
+  margin-top:8px;
+  color:#ccc;
+  border:1px dashed #888;
+  font-size:15px;
+  font-weight:bold;
+  text-align:center;
+}
+
+div.wastebin-active {
+  color: #333;	
+  background: url(/images/menu-hover-bg.gif) repeat-x;
+}
+
+.nube1 { font-size: 1.0em; }
+.nube2 { font-size: 1.2em; }
+.nube3 { font-size: 1.4em; }
+.nube4 { font-size: 1.6em; }

@@ -1,0 +1,67 @@
+8
+
+dir
+413
+svn://errtheblog.com/svn/plugins/classic_pagination/test
+svn://errtheblog.com/svn/plugins
+
+
+
+2007-06-11T16:12:10.975455Z
+256
+mislav
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+1eaa51fe-a21a-0410-9c2e-ae7a00a434c4
+
+helper.rb
+file
+
+
+
+
+2007-11-07T19:40:43.218750Z
+50c7fabeb3d6728ce24eada59d5b2b67
+2007-05-20T22:22:52.242875Z
+227
+mislav
+
+fixtures
+dir
+
+pagination_helper_test.rb
+file
+
+
+
+
+2007-11-07T19:40:43.218750Z
+0a02d28a37b53a8e19af7935db5be1a8
+2007-05-20T23:20:50.784462Z
+229
+mislav
+
+pagination_test.rb
+file
+
+
+
+
+2007-11-07T19:40:43.218750Z
+597b7501984a5ecd10242163d06c33e7
+2007-06-11T16:12:10.975455Z
+256
+mislav
+
