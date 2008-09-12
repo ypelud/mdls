@@ -1,0 +1,9 @@
+*.log
+*.pid
+config/database.yml
+config/mongrel_cluster.yml
+config/settings.yml
+config/initializers/action_mailer.rb
+db/schema.rb
+tmp/**/*
+vendor/rails
