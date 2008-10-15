@@ -1,0 +1,558 @@
+/********************************************
+   AUTHOR:  			Erwin Aligam 
+   WEBSITE:   			http://www.styleshout.com/
+	TEMPLATE NAME:		HarvestField
+   TEMPLATE CODE: 	S-0015
+   VERSION:          1.0          	
+	DATE:             June-30-2007               
+ *******************************************/
+ 
+/********************************************
+   HTML ELEMENTS
+********************************************/ 
+
+/* Top Elements */
+* { margin: 0; padding: 0; border: 0 }
+
+body {
+	background: #E2DDD9 url(/images/HarvestField/bg.jpg) repeat-y center top;
+	font: 70%/1.5em Verdana, Tahoma, arial, sans-serif;
+	color: #6B4F2E; 
+	text-align: center;		
+}
+
+/* links */
+a, a:visited {	
+	color: #BE420D;
+	background: inherit;
+	text-decoration: none;
+}
+a:hover {
+	color: #88ac0b;
+	background: inherit;
+	text-decoration: underline;
+}
+
+/* headers */
+h1, h2, h3 {
+	font-family: 'Trebuchet MS', Tahoma, Sans-serif;
+	font-weight: Bold; 		
+}
+h1 {
+	font-size: 160%;	
+	font-weight: normal;
+}
+h2 {
+	font-size: 135%;
+	text-transform: uppercase;
+	color: #88ac0b;
+}
+h3 {
+	font-size: 135%;	
+}
+
+h1, h2, h3, p {
+	padding: 10px;		
+	margin: 0;
+}
+ul, ol {
+	margin: 5px 20px;
+	padding: 0 20px;
+}
+
+/* images */
+img {
+	background: #FAFAFA;
+   border: 1px solid #DCDCDC;
+	padding: 5px;
+}
+img.float-right {
+  	margin: 5px 0px 10px 10px;  
+}
+img.float-left {
+  	margin: 5px 10px 10px 0px;
+}
+
+code {
+  	margin: 5px 0;
+  	padding: 10px;
+  	text-align: left;
+  	display: block;
+  	overflow: auto;  
+  	font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace ;
+  	/* white-space: pre; */
+  	background: #F9F7DD;
+	border: 1px solid #E0DBC9;  
+}
+acronym {
+  cursor: help;
+  border-bottom: 1px solid #777;
+}
+blockquote {
+	margin: 10px;
+ 	padding: 0 0 0 25px;  
+   background: #F9F7DD;
+	border: 1px solid #E0DBC9;
+	font: bold 1.3em/1.5em 'Trebuchet MS', Tahoma, Sans-serif;
+	color: #563E24;
+}
+
+
+/* start - table */
+#old table {
+	border-collapse: collapse;
+	margin: 10px;	
+}
+#old th strong {
+	color: #fff;
+}
+#old th {
+	background: #93BC0C;
+	height: 29px;
+	padding-left: 12px;
+	padding-right: 12px;
+	color: #FFF;
+	text-align: left;
+	border-left: 1px solid #B6D59A;
+	border-bottom: solid 2px #FFF;
+}
+#old tr {
+	height: 30px;
+}
+#old td {
+	padding-left: 11px;
+	padding-right: 11px;
+	border-left: 1px solid #E8E8E8;
+	border-bottom: 1px solid #DFDFDF;
+}
+#old td.first,#old th.first {
+	border-left: 0px;
+}
+#old tr.row-a {
+	background: #F8F8F8;
+}
+#old tr.row-b {
+	background: #EFEFEF;		
+}
+/* end - table */
+
+/* form elements */
+form {
+	margin:10px; padding: 0 5px;
+	background: #F9F7DD;
+	border: 1px solid #E0DBC9; 	
+}
+label {
+	display:block;
+	font-weight:bold;
+	margin:5px 0;
+}
+input {
+	padding:2px;
+	border:1px solid #eee;
+	font: normal 1em Verdana, sans-serif;
+	color:#777;
+}
+textarea {
+	width:400px;
+	padding:2px;
+	font: normal 1em Verdana, sans-serif;
+	border:1px solid #eee;
+	height:100px;
+	display:block;
+	color:#777;
+}
+input.button { 
+	font: bold 12px Arial, Sans-serif; 
+	height: 24px;
+	margin: 0;
+	padding: 2px 3px; 
+	color: #FFF;
+	background: #8EB50C;
+	border: none;
+}
+
+/* search form */
+.searchform {
+	background-color: transparent;
+	border: none;	
+	margin: 0; padding: 5px 0 15px 0;	
+	width: 270px;	
+   position: absolute;
+   top: 40px ; right: 20px;
+}
+.searchform p { margin: 0; padding: 0; }
+.searchform input.textbox { 
+	width: 180px;
+	color: #777; 
+	height: 18px;
+	padding: 2px;	
+	border: 1px solid #E5E5E5;
+	vertical-align: top;
+}
+.searchform input.button { 
+	width: 80px;
+	height: 24px;
+	padding: 2px 5px;
+	vertical-align: top;
+}
+
+/********************************************
+   LAYOUT
+********************************************/ 
+#wrap {
+	position: relative;
+	width: 830px;
+	margin: 0 auto;
+	text-align: left;
+	border-right: 1px solid #FFF;
+	border-left: 1px solid #FFF;
+}
+#content-wrap {
+	position: relative;
+	clear: both;
+	float: left;	
+	width: 830px;	
+	padding: 0; 	
+	border-bottom: 2px solid #FFF;
+	background: #F2EFBA url(/images/HarvestField/contentbg.jpg) repeat-y center top;	
+	display: inline;
+}
+#header {
+	width: 830px;
+	position: relative;
+	height: 140px;
+	background: #FFF url(/images/HarvestField/headerbg.jpg) repeat-x;
+	padding: 0;	
+	color: #FFF;	
+}
+#header h1#logo a {
+	position: absolute;
+	margin: 0; padding: 0;
+	font: bold 55px 'Trebuchet MS', Arial, Sans-serif;
+	letter-spacing: -2.5px;
+	color: #BE420D;
+	text-decoration: none;
+	
+	/* change the values of top and left to adjust the position of the logo*/
+	top: 30px; left: 20px;	
+}
+#header h1#logo span {
+	color: #444;
+}
+#header p#slogan {
+	position: absolute;
+	margin: 0; padding: 0;
+	font: bold 16px 'Trebuchet MS', Arial, Sans-serif;
+	text-transform: none;
+	color: #444;
+	
+	/* change the values of top and left to adjust the position of the slogan*/
+	top: 90px; left: 95px;		
+}
+
+/* header links */
+#header #header-links {
+	position: absolute;
+	top: 25px; right: 10px;	
+	color: #34160B;
+	font-size: 12px;	
+	font-weight: bold;
+}
+#header #header-links a {	
+	color: #34160B;
+	text-decoration: none;	
+}
+#header #header-links a:hover {
+	color: #BE420D;	
+}
+
+/* Navigation */
+#menu{
+	position: relative;
+	clear: both;	
+	padding: 0;		
+	width: 830px;
+	margin: 0 auto;	
+	background: url(/images/HarvestField/menubg.jpg) repeat-x;
+	height: 52px;
+}
+#menu #light-brown-line {
+	position: absolute;
+	background: url(/images/HarvestField/light-brown-line.jpg) no-repeat;
+	height: 10px; width: 240px;
+	top: 0; left: 0;
+}
+#menu ul {
+	position: absolute;
+	list-style: none;
+	text-transform: uppercase;
+	padding: 0;	margin: 0;	
+	right: 0; bottom: 0;
+}
+#menu ul li {
+	display: inline;
+	margin: 0; padding: 0;
+}
+#menu ul li a {
+	display: block;
+	float: left;
+	width: auto;
+	margin: 0;
+	padding: 0 14px; 
+	color: #FFF;
+	font: bold 13px/52px "Century Gothic", "Trebuchet MS", Helvetica, Arial, Geneva, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;		
+}
+#menu ul li a:hover, 
+#menu ul li a:active {
+	background: url(/images/HarvestField/menupointer.jpg) no-repeat center bottom;	
+}
+#menu ul li#current a {	
+	background: url(/images/HarvestField/menupointer.jpg) no-repeat center bottom;
+	color: #F2EFBA;	
+}
+
+/* Main Column */
+#main {
+	float: right;
+	width: 68%;
+	padding: 0; margin: 0 10px 0 0;
+	display: inline;	
+}
+#main h1 {
+	margin-top: 10px;
+	font: bold 2.2em 'Trebuchet MS', Tahoma, Sans-serif;
+	color: #8C9F0D; 
+	letter-spacing: -1px;
+	padding: 5px 0 5px 5px; 		
+}
+#main ul li {
+	list-style-image: url(/images/HarvestField/bullet.gif);
+}
+
+.post-footer {
+	background: #F9F7DD;
+	padding: 5px; margin: 20px 10px 0 10px;	
+	font-size: 95%;	
+	border: 1px solid #E0DBC9;
+}
+.post-footer .date{
+	margin: 0 10px 0 5px;	
+}
+.post-footer a.comments {
+	margin: 0 10px 0 5px;	
+}
+.post-footer a.readmore {
+	margin: 0 10px 0 5px;	
+}
+
+/* Sidebar */	
+#sidebar {
+	float: left;
+	width: 25.5%;
+	padding: 0; 
+	margin: 0 0 0 15px;		
+	display: inline; 
+}	
+#sidebar h1 {
+	margin-top: 10px;
+	padding: 5px 5px; 
+	font: bold 1.5em 'Trebuchet MS', Tahoma, Sans-serif;
+	color: #6B4F2E; 		
+}
+#sidebar ul.sidemenu {
+	text-align: left;
+	margin: 7px 4px 8px 0; padding: 0;
+	text-decoration: none;		
+	border-top: 1px solid #C39F73;
+}
+#sidebar ul.sidemenu li {
+	list-style: none;
+	background: url(/images/HarvestField/dots.jpg) repeat-x left bottom;
+	padding: 4px 0 4px 5px;
+	margin: 0 2px;		
+}
+* html body #sidebar ul.sidemenu li {
+	height: 1%;
+}
+#sidebar ul.sidemenu li a {
+	text-decoration: none;	
+	background-image: none;	
+	color: #6B4F2E;		
+}
+#sidebar ul.sidemenu li a:hover {	
+	color: #88ac0b;	
+}
+
+/* footer */
+#column-wrap {
+	clear: both;
+	float: left;
+	width: 830px;
+	padding: 10px 0 35px 0;		
+	background: #A0B70D url(/images/HarvestField/footercolbg.jpg) repeat-x left bottom;		
+	border-bottom: 1px solid #CCA066;	
+	border-bottom: 2px solid #FFF;
+}
+#column-wrap a {
+	text-decoration: none;
+	color: #FFF;	
+}
+#column-wrap a:hover {
+	color: #000;	
+}
+#column-wrap h2 {
+	color: #FFF;	
+	margin: 0 0 10px 0;	
+}
+
+#columns {
+	color: #888;
+	margin: 0 auto; 
+	padding: 0;	
+	width: 790px;		
+	background: transparent;
+}
+#columns ul {
+	list-style: none;
+	margin: 10px 0 0 0;
+	padding: 0;	
+	background: url(/images/HarvestField/footer-dots.gif) repeat-x left top;	
+}
+#columns li {
+	background: url(/images/HarvestField/footer-dots.gif) repeat-x left bottom;		
+}
+#columns li a {
+	display: block;
+	font-weight: normal;
+	padding: 3px 0 3px 10px;
+	width: 96%;
+}
+#columns .col3, .col3-center {
+	float: left;
+	width: 32%;
+}
+#columns .col3-center { 
+	margin: 0 15px; 
+}
+
+/* footer*/
+#footer {
+	clear: both;
+	color: #FFF;	
+	width: 830px;
+	padding: 5px 0 15px 0;
+	text-align: center;
+}
+#footer a {
+	color: #F3EFBA;
+	font-weight: bold;
+}
+
+/* alignment classes */
+.float-left  { float: left; }
+.float-right { float: right; }
+.align-left  { text-align: left; }
+.align-right { text-align: right; }
+
+/* display and additional classes */
+.clear { clear: both; }
+
+
+/***********************************************/
+/*  special */
+/***********************************************/
+/* liste de menus */
+
+
+
+#semaine_style  .mnu_elt {
+  border: 1px dotted #88ac0b;
+  border-top: 10px solid #88ac0b; 
+}
+
+.menu_cart:hover {
+  cursor: move;
+  background: #F9F7DD;
+}
+
+
+/*configuration du panier */
+div.cart-active {
+  color: #333;	
+  background: #BE420D;
+}
+
+
+div.cart {
+  clear:both;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#msg_cart {
+  padding:2px;
+  color:#ccc;
+  border:1px dashed #888;
+  font-size:8px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.cart_elt {
+  text-align: center; 
+  background: #8EB50C; 
+  border:1px;
+}
+
+#indicator img {
+  border: 0px solid #D5D5D5;
+}
+
+#compteur {
+   position: absolute;
+	bottom: 10px; right: 20px;
+	padding: 0; margin: 0;
+	border: none;
+	background-color: transparent; 
+   color: #444;
+}  
+
+ /* surcharge de la pagination */
+div.pagination {
+	padding:3px;
+	margin:3px;
+	text-align:center;
+}
+
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #ddd;
+	
+	text-decoration: none; 
+	color: #88AF3F;
+}
+div.pagination a:hover, div.pagination a:active {
+	border:1px solid #85BD1E;
+	color: #638425;
+	background-color: #75A54B; /*#F1FFD6;*/
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #75A54B; /*#B2E05D;*/
+	font-weight: bold;
+	background-color: #75A54B; /*#B2E05D;*/
+	color: #FFF;
+}
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #f3f3f3;
+	color: #ccc;
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Menus de la semaine</title>  
+  <%= javascript_include_tag :defaults %>   
+  <%= stylesheet_link_tag 'menus' %>
+  <%= stylesheet_link_tag 'print', :media => 'print' %>
+</head>
+<body>
+
+<div id="wrap">
+	<div id="content-wrap">   
+      <div id="main">         
+      <div id="alerte" style="display:none;"><p style="color: green"><%= flash[:notice] %></p></div>
+      <%=yield %>
+      </div>   
+   </div>    
+	<div id="footer">		
+		<div id="footer-left">
+			&copy; Copyright 2008 <strong>Menusdelasemaine</strong>&nbsp;	 			
+		</div>
+		</div>	
+	</div>
+</div>   
+
+<%= if flash[:notice]
+      update_page_tag do |page|
+         page.show("alerte") 
+         page.visual_effect(:highlight, "alerte")
+         page.delay(4.0) do
+           page.hide("alerte")
+         end
+       end
+    end
+%>
+
+</body>
+</html>
