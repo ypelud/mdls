@@ -1,4 +1,5 @@
-﻿<% form_tag '/recherche/find', :class => 'searchform' do -%>
-   <%= text_field_tag 'mot', '', :size => 15, :class => 'textbox' %>
+<% form_tag '/recherche/find', :class => 'searchform' do -%>
+   <p><%= text_field_tag 'mot', '', :size => 15, :class => 'textbox' %>
    <%= submit_tag 'Rechercher', :class => 'button' %>
+   </p>
 <% end -%>

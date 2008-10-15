@@ -1,5 +1,4 @@
 <h1>Types de menus</h1>
-<% if logged_in? && (current_user.login==APP_CONFIG['super_user']) %>
 <table class="menu">
   <tr>  
     <th><em>Type</em></th>
@@ -14,12 +13,9 @@
 <% end %>
 </table>
 
-<%= link_to 'Previous page', { :page => @menutype_pages.current.previous } if @menutype_pages.current.previous %>
-<%= link_to 'Next page', { :page => @menutype_pages.current.next } if @menutype_pages.current.next %> 
-
-<br />
+<%= will_paginate @menutypes %>
 
 <p class="post-footer align-right">	
 <%= link_to 'Nouveau type', :action => 'new' %>
 </p>
-<% if logged_in? && (current_user.login==APP_CONFIG['super_user']) %>
+

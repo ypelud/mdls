@@ -17,7 +17,7 @@ body {
 	margin: 0; padding: 0;
 	font: 70%/1.5em  Verdana, Tahoma, Arial,sans-serif;
 	color: #333; 
-	background: #FFF url(/images/bg.gif) repeat-x;	
+	background: #FFF url(/images/citrusIsland/bg.gif) repeat-x;	
 	text-align: center; 
 }
 
@@ -58,17 +58,6 @@ h2, h3, p {
 	margin: 0;
 }
 
-/* images */
-img {
-	border: 3px solid #D5D5D5;
-}
-img.float-right {
-  margin: 5px 0px 5px 10px;  
-}
-img.float-left {
-  margin: 5px 10px 5px 0px;
-}
-
 #sidebar h1, 
 #sidebar p {
 	padding-left: 0;
@@ -98,7 +87,7 @@ acronym {
 blockquote {
 	margin: 10px;
  	padding: 0 0 0 32px;  	
-  	background: #FAFAFA url(/images/quote.gif) no-repeat 5px 10px !important; 
+  	background: #FAFAFA url(/images/citrusIsland/quote.gif) no-repeat 5px 10px !important; 
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2; 
 	border-left: 4px solid #FF9966;   
@@ -159,13 +148,7 @@ form.searchform input.button {
 	vertical-align: top;
 }
 
-#compteur {
-   position: absolute;
-	top: 40px; right: 5px;
-	padding: 0; margin: 0;
-	border: none;
-	background-color: transparent; 
-}
+
 /**************************************
    LAYOUT 
 ***************************************/	
@@ -183,9 +166,9 @@ form.searchform input.button {
 	margin: 0; padding: 0;
 	color: #808080; 		
 }
-#header h1#logo {
+#header h1#logo a {
 	position: absolute;	
-	font: bold 3.9em "trebuchet MS", Arial, Tahoma, Sans-Serif;
+	font: bold 2.8em "trebuchet MS", Arial, Tahoma, Sans-Serif;
 	margin: 0; padding:0;
 	color: #75A54B;
 	letter-spacing: -2px;	
@@ -196,7 +179,7 @@ form.searchform input.button {
 }
 #header h1#logo span { color: #F18359; }
 
-#header h2#slogan { 
+#header p#slogan { 
 	position: absolute;
 	margin: 0; padding: 0;	
 	font: bold 12px Arial, Tahoma, Sans-Serif;	
@@ -209,7 +192,7 @@ form.searchform input.button {
 /* menu */
 #menu {
 	clear: both;
-	background: #FF9966 url(/images/menubg.gif) repeat-x;
+	background: #FF9966 url(/images/citrusIsland/menubg.gif) repeat-x;
 	height: 30px;
 	margin: 0;
 	font: bolder 1.2em/30px Tahoma, Verdana, Arial, Sans-Serif;		
@@ -230,11 +213,11 @@ form.searchform input.button {
 }
 #menu ul li a:hover {
   	color: #333;	
-	background: url(/images/menu-hover-bg.gif) repeat-x;
+	background: url(/images/citrusIsland/menu-hover-bg.gif) repeat-x;
 }
 #menu ul li#current a {
 	color: #333;
-	background: url(/images/menu-current-bg.gif) repeat-x;	
+	background: url(/images/citrusIsland/menu-current-bg.gif) repeat-x;	
 }
 
 /* sidebar */
@@ -252,7 +235,7 @@ form.searchform input.button {
 }
 #sidebar ul.sidemenu li {
 	border-bottom: 1px solid #EFF0F1;	
-	background: url(/images/arrow.gif) no-repeat 3px 6px;	
+	background: url(/images/citrusIsland/arrow.gif) no-repeat 3px 6px;	
 	padding: 2px 5px 2px 20px;
 }
 
@@ -264,7 +247,7 @@ form.searchform input.button {
 	text-decoration: none;	
 }
 
-#rightbar {
+#sidebar {
 	float: right;
 	width: 21%;
 	padding: 0;
@@ -286,15 +269,15 @@ form.searchform input.button {
 	font-size: 95%;
 }
 .post-footer .date {
-	background: url(/images/clock.gif) no-repeat left center;
+	background: url(/images/citrusIsland/clock.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 .post-footer .comments {
-	background: url(/images/comment.gif) no-repeat left center;
+	background: url(/images/citrusIsland/comment.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 .post-footer .readmore {
-	background: url(/images/page.gif) no-repeat left center;
+	background: url(/images/citrusIsland/page.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 
@@ -303,7 +286,7 @@ form.searchform input.button {
 	clear: both; 	
 	color: #666666; 	
 	padding: 0;	 
-	background: #FFF url(/images/footerbg.gif) repeat-x;
+	background: #FFF url(/images/citrusIsland/footerbg.gif) repeat-x;
 	height: 60px
 }
 #footer a { 
@@ -337,3 +320,80 @@ form.searchform input.button {
 .clear  { clear: both; }
 .green  { color: #75A54B; }
 
+
+
+/***********************************************/
+/*  special */
+/***********************************************/
+/* liste de menus */
+
+#liste_style ul li {
+   border-top: 1px dotted #FFA500;
+	border-left: 8px solid #F9864D; 
+}
+
+#liste_style .menu_liste_1 {
+  background: url(/images/citrusIsland/menu-current-bg.gif) repeat-x;	
+}
+
+#semaine_style .mnu_elt {
+  border: 1px solid #75A54B;
+  border-top: 15px solid #75A54B; 
+}
+
+/* compteur */
+#compteur {
+	bottom: 5px; right: 20px;
+}   
+
+/* menu_cart */
+.menu_cart:hover {
+  background: #FAFAFA;
+  cursor: move;
+}
+
+/*configuration du panier */
+div.cart-active { 
+  background: #8bc359 ; //#F4F8FD;	
+}}
+
+div.cart {
+  clear:both;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#msg_cart {
+  padding:2px;
+  color:#ccc;
+  border:1px dashed #888;
+  font-size:8px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.cart_elt {
+  background: #75A54B;
+  border: 1px ;
+}
+
+
+ /* surcharge de la pagination */
+div.pagination a {
+	color: #88AF3F;
+}
+div.pagination a:hover, div.pagination a:active {
+	border:1px solid #85BD1E;
+	color: #638425;
+	background-color: #75A54B; /*#F1FFD6;*/
+}
+div.pagination span.current {
+	border: 1px solid #75A54B; /*#B2E05D;*/
+	background-color: #75A54B; /*#B2E05D;*/
+	color: #FFF;
+}
+div.pagination span.disabled {
+	border: 1px solid #f3f3f3;
+	color: #ccc;
+}

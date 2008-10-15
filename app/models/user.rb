@@ -79,8 +79,23 @@ class User < ActiveRecord::Base
   def recently_activated?
     @activated
   end
+        
+   def create_reset_code
+     @reset = true
+     self.reset_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+     save(false)
+   end
+   
+   def recently_reset?
+     @reset
+   end
+  
+   def delete_reset_code
+     self.reset_code = nil
+     save(false)
+   end
 
-  protected
+   protected
     # before filter 
     def encrypt_password
       return if password.blank?
@@ -93,8 +108,7 @@ class User < ActiveRecord::Base
     end
     
     def make_activation_code
-
       self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
     end
-    
+        
 end

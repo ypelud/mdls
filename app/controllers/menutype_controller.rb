@@ -1,4 +1,6 @@
 class MenutypeController < ApplicationController
+  before_filter :authorize
+  
   def index
     list
     render :action => 'list'
@@ -9,7 +11,7 @@ class MenutypeController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @menutype_pages, @menutypes = paginate :menutypes, :per_page => 10
+    @menutypes = Menutype.paginate :page => params[:page]
   end
 
   def show

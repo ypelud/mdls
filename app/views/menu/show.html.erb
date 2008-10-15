@@ -1,4 +1,4 @@
-﻿<h1>Menu</h1>
+   <h1>Menu</h1>
 <% for column in Menu.content_columns %>
 <p>
   <% if (column.name!="date") %>
@@ -17,7 +17,7 @@
    <%= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
                :update => "comment_div",
                :url => { :controller => 'comment', :action => 'list', :id => @menu.id },    
-               :complete => visual_effect(:toggle_appear, 'comment_div', :duration => 1.00),
+               :complete => visual_effect(:toggle_appear, "comment_div", :duration => 1.00),
                :html => { :class  => "comments" }
                %>
 </p>

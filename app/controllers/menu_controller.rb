@@ -1,4 +1,8 @@
 class MenuController < ApplicationController
+   before_filter :authorize_user, :except => [:recupere, :list, :show]
+   # uses the cookie session store (then you don't need a separate :secret)
+   # protect_from_forgery :except => :recupere
+   
    
   def index
     list
@@ -14,8 +18,15 @@ class MenuController < ApplicationController
                               :conditions => ["title like ? and user_id like ? and menutype_id like ?",
                                        "%#{params[:tags_id]}%", 
                                        "%#{params[:user_id]}%", 
-                                       "%#{params[:menutype_id]}%"]     
-                                             
+                                       "%#{params[:menutype_id]}%"]    
+
+      if current_user and Profil.find_by_id(current_user.id)
+         profil = Profil.find_by_id(current_user.id)
+         @affichage =  profil.style_menu
+      else
+         @affichage = 'semaine_style'
+      end
+
   end
   
   def show
@@ -53,6 +64,7 @@ class MenuController < ApplicationController
 
   def edit
     @menu = Menu.find(params[:id])
+    authorize_user
   end
 
   def update
@@ -81,15 +93,28 @@ class MenuController < ApplicationController
       render :partial => "tags_list", :layout => false
    end
 
-   def user_ok
-      if current_user 
-         if current_user.id==menu.user_id
-           return true
-         else
-           return false
-         end
+   def user_ok?
+      unless current_user 
+        return false
+      end
+      
+      unless @menu
+        return true
+      end
+      
+      if current_user.id==@menu.user_id
+        return true
       else
-         return false
-      end 
+        return false
+      end
    end 
+   
+   def authorize_user
+     unless user_ok?
+       flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
+       redirect_to home_path
+       false
+     end
+   end   
+   
 end

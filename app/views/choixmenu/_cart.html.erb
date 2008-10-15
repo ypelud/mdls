@@ -1,9 +1,15 @@
-<% session[:choix].each do |menu_id, quantity| %>
-   <div id="item_<%=menu_id%>" class="menu-items"> 
-      <div class="cart_elt">
-         <%= link_to Menu.find(menu_id).title, "/menu/show/#{menu_id}", 
-             :style => "position:relative;" %>
+<% if day and session[:choix][day] %>
+   <% session[:choix][day].each do |menu_id| %>
+      <div id="item_<%=menu_id%>" class="menu-items"> 
+         <div class="cart_elt">
+            <%=link_to_remote "X", :update => "items_#{day}", 
+               :url => {:controller => "choixmenu", :action => "remove", :id => menu_id, :day => day },
+               :loading => visual_effect(:appear, 'indicator', :duration => 2.00),
+               :complete => visual_effect(:fade, 'indicator', :duration => 2.00),
+               :html => { :class => "destroy" } %>  
+            <%= Menu.find(menu_id).title %>
+         </div>            
       </div>
-   </div>
-   <%= draggable_element "item_#{menu_id}", :revert => true %>
+   <% end %>
 <% end %>
+

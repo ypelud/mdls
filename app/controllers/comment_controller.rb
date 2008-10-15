@@ -11,5 +11,6 @@ class CommentController < ApplicationController
   
   def list
     @menu = Menu.find(params[:id])
+    render :partial => "list"
    end
 end

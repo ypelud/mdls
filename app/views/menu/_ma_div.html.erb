@@ -1,4 +1,4 @@
-﻿<% for column in Menu.content_columns %>
+<% for column in Menu.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @menu.send(column.name) %>
 </p>

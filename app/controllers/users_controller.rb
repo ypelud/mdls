@@ -7,22 +7,25 @@ class UsersController < ApplicationController
   def new
   end
  
-
+  def errors
+  end
+ 
   def create
     cookies.delete :auth_token
     # protects against session fixation attacks, wreaks havoc with 
     # request forgery protection.
     # uncomment at your own risk
-    reset_session
+    # reset_session
     @user = User.new(params[:user])
     @user.save
     if @user.errors.empty?
       self.current_user = @user
-      redirect_to :controller => 'emailer', :action => 'thanksuser'
-      #redirect_back_or_default('/')
-      #flash[:notice] = "Merci pour votre inscription !"
+      #redirect_to :controller => 'emailer', :action => 'thanksuser'
+      flash[:notice] = "Merci pour votre inscription !"
+      redirect_back_or_default('/')
     else
-      render :action => 'new'
+      self.class.layout 'simple'
+      render :action => 'errors'
     end
   end
 
@@ -34,5 +37,34 @@ class UsersController < ApplicationController
     end
     redirect_back_or_default('/')
   end
+  
+  
+   def forgot
+     if request.post?
+       user = User.find_by_email(params[:user][:email])
+       if user
+         user.create_reset_code
+         flash[:notice] = "Un code de réinitialisation à été envoyé à  #{user.email}"
+       else
+         flash[:notice] = "#{params[:user][:email]} n'existe pas"
+       end
+       redirect_back_or_default('/')
+     end
+   end
+   
+   def reset
+     @user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
+     if request.post?
+      if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+         self.current_user = @user
+         @user.delete_reset_code
+         flash[:notice] = "Mot de passe réinitialisé pour #{@user.email}"
+         redirect_back_or_default('/')
+       else
+         self.class.layout 'simple'
+         render :action => 'errors'
+       end
+     end
+   end
 
 end

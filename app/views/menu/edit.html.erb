@@ -1,7 +1,7 @@
-﻿<h1>Editer</h1>
+   <h1>Editer</h1>
 <% form_tag :action => 'update', :id => @menu do %>
   <%= render :partial => 'form' %>
-  <%= submit_tag 'Valider' %>
+  <p><%= submit_tag 'Valider', :class => 'button'  %></p>
 <% end %>
 
 <p class="post-footer align-right">	

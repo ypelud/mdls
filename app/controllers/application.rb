@@ -3,19 +3,32 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-
+  
   helper :all # include all helpers, all the time
-
-  # See ActionController::RequestForgeryProtection for details
-  # Uncomment the :secret if you're not using the cookie session store
+  helper_method :admin? , :user_style
   protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
   
-  # See ActionController::Base for details 
-  # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
-  # filter_parameter_logging :password
   
-  
-  
+  protected
+  def authorize
+    unless admin?
+      flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
+      redirect_to home_path
+      false
+    end
+  end
+      
+  def admin?
+    logged_in? && (current_user.login==APP_CONFIG['super_user']) 
+  end  
+ 
+  def user_style
+      if current_user and Profil.find_by_id(current_user.id) 
+         profil = Profil.find_by_id(current_user.id)
+         profil.layout_name
+      else
+         'citrusisland'
+      end      
+  end  
   
 end

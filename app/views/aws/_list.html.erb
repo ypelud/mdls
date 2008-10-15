@@ -1,4 +1,4 @@
-﻿<div id='list'>
+   <div id='list'>
 <% @doc.each_element('//Item') do |e| %>
 <!--li><a href="<%= e.get_text('DetailPageURL').to_s %>"><img src="<%= e.get_text('SmallImage/URL').to_s %>"</img><%= e.get_text('ItemAttributes/Title').to_s %></a></li-->
 <a href="<%= e.get_text('DetailPageURL').to_s %>"><img src="<%= e.get_text('SmallImage/URL').to_s %>"</img></a>

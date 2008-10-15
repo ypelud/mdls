@@ -1,4 +1,5 @@
 class RechercheController < ApplicationController
+  
   def new
     render :partial => 'new'
   end
