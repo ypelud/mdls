@@ -6,10 +6,12 @@ class ProfilController < ApplicationController
       @profil = Profil.new
       @profil.id = current_user.id 
       @profil.user_id = current_user.id 
-      @profil.layout_name = 'application'
+      @profil.layout_name = :user_style
       @profil.style_menu = 'semaine_style'
       @profil.save    
     end
+    
+    @themes = [["Standard",'CitrusIsland'],["Theme2",'HarvestField'], ["Theme3",'CoolWater']]
     
     @profil = Profil.find(current_user)
   end

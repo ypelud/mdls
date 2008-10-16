@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
          profil = Profil.find_by_id(current_user.id)
          profil.layout_name
       else
-         'citrusisland'
+         'CitrusIsland'
       end      
   end  
   
