@@ -1,0 +1,33 @@
+<div id="menu_show">
+<h1><%=@menu.title%></h1>
+<h2>Description </h2>
+<%= @menu.description %>
+<h2>Ingredients </h2>
+  <ul>
+  <% if @menu.ingredients %>
+    <% @menu.ingredients.split("\r\n").each do |ing| %>
+      <li><%= ing %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div> 
+
+<div class="post-footer">	
+<p class="byline">Posté par <%= @menu.user.login %> le <%= @menu.date.to_formatted_s(:short) %> </p>
+<p class="links">
+   <% if logged_in? && (@menu.user_id==current_user.id) %>
+      <%= link_to "Editer", :action => "edit", :id => @menu %> |
+   <% end %>
+   <%= link_to "Retour", :action => "list" %> |
+
+   <%= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
+               :update => "comment_div",
+               :url => { :controller => "comments", :action => "list", :id => @menu.id },    
+               :complete => visual_effect(:toggle_appear, "comment_div", :duration => 1.00),
+               :html => { :class  => "comments" }
+               %>
+</p>
+</div>
+<div id="comment_div" style="display: none">
+</div>
+

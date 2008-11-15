@@ -1,0 +1,5 @@
+    <% @comments.each do |comment|%>
+<div class="comments">
+      <%= render :partial => "comments/comment5", :locals => {:comment => comment } %>           
+</div>
+    <% end %>

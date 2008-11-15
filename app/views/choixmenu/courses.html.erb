@@ -1,0 +1,15 @@
+<h1>Ingredients </h1>
+<% session[:choix].each do |session| %>
+  <% session.each do |day| %>
+    <% day.each do |menu_id| %>
+     <% menu=Menu.find_by_id(menu_id) %>  
+     <ul>
+       <% if menu and menu.ingredients %>
+         <% menu.ingredients.split("\r\n").each do |ing| %>
+           <li><%= ing %></li>
+         <% end %>
+       <% end %>
+     </ul>
+    <% end %>
+  <% end %>
+<% end %>

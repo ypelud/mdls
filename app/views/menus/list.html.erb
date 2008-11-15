@@ -1,0 +1,15 @@
+<h1>Liste des menus</h1>
+<p>
+<%= render :partial => @affichage %>
+</p>
+
+<%= will_paginate @menus %>
+
+<p class="post-footer align-right">	
+<div class="links">
+<% if logged_in? %>
+  <%= link_to 'Nouveau menu', :action => 'new' %> |
+<% end %>
+  <%= link_to 'Tous les menus', :action => 'list' %>
+</div>
+</p>
