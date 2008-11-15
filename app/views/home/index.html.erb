@@ -14,7 +14,7 @@
    <% for menu in @menuMidi %>
       <td>
          <div id="mnuMidi_<%=menu.id%>" class="menu_cart">
-            <%= link_to %Q{#{menu.title}}, :controller => 'menu',  :action => "show", :id => menu %>
+            <%= link_to %Q{#{menu.title}}, :controller => 'menus',  :action => "show", :id => menu %>
             <%= draggable_element("mnuMidi_" + menu.id.to_s, :revert => true) %>
          </div>
       </td>
@@ -25,7 +25,7 @@
    <% for menu in @menuSoir %>
       <td>
          <div id="mnuSoir_<%=menu.id%>" class="menu_cart">
-            <%= link_to %Q{#{menu.title}}, :controller => 'menu',  :action => "show", :id => menu %>
+            <%= link_to %Q{#{menu.title}}, :controller => 'menus',  :action => "show", :id => menu %>
             <%= draggable_element("mnuSoir_" + menu.id.to_s, :revert => true) %>
          </div>
       </td>

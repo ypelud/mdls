@@ -32,7 +32,6 @@
 /* semaine_style */
 #semaine_style {
 	clear: both;
-   margin:0px 1px 10px 1px;
 }
 
 #semaine_style tr{
@@ -47,23 +46,30 @@
   display: none;
 }
 
-#semaine_style  .mnu_elt {
-  display: block;
-  height: 90px; 
+#semaine_style .drag_menu {
+  display: block; 
+  height: 10px; 
   text-align: center; 
-  border: 1px solid #000;      
+  background: url(/images/Harvest/img14.jpg) no-repeat left top;
 }
 
+#semaine_style  .mnu_elt {
+  display: block; 
+  padding: 10px 3px 10px 3px;
+  height: 90px; 
+  text-align: center; 
+  background: url(/images/Harvest/img13.jpg) no-repeat left top;
+}
 
-/* menu_cart */
-.menu_cart:hover {
+.mnu_elt:hover {
   cursor: move;
+  background-color: blue;
 }
 
 /*configuration du panier */
 /* passage de l'élémént sur le panier */
 div.cart-active {
-  color: yellow;	
+  color: #48ACDE;	
 }
 
 div.cart {
@@ -73,18 +79,24 @@ div.cart {
   margin: 0px;
 }
 
+
+/* Mes menus */
 #msg_cart {
-  padding:2px;
-  color:#ccc;
-  border:1px dashed #888;
-  font-size:8px;
-  font-weight:bold;
+  padding:1px;
+  border-bottom:1px dotted #888;
   text-align:center;
 }
 
-
 .menu-items {
-  border:1px solid #888;
+  /*border:1px solid #888;*/
+  border-left:1px dotted #888;
+  border-right:1px dotted #888;
+  
+}
+
+.cart_elt {
+  text-align: left;   
+  margin-left: 10px;
 }
 
 .menu-print  {
@@ -104,29 +116,6 @@ div.cart {
 
 .menu-print a{
   border: 0px;
-}
-
-.cart_elt {
-  text-align: center; 
-  background: green; 
-  color: #FFFFFF;
-}
-
-/* bouton de suppression */
-.destroy {
-  float: right;
-  margin: 0;
-  width: 20px;
-  text-align: center;  
-  background-image: url(/images/icones/delete-page-green.gif) ;
-  background-repeat:no-repeat;
-  color: transparent;  
-}
-
-.destroy:hover{
-  background-image: url(/images/icones/delete-page-green.gif) ;
-  background-repeat:no-repeat;
-  color: transparent;  
 }
 
 
@@ -183,4 +172,24 @@ div.pagination span.disabled {
 	margin-right: 2px;
 	border: 1px solid #f3f3f3;
 	color: #ccc;
+}
+
+
+
+/* menu_show */
+#menu_show ul {
+  padding: 0;
+}
+
+#menu_show li {
+ list-style: none;	 
+ width: 95%; 
+}   
+
+
+/* comments */
+.comments {
+	border-top: 1px dashed #333333;
+	font-size: 10px;   
+
 }

@@ -1,20 +1,20 @@
 <li><a href="/"><span>Accueil</span></a></li>
 <!--li><a href="/menu/list"><span>Menus</span></a></li-->
 <%if logged_in? %>
-   <li><%=link_to '<span>Deconnexion</span>', logout_path %></li>
+   <li><%=link_to "<span>Deconnexion</span>", logout_path %></li>
 <%else %>
    <li><%=link_to_remote "<span>Connexion</span>", :update => "login_div",
-      :url => { :controller => 'sessions', :action => 'log'},
-      :complete => visual_effect(:toggle_appear, 'login_div') %>
+      :url => { :controller => "sessions", :action => "log"},
+      :complete => visual_effect(:toggle_appear, "login_div") %>
    </li>
    <li><%=link_to "<span>S'enregistrer</span>", signup_path %></li>
 <%end %>
-<% if admin? %>
-   <li><a href="/menutype/list"><span>Type</span></a></li>                        
-   <li><a href="/useradm/list"><span>Users</span></a></li>                        
-<% end %>
 <%if logged_in? %>
    <li><a href="/emailer/index"><span>Contact</span></a></li>
    <li><a href="/profil"><span>Options</span></a></li>
 <% end %>
 <!--li><a href="/menu/list"><span>Comment ça marche ?</span></a></li-->
+<% if admin? %>
+   <li><a href="/menutype/list"><span>Type</span></a></li>                        
+   <li><a href="/useradm/list"><span>Users</span></a></li>                        
+<% end %>

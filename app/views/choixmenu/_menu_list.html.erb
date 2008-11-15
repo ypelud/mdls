@@ -1,4 +1,5 @@
-<% @week.each do |day| %>
+
+<% $week.each do |day| %>
    <div id="cart_<%=day%>" class="cart_<%=day%>">   
       <div id="msg_cart"><%=day%></div>
       <div id="items_<%=day%>">
@@ -8,10 +9,12 @@
       <%= drop_receiving_element "cart_#{day}", 
          :update => "items_#{day}", :url => {:controller => "choixmenu", :action => "add", :day => day},
          :accept => "menu_cart", :hoverclass => "cart-active",
-         :loading => visual_effect(:appear, 'indicator', :duration => 2.00),
-         :complete => visual_effect(:fade, 'indicator', :duration => 2.00) %>      
+         :loading => visual_effect(:appear, "indicator", :duration => 2.00),
+         :complete => visual_effect(:fade, "indicator", :duration => 2.00) %>      
    </div>
 <% end %>
+
+<a href="/choixmenu/print">Imprimer</a> <a href="/choixmenu/courses">Liste des courses</a> 
 
 <div style="height:40px;padding-top:10px;">
    <p id="indicator" style="display:none;margin-top:0px;border:0px;">

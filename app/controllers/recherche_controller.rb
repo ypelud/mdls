@@ -5,6 +5,6 @@ class RechercheController < ApplicationController
   end
   
   def find
-    redirect_to :controller => 'menu', :action => 'list', :tags_id => params[:mot]
+    redirect_to :controller => 'menus', :action => 'list', :tags_id => params[:mot]
   end
 end

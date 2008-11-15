@@ -1,10 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
-  #map.home '', :controller => 'home', :action => 'index'
-  map.home '', :controller => 'menu', :action => 'list'
+  map.home '', :controller => 'menus', :action => 'list'
   
   map.resources :users
   map.resource :session
   
+  map.resources :menus
+  map.resource :comments
+    
   map.activate  '/activate/:activation_code', :controller => 'users',     :action => 'activate', :activation_code => nil
   map.signup    '/signup',                    :controller => 'users',     :action => 'new'
   map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'

@@ -23,12 +23,12 @@ class ApplicationController < ActionController::Base
   end  
  
   def user_style
-      if current_user and Profil.find_by_id(current_user.id) 
-         profil = Profil.find_by_id(current_user.id)
-         profil.layout_name
-      else
-         'CitrusIsland'
-      end      
+      #if current_user and Profil.find_by_id(current_user.id) 
+      #   profil = Profil.find_by_id(current_user.id)
+      #   profil.layout_name
+      #else
+         'Harvest' #'default' #CitrusIsland'
+      #end      
   end  
   
 end

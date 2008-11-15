@@ -1,9 +1,9 @@
 /********************************************
-   AUTHOR:  			Erwin Aligam 
-   WEBSITE:   			http://www.styleshout.com/
-	TEMPLATE NAME: 	Citrus Island
+   AUTHOR:  		Erwin Aligam
+   WEBSITE:   		http://www.styleshout.com/
+   TEMPLATE NAME: 	Citrus Island
    TEMPLATE CODE: 	S-0004
-   VERSION:          1.1          	
+   VERSION:             1.1
  *******************************************/
  
 /********************************************
@@ -14,18 +14,18 @@
 * { margin:0; 	padding: 0; }
 
 body {
-	margin: 0; padding: 0;
-	font: 70%/1.5em  Verdana, Tahoma, Arial,sans-serif;
-	color: #333; 
-	background: #FFF url(/images/citrusIsland/bg.gif) repeat-x;	
-	text-align: center; 
+     margin: 0; padding: 0;
+     font: 70%/1.5em  Verdana, Tahoma, Arial,sans-serif;
+     color: #333;
+     background: #000 ;
+     text-align: center;
 }
 
 /* links */
 a {
-	color: #F9864D; 
-	background-color: inherit;
-	text-decoration: none;
+  color: #F9864D;
+  background-color: inherit;
+  text-decoration: none;
 }
 a:hover {
 	color: #575757;
@@ -162,7 +162,7 @@ form.searchform input.button {
 /* header */
 #header { 
 	position: relative;
-	height: 70px; 
+	height: 90px;
 	margin: 0; padding: 0;
 	color: #808080; 		
 }
@@ -177,7 +177,9 @@ form.searchform input.button {
 	/* change the values of top and Left to adjust the position of the logo*/
 	top: 0; left: 2px;		
 }
-#header h1#logo span { color: #F18359; }
+#header h1#logo span {
+  color: #F18359;
+  }
 
 #header p#slogan { 
 	position: absolute;
@@ -192,7 +194,7 @@ form.searchform input.button {
 /* menu */
 #menu {
 	clear: both;
-	background: #FF9966 url(/images/citrusIsland/menubg.gif) repeat-x;
+	background: #FFFFFF url(/images/citrusIsland/menubg.gif) repeat-x;
 	height: 30px;
 	margin: 0;
 	font: bolder 1.2em/30px Tahoma, Verdana, Arial, Sans-Serif;		

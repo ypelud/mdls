@@ -2,7 +2,7 @@
    <% session[:choix][day].each do |menu_id| %>
       <div id="item_<%=menu_id%>" class="menu-items"> 
          <div class="cart_elt">
-            <%=link_to_remote "X", :update => "items_#{day}", 
+            <%=link_to_remote image_tag("/images/icones/delete.gif"), :update => "items_#{day}", 
                :url => {:controller => "choixmenu", :action => "remove", :id => menu_id, :day => day },
                :loading => visual_effect(:appear, 'indicator', :duration => 2.00),
                :complete => visual_effect(:fade, 'indicator', :duration => 2.00),
