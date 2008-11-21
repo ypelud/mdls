@@ -14,20 +14,24 @@ class MenusController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-      @menus = Menu.paginate  :page => params[:page],
-                              :conditions => ["title like ? and user_id like ? and menutype_id like ?",
-                                       "%#{params[:tags_id]}%", 
-                                       "%#{params[:user_id]}%", 
-                                       "%#{params[:menutype_id]}%"],
-                               :order => 'date DESC'
-
       if current_user and Profil.find_by_id(current_user.id)
          profil = Profil.find_by_id(current_user.id)
          @affichage =  profil.style_menu
       else
          @affichage = 'semaine_style'
       end
-
+      
+      item_per_page = (@affichage == 'semaine_style') ? 10 : Menu.per_page
+      
+      puts 'par page :'+item_per_page.to_s
+      @menus = Menu.paginate  :page => params[:page],
+                              :conditions => ["title like ? and user_id like ? and menutype_id like ?",
+                                       "%#{params[:tags_id]}%", 
+                                       "%#{params[:user_id]}%", 
+                                       "%#{params[:menutype_id]}%"],
+                               :order => 'date DESC',
+                               :per_page => item_per_page
+       @max = item_per_page / 2       
   end
   
   def show

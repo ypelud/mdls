@@ -4,8 +4,8 @@
 xml.instruct! :xml, :version => "1.0" 
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "Menus"
-    xml.description "Pleins de menus"
+    xml.title "MenusDeLaSemaine"
+    xml.description "Les menus sans peine"
     xml.link formatted_menus_url(:rss)
     
     for menu in @menus

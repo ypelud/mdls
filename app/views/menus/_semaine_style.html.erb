@@ -1,18 +1,13 @@
 <div id="<%= @affichage %>">
 <table>
    <tr class="titre">
-      <th width="14%"><em></em></th>
-      <th width="14%"><em></em></th>
-      <th width="14%"><em></em></th>
-      <th width="14%"><em></em></th>
-      <th width="14%"><em></em></th>
-      <th width="14%"><em></em></th>
-      <th width="14%"><em></em></th>
+   <% (1..@max).each do |w| %>
+      <th width="<%= 100 / @max %>%"><em></em></th>
+   <% end %> 
    </tr> 
 
-   <% indice = 1 ;%>
-   <%for menu in @menus %>
-   <% if indice % 7 == 1 %><tr><% end %>
+   <% (1..@menus.size).each do |mn| menu=@menus.at(mn-1) %>
+      <%= "<tr>" if mn % @max == 1 %>
       <td>
         <div id="mnuMidi_<%=menu.id%>" class="menu_cart">
             <div class="drag_menu"></div> 
@@ -23,8 +18,7 @@
             </div>
          </div>
       </td>
-   <% if indice % 7 == 0 %></tr><% end %>
-   <% indice = indice + 1 %>
+      <% "</tr>" if mn % @max == 0 %>
    <% end %>  
 </table>
 </div>

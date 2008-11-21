@@ -137,6 +137,11 @@ input, textarea, select {
 	color: #48ACDE;
 }
 
+#menu .rss { 
+	position: relative;
+   float: right;
+}
+
 /** LOGO */
 
 #banner {
@@ -330,6 +335,17 @@ input, textarea, select {
 	font-size: 11px;
 	color: #FFFFFF;
 }
+
+#mesmenus a {
+	padding: 3px;
+	border: none;
+	background: #48ACDE;
+	text-transform: lowercase;
+	font-size: 11px;
+	color: #FFFFFF;
+   text-decoration: none;   
+}
+
 
 /* Boxes */
 

@@ -24,6 +24,7 @@
 <div id="header">
      <div id="menu">     
        <ul><%= render :partial => "/home/navigation" %></ul>
+       <a class="rss" href="/menus.rss"><img src="/images/icones/Feed-icon.png"></img></a>       
      </div>
 </div>
 <!-- end header -->
@@ -46,16 +47,16 @@
 	<!-- end content -->
 
 	<!-- start sidebar -->   
-   <div id="sidebar">
+   <div id="sidebar">     
      <ul>
         <li> 
           <div id="login_div"  style="display:none;"></div>
         </li>
-        <id="search">
+        <li id="search">
           <h2>Recherche</h2>
           <%= render_component :controller => "recherche", :action => "new" %>
         </li>
-        <li>
+        <li id="mesmenus">
           <h2>Mes menus</h2>
           <%= render_component :controller => "choixmenu", :action => "list" %>  
         </li>

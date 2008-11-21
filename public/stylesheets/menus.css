@@ -55,10 +55,10 @@
 
 #semaine_style  .mnu_elt {
   display: block; 
-  padding: 10px 3px 10px 3px;
+  padding: 20px 5px 10px 5px;
   height: 90px; 
   text-align: center; 
-  background: url(/images/Harvest/img13.jpg) no-repeat left top;
+  background: url(/images/Harvest/img13.jpg) no-repeat left bottom;
 }
 
 .mnu_elt:hover {
@@ -89,9 +89,9 @@ div.cart {
 
 .menu-items {
   /*border:1px solid #888;*/
-  border-left:1px dotted #888;
-  border-right:1px dotted #888;
-  
+  /*border-left:1px dotted #888;
+  border-right:1px dotted #888;*/
+  background: url(/images/Harvest/img16.jpg) no-repeat left top;
 }
 
 .cart_elt {
