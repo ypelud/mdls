@@ -10,10 +10,7 @@ class ProfilController < ApplicationController
       @profil.style_menu = 'semaine_style'
       @profil.save    
     end
-    
-    @themes = [["Défaut",'default'], ["Theme1",'CitrusIsland'],
-      ["Theme2",'HarvestField'], ["Theme3",'CoolWater']]
-    
+        
     @profil = Profil.find(current_user)
   end
     

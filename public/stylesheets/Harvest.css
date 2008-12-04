@@ -149,7 +149,7 @@ input, textarea, select {
 	height: 120px;
 	margin: 0 auto;
 	padding: 10px 0 0 0;
-	background: #BCE03E url(/images/Harvest/img08.jpg) no-repeat left top;
+	background: url(/images/Harvest/img08.jpg) no-repeat center top;
 }
 
 #logo {
@@ -336,7 +336,7 @@ input, textarea, select {
 	color: #FFFFFF;
 }
 
-#mesmenus a {
+#mesmenus a.button {
 	padding: 3px;
 	border: none;
 	background: #48ACDE;

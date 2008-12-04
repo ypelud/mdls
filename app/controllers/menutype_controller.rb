@@ -25,7 +25,7 @@ class MenutypeController < ApplicationController
   def create
     @menutype = Menutype.new(params[:menutype])
     if @menutype.save
-      flash[:notice] = 'Menutype was successfully created.'
+      flash[:notice] = 'Menu type créé correctement.'
       redirect_to :action => 'list'
     else
       render :action => 'new'
@@ -39,7 +39,7 @@ class MenutypeController < ApplicationController
   def update
     @menutype = Menutype.find(params[:id])
     if @menutype.update_attributes(params[:menutype])
-      flash[:notice] = 'Menutype was successfully updated.'
+      flash[:notice] = 'Menu type correctement mis à jour.'
       redirect_to :action => 'show', :id => @menutype
     else
       render :action => 'edit'

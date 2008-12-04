@@ -68,11 +68,11 @@
 
 /*configuration du panier */
 /* passage de l'élémént sur le panier */
-div.cart-active {
-  color: #48ACDE;	
+.cart-active {
+  border: 1px solid #FFF;
 }
 
-div.cart {
+.cart {
   clear:both;
   top: 0px;
   padding: 0px;
@@ -83,20 +83,28 @@ div.cart {
 /* Mes menus */
 #msg_cart {
   padding:1px;
-  border-bottom:1px dotted #888;
   text-align:center;
 }
 
 .menu-items {
-  /*border:1px solid #888;*/
-  /*border-left:1px dotted #888;
-  border-right:1px dotted #888;*/
   background: url(/images/Harvest/img16.jpg) no-repeat left top;
 }
 
 .cart_elt {
   text-align: left;   
   margin-left: 10px;
+}
+
+.empty_cart {
+  text-align: center;   
+  color: #808080;
+  background-color: #333333;
+  height: 20px ;
+  font-size: 0.8em;
+}
+
+.midisoir_cart {
+  border-bottom: 1px solid #FFF;
 }
 
 .menu-print  {

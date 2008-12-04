@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
   
   
+  $week = 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'
+  $midisoir = 'Midi', 'Soir'
+
   protected
   def authorize
     unless admin?
@@ -20,15 +23,5 @@ class ApplicationController < ActionController::Base
       
   def admin?
     logged_in? && (current_user.login==APP_CONFIG['super_user']) 
-  end  
- 
-  def user_style
-      #if current_user and Profil.find_by_id(current_user.id) 
-      #   profil = Profil.find_by_id(current_user.id)
-      #   profil.layout_name
-      #else
-         'Harvest' #'default' #CitrusIsland'
-      #end      
-  end  
-  
+  end   
 end

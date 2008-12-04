@@ -5,11 +5,11 @@
 
 <%= will_paginate @menus %>
 
-<p class="post-footer align-right">	
-<div class="links">
+<div class="post-footer">	
+<p class="links">
 <% if logged_in? %>
-  <%= link_to 'Nouveau menu', :action => 'new' %> |
+  <%= link_to "Nouveau menu", :action => "new" %> |
 <% end %>
-  <%= link_to 'Tous les menus', :action => 'list' %>
-</div>
+  <%= link_to "Tous les menus", :action => "list" %>
 </p>
+</div>

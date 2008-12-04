@@ -23,7 +23,6 @@ class MenusController < ApplicationController
       
       item_per_page = (@affichage == 'semaine_style') ? 10 : Menu.per_page
       
-      puts 'par page :'+item_per_page.to_s
       @menus = Menu.paginate  :page => params[:page],
                               :conditions => ["title like ? and user_id like ? and menutype_id like ?",
                                        "%#{params[:tags_id]}%", 
@@ -49,7 +48,7 @@ class MenusController < ApplicationController
       genereTags()
       
       if @menu.save
-         flash[:notice] = 'Menu was successfully created.'
+         flash[:notice] = 'Menu créé correctement.'
          redirect_to :action => 'list'
       else
          render :action => 'new'
@@ -69,19 +68,11 @@ class MenusController < ApplicationController
       genereTags()
       
       if @menu.update_attributes(params[:menu])
-         flash[:notice] = 'Menu was successfully updated.'
+         flash[:notice] = 'Menu mis à jour correctement.'
          redirect_to :action => 'show', :id => @menu
       else
          render :action => 'edit'
-      end
-      
-      #gestion des ingredients
-      #i_list = params[:menu_ingredients][:ingredients]
-      #Ingredient.delete_all(:menu_id => @menu.id)
-      #i_list.split("\r\n").each do |contenu|
-      #  Ingredient.create_with_menu_id(@menu.id,contenu)
-      #  puts "liste : " + contenu
-      #end      
+      end       
   end
 
   def destroy
@@ -121,17 +112,11 @@ class MenusController < ApplicationController
    
    
   protected
-   def genereTags()
-      
+   def genereTags()      
       tag_tab = @menu.title.split
-      puts 'avant'
-      puts tag_tab
       @menu.tag_list=""
       #suppression des tags inferieur � 3 car.
       tag_tab.each {|w| @menu.tag_list.add(w) if w.size>3 }
-      
-      puts 'apres'
-      puts tag_tab
       tag_tab
    end
      
