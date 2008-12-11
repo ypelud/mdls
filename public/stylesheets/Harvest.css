@@ -158,6 +158,13 @@ input, textarea, select {
 	margin: 0 auto;
 }
 
+#pub {   
+   float: right ; 
+   height: 60px;
+   width: 234px ;
+}   
+
+
 #logo h1, #logo h2 {
 	float: left;
 	margin: 0;
@@ -168,7 +175,7 @@ input, textarea, select {
 #logo h1 { 
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size:36px;
-	font-style: italic;
+	font-style: italic;   
 }
 
 #logo h1 a {
