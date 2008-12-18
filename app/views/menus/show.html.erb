@@ -1,15 +1,13 @@
 <div id="menu_show">
 <h1><%=@menu.title%></h1>
 <h2>Description </h2>
-<%= @menu.description %>
+<div class="desc">
+  <%= simple_format h(@menu.description) %>
+</div>
+<h2>Lien </h2>
+<%= link_to h(@menu.url), h(@menu.url) %>
 <h2>Ingredients </h2>
-  <ul>
-  <% if @menu.ingredients %>
-    <% @menu.ingredients.split("\r\n").each do |ing| %>
-      <li><%= ing %></li>
-    <% end %>
-  <% end %>
-  </ul>
+  <%= simple_format h(@menu.ingredients) %>  
 </div> 
 
 <div class="post-footer">	

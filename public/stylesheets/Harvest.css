@@ -162,6 +162,7 @@ input, textarea, select {
    float: right ; 
    height: 60px;
    width: 234px ;
+   padding: 0 0 20px 0;
 }   
 
 
@@ -188,7 +189,7 @@ input, textarea, select {
 #logo h2 {
 	padding: 20px 0 0 5px;
 	font: italic 13px Georgia, "Times New Roman", Times, serif;
-	color: ##48ACDE;
+	color: #48ACDE;
 }
 
 #logo p a {
