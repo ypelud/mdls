@@ -146,10 +146,11 @@ input, textarea, select {
 
 #banner {
 	width: 620px;
-	height: 120px;
+	height: 60px;
 	margin: 0 auto;
 	padding: 10px 0 0 0;
-	background: url(/images/Harvest/img08.jpg) no-repeat center top;
+   text-align: center;   
+	/*background: url(/images/Harvest/img08.jpg) no-repeat center top;*/
 }
 
 #logo {
@@ -159,15 +160,28 @@ input, textarea, select {
 }
 
 #pub {   
-   float: right ; 
+   float: right;
    height: 60px;
-   width: 234px ;
-   padding: 0 0 20px 0;
+   width: 468px ;
+   padding: 0 0 10px 0;
 }   
 
+#flags {   
+   margin: 0;
+   padding: 0 ;
+}   
 
-#logo h1, #logo h2 {
-	float: left;
+#logo-left {
+  float: left;
+  width: 352px;
+}
+
+#logo-right {
+  float: right;
+  width: 468px;
+}
+
+#logo h1 {
 	margin: 0;
 	padding: 0 0 0 20px;
 	line-height: normal;
@@ -186,10 +200,10 @@ input, textarea, select {
 
 #logo h1 a:hover { text-decoration: underline; }
 
-#logo h2 {
-	padding: 20px 0 0 5px;
-	font: italic 13px Georgia, "Times New Roman", Times, serif;
-	color: #48ACDE;
+#logo h2 {   
+  padding: 0 0 0 20px;
+  font: italic 13px Georgia, "Times New Roman", Times, serif;
+  color: #48ACDE;
 }
 
 #logo p a {

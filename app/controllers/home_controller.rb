@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
- 
+    
+   
    def sidebar
      render :partial => "sidebar"
    end
@@ -9,5 +10,9 @@ class HomeController < ApplicationController
      @nbC = Menu.count
      render :partial => "compteur"
    end 
+   
+   def comment
+     self.class.layout 'simple'
+   end
    
 end

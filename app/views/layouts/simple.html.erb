@@ -5,52 +5,92 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Menus de la semaine</title>  
+  <link rel="shortcut icon" href="/images/icones/favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="MenusDeLaSemaine" href="/menus.rss" />
+  <%= stylesheet_link_tag "pagination" %>
+  <%= stylesheet_link_tag "menus" %>
+  <%= stylesheet_link_tag "Harvest" %>
   <%= javascript_include_tag :defaults %>   
-  <%= stylesheet_link_tag 'menus' %>
-  <%= stylesheet_link_tag user_style %>
-
 </head>
 <body>
 
-<div id="wrap">
+<div id="logo-wrap">
+<div id="logo">
+   <h1><a href="#">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
+	<h2>les  menus  sans  peine...</h2> 
+   <div id="flags">
+     <a href="/fr"><img src="/images/flags/France.png"></img></a>
+     <a href="/en"><img src="/images/flags/USA.png"></img></a>
+     <a href="/sp"><img src="/images/flags/Spain.png"></img></a>
+     <a href="/de"><img src="/images/flags/Germany.png"></img></a>   
+   </div>
 
-   <div id="header">      
-      
-      <h1 id="logo"><a href="index.html">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
-		<p id="slogan">les  menus  sans  peine...</p> 		    
-   </div>
-      
-   <div id="menu">     
-     <div id="light-brown-line"></div>	
-     <ul><%= render :partial => '/home/navigation' %></ul>
-   </div>
+  <div id="pub">
+  <script type="text/javascript"><!--
+      google_ad_client = "pub-6935144034213351";
+      /* mdls 234x60 */
+      google_ad_slot = "7419099693";
+      google_ad_width = 234;
+      google_ad_height = 60;
+      //-->
+   </script>
+   <script type="text/javascript"
+      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+   </script>
+  </div>
+</div>
+</div>
+
+
+
+<!-- start header -->
+<div id="header">
+     <div id="menu">     
+       <ul><%= render :partial => "/home/navigation" %></ul>
+       <a class="rss" href="/menus.rss"><img src="/images/icones/Feed-icon.png"></img></a>       
+     </div>
+</div>
+<!-- end header -->
+
+<!-- start page -->
+<div id="wrapper">
+
+<div id="wrapper-btm">
+<div id="page"> 
    
-   <!-- content-wrap starts here -->
-	<div id="content-wrap">   
-      <div id="main">         
-      <div id="alerte" style="display:none;"><p style="color: green"><%= flash[:notice] %></p></div>
-      <%=yield %>
-      </div>   
+	<!-- start content -->
+	<div id="content2">
+		<div id="banner">&nbsp;</div>
+       <div id="alerte" style="display:none;"><p><%= flash[:notice] %></p></div>
+       <div class="post">
+       <%=yield %>
+       </div>
+
    </div>
-    
-<!-- footer starts here -->	
-	<div id="footer">
-		<div id="footer-content">
-		<div id="footer-right">
-			<a href="/">Accueil</a> |  	
-			<a href="/signup">S'enregistrer</a>  
-      </div>
-		
-		<div id="footer-left">
+	<!-- end content -->
 
-			&copy; Copyright 2008 <strong>Menusdelasemaine</strong>&nbsp;	 
-			Design by: <a href="http://www.styleshout.com/">styleshout</a> 
-		</div>
-		</div>	
+	<!-- start sidebar -->   
+   <div id="sidebar">     
+     
+   </div>
+	<!-- end sidebar -->
+   
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+</div>
+</div>
+
+<!-- start footer -->
+<div id="footer">
+	<div id="footer-wrap">
+	<p id="legal">(c) 2008 <strong>Menusdelasemaine</strong>. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+
 	</div>
-
-<!-- footer ends here -->	
-</div>   
+</div>
+<!-- end footer -->
+</body>
+</html>
 
 <%= if flash[:notice]
       update_page_tag do |page|

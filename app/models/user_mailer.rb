@@ -1,22 +1,21 @@
 class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Activez votre compte.'
-  
+    @subject    += I18n.t(:activation_required_email_subject)
     @body[:url]  = "#{APP_CONFIG['host']}/activate/#{user.activation_code}"
   
   end
   
   def activation(user)
     setup_email(user)
-    @subject    += 'Votre compte été activé'
+    @subject    += I18n.t(:activation_complete_email_subject)
     @body[:url]  = "#{APP_CONFIG['host']}"
   end
      
      
    def reset_notification(user)
      setup_email(user)
-     @subject    += 'Lien pour changer votre mot de passe'
+     @subject    += I18n.t(:reset_notification_email_subject)
      @body[:url]  = "#{APP_CONFIG['host']}/reset/#{user.reset_code}"
    end
 

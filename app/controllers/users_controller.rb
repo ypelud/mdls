@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
+    @user = User.new
   end
  
   def errors
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
        user = User.find_by_email(params[:user][:email])
        if user
          user.create_reset_code
-         flash[:notice] = "Un code de réinitialisation à été envoyé à  #{user.email}"
+         flash[:notice] = "Un code de rÃ©initialisation Ã  Ã©tÃ© envoyÃ© Ã   #{user.email}"
        else
          flash[:notice] = "#{params[:user][:email]} n'existe pas"
        end
@@ -57,8 +58,9 @@ class UsersController < ApplicationController
      if request.post?
       if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
          self.current_user = @user
-         @user.delete_reset_code
-         flash[:notice] = "Mot de passe réinitialisé pour #{@user.email}"
+         current_user.delete_reset_code
+         current_user.activate unless current_user.active?
+         flash[:notice] = "Mot de passe rÃ©initialisÃ© pour #{@user.email}"
          redirect_back_or_default('/')
        else
          self.class.layout 'simple'
@@ -66,5 +68,10 @@ class UsersController < ApplicationController
        end
      end
    end
-
+   
+   def language
+     code = params[:code] || 'fr-FR'
+     session[:language] = code
+     redirect_to :back  
+   end
 end

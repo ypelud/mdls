@@ -5,17 +5,15 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   
   helper :all # include all helpers, all the time
-  helper_method :admin? , :user_style
+  helper_method :admin? 
   protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
   
-  
-  $week = 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'
-  $midisoir = 'Midi', 'Soir'
+  before_filter :set_user_language
 
   protected
   def authorize
     unless admin?
-      flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
+      flash[:error] = t(:authorize_page)
       redirect_to home_path
       false
     end
@@ -24,4 +22,20 @@ class ApplicationController < ActionController::Base
   def admin?
     logged_in? && (current_user.login==APP_CONFIG['super_user']) 
   end   
+  
+  def set_user_language
+    session[:language] ||= 'fr-FR'
+    I18n.locale = session[:language]
+  end
+  
+  
+  def midisoir
+    md = t("mdls.midi"),t("mdls.soir")
+    return md
+  end 
+  
+  def week
+    w = t('lundi'), t('mardi'), t('mercredi'), t('jeudi'), t('vendredi'), t('samedi'), t('dimanche')
+    return w
+  end 
 end

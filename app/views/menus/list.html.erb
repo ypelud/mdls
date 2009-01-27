@@ -1,4 +1,4 @@
-<h1>Liste des menus</h1>
+<h1><%= I18n.t("mdls.liste_menus")%></h1>
 <p>
 <%= render :partial => @affichage %>
 </p>
@@ -8,8 +8,8 @@
 <div class="post-footer">	
 <p class="links">
 <% if logged_in? %>
-  <%= link_to "Nouveau menu", :action => "new" %> |
+  <%= link_to t("mdls.new_menu"), :action => "new" %> |
 <% end %>
-  <%= link_to "Tous les menus", :action => "list" %>
+  <%= link_to t("mdls.all_menu"), :action => "list" %>
 </p>
 </div>

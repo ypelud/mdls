@@ -16,6 +16,11 @@ ActionController::Routing::Routes.draw do |map|
   map.logout    '/logout',                    :controller => 'sessions',  :action => 'destroy'
   map.profil    '/profil',                    :controller => 'profil',    :action => 'edit'
   
+  map.fr        '/fr',                        :controller => 'users',     :action => 'language', :code => "fr-FR"
+  map.en        '/en',                        :controller => 'users',     :action => 'language', :code => "en-US"
+  map.de        '/de',                        :controller => 'users',     :action => 'language', :code => "de-DE"
+  map.sp        '/sp',                        :controller => 'users',     :action => 'language', :code => "sp-SP"
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
 

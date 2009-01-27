@@ -30,13 +30,13 @@ class ChoixmenuController < ApplicationController
     semaine = []
 
     @week.each do |day| 
-      $midisoir.each do |midisoir|
-        if session[:choix][day+midisoir]
-          session[:choix][day+midisoir].each do |menu_id|
-            semaine[$midisoir.index(midisoir)] ||= {}
-            semaine[$midisoir.index(midisoir)][day] ||= ''
-            semaine[$midisoir.index(midisoir)][day] += ' ' unless semaine[$midisoir.index(midisoir)][day] == ''            
-            semaine[$midisoir.index(midisoir)][day] += Iconv.conv('ISO-8859-1', 'UTF-8',  Menu.find(menu_id).title)             
+      midisoir.each do |ms|
+        if session[:choix][day+ms]
+          session[:choix][day+ms].each do |menu_id|
+            semaine[midisoir.index(ms)] ||= {}
+            semaine[midisoir.index(ms)][day] ||= ''
+            semaine[midisoir.index(ms)][day] += ' ' unless semaine[midisoir.index(ms)][day] == ''            
+            semaine[midisoir.index(ms)][day] += Iconv.conv('ISO-8859-1', 'UTF-8',  Menu.find(menu_id).title)             
           end 
         end 
       end
@@ -66,17 +66,19 @@ class ChoixmenuController < ApplicationController
   
   protected
     def week_array
-      @week = $week
+      @week = week
       if current_user and Profil.find_by_id(current_user.id) 
          profil = Profil.find_by_id(current_user.id)
-         day = profil.first_day         
-         while day and @week[0]!=day  do
+         day = profil.first_day           
+         deb = @week[0]
+         while day and @week[0]!=day do
            dec = @week[0] 
            @week.shift
-           @week.push(dec)
+           @week.push(dec) 
+           break if @week[0]=deb 
          end          
       end      
       
-      @midisoir = $midisoir
+      @midisoir = midisoir
     end
 end

@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_back_or_default('/')
       flash[:notice] = "Connecte"
     else
-      flash[:notice] = "Connection echoue"
+      flash[:notice] = "Connexion echouée"
       #render :action => 'new'
       redirect_back_or_default('/')
     end
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "Vous avez ete deconnecte."
+    flash[:notice] = "Vous avez ete deconnecté"
     redirect_back_or_default('/')
   end
 

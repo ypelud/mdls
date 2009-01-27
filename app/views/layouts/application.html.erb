@@ -16,10 +16,25 @@
 
 <div id="logo-wrap">
 <div id="logo">
-   <h1><a href="#">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
-	<h2>les  menus  sans  peine...</h2> 
-
-  <div id="pub">
+   <div id="logo-left">
+      <h1><a href="#">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
+   	<h2>les  menus  sans  peine...</h2>     
+   </div>
+   <div id="logo-right">
+   <div id="pub">
+      <script type="text/javascript"><!--
+          google_ad_client = "pub-6935144034213351";
+          /* mdls_2 */
+          google_ad_slot = "1809936215";
+          google_ad_width = 468;
+          google_ad_height = 60;
+          //-->
+      </script>
+      <script type="text/javascript"
+          src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+   </div>
+  <div  style="display:none;"> 
   <script type="text/javascript"><!--
       google_ad_client = "pub-6935144034213351";
       /* mdls 234x60 */
@@ -31,6 +46,7 @@
    <script type="text/javascript"
       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
    </script>
+   </div>
   </div>
 </div>
 </div>
@@ -54,7 +70,19 @@
    
 	<!-- start content -->
 	<div id="content">
-		<div id="banner">&nbsp;</div>
+		<div id="banner">
+         <script type="text/javascript"><!--
+         google_ad_client = "pub-6935144034213351";
+         /* mdls_illu */
+         google_ad_slot = "0177394572";
+         google_ad_width = 468;
+         google_ad_height = 60;
+         //-->
+         </script>
+         <script type="text/javascript"
+         src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+         </script>
+      </div>
        <div id="alerte" style="display:none;"><p><%= flash[:notice] %></p></div>
        <div class="post">
        <%=yield %>
@@ -66,23 +94,47 @@
 	<!-- start sidebar -->   
    <div id="sidebar">     
      <ul>
+        <li>
+          <div id="flags">
+             <a href="/fr"><img src="/images/flags/France.png"></img></a>
+             <a href="/en"><img src="/images/flags/USA.png"></img></a>
+             <a href="/sp"><img src="/images/flags/Spain.png"></img></a>
+             <a href="/de"><img src="/images/flags/Germany.png"></img></a>   
+          </div>
+        </li>
         <li> 
           <div id="login_div"  style="display:none;"></div>
         </li>
         <li id="search">
-          <h2>Recherche</h2>
+          <h2><%=t("mdls.search")%></h2>
+          <div id="searchGoogle">
+            <form action="http://www.google.fr/cse" id="cse-search-box">
+              <div>
+                <input type="hidden" name="cx" value="partner-pub-6935144034213351:bfllcdpd9xh" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <input type="text" name="q" size="20" />
+                <input type="submit" class="button" name="sa" value="<%=t("mdls.search")%>" />
+                <input id="www" name="sitesearch" value="" type="radio"><label for="www">web</label>
+                <input id="site1" name="sitesearch" value="menusdelasemaine.com" checked="checked" type="radio"><label for="site1">menudelasemaine.com</label>
+              </div>
+            </form>
+            <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script>  
+          </div>
+        </li>
+        <li style="display:none;">
+          <h2><%=t("mdls.search")%></h2>
           <%= render_component :controller => "recherche", :action => "new" %>
         </li>
         <li id="mesmenus">
-          <h2>Mes menus</h2>
-          <%= render_component :controller => "choixmenu", :action => "list" %>  
+          <h2><%=t("mdls.my_menus")%></h2>
+          <%= render_component :controller => "choixmenu", :action => "list" %>
         </li>
         <li>
-          <h2>Mots clés</h2>
+          <h2><%=t("mdls.keywords")%></h2>
           <%= render_component :controller => "menus", :action => "recupere" %>   
         </li>
         <li>
-          <h2>Derniers commentaires</h2>
+          <h2><%=t("mdls.last_comments")%></h2>
           <%= render_component :controller => "comments", :action => "list5" %>   
         </li>
      </ul>

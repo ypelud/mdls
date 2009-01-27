@@ -1,26 +1,26 @@
  <%= error_messages_for :user %>
-  
+<h1><%=I18n.t(:pick_new_password, :mail => @user.email )%></h1>
  <% form_for :user do |f| -%>
  <table id="newedit">
      <thead>
          <tr>
-             <th colspan="2" >Pick a new password for <%= @user.email %></th>
+             <th colspan="2" ></th>
          </tr>
      </thead>
      <tbody>
          <tr>
-             <td align="right"><label>Password:</label></td>
+             <td align="right"><label><%=I18n.t(:password)%>:</label></td>
              <td><%= f.password_field :password %></td>
          </tr>
   
          <tr>
-              <td align="right"><label>Confirm Password:</label></td>
+              <td align="right"><label><%=I18n.t(:password_confirmation)%></label></td>
               <td><%= f.password_field :password_confirmation %></td>
          </tr>
          
          <tr>
              <td></td>
-             <td><%= submit_tag 'Reset', :class => 'button' %></td>
+             <td><%= submit_tag I18n.t(:reset_password_button), :class => "button" %></td>
          </tr>
      </tbody>
  </table>

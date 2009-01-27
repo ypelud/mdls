@@ -1,16 +1,16 @@
 <% form_tag session_path do -%>
-<p><label for="login">Login</label><br/>
-<%= text_field_tag 'login' %></p>
+<p><%= label_tag 'login', I18n.t(:login) %><br />
+<%= text_field_tag 'login', @login %></p>
 
-<p><label for="password">Password</label><br/>
-<%= password_field_tag 'password' %></p>
+<p><%= label_tag 'password', I18n.t(:password) %><br/>
+<%= password_field_tag 'password', nil %></p>
 
 <!-- Uncomment this if you want this functionality
-<p><label for="remember_me">Se rappeler de moi:</label>
-<%= check_box_tag 'remember_me' %></p>
+<p><%= label_tag 'remember_me', I18n.t(:remember_me) %>
+<%= check_box_tag 'remember_me', '1', @remember_me %></p>
 -->
 
-<p><%= submit_tag 'Connecter', :class => 'button'  %></p>
+<p><%= submit_tag I18n.t(:log_in) %></p>
 
 
 <% end -%>
