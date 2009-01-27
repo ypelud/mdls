@@ -94,6 +94,7 @@
 	<!-- start sidebar -->   
    <div id="sidebar">     
      <ul>
+        <% if admin? %>
         <li>
           <div id="flags">
              <a href="/fr"><img src="/images/flags/France.png"></img></a>
@@ -102,6 +103,7 @@
              <a href="/de"><img src="/images/flags/Germany.png"></img></a>   
           </div>
         </li>
+        <%end%>
         <li> 
           <div id="login_div"  style="display:none;"></div>
         </li>
