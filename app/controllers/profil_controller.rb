@@ -31,6 +31,7 @@ class ProfilController < ApplicationController
        redirect_to home_path
        false
      end
+     @week = week
    end   
    
 end

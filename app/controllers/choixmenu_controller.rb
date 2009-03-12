@@ -75,7 +75,7 @@ class ChoixmenuController < ApplicationController
            dec = @week[0] 
            @week.shift
            @week.push(dec) 
-           break if @week[0]=deb 
+           break if @week[0]==deb 
          end          
       end      
       

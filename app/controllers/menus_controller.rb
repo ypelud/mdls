@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-   before_filter :authorize_user, :except => [:recupere, :list, :show, :index]
+   before_filter :authorize_user, :except => [:recupere, :list, :show, :index, :feed, :feedurl]
    # uses the cookie session store (then you don't need a separate :secret)
    # protect_from_forgery :except => :recupere
    
@@ -14,6 +14,7 @@ class MenusController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
+
       if current_user and Profil.find_by_id(current_user.id)
          profil = Profil.find_by_id(current_user.id)
          @affichage =  profil.style_menu
@@ -110,6 +111,15 @@ class MenusController < ApplicationController
      end
    end   
    
+   
+   def feed
+     puts '**************************************************** TESTTEST'      
+     @menus = Menu.find(:all)   
+   end
+   
+   def feedurl
+     redirect_to 'http://feeds2.feedburner.com/Menusdelasemaine'
+   end 
    
   protected
    def genereTags()      

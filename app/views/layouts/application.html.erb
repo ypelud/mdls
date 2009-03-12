@@ -22,30 +22,19 @@
    </div>
    <div id="logo-right">
    <div id="pub">
-      <script type="text/javascript"><!--
-          google_ad_client = "pub-6935144034213351";
-          /* mdls_2 */
-          google_ad_slot = "1809936215";
-          google_ad_width = 468;
-          google_ad_height = 60;
-          //-->
-      </script>
-      <script type="text/javascript"
-          src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-      </script>
-   </div>
-  <div  style="display:none;"> 
-  <script type="text/javascript"><!--
-      google_ad_client = "pub-6935144034213351";
-      /* mdls 234x60 */
-      google_ad_slot = "7419099693";
-      google_ad_width = 234;
-      google_ad_height = 60;
-      //-->
-   </script>
-   <script type="text/javascript"
-      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-   </script>
+      <% unless APP_CONFIG["host"]=="http://localhost:3000" %>
+     <script type="text/javascript"><!--
+         google_ad_client = "pub-6935144034213351";
+         /* mdls_illu */
+         google_ad_slot = "0177394572";
+         google_ad_width = 468;
+         google_ad_height = 60;
+         //-->
+         </script>
+         <script type="text/javascript"
+         src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+         </script>
+         <% end %>
    </div>
   </div>
 </div>
@@ -71,17 +60,19 @@
 	<!-- start content -->
 	<div id="content">
 		<div id="banner">
+      <% unless APP_CONFIG["host"]=="http://localhost:3000" %>
          <script type="text/javascript"><!--
-         google_ad_client = "pub-6935144034213351";
-         /* mdls_illu */
-         google_ad_slot = "0177394572";
-         google_ad_width = 468;
-         google_ad_height = 60;
-         //-->
-         </script>
-         <script type="text/javascript"
-         src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-         </script>
+          google_ad_client = "pub-6935144034213351";
+          /* mdls_2 */
+          google_ad_slot = "1809936215";
+          google_ad_width = 468;
+          google_ad_height = 60;
+          //-->
+      </script>
+      <script type="text/javascript"
+          src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+      <% end %>
       </div>
        <div id="alerte" style="display:none;"><p><%= flash[:notice] %></p></div>
        <div class="post">

@@ -1,6 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.home '', :controller => 'menus', :action => 'list'
   
+  map.menusrss  '/menus.rss',                 :controller => 'menus',     :action => 'feedurl'     
+
+
   map.resources :users
   map.resource :session
   
@@ -21,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.de        '/de',                        :controller => 'users',     :action => 'language', :code => "de-DE"
   map.sp        '/sp',                        :controller => 'users',     :action => 'language', :code => "sp-SP"
   
+  map.menusfb   '/menus-fb',                  :controller => 'menus',     :action => 'feed',     :format => 'rss'
   
   # The priority is based upon order of creation: first created -> highest priority.
 
