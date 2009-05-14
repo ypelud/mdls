@@ -1,0 +1,11 @@
+<h1>Nouveau planning</h1>
+<% form_tag :action => "create" do %>
+  <%= render :partial => "form" %>
+  <p><%= submit_tag "Créer" , :class => "button"%></p>
+<% end %>
+
+<div class="post-footer">	
+<p class="links">
+<%= link_to "Retour", :action => "list" %>
+</p>
+</div>

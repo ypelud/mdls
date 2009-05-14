@@ -1,13 +1,9 @@
 <h1>Ingredients </h1>
-<% session[:choix].each do |session| %>
-  <% session.each do |day| %>
-    <% day.each do |menu_id| %>
-     <% menu=Menu.find_by_id(menu_id) %>  
-     <ul>
-       <% if menu and menu.ingredients %>
-         <%= simple_format h(menu.ingredients) %>
-       <% end %>
-     </ul>
+<% session[:choix].each do |menusliste| %>
+  <% menu=Menu.find_by_id(menusliste.menu_id) %>  
+  <ul>
+    <% if menu and menu.ingredients %>
+      <%= simple_format h(menu.ingredients) %>
     <% end %>
-  <% end %>
+  </ul>
 <% end %>

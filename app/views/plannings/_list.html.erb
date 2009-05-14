@@ -1,0 +1,17 @@
+<div id="planning_liste">
+<table id="newedit" width="100%">
+   <tbody>
+      <% indice = 1 ;%>
+      <%for planning in @plannings %>
+         <div class="menu_liste_<%= indice%2 %>">     
+            <tr>
+               <td width="80%"><%= link_to %Q{#{planning.name}}, :controller => "plannings",  :action => "show", :id => planning %></td>
+               <td><%= link_to %Q{#{planning.user.login}}, {:action => "list", :user_id =>  planning.user_id} %></td>                  
+            </tr>
+         </div>
+      <% indice = indice + 1 %>
+      <% end %>  
+          
+   </tbody>
+ </table>         
+</div>

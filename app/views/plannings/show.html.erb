@@ -1,0 +1,24 @@
+<h1>Planning : <%=@planning.name%></h1>
+<div id="menu_show">
+
+ <% @week.each do |day| %>
+   <div id="msg_cart"><%=day%></div>
+   <% @midisoir.each do |midisoir| %>
+      <div class="<%="midisoir_cart" if @midisoir.size > 1 and midisoir==@midisoir[0] %>">
+         <div id="cart_<%="#{day}_#{midisoir}"%>" class="cart_<%=day%>">   
+            <div id="<%="items_#{day}_#{midisoir}"%>">
+               <%= render :partial => "cart", :locals => { :day => day, :midisoir => midisoir } %>
+            </div>                       
+         </div>
+      </div>
+   <% end %>   
+<% end %>
+
+ </div>
+ 
+ <div class="post-footer">	
+<p class="links">
+<%= link_to "Appliquer", :controller => "choixmenu", :action => "apply", :id => @planning.id %>
+<%= link_to "Retour", :action => "list" %>
+</p>
+</div>

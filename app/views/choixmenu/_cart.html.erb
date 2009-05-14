@@ -1,17 +1,20 @@
-<% if testcart(day, midisoir) %>
-   <% session[:choix][day+midisoir].each do |menu_id| %>
-      <div id="item_<%=menu_id%>" class="menu-items"> 
-         <div class="cart_elt">
-            <%=link_to_remote image_tag("/images/icones/delete.gif"), :update => "items_#{day}_#{midisoir}", 
-               :url => {:controller => "choixmenu", :action => "remove", :id => menu_id, :day => day, :midisoir => midisoir },
-               :loading => visual_effect(:appear, 'indicator', :duration => 2.00),
-               :complete => visual_effect(:fade, 'indicator', :duration => 2.00),
-               :html => { :class => "destroy" } %>  
-            <%= Menu.find(menu_id).title %>
-         </div>            
-      </div>
+<% okok = false %>
+<% session[:choix].each do |menusliste| %>
+  <% if @week[menusliste.day]==day and @midisoir[menusliste.when]==midisoir %>
+  <% okok = true %>
+   <div id="item_<%=menusliste.menu_id%>" class="menu-items"> 
+      <div class="cart_elt">
+         <%=link_to_remote image_tag("/images/icones/delete.gif"), :update => "items_#{day}_#{midisoir}", 
+            :url => {:controller => "choixmenu", :action => "remove", :id => menusliste.menu_id, :day => day, :midisoir => midisoir },
+            :loading => visual_effect(:appear, 'indicator', :duration => 2.00),
+            :complete => visual_effect(:fade, 'indicator', :duration => 2.00),
+            :html => { :class => "destroy" } %>  
+         <%= Menu.find(menusliste.menu_id).title %>
+      </div>            
+   </div>
    <% end %>
-<% else %>
+<% end %>
+<% unless okok %>
   <div class="empty_cart"><%=midisoir%></div>
 <% end %>
 

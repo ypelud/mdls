@@ -98,7 +98,7 @@
         <li> 
           <div id="login_div"  style="display:none;"></div>
         </li>
-        <li id="search">
+        <li style="display:none;" id="search">
           <h2><%=t("mdls.search")%></h2>
           <div id="searchGoogle">
             <form action="http://www.google.fr/cse" id="cse-search-box">
@@ -114,7 +114,7 @@
             <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script>  
           </div>
         </li>
-        <li style="display:none;">
+        <li>
           <h2><%=t("mdls.search")%></h2>
           <%= render_component :controller => "recherche", :action => "new" %>
         </li>

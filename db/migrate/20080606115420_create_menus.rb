@@ -4,8 +4,8 @@ class CreateMenus < ActiveRecord::Migration
   	extend MigrationHelpers
   def self.up
 		create_table :menus do |t|
-			t.column :menutype_id, :integer, :null => false
-			t.column :user_id, :integer, :null => false
+		   t.column :menutype_id, :integer, :null => false
+		   t.column :user_id, :integer, :null => false
 		   t.column :title, :string, :default => "", :null => false
 		   t.column :date, :date
 		   t.column :description, :text

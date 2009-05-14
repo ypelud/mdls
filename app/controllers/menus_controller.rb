@@ -113,8 +113,7 @@ class MenusController < ApplicationController
    
    
    def feed
-     puts '**************************************************** TESTTEST'      
-     @menus = Menu.find(:all)   
+     @menus = Menu.find(:all, :order => "date desc")   
    end
    
    def feedurl

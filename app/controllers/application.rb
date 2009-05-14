@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_user_language
 
-  protected
+ protected
   def authorize
     unless admin?
       flash[:error] = t(:authorize_page)
@@ -38,4 +38,20 @@ class ApplicationController < ActionController::Base
     w = t('lundi'), t('mardi'), t('mercredi'), t('jeudi'), t('vendredi'), t('samedi'), t('dimanche')
     return w
   end 
+  
+    def week_array
+      @week = week
+      if current_user and Profil.find_by_id(current_user.id) 
+         profil = Profil.find_by_id(current_user.id)
+         day = profil.first_day           
+         deb = @week[0]
+         while day and @week[0]!=day do
+           dec = @week[0] 
+           @week.shift
+           @week.push(dec) 
+           break if @week[0]==deb 
+         end          
+      end            
+      @midisoir = midisoir
+    end  
 end
