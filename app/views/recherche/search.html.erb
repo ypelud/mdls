@@ -1,0 +1,6 @@
+<% form_tag "/recherche/find", :class => "searchform" do -%>
+   <h1>Recherche</h1>
+   <p><%= text_field_tag "mot", "", :size => 15, :class => "textbox" %>
+   <%= submit_tag t("mdls.search"), :class => "button blueButton" %>
+   </p>
+<% end -%>

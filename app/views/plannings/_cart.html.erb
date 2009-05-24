@@ -1,15 +1,11 @@
-<% okok = false %>
 <% @planning.menuslistes.each do |menusliste| %>
-  <% if @week[menusliste.day]==day and @midisoir[menusliste.when]==midisoir %>
-  <% okok = true %>
-   <div> 
-      <div>         
-         <%= link_to %Q{#{Menu.find(menusliste.menu_id).title}}, :controller => "menus",  :action => "show", :id => menusliste.menu_id %>
-      </div>            
-   </div>
-   <% end %>
+<% if @week[menusliste.day]==day and @midisoir[menusliste.when]==midisoir %>
+<li>
+        <div class="menu_gauche">
+        </div>
+        <div class="menu_droit">
+            <%= link_to %Q{#{Menu.find(menusliste.menu_id).title}}, :controller => "menus",  :action => "show", :id => menusliste.menu_id %>
+        </div>
+</li>
 <% end %>
-<% unless okok %>
-  <div><%=midisoir%></div>
 <% end %>
-

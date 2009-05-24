@@ -12,6 +12,6 @@ module MenuHelper
       tags.each { |t|
          yield t.name, classes[(t.count.to_i - min) / divisor]
       }
-   end
+  end
 
 end

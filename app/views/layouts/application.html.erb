@@ -85,6 +85,14 @@
 	<!-- start sidebar -->   
    <div id="sidebar">     
      <ul>
+     	<% if iphone_user_agent? # Show message for iPhone users -%>
+         <li>
+             <div class="message">
+                 <a href="http://iphone.localhost.com:3000/">iPhone version ?</a>.
+             </div>
+         </li>
+		<% end -%>
+
         <% if admin? %>
         <li>
           <div id="flags">

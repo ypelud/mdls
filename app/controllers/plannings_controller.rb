@@ -38,7 +38,7 @@ class PlanningsController < ApplicationController
    #end 
   end
   
-  def show
+  def show    
     @planning = Planning.find(params[:id])
     week_array    
   end

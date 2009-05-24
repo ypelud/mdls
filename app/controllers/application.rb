@@ -9,8 +9,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
   
   before_filter :set_user_language
-
- protected
+  before_filter :adjust_format_for_iphone
+  
+  protected
   def authorize
     unless admin?
       flash[:error] = t(:authorize_page)
@@ -18,7 +19,7 @@ class ApplicationController < ActionController::Base
       false
     end
   end
-      
+  
   def admin?
     logged_in? && (current_user.login==APP_CONFIG['super_user']) 
   end   
@@ -27,7 +28,6 @@ class ApplicationController < ActionController::Base
     session[:language] ||= 'fr-FR'
     I18n.locale = session[:language]
   end
-  
   
   def midisoir
     md = t("mdls.midi"),t("mdls.soir")
@@ -39,19 +39,37 @@ class ApplicationController < ActionController::Base
     return w
   end 
   
-    def week_array
-      @week = week
-      if current_user and Profil.find_by_id(current_user.id) 
-         profil = Profil.find_by_id(current_user.id)
-         day = profil.first_day           
-         deb = @week[0]
-         while day and @week[0]!=day do
-           dec = @week[0] 
-           @week.shift
-           @week.push(dec) 
-           break if @week[0]==deb 
-         end          
-      end            
-      @midisoir = midisoir
-    end  
+  def week_array
+    @week = week
+    if current_user and Profil.find_by_id(current_user.id) 
+      profil = Profil.find_by_id(current_user.id)
+      day = profil.first_day           
+      deb = @week[0]
+      while day and @week[0]!=day do
+        dec = @week[0] 
+        @week.shift
+        @week.push(dec) 
+        break if @week[0]==deb 
+      end          
+    end            
+    @midisoir = midisoir
+  end
+  
+  
+  private
+  # Set iPhone format if request to iphone.trawlr.com
+  def adjust_format_for_iphone
+    request.format = :iphone if iphone_request?
+    if iphone_request? 
+      self.class.layout(nil) unless session[:first_page]==nil      
+      session[:first_page]=false
+    end 
+  end
+  
+  # Return true for requests to iphone.trawlr.com
+  def iphone_request?
+    return (request.subdomains.first == "iphone" || params[:format] == "iphone")
+  end
+  
+  
 end

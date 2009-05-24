@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+        <%= stylesheet_link_tag "iui" %>
+        <%= javascript_include_tag "iui" %>
+        <%= stylesheet_link_tag "iphone" %>
+        <%= javascript_include_tag "iphone" %>
+    </head>
+    <body>
+        <div class="toolbar">
+            <h1 id="pageTitle"></h1>
+            <a id="backButton" class="button" href="#"></a>
+        	<%= link_to t("mdls.search"), {:controller => "recherche", :action => "search"}, :class => "button" %>
+        </div>
+	    <%=yield %>
+    </body>
+</html>
