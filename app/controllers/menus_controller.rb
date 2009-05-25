@@ -23,7 +23,10 @@ class MenusController < ApplicationController
                                        "%#{params[:user_id]}%", 
                                        "%#{params[:menutype_id]}%"],
     :order => 'date DESC',
-    :per_page => items_per_page    
+    :per_page => items_per_page  
+    self.class.layout("application") if iphone_request? and params[:page]==nil
+    @without_ul = (iphone_request? and params[:page]!=nil)
+
   end
   
   def show

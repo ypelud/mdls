@@ -3,4 +3,4 @@
     <%= link_to %Q{#{menu.title}}, :controller => "menus",  :action => "show", :id => menu %>
 </li>
 <% end %>
-<%= content_tag :li, link_to("Plus de menus", menus_path(:page => @menus.next_page)) if @menus.next_page %>
+<%= content_tag :li, link_to("Plus de menus", menus_path(:page => @menus.next_page), :target => "_replace") if @menus.next_page %>

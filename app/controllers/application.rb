@@ -60,10 +60,7 @@ class ApplicationController < ActionController::Base
   # Set iPhone format if request to iphone.trawlr.com
   def adjust_format_for_iphone
     request.format = :iphone if iphone_request?
-    if iphone_request? 
-      self.class.layout(nil) unless session[:first_page]==nil      
-      session[:first_page]=false
-    end 
+    self.class.layout(nil) if iphone_request? 
   end
   
   # Return true for requests to iphone.trawlr.com
