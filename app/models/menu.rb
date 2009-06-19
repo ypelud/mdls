@@ -9,5 +9,15 @@ class Menu < ActiveRecord::Base
   acts_as_taggable
   acts_as_commentable
   
+  def iui_caption
+    title
+  end
   
+  def iui_url
+    '/menus/'+to_param
+  end
+  
+  def iui_title
+    "Menusdelasemaine"
+  end
 end

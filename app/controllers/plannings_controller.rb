@@ -2,16 +2,19 @@ class PlanningsController < ApplicationController
 
   def index
     list
-    render :action => 'list'
+    respond_to do |format|
+      format.html {render :action => 'list'}
+      format.iphone {render :layout => false}
+    end    
   end
   
   
   def list  
-      @plannings = Planning.paginate  :page => params[:page],
-                              :conditions => ["user_id like ?",
+    @plannings = Planning.paginate  :page => params[:page],
+    :conditions => ["user_id like ?",
                                        "%#{params[:user_id]}%"],
-                               :order => 'created_at desc',
-                               :per_page => Planning.per_page
+    :order => 'created_at desc',
+    :per_page => Planning.per_page    
   end
   
   def new
@@ -23,9 +26,7 @@ class PlanningsController < ApplicationController
       @planning = Planning.new(params[:planning])
       @planning.user_id = current_user.id
       @planning.save! 
-      puts @planning
       session[:choix].each do |@menusliste|
-        puts @menusliste
         @menusliste.planning = @planning
         @menusliste.save!
       end
@@ -39,11 +40,20 @@ class PlanningsController < ApplicationController
   end
   
   def show    
-    @planning = Planning.find(params[:id])
+    puts params[:id]
+    if params[:id]=='choix' then
+      @planning = Planning.new()
+      @menuslistes= session[:choix]
+    else
+      @planning = Planning.find(params[:id])
+      @menuslistes = @planning.menuslistes      
+    end
+    @planning ||=[]
     week_array    
+    respond_to do |format|
+      format.html 
+      format.iphone {render :layout => false}
+    end       
   end
-  
-  
-  
   
 end

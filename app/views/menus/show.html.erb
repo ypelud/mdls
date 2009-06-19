@@ -20,7 +20,7 @@
       <%= link_to("Editer", {:action => "edit", :id => @menu} ) %> |
       <%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete)  %> |   
    <% end %>
-   <%= link_to "Retour", :action => "list" %>|
+   <%= link_to "Retour", :action => "index" %>|
 
    <%= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
                :update => "comment_div",

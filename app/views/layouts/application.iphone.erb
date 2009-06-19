@@ -1,18 +1,28 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-        <!--link rel="apple-touch-icon" href="http://iui.googlecode.com/svn/tags/REL-current/samples/iui/iui-logo-touch-icon.png"-->
-        <meta name="apple-touch-fullscreen" content="YES">
-        <style type="text/css" media="screen">@import "/stylesheets/iui.css";</style>
-        <%= javascript_include_tag "iui" %>
+        <%= include_iui_files %>
+		<%= stylesheet_link_tag "menus" %>
     </head>
     <body>
-        <div class="toolbar">
-            <h1 id="pageTitle"></h1>
-            <a id="backButton" class="button" href="#"></a>
-            <%= link_to t("mdls.search"), {:controller => "recherche", :action => "search"}, :class => "button" %>
-        </div>
-        <%=yield %>
+        <%= iui_toolbar_replace "Mdls", new_recherche_url %>
+        <ul selected="true">
+            <li><a href="<%= menus_url %>">Plus récents</a></li>
+            <li><a href="#Alpha">A..Z</a></li>
+			<li><a href="<%= tags_url%>">Mots clés</a></li>
+			<li><a href="/plannings">Semainier</a></li>
+			<li><a href="/plannings/choix">Semaine en cours</a></li>
+       </ul>
+       <ul id="Alpha" title="Alpha">
+            <li><a href="/menus?alpha=ABC">ABC</a></li>
+            <li><a href="/menus?alpha=DEF">DEF</a></li>
+            <li><a href="/menus?alpha=GHI">GHI</a></li>
+            <li><a href="/menus?alpha=JKL">JKL</a></li>
+            <li><a href="/menus?alpha=MNO">MNO</a></li>
+            <li><a href="/menus?alpha=PQR">PQR</a></li>
+            <li><a href="/menus?alpha=STU">STU</a></li>
+            <li><a href="/menus?alpha=VWX">VWX</a></li>
+            <li><a href="/menus?alpha=YZZ">YZ</a></li>
+       </ul>		
     </body>
 </html>

@@ -1,5 +1,6 @@
 <li><a href="/"><span><%=t("mdls.home")%></span></a></li>
 <!--li><a href="/menu/list"><span>Menus</span></a></li-->
+<li><a href="/plannings"><span><%=t("mdls.planning")%></span></a></li>
 <%if logged_in? %>
    <li><%=link_to "<span>Deconnexion</span>", logout_path %></li>
 <%else %>

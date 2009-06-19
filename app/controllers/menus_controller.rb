@@ -1,19 +1,40 @@
 class MenusController < ApplicationController
-   before_filter :authorize_user, :except => [:recupere, :list, :show, :index, :feed, :feedurl]
+  before_filter :authorize_user, :except => [:recupere, :show, :index, :feed, :feedurl, :alpha]
   # uses the cookie session store (then you don't need a separate :secret)
   # protect_from_forgery :except => :recupere
   
   
   def index
-    list
-    render :action => 'list'
+    respond_to do |format|
+      format.html do
+        list
+      end
+      format.iphone do
+        if params[:alpha]
+          @alpha = params[:alpha]
+          @menus = Menu.all(:conditions => ["title like ? or title like ? or title like ?",
+                                       "#{params[:alpha][0,1]}%","#{params[:alpha][1,1]}%","#{params[:alpha][2,1]}%"])
+        else
+          @replace = params[:replace]
+          @menus = Menu.paginate  :page => params[:page],
+          :conditions => ["title like ? and user_id like ? and menutype_id like ?",
+                                       "%#{params[:tags_id]}%", 
+                                       "%#{params[:user_id]}%", 
+                                       "%#{params[:menutype_id]}%"],
+          :order => 'date DESC' , 
+          :per_page => 5          
+        end
+        render :layout => false
+      end
+    end
   end
   
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
-  :redirect_to => { :action => :list }
+  :redirect_to => { :action => :index }
   
   def list    
+    
     profil = Profil.find_by_id(current_user.id) if current_user 
     @affichage = profil ? profil.style_menu : 'semaine_style' 
     items_per_page = @affichage == 'semaine_style' ? 10 : Menu.per_page
@@ -24,13 +45,14 @@ class MenusController < ApplicationController
                                        "%#{params[:menutype_id]}%"],
     :order => 'date DESC',
     :per_page => items_per_page  
-    self.class.layout("application") if iphone_request? and params[:page]==nil
-    @without_ul = (iphone_request? and params[:page]!=nil)
-
   end
   
   def show
     @menu = Menu.find(params[:id])
+    respond_to do |format|
+      format.html       
+      format.iphone {render :layout => false }
+    end
   end
   
   def new
@@ -45,7 +67,7 @@ class MenusController < ApplicationController
     
     if @menu.save
       flash[:notice] = 'Menu créé correctement.'
-      redirect_to :action => 'list'
+      redirect_to :action => 'index'
     else
       render :action => 'new'
     end
@@ -74,13 +96,10 @@ class MenusController < ApplicationController
   def destroy
     Tag.destroy_unused = true
     Menu.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to :action => 'index'
   end
   
-  def recupere
-    @tags = Menu.tag_counts(:limit => 20, :order=>'Rand()' ) #count(*) desc')
-    render :partial => "tags_list", :layout => false
-  end
+  
   
   def user_ok?
     return false unless current_user    
@@ -92,7 +111,7 @@ class MenusController < ApplicationController
   def authorize_user
     unless user_ok?
       flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
-      redirect_to home_path
+      redirect_to "/"
       false
     end
   end   

@@ -53,12 +53,30 @@ class ChoixmenuController < ApplicationController
       session[:choix].push(menusliste) 
     end  
 
-    redirect_to :back 
+    respond_to do |format|
+      format.html {redirect_to home_path}
+      format.iphone {render :text => "", :layout => false}
+    end    
   end
   
   def empty
     session[:choix] = []
-    redirect_to :back 
+    respond_to do |format|
+      format.html {redirect_to home_path}
+      format.iphone {render :text => "", :layout => false}
+    end    
+  end
+  
+  def addform
+     @options = ''
+     week.each do |w| 
+       @options += '<option>'+w+'</option>'
+       
+     end
+     respond_to do |format|
+      format.html {redirect_to home_path}
+      format.iphone {render  :layout => false}
+    end        
   end
   
   

@@ -1,10 +1,10 @@
-<% form_tag "/recherche/find", :class => "panel", :title => "Recherche" do %>
+<% form_tag "/recherche/update", :class => "panel", :title => "Recherche" do %>
 <fieldset>
     <div class="row">
         <%= text_field_tag "mot", "", :size => 15, :class => "textbox" %>
     </div>
     <div>
-        <%= submit_tag t("mdls.search"), :class => "whiteButton" %>
+        <a class="whiteButton" type="submit" href="#">Search</a>
     </div>
 </fieldset>
 <% end -%>

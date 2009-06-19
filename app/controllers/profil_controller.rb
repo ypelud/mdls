@@ -19,7 +19,7 @@ class ProfilController < ApplicationController
     @profil = Profil.find(params[:id])
     if @profil.update_attributes(params[:profil])
       flash[:notice] = 'Les options ont été correctement enregistrées.'
-      redirect_to home_path
+      redirect_to :back
     else
       render :action => 'edit'
     end
@@ -28,7 +28,7 @@ class ProfilController < ApplicationController
   def authorize_user
      unless current_user
        flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
-       redirect_to home_path
+       redirect_to :back
        false
      end
      @week = week

@@ -1,31 +1,28 @@
-<div id="menu_show" title="Menu">
-<h1><%=@menu.title%></h1>
-<h2>Description </h2>
-<div class="desc">
-  <%= simple_format h(@menu.description) %>
+<% panel do %>
+<div>
+    Description 
 </div>
-<h2>Lien </h2>
-<%= link_to h(@menu.url), h(@menu.url) %>
-<h2>Ingredients </h2>
-  <%= simple_format h(@menu.ingredients) %>  
-</div> 
-
-<div class="post-footer">	
-<p class="byline">Posté par <%= @menu.user.login %> le <%= @menu.date.to_formatted_s(:short) %> </p>
-<p class="links">
-   <% if logged_in? && (@menu.user_id==current_user.id) %>
-      <%= link_to "Editer", :action => "edit", :id => @menu %> |
-   <% end %>
-   <%= link_to "Retour", {:action => "list"}, :class => "button leftButton" %> 
-
-   <%= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
-               :update => "comment_div",
-               :url => { :controller => "comments", :action => "list", :id => @menu.id },    
-               :complete => visual_effect(:toggle_appear, "comment_div", :duration => 1.00),
-               :html => { :class  => "comments" }
-               %>
-</p>
+<div>
+    <%= simple_format h(@menu.description) %>
 </div>
-<div id="comment_div" style="display: none">
+</br>
+<div>
+    Lien 
 </div>
-
+<div>
+    <%= link_to h(@menu.url), h(@menu.url) %>
+</div>
+</br>
+<div>
+    Ingredients 
+</div>
+<% if @menu.ingredients %>
+	<% fieldset do %>
+		<% for ingredient in @menu.ingredients %>
+		  <% row_label do %>
+		    <%= simple_format h(ingredient) %>
+		  <% end %>
+		<% end %>
+	<% end %>
+<% end %>
+<%end%>

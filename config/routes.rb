@@ -1,13 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => "browsers"
   map.home '', :controller => 'menus', :action => 'list'
   
   map.menusrss  '/menus.rss',                 :controller => 'menus',     :action => 'feedurl'     
 
 
   map.resources :users
-  map.resource :session
-  
+  map.resources :recherche
   map.resources :menus
+  map.resources :plannings
+  map.resources :tags
+
+  map.resource :session
   map.resource :comments
     
   map.activate  '/activate/:activation_code', :controller => 'users',     :action => 'activate', :activation_code => nil
