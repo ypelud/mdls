@@ -1,0 +1,10 @@
+<% form_tag "/recherche/update", :class => "panel", :title => "Recherche" do %>
+<fieldset>
+    <div class="row">
+        <%= text_field_tag "mot", "", :size => 15, :class => "textbox" %>
+    </div>
+    <div>
+        <a class="whiteButton" type="submit" href="#">Search</a>
+    </div>
+</fieldset>
+<% end -%>

@@ -1,0 +1,14 @@
+<ul selected="true">
+    <% @week.each do |day| %>
+    <li class="group"><%=day %></li>
+    <% @midisoir.each do |midisoir| %>
+    <%= render :partial => "cart", :locals => { :day => day, :midisoir => midisoir } %>
+    <% end %>
+    <% end %>
+    <li>
+    	<% if @planning.id %>
+		<%= link_to "Appliquer", :controller => "choixmenu", :action => "apply", :id => @planning.id %>
+		<% else %>
+		<%= link_to "Vider", :controller => "choixmenu", :action => "empty" %>
+		<%end %></li>
+</ul>

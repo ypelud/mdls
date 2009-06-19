@@ -1,0 +1,7 @@
+<% @menuslistes.each do |menusliste| %>
+<% if @week[menusliste.day]==day and @midisoir[menusliste.when]==midisoir %>
+<li <%= 'class="child"' if menusliste.when==1 %>>
+<%= link_to %Q{#{Menu.find(menusliste.menu_id).title}}, :controller => "menus",  :action => "show", :id => menusliste.menu_id %>
+</li>
+<% end %>
+<% end %>
