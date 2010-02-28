@@ -2,24 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <%= include_iui_files %>
-		<%= stylesheet_link_tag "menus" %>
+		  <%= stylesheet_link_tag "menus" %>
     </head>
     <body>
-        <%= iui_toolbar_replace "Mdls", new_recherche_url %>
+        <%= iui_toolbar "Mdls", new_recherche_url %>
 
-<ul selected="true">
-<% form_tag "/recherche/update", :class => "panel", :title => "Recherche" do %>
-<fieldset>
-    <div class="row">
-        <%= select_tag "jour", @options %>
-        <%= select2_tag "jour", @options %>
-		<%= toggle_tag "Midi","Soir" %>
-    </div>
-    <div>
-        <a class="whiteButton" type="submit" href="#">Ajouter</a>
-    </div>
-</fieldset>
-<% end -%>
-</ul>
-
+   <ul selected="true">
+   <% form_tag "/recherche/update", :class => "panel", :title => "Recherche" do %>
+   <fieldset>
+       <div class="row">
+           <%= select_tag "jour", @options %>
+           <%= select2_tag "jour", @options %>
+           <%= toggle_tag "Midi","Soir" %>
+       </div>
+       <div>
+           <a class="whiteButton" type="submit" href="#">Ajouter</a>
+       </div>
+   </fieldset>
+   <% end -%>
+   </ul>
+   </body>
+</html>
 

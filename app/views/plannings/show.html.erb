@@ -1,4 +1,4 @@
-<h1>Planning : <%=@planning.name %></h1>
+<h1>Semaine : <%=@planning.name %></h1>
 <div id=>
     <div id="planning_style">
         <% @week.each do |day| %>
@@ -14,7 +14,10 @@
 </div>
 <div class="post-footer">
     <p class="links">
-        <%= link_to "Appliquer", :controller => "choixmenu", :action => "apply", :id => @planning.id %>
-        <%= link_to "Retour", :action => "list" %>
+        <%= link_to "Appliquer", :controller => "choixmenu", :action => "apply", :id => @planning.id %>|
+        <% if user_ok? then %>
+		  <%= link_to( "Supprimer", @planning,  :confirm => 'Are you sure?', :method => :delete)  %> |   
+		<% end %>
+        <%= link_to "Retour", :action => "index" %>
     </p>
 </div>

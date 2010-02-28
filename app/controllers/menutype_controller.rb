@@ -1,5 +1,5 @@
 class MenutypeController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize_user
   
   def index
     list
@@ -50,4 +50,5 @@ class MenutypeController < ApplicationController
     Menutype.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+  
 end

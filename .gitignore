@@ -7,3 +7,7 @@ config/initializers/action_mailer.rb
 db/schema.rb
 tmp/**/*
 vendor/rails
+.DS_Store
+scratch_directory/
+lib/tasks/
+

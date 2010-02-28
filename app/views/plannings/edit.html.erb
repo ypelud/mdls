@@ -1,0 +1,11 @@
+<h1>Editer</h1>
+<% form_tag "/plannings/update/"+@planning.id.to_s do %>
+  <%= render :partial => "form" %>
+  <p><%= submit_tag "Modifier" , :class => "button"%></p>
+<% end %>
+
+<div class="post-footer">	
+<p class="links">
+<%= link_to "Retour", :action => "index" %>
+</p>
+</div>

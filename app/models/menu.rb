@@ -18,6 +18,6 @@ class Menu < ActiveRecord::Base
   end
   
   def iui_title
-    "Menusdelasemaine"
+    title
   end
 end

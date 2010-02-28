@@ -1,5 +1,6 @@
-<h1>Liste des utilisateurs</h1>
+<h1>Liste des utilisateurs </h1>
 
+<div>Nombre d'utilisateurs <%= User.count %> dont <%= User.count(:conditions => ['activated_at'])%> activés.</div>
 <table class="user" width="90%">
     <tr class="titre" align="center">
       <th width="20%"><em>Utilisateur</em> </th>

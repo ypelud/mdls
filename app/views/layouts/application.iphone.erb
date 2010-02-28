@@ -5,8 +5,8 @@
 		<%= stylesheet_link_tag "menus" %>
     </head>
     <body>
-        <%= iui_toolbar_replace "Mdls", new_recherche_url %>
-        <ul selected="true">
+       <%= iui_toolbar "Mdls", new_recherche_url %>
+       <ul selected="true">
             <li><a href="<%= menus_url %>">Plus récents</a></li>
             <li><a href="#Alpha">A..Z</a></li>
 			<li><a href="<%= tags_url%>">Mots clés</a></li>

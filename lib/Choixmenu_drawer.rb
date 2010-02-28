@@ -4,10 +4,10 @@ class ChoixmenuDrawer
 
     weeks.each do |day| 
       midisoirs.each do |ms|        
+          semaine[midisoirs.index(ms)] ||= {}
+          semaine[midisoirs.index(ms)][day] ||= ''
           menuslistes.each do |menusliste|
             if weeks[menusliste.day]==day and midisoirs[menusliste.when]==ms 
-              semaine[midisoirs.index(ms)] ||= {}
-              semaine[midisoirs.index(ms)][day] ||= ''
               semaine[midisoirs.index(ms)][day] += ' ' unless semaine[midisoirs.index(ms)][day] == ''            
               semaine[midisoirs.index(ms)][day] += Iconv.conv('ISO-8859-1', 'UTF-8',  Menu.find(menusliste.menu_id).title)             
           end 
