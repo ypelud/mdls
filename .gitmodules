@@ -13,6 +13,3 @@
 [submodule "vendor/plugins/rails-iui"]
 	path = vendor/plugins/rails-iui
 	url = git@github.com:ypelud/rails-iui.git
-[submodule "vendor/plugins/render_component"]
-	path = vendor/plugins/render_component
-	url = git://github.com/rails/render_component.git
