@@ -60,7 +60,7 @@ class MenusController < ApplicationController
     @menu = Menu.new
   end
   
-  def create
+  def create    
     @menu = Menu.new(params[:menu])
     @menu.date = Time.now #pour forcer la date
     @menu.user_id = current_user.id
@@ -101,6 +101,7 @@ class MenusController < ApplicationController
   
   
   def user_ok?
+    return false unless params[:id]
     @menu = Menu.find(params[:id])
   
     return false unless current_user    
