@@ -4,7 +4,7 @@ class Menu < ActiveRecord::Base
   has_many :ingredient
   
   cattr_accessor :per_page
-  @@per_page = 15
+  @@per_page = 25
   
   acts_as_taggable
   acts_as_commentable

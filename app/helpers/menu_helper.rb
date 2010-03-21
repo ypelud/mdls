@@ -7,4 +7,14 @@ module MenuHelper
     options
   end
 
+  def menu_position
+    @position ||= 1
+    if (@position%2==0)
+      res = 'even' 
+    else
+      res = ''
+    end
+    @position=@position+1
+    res
+  end
 end

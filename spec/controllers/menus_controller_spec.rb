@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe MenusController, "Créer un nouveau menu" do
-  integrate_views
+  #integrate_views
   fixtures :menus, :users
   
 
-  it "doit rediriger vers la page d'accueil et emettre un message d'erreur 'non autorisé'" do
-    Menu.any_instance.stubs(:valid?).returns(true)
+  it "doit rediriger vers la page d'accueil et notifier une erreur" do
+	Menu.any_instance.stubs(:valid?).returns(true)
 	post 'create'
 	flash[:error].should_not be_nil
 	response.should redirect_to(home_path)
@@ -17,7 +17,9 @@ describe MenusController, "Créer un nouveau menu" do
     controller.stub!(:login_required).and_return(:true)
     controller.stub!(:current_user).and_return(@current_user)
 	
-	post 'create', :params => {:id => 1}
+	#Menu.any_instance.stubs(:valid?).returns(true)
+	@menu = mock_model(Menu, :menutype_id=>1, :user_id=>1)
+	post 'create', :menu => @menu
 	flash[:notice].should_not be_nil
 	respondse.should redirect_to(home_path)
   end

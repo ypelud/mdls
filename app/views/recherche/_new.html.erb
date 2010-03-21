@@ -1,5 +1,4 @@
 <% form_tag "/recherche/update", :class => "searchform" do -%>
-   <p><%= text_field_tag "mot", "", :size => 15, :class => "textbox" %>
+   <%= text_field_tag "mot", "", :size => 15, :class => "textbox search" %>
    <%= submit_tag t("mdls.search"), :class => "button" %>
-   </p>
 <% end -%>

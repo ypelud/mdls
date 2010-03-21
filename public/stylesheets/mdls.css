@@ -1,0 +1,73 @@
+/* #48ACDE : bleu légé */
+/* #2F7091 : bleu profond */
+/* #DEAC47 : jaune paille */
+/* #91602F : marron */
+/* #212121 : noir */
+/* #DEDEDE : gris */
+
+body {background: #ffffff;font-family: Arial, Helvetica, sans-serif;font-size: 13px;color: #000000;margin: 0;}
+
+.left {float: left;} .right {float: right;}
+
+#top {height: 25px;background-color: black;}
+
+#menu {float: right;}
+#menu ul {margin: 0;padding: 0;list-style: none;line-height: normal;}
+#menu li {float: left;padding: 4px 10px;border-right: solid 1px #DEDEDE;}
+#menu a {text-decoration: none;text-transform: lowercase;font: 12px "Trebuchet MS", Arial, Helvetica, sans-serif;color: #48ACDE;}
+
+#undertop {width: 100%;height: 25px;background-color: lightgray;}
+#undertop #search {float: right; padding: 1px 0;margin: 0 0; background-color: pink;width: 200px;}
+#undertop #search .button {display: none;}
+#undertop #search .search{width:149px;height:16px;padding:4px 10px 2px 21px;font-size:12px;border:none;background:url(/images/topnav/search_field.gif) 0 -22px no-repeat;}
+#undertop #alerte {height: 16px;}
+#undertop #alerte {font: 12px "Trebuchet MS", Arial, Helvetica, sans-serif;color: #48ACDE;}
+
+/* Header */
+#header {clear: both;}
+#logo {width: 100%;height: 60px;margin: 0 auto;}
+#logo h1 ,h2 {padding: 0 0 0 20px;}
+#logo h1 {margin: 0;padding: 0 0 0 20px;line-height: normal;font-family: Georgia, "Times New Roman", Times, serif;font-size:34px;font-style: italic;color: #48ACDE;}
+#logo h1 a, h2 {color: #48ACDE;}
+#logo h1 a .gray {color: #91602F}
+#logo h1 a .green {color: #DEDEDE;}
+#logo h1 a {text-decoration: none;}
+#logo h1 a:hover {text-decoration: underline;}
+#logo h2 {font: italic 13px Georgia, "Times New Roman", Times, serif;}
+
+#rightbar {position: absolute;right: 0px;width: 160;height:600px;}
+
+#leftbar {position: absolute;left: 0px;width: 230px;height:600px;padding-left: 5px;padding-right: 5px;}
+#leftbar ul {margin: 0;padding: 0;list-style: none;}
+#leftbar li {margin-bottom: 40px;}
+#leftbar li ul {}
+#leftbar li li {margin: 0;}
+#leftbar li .box {border: solid 1px red;background-color: yellow;}
+#leftbar li .box h2 {margin-bottom: 5px;font-size: 18px;color: #DADADA;}
+
+#content {margin-left: 250px;margin-right:161px;height:100%;background-color:#DEAC47;padding-left: 10px;min-height: 800px;}
+#footer {height:8.6em;background:#bbccd9;overflow:hidden;color:#cadcea;min-width:75em;}
+#login_div {position: absolute; top: 50px; right: 10px; z-index: 99; background: lightblue; padding: 5px;}
+
+.even {background: lightgreen;}
+h4.alert  {
+    font-size: 1em;
+    margin: 0px;
+    padding: 5px;
+    text-align: center;
+}
+
+h4.warning  {
+    border: 1px solid #ED2E38; 
+    background-color: #F6979C;
+    color: #000;
+}
+h4.error  {
+    color:#fff; 
+    background:#c00;
+}
+h4.notice {
+    border: 1px solid #007E00; 
+    background-color: #c2ffc2;
+    color: #007E00;
+}

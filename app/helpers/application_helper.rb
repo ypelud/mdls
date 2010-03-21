@@ -29,5 +29,4 @@ module ApplicationHelper
     row = content_tag(:div, toggle, :class => "row")
     hidden + row
   end
-
 end

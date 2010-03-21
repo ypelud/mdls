@@ -1,7 +1,5 @@
 <h1><%= I18n.t("mdls.liste_menus")%></h1>
-<p>
-<%= render :partial => @affichage %>
-</p>
+<%= render :partial => 'liste_style' %>
 
 <%= will_paginate @menus %>
 

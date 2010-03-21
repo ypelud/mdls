@@ -5,7 +5,7 @@
       <div class="<%="midisoir_cart" if @midisoir.size > 1 and midisoir==@midisoir[0] %>">
          <div id="cart_<%="#{day}_#{midisoir}"%>" class="cart_<%=day%>">   
             <div id="<%="items_#{day}_#{midisoir}"%>">
-               <%= render :partial => "cart", :locals => { :day => day, :midisoir => midisoir } %>
+               <%= render :partial => "/choixmenu/cart", :locals => { :day => day, :midisoir => midisoir } %>
             </div>
          
             <%= drop_receiving_element "cart_#{day}_#{midisoir}", 

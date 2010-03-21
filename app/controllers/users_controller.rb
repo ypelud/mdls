@@ -72,6 +72,7 @@ class UsersController < ApplicationController
    def language
      code = params[:code] || 'fr-FR'
      session[:language] = code
+     flash[:notice] = "language => #{code}"
      redirect_to :back  
    end
 end

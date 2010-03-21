@@ -4,10 +4,10 @@ class ChoixmenuController < ApplicationController
   require 'pdf/simpletable'
   
   
-  def list
-      session[:choix] ||= []
-      render :partial => "menu_list"
-  end
+  #def menu_list
+      #session[:choix] ||= []
+      #render :partial => "menu_list"
+  #end
    
   def add
       menu_id = params[:id].split("_")[1]    

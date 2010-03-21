@@ -14,11 +14,6 @@ class CommentsController < ApplicationController
     render :partial => "list"
   end
   
-  def list5
-    @comments = Comment.find(:all, :order => "created_at desc", :limit => 3)
-    render :partial => "list5"
-  end
-  
   def show
     @comment = Comment.find(:all)
   end  

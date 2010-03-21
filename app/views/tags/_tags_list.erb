@@ -1,6 +1,6 @@
 <%panel do %>
 <div class="tag_cloud">
-      <p><% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do | t, css_class|  %>
+      <p><% tag_cloud  %w(nube1 nube2 nube3 nube4 nube5) do | t, css_class|  %>
 	  
       <%= link_to t.name, {:controller => 'menus', :action => "index", :tags_id => t.name},:class => css_class %>
       <% end %></p>

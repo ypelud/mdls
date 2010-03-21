@@ -1,0 +1,270 @@
+/* #48ACDE : bleu légé */
+/* #2F7091 : bleu profond */
+/* #DEAC47 : jaune paille */
+/* #91602F : marron */
+/* #212121 : noir */
+/* #DEDEDE : gris */
+
+body {
+	margin-top: 10px;
+	padding: 0;
+	background: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000000;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	text-transform: lowercase;
+	font-weight: normal;
+	color: #48ACDE;
+}
+
+h1 {
+	letter-spacing: -1px;
+	font-size: 32px;
+}
+
+h2 {
+	font-size: 23px;
+}
+
+p, ul, ol {
+	margin: 0 0 2em 0;
+	text-align: justify;
+	line-height: 26px;
+}
+
+a:link {
+	color: #48ACDE;
+}
+
+a:hover, a:active {
+	text-decoration: none;
+	color: #48ACDE;
+}
+
+a:visited {
+	color: #48ACDE;
+}
+
+img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin-right: 15px;
+}
+
+img.right {
+	float: right;
+	margin-left: 15px;
+}
+
+/* Form */
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+legend {
+	display: none;
+}
+
+input, textarea, select {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+}
+
+
+
+/** LOGO */
+#banner {
+	width: 620px;
+	height: 60px;
+	margin: 0 auto;
+	padding: 10px 0 0 0;
+    text-align: center; 
+}
+
+
+#pub {   
+   float: right;
+   height: 60px;
+   width: 468px ;
+   padding: 0 0 10px 0;
+}   
+
+#flags {   
+   margin: 0;
+   padding: 0 ;
+}   
+
+
+/* Page */
+#page {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 60px;
+}
+
+/* Content */
+#rightbar {
+	float: right;
+	width: 120px;
+}
+
+
+/* Content */
+#content {
+	float: right;
+	width: 60%;
+}
+
+.post {
+	padding: 15px 15px;
+}
+
+/* Sidebar */
+#sidebar {
+	width: 17%;
+	padding: 0 15px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+	margin-bottom: 40px;
+}
+
+#sidebar li ul {
+}
+
+#sidebar li li {
+	margin: 0;
+}
+
+#sidebar h2 {
+	height: 32px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	color: #DADADA;
+}
+
+/* Search */
+#search {
+}
+
+#search h2 {
+	margin-bottom: 20px;
+}
+
+.textbox {
+	width: 115px;
+	margin-right: 5px;
+	padding: 3px;
+	border: 1px solid #BED99C;
+}
+
+.button {
+	padding: 3px;
+	border: none;
+	background: #48ACDE;
+	text-transform: lowercase;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+
+#mesmenus a.button {
+	padding: 3px;
+	border: none;
+	background: #48ACDE;
+	text-transform: lowercase;
+	font-size: 11px;
+	color: #FFFFFF;
+   text-decoration: none;   
+}
+
+
+/* Boxes */
+.box1 {
+	padding: 20px;
+}
+
+.box2 {
+	color: #BABABA;
+}
+
+.box2 h2 {
+	margin-bottom: 15px;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.box2 ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.box2 a:link, .box2 a:hover, .box2 a:active, .box2 a:visited  {
+	color: #EDEDED;
+}
+
+/* Footer */
+#footer-wrap {
+	width: 860px;
+	height: 64px;
+	margin: 0 auto;
+}
+
+#footer {
+	margin: 0 auto;
+	height: 64px;
+	min-height: 64px;
+	padding: 0;
+	font-size: 10px;
+}
+
+html>body #footer {
+	height: auto;
+}
+
+#footer p {
+}
+
+#legal {
+	clear: both;
+	padding-top: 10px;
+	padding-left: 30px;
+	text-align: center;
+	color: #999999;
+}
+
+#legal a {
+}
+
+
+
+
+
+/*************************/
+/* gestion des menus     */
+
+.menu_liste {
+	background-color: #DEDEDE;
+}

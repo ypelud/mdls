@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :admin?, :user_ok?
   protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
   
-  before_filter :set_user_language
+  before_filter :set_user_language, :app_before_filter
   
   protected
   #gestion des autorisations
@@ -62,6 +62,10 @@ class ApplicationController < ActionController::Base
     end            
     @midisoir = midisoir
   end
-    
+
+  def app_before_filter    
+    session[:choix] ||= []
+    week_array
+  end
   
 end
