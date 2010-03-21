@@ -50,24 +50,5 @@ body {background: #ffffff;font-family: Arial, Helvetica, sans-serif;font-size: 1
 #login_div {position: absolute; top: 50px; right: 10px; z-index: 99; background: lightblue; padding: 5px;}
 
 .even {background: lightgreen;}
-h4.alert  {
-    font-size: 1em;
-    margin: 0px;
-    padding: 5px;
-    text-align: center;
-}
 
-h4.warning  {
-    border: 1px solid #ED2E38; 
-    background-color: #F6979C;
-    color: #000;
-}
-h4.error  {
-    color:#fff; 
-    background:#c00;
-}
-h4.notice {
-    border: 1px solid #007E00; 
-    background-color: #c2ffc2;
-    color: #007E00;
-}
+.mnu .pagination {float: right;top: 0px;}

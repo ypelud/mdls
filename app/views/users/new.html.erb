@@ -30,6 +30,10 @@
                <td></td>
                <td><%= submit_tag I18n.t(:sign_up), :class => "button"%></td>
            </tr>
+			<tr>
+				<td></td>
+				<td><%= recaptcha_tags %></td>
+			</tr>
        </tbody>
    </table>
  <% end -%>

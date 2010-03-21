@@ -9,6 +9,7 @@
        <p>Title: <%= f.text_field "title" %><br></p>
        <p>Comment:</p>
        <p><%= f.text_area "comment", :rows=>5, :cols=>35 %></p>
+	   <p><%= recaptcha_tags %></p>
        <p><%= submit_tag "Ajouter un commentaire", :class => 'button'%></p>
    <% end %>
 <% end %>

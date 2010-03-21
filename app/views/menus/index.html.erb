@@ -1,7 +1,6 @@
-<h1><%= I18n.t("mdls.liste_menus")%></h1>
+<div class="mnu"><%= will_paginate @menus %><h1><%= I18n.t("mdls.liste_menus")%></h1></div>
 <%= render :partial => 'liste_style' %>
 
-<%= will_paginate @menus %>
 
 <div class="post-footer">	
 <p class="links">
