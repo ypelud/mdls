@@ -8,7 +8,22 @@ class MenusController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        list
+        puts "format.html ..............................."
+        @menus = Menu.paginate  :page => params[:page],
+        :conditions => ["title like ? and user_id like ? and menutype_id like ?",
+                                           "%#{params[:tags_id]}%", 
+                                           "%#{params[:user_id]}%", 
+                                           "%#{params[:menutype_id]}%"],
+        :order => 'date DESC'
+      end
+      format.js do
+        puts "format.js ..............................."
+        @menus = Menu.paginate  :page => params[:page],
+        :conditions => ["title like ? and user_id like ? and menutype_id like ?",
+                                           "%#{params[:tags_id]}%", 
+                                           "%#{params[:user_id]}%", 
+                                           "%#{params[:menutype_id]}%"],
+        :order => 'date DESC'
       end
       format.iphone do
         if params[:alpha]
@@ -26,7 +41,7 @@ class MenusController < ApplicationController
           :per_page => 5          
         end
         render :layout => false
-      end
+      end 
     end
   end
   
@@ -34,14 +49,6 @@ class MenusController < ApplicationController
   verify :method => :post, :only => [ :destroy, :create, :update ],
   :redirect_to => { :action => :index }
   
-  def list    
-    @menus = Menu.paginate  :page => params[:page],
-    :conditions => ["title like ? and user_id like ? and menutype_id like ?",
-                                       "%#{params[:tags_id]}%", 
-                                       "%#{params[:user_id]}%", 
-                                       "%#{params[:menutype_id]}%"],
-    :order => 'date DESC'
-  end
   
   def show
     @menu = Menu.find(params[:id])

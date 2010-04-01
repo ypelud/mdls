@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => "browsers"
-  map.home '', :controller => 'menus', :action => 'list'
+  #map.root :controller => "browsers"
+  map.home '', :controller => 'menus', :action => 'index'
   
   map.menusrss  '/menus.rss',                 :controller => 'menus',     :action => 'feedurl'     
 

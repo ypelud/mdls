@@ -10,4 +10,5 @@ vendor/rails
 .DS_Store
 scratch_directory/
 lib/tasks/
+tmp/
 

@@ -42,8 +42,8 @@ body {background: #ffffff;font-family: Arial, Helvetica, sans-serif;font-size: 1
 #leftbar li {margin-bottom: 40px;}
 #leftbar li ul {}
 #leftbar li li {margin: 0;}
-#leftbar li .box {border: solid 1px red;background-color: yellow;}
-#leftbar li .box h2 {margin-bottom: 5px;font-size: 18px;color: #DADADA;}
+#leftbar .box {border: solid 1px red;background-color: yellow;}
+#leftbar .box h2 {margin-bottom: 5px;font-size: 18px;color: #DADADA;}
 
 #content {margin-left: 250px;margin-right:161px;height:100%;background-color:#DEAC47;padding-left: 10px;min-height: 800px;}
 #footer {height:8.6em;background:#bbccd9;overflow:hidden;color:#cadcea;min-width:75em;}
@@ -52,3 +52,4 @@ body {background: #ffffff;font-family: Arial, Helvetica, sans-serif;font-size: 1
 .even {background: lightgreen;}
 
 .mnu .pagination {float: right;top: 0px;}
+#cart {width:100%; height:40px;background: crimson;}

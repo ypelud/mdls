@@ -26,6 +26,11 @@ module ChoixmenuHelper
       '<a class="button" href="/plannings/new">Créer</a>'
     end
   end
+  
+  def cartcount
+    return "#{session[:choix].length} menu(s)" if session[:choix].length>0
+    'aucun menu'
+  end
 
 end
 

@@ -1,34 +1,26 @@
+<div id="cart">
+	<div id="cartcount"><%=cartcount%></div>
+	<%= drop_receiving_element "cart", 
+	:update => "cartcount", :url => {:controller => "choixmenu", :action => "add"},
+	:accept => "menu_cart", :hoverclass => "cart-active",
+	:loading => visual_effect(:appear, "indicator", :duration => 2.00),
+	:complete => visual_effect(:fade, "indicator", :duration => 2.00) %>      
+</div>
 
-<% @week.each do |day| %>
-   <div id="msg_cart"><%=day%></div>
-   <% @midisoir.each do |midisoir| %>
-      <div class="<%="midisoir_cart" if @midisoir.size > 1 and midisoir==@midisoir[0] %>">
-         <div id="cart_<%="#{day}_#{midisoir}"%>" class="cart_<%=day%>">   
-            <div id="<%="items_#{day}_#{midisoir}"%>">
-               <%= render :partial => "/choixmenu/cart", :locals => { :day => day, :midisoir => midisoir } %>
-            </div>
-         
-            <%= drop_receiving_element "cart_#{day}_#{midisoir}", 
-               :update => "items_#{day}_#{midisoir}", :url => {:controller => "choixmenu", :action => "add", :day => day, :midisoir => midisoir},
-               :accept => "menu_cart", :hoverclass => "cart-active",
-               :loading => visual_effect(:appear, "indicator", :duration => 2.00),
-               :complete => visual_effect(:fade, "indicator", :duration => 2.00) %>      
-         </div>
-      </div>
-   <% end %>   
-<% end %>
+<a class="button" href="/choixmenu/empty">Effacer</a>
 
+<div style="display:none;">
 <a class="button" href="/choixmenu/print">Format PDF</a> 
 <a class="button" href="/choixmenu/courses">Ingrédients</a> 
-<a class="button" href="/choixmenu/empty">Effacer</a>
 <%= link_to_create_planning %>
 <%= link_to_save_planning %>
 <%= link_to_duplicate_planning %>
+</div>
 
 <div style="height:40px;padding-top:10px;">
-   <p id="indicator" style="display:none;margin-top:0px;border:0px;">
-      <%= image_tag "/images/icones/indicator.gif" %> Mise à jour ...
-   </p>
+  <p id="indicator" style="display:none;margin-top:0px;border:0px;">
+     <%= image_tag "/images/icones/indicator.gif" %> Mise à jour ...
+  </p>
 </div>   
 
 

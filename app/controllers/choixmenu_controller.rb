@@ -11,16 +11,16 @@ class ChoixmenuController < ApplicationController
    
   def add
       menu_id = params[:id].split("_")[1]    
-      day = params[:day]
-      ms = params[:midisoir]
+      day = 'tous' #params[:day]
+      ms = 'tous' #params[:midisoir]
       menusliste = Menusliste.new
 
-      menusliste.day = @week.index(day)
-      menusliste.when = @midisoir.index(ms)
+      menusliste.day = 'tous'
+      menusliste.when = 'tous'
       menusliste.menu_id = menu_id      
 
       session[:choix].push(menusliste) 
-      render :partial => 'cart', :locals => { :day => day, :midisoir => ms } 
+      render :text => "#{session[:choix].length} menu(s)"
   end
   
   def remove

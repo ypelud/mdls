@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   acts_as_iphone_controller(false)
   
-  helper :all # include all helpers, all the time
+  helper :all, :layout # include all helpers, all the time
   helper_method :admin?, :user_ok?
   protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
   
