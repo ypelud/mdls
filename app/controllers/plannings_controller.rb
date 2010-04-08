@@ -3,10 +3,7 @@ class PlanningsController < ApplicationController
 
   def index
     list
-    respond_to do |format|
-      format.html {render :action => 'list'}
-      format.iphone {render :layout => false}
-    end    
+    render :action => 'list'
   end
   
   
@@ -67,11 +64,7 @@ class PlanningsController < ApplicationController
       @menuslistes = @planning.menuslistes      
     end
     @planning ||=[]
-    week_array    
-    respond_to do |format|
-      format.html 
-      format.iphone {render :layout => false}
-    end       
+    week_array          
   end
   
   def edit

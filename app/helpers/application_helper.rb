@@ -1,13 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
-  # Request from an iPhone or iPod touch? (Mobile Safari user agent)
-  def iphone_user_agent?
-    #request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
-    request.user_agent =~ /(Mobile\/.+Safari)/
-  end
-  
-  
   def select2_tag(name, option_tags = nil, options = {})
     html_name = (options[:multiple] == true && !name.to_s.ends_with?("[]")) ? "#{name}[]" : name
     content_tag :select, option_tags, { "name" => html_name, "id" => sanitize_to_id(name) }.update(options.stringify_keys)

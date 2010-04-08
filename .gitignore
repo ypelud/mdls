@@ -12,3 +12,4 @@ scratch_directory/
 lib/tasks/
 tmp/
 
+.bundle/

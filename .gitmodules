@@ -4,6 +4,3 @@
 [submodule "vendor/plugins/restful-authentication"]
 	path = vendor/plugins/restful-authentication
 	url = git://github.com/ypelud/restful-authentication-i18n.git 
-[submodule "vendor/plugins/rails-iui"]
-	path = vendor/plugins/rails-iui
-	url = git@github.com:ypelud/rails-iui.git

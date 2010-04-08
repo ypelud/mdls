@@ -54,13 +54,6 @@
 	<!-- start leftbar -->   
 	<div id="leftbar">     
 		<ul>
-			<% if iphone_user_agent? # Show message for iPhone users -%>
-			<li>
-				<div class="message">
-					<a href="http://iphone.localhost.com:3000/">iPhone version ?</a>.
-				</div>
-			</li>
-			<% end -%>
 			<li class="box">
 				<h2><%=t("mdls.my_menus")%></h2>
 				<%= render :partial => '/choixmenu/menu_list' %>

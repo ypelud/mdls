@@ -1,0 +1,9 @@
+menu1:
+    menutype: 1
+    user: 1
+    title: Mon premier menu
+    date:  <%= 5.days.ago.to_s :db %>
+    description: voila mon premier menu
+    ingredients: un deux trois
+    url: http://localhost:3000
+    

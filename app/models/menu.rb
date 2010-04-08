@@ -1,7 +1,9 @@
 class Menu < ActiveRecord::Base
   belongs_to :menutype
   belongs_to :user
-  has_many :ingredient
+
+  validates_presence_of :menutype, :user
+  validates_presence_of :title
   
   cattr_accessor :per_page
   @@per_page = 25

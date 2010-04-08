@@ -8,7 +8,6 @@ class MenusController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        puts "format.html ..............................."
         @menus = Menu.paginate  :page => params[:page],
         :conditions => ["title like ? and user_id like ? and menutype_id like ?",
                                            "%#{params[:tags_id]}%", 
@@ -17,7 +16,6 @@ class MenusController < ApplicationController
         :order => 'date DESC'
       end
       format.js do
-        puts "format.js ..............................."
         @menus = Menu.paginate  :page => params[:page],
         :conditions => ["title like ? and user_id like ? and menutype_id like ?",
                                            "%#{params[:tags_id]}%", 
@@ -25,23 +23,6 @@ class MenusController < ApplicationController
                                            "%#{params[:menutype_id]}%"],
         :order => 'date DESC'
       end
-      format.iphone do
-        if params[:alpha]
-          @alpha = params[:alpha]
-          @menus = Menu.all(:conditions => ["title like ? or title like ? or title like ?",
-                                       "#{params[:alpha][0,1]}%","#{params[:alpha][1,1]}%","#{params[:alpha][2,1]}%"])
-        else
-          @replace = params[:replace]
-          @menus = Menu.paginate  :page => params[:page],
-          :conditions => ["title like ? and user_id like ? and menutype_id like ?",
-                                       "%#{params[:tags_id]}%", 
-                                       "%#{params[:user_id]}%", 
-                                       "%#{params[:menutype_id]}%"],
-          :order => 'date DESC' , 
-          :per_page => 5          
-        end
-        render :layout => false
-      end 
     end
   end
   
@@ -52,10 +33,6 @@ class MenusController < ApplicationController
   
   def show
     @menu = Menu.find(params[:id])
-    respond_to do |format|
-      format.html       
-      format.iphone {render :layout => false }
-    end
   end
   
   def new
@@ -65,7 +42,7 @@ class MenusController < ApplicationController
   def create    
     @menu = Menu.new(params[:menu])
     @menu.date = Time.now #pour forcer la date
-    @menu.user_id = current_user.id
+    @menu.user = current_user
     genereTags()
     
     if @menu.save
@@ -124,7 +101,7 @@ class MenusController < ApplicationController
   def genereTags()      
     tag_tab = @menu.title.split
     @menu.tag_list=""
-    #suppression des tags inferieur � 3 car.
+    #suppression des tags inferieur à 3 car.
     tag_tab.each {|w| @menu.tag_list.add(w) if w.size>3 }
     tag_tab
   end
