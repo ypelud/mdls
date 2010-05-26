@@ -1,6 +1,6 @@
 <h1>Liste des utilisateurs </h1>
 
-<div>Nombre d'utilisateurs <%= User.count %> dont <%= User.count(:conditions => ['activated_at'])%> activés.</div>
+<div>Nombre d'utilisateurs <%= User.count %>.</div>
 <table class="user" width="90%">
     <tr class="titre" align="center">
       <th width="20%"><em>Utilisateur</em> </th>
@@ -10,10 +10,6 @@
    <% for user in @users %>
       <tr class="liste">
          <td><%= user.login %></td>
-         <td>
-            <%= if user.activated_at then user.activated_at.strftime("%d/%m/%Y") end %>
-            <%= unless user.activated_at then user.created_at.strftime("%d/%m/%Y")+" (C)" end %>
-         </td>
          <td><%= user.email.gsub(/@/, "(at)") %></td>
       </tr>  
    <% end %>

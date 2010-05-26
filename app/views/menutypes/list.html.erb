@@ -6,9 +6,9 @@
   
 <% for menutype in @menutypes %>
   <tr>
-    <td><%= link_to %Q{#{menutype.name}}, :action => 'show', :id => menutype %>
-        <%= link_to '(delete)', { :action => 'destroy', :id => menutype },
-								:confirm => 'Are you sure?', :post => true %></td>
+    <td><%= link_to %Q{#{menutype.name}}, menutype_path(menutype) %>
+        <%= link_to '(delete)', menutype, :confirm => 'Are you sure?', :method => :delete %>
+   </td>
   </tr>
 <% end %>
 </table>

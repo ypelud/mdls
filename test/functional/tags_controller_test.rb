@@ -1,8 +1,11 @@
 require File.dirname(__FILE__) + "/../test_helper"
 
 class TagsControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  def test_should_tags
+    get :index
+    assert_response :success
+    assert assigns(:tags)
   end
+  
 end

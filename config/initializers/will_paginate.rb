@@ -1,3 +1,4 @@
+# coding: utf-8
 # paramètre pagination 
 
 WillPaginate::ViewHelpers.pagination_options[:previous_label] = '◄'

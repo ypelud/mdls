@@ -1,0 +1,12 @@
+<h1><%= I18n.t("menutype.new")%></h1>
+<% form_for @menutype, :url => menutypes_url do |f| %>
+  <%= messages_error @menutype  %>
+  <%= render :partial => 'form', :object => f %>
+  <%= f.submit I18n.t("menutype.valider"), :class => 'button'  %>
+<% end %>
+
+<div class="post-footer">	
+  <p class="links">
+    <%= link_to 'Back', :action => 'list' %>
+  </p>
+</div>

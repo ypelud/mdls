@@ -1,26 +1,35 @@
 ActionController::Routing::Routes.draw do |map|
-  #map.root :controller => "browsers"
+  map.root :controller => 'menus'
   map.home '', :controller => 'menus', :action => 'index'
   
   map.menusrss  '/menus.rss',                 :controller => 'menus',     :action => 'feedurl'     
 
 
   map.resources :users
-  map.resources :recherche
   map.resources :menus
+  map.resources :menutypes
+  map.resources :recherche
+
   map.resources :plannings
   map.resources :tags
+  map.resources :comments
 
   map.resource :session
-  map.resource :comments
+  
+  map.resource :user_session
+  map.resource :account, :controller => "users"
+  
+  #match 'signup' => 'users#new'
+  #match 'logout' => 'user_sessions#destroy'
+  
     
   map.activate  '/activate/:activation_code', :controller => 'users',     :action => 'activate', :activation_code => nil
   map.signup    '/signup',                    :controller => 'users',     :action => 'new'
   map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'
   map.errors    '/errors',                    :controller => 'users',     :action => 'errors'
   map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
-  map.login     '/login',                     :controller => 'sessions',  :action => 'new'
-  map.logout    '/logout',                    :controller => 'sessions',  :action => 'destroy'
+#  map.login     '/login',                     :controller => 'sessions',  :action => 'new'
+  map.logout    '/logout',                    :controller => 'user_sessions',  :action => 'destroy'
   map.profil    '/profil',                    :controller => 'profil',    :action => 'edit'
   
   map.fr        '/fr',                        :controller => 'users',     :action => 'language', :code => "fr-FR"

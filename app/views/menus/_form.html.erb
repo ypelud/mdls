@@ -1,19 +1,15 @@
-<%= error_messages_for "menu" %>
+<%= form.label :title %><br />
+<%= form.text_field :title  %><br />
 
-<!--[form:menu]-->
-<p><label for="menu_title">Titre</label><br/>
-<%= text_field "menu", "title"  %></p>
+<%= form.label :menutype_id %><br />
+<%= form.collection_select :menutype_id, Menutype.all, :id, :name,  {:prompt => true}  %><br />
 
-<p><label for="menu_title">Menu type</label><br/>
-<%= select("menu", "menutype_id", Menutype.find(:all).collect {|c| [c.name, c.id]})  %></p>
+<%= form.label :url %><br/>
+<%= form.text_field :url %><br />
 
-<p><label for="menu_title">Lien</label><br/>
-<%= text_field "menu", "url"   %></p>
+<%= form.label :description %><br/>
+<%= form.text_area :description, :size => "80x20"  %><br />
 
-<p><label for="menu_description">Description</label><br/>
-<%= text_area "menu", "description", :size => "80x20"  %></p>
-
-<p><label for="menu_ingredients_contenu">Ingredients</label><br/>
-<%= text_area "menu", "ingredients", :size => "80x20"  %></p>
-<!--[eoform:menu]-->
+<%= form.label :ingredients %><br/>
+<%= form.text_area :ingredients, :size => "80x20"  %><br />
 

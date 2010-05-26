@@ -6,7 +6,7 @@ class ProfilController < ApplicationController
       @profil = Profil.new
       @profil.id = current_user.id 
       @profil.user_id = current_user.id 
-      @profil.layout_name = :user_style
+      @profil.layout_name = "" #:user_style
       @profil.style_menu = 'semaine_style'
       @profil.save    
     end
@@ -18,7 +18,7 @@ class ProfilController < ApplicationController
   def update
     @profil = Profil.find(params[:id])
     if @profil.update_attributes(params[:profil])
-      flash[:notice] = 'Les options ont été correctement enregistrées.'
+      flash[:notice] = t(profil.update)
       redirect_to :back
     else
       render :action => 'edit'
@@ -27,11 +27,10 @@ class ProfilController < ApplicationController
   
   def authorize_user
      unless current_user
-       flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
+       flash[:error] = t("profil.authorize")
        redirect_to :back
        false
      end
-     @week = week
    end   
    
 end

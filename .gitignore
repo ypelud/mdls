@@ -11,5 +11,5 @@ vendor/rails
 scratch_directory/
 lib/tasks/
 tmp/
-
 .bundle/
+*.sqlite3

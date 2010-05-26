@@ -1,6 +1,6 @@
 class ChangeForCommentsGem < ActiveRecord::Migration
   def self.up
-    execute "DROP INDEX `fk_comments_user` ON comments"
+    #execute "DROP INDEX `fk_comments_user` ON comments"
     
     change_column :comments, :commentable_id,  :integer,  :default => nil, :null => true
     change_column :comments, :commentable_type, :string,  :default => nil, :null => true

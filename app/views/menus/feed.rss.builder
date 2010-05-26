@@ -6,7 +6,7 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title "MenusDeLaSemaine"
     xml.description "Les menus sans peine"
-    xml.link formatted_menus_url(:rss)
+    xml.link menus_url(:rss)
     
     for menu in @menus
       xml.item do

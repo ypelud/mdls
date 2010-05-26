@@ -23,7 +23,7 @@ module ChoixmenuHelper
   
   def link_to_create_planning
     if session[:choix]==[] and current_user then
-      '<a class="button" href="/plannings/new">Créer</a>'
+      '<a class="button" href="/plannings/new">TODO choixmenu_create</a>'
     end
   end
   

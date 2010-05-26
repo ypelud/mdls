@@ -1,7 +1,8 @@
 <h1>Editer</h1>
-<% form_tag "/menus/update/"+@menu.id.to_s do %>
-  <%= render :partial => "form" %>
-  <p><%= submit_tag "Valider", :class => "button"  %></p>
+<% form_for @menu, :url => menus_path do |f| %>
+  <%= messages_error @menu %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Update" %>
 <% end %>
 
 <div class="post-footer">	

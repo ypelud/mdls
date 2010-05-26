@@ -1,4 +1,4 @@
-class MenutypeController < ApplicationController
+class MenutypesController < ApplicationController
   before_filter :authorize_user
   
   def index
@@ -25,7 +25,7 @@ class MenutypeController < ApplicationController
   def create
     @menutype = Menutype.new(params[:menutype])
     if @menutype.save
-      flash[:notice] = 'Menu type créé correctement.'
+      flash[:notice] = t("menutype.create")
       redirect_to :action => 'list'
     else
       render :action => 'new'
@@ -39,7 +39,7 @@ class MenutypeController < ApplicationController
   def update
     @menutype = Menutype.find(params[:id])
     if @menutype.update_attributes(params[:menutype])
-      flash[:notice] = 'Menu type correctement mis à jour.'
+      flash[:notice] = t("menutype.update")
       redirect_to :action => 'show', :id => @menutype
     else
       render :action => 'edit'
@@ -49,6 +49,11 @@ class MenutypeController < ApplicationController
   def destroy
     Menutype.find(params[:id]).destroy
     redirect_to :action => 'list'
+  end
+  
+private 
+  def user_ok?
+    admin?
   end
   
 end

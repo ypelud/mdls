@@ -1,11 +1,13 @@
-<h1>Nouveau</h1>
-<% form_tag :action => "create" do %>
-  <%= render :partial => "form" %>
-  <p><%= submit_tag "Créer" , :class => "button"%></p>
+<h1><%= I18n.t(:new_menu) %></h1>
+
+<% form_for @menu, :url => menus_path do |f| %>
+  <%= messages_error @menu  %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit  I18n.t("mdls.create") , :class => "button"%></p>
 <% end %>
 
 <div class="post-footer">	
-<p class="links">
-<%= link_to "Retour", :action => "list" %>
-</p>
+	<p class="links">
+		<%= link_to "Retour", :action => "list" %>
+	</p>
 </div>

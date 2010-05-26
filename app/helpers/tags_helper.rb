@@ -1,5 +1,5 @@
 module TagsHelper
-  def tag_cloud(classes) #(tags, classes)
+  def tag_cloud(classes) 
      tags = Menu.tag_counts(:limit => 20, :order=>'Rand()' ) #count(*) desc')
 
      max, min = 0, 0 

@@ -8,7 +8,7 @@
 
 <div class="post-footer">	
 <p class="links">
-<% if logged_in? %>
+<% if current_user %>
   <%= link_to t("mdls.new_menu"), :action => "new" %> |
 <% end %>
   <%= link_to t("mdls.all_menu"), :action => "index" %>

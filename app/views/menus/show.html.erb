@@ -13,7 +13,7 @@
 <div class="post-footer">	
 <p class="byline">Posté par <%= @menu.user.login %> le <%= @menu.date.to_formatted_s(:short) %> </p>
 <p class="links">
-   <% if logged_in? && (@menu.user_id==current_user.id) %>
+   <% if current_user && (@menu.user == current_user) %>
       <%= link_to "Editer", :action => "edit", :id => @menu %> |
    <% end %>
    <% if admin? %>
@@ -21,13 +21,8 @@
       <%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete)  %> |   
    <% end %>
    <%= link_to "Retour", :action => "index" %>|
-
-   <%= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
-               :update => "comment_div",
-               :url => { :controller => "comments", :action => "list", :id => @menu.id },    
-               :complete => visual_effect(:toggle_appear, "comment_div", :duration => 1.00),
-               :html => { :class  => "comments" }
-               %>
+   <%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id},
+            :remote => true %>
 </p>
 </div>
 <div id="comment_div" style="display: none">

@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
       redirect_back_or_default('/')
-      flash[:notice] = "Connecte"
+      flash[:notice] = t('cnx.login')
     else
-      flash[:notice] = "Connexion echouée"
+      flash[:notice] =  t('cnx.failed')
       #render :action => 'new'
       redirect_back_or_default('/')
     end
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "Vous avez ete deconnecté"
+    flash[:notice] = t('cnx.sign_out')
     redirect_back_or_default('/')
   end
 

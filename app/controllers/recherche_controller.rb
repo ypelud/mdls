@@ -4,7 +4,7 @@ class RechercheController < ApplicationController
     @search = Recherche.new
     #@tag_cloud = Menu.calculate()
     #@tag_counts = Menu.tag_counts()
-    @tags = Menu.tag_counts()
+    #@tags = Menu.tag_counts()
     render :partial => 'new'     
   end
 

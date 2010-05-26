@@ -1,37 +1,84 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
-  include AuthenticatedSystem
+  protect_from_forgery
+  layout 'application'
+
+  helper :all # include all helpers, all the time
+
+  before_filter :set_user_language, :app_before_filter, :except => [:current_user_session, :current_user]
     
-  helper :all, :layout # include all helpers, all the time
-  helper_method :admin?, :user_ok?
-  protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
+  helper_method :admin?, :current_user, :current_user_session
+
+private
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
+  end
+
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.user
+  end
   
-  before_filter :set_user_language, :app_before_filter
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
+  end
   
-  protected
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.record
+  end
+  
+  def require_user
+    unless current_user
+      store_location
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to new_user_session_url
+      return false
+    end
+  end
+
+  def require_no_user
+    if current_user
+      store_location
+      flash[:notice] = "You must be logged out to access this page"
+      redirect_to account_url
+      return false
+    end
+  end
+  
+  def store_location
+    session[:return_to] = request.request_uri
+  end
+  
+  def redirect_back_or_default(default)
+    redirect_to(session[:return_to] || default)
+    session[:return_to] = nil
+  end
+
+protected
+  
   #gestion des autorisations
   def authorize_user
     unless user_ok?
       flash[:error] = t(:authorize_page)
-      redirect_to home_path
+      redirect_to :root
       false
     end
-  end  
+  end
   
   def user_ok?
-    admin?
+    true
   end
     
   def admin?
-    logged_in? && (current_user.login==APP_CONFIG['super_user']) 
+    current_user && (current_user.login==APP_CONFIG['super_user']) 
   end   
   
   #gestion de la langue
   def set_user_language
-    session[:language] ||= 'fr-FR'
-    I18n.locale = session[:language]
+    #session[:language] ||= 'fr-FR'
+    #I18n.locale = session[:language]
   end
   
   #méthodes pour les gestions du temps

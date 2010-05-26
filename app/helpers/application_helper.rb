@@ -1,5 +1,5 @@
-# Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  
   
   def select2_tag(name, option_tags = nil, options = {})
     html_name = (options[:multiple] == true && !name.to_s.ends_with?("[]")) ? "#{name}[]" : name
@@ -21,5 +21,22 @@ module ApplicationHelper
             :onclick => "$('methode1.value = ($('methode1.value == 'OFF') ? 'ON' : 'OFF';")
     row = content_tag(:div, toggle, :class => "row")
     hidden + row
+  end
+  
+  def messages_error(object)
+    if object and object.errors.any? then
+      error_messages = object.errors.full_messages.map do |msg| 
+        content_tag(:li, msg)
+      end.join.html_safe
+
+      contents = ''
+      contents << content_tag(:h2, t("errors.template.body")) 
+      #contents << content_tag(:p, message) unless message.blank?
+      contents << content_tag(:ul, error_messages)
+
+      content_tag(:div, contents.html_safe, :id => 'errorExplanation')
+    else
+      ''
+    end
   end
 end

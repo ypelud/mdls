@@ -1,29 +1,17 @@
 class MenusController < ApplicationController
-  before_filter :authorize_user, :except => [:recupere, :show, :index, :feed, :feedurl, :alpha]
+  before_filter :authorize_user, :except => [:show, :index, :feed, :feedurl]
 
   # uses the cookie session store (then you don't need a separate :secret)
   # protect_from_forgery :except => :recupere
   
   
   def index
-    respond_to do |format|
-      format.html do
-        @menus = Menu.paginate  :page => params[:page],
-        :conditions => ["title like ? and user_id like ? and menutype_id like ?",
-                                           "%#{params[:tags_id]}%", 
-                                           "%#{params[:user_id]}%", 
-                                           "%#{params[:menutype_id]}%"],
-        :order => 'date DESC'
-      end
-      format.js do
-        @menus = Menu.paginate  :page => params[:page],
-        :conditions => ["title like ? and user_id like ? and menutype_id like ?",
-                                           "%#{params[:tags_id]}%", 
-                                           "%#{params[:user_id]}%", 
-                                           "%#{params[:menutype_id]}%"],
-        :order => 'date DESC'
-      end
-    end
+    @menus = Menu.paginate  :page => params[:page],
+      :conditions => ["title like ? and user_id like ? and menutype_id like ?",
+                      "%#{params[:tags_id]}%", 
+                      "%#{params[:user_id]}%", 
+                      "%#{params[:menutype_id]}%"],
+    :order => 'date DESC'
   end
   
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -46,10 +34,10 @@ class MenusController < ApplicationController
     genereTags()
     
     if @menu.save
-      flash[:notice] = 'Menu créé correctement.'
-      redirect_to :action => 'index'
+      flash[:notice] = t('menus.create')
+      redirect_to menus_url
     else
-      render :action => 'new'
+      render :new
     end
   end
   
@@ -63,26 +51,23 @@ class MenusController < ApplicationController
     @menu = Menu.find(params[:id])
     @menu.date = Time.now #pour forcer la date
     genereTags()
-    
     if @menu.update_attributes(params[:menu])
-      flash[:notice] = 'Menu mis à jour correctement.'
-      redirect_to :action => 'show', :id => @menu
+      flash[:notice] = t('menus.update')
+      redirect_to menu_path(@menu)
     else
-      render :action => 'edit'
+      render :edit
     end       
   end
   
   def destroy
     Tag.destroy_unused = true
     Menu.find(params[:id]).destroy
-    redirect_to :action => 'index'
+    redirect_to menus_url
   end
   
   
   def user_ok?
-  
-    @menu = Menu.find(params[:id]) if params[:id]
-  
+    @menu = Menu.find_by_id(params[:id]) if params[:id]
     return false unless current_user    
     return true unless @menu    
     return true if (current_user.id==@menu.user_id) or admin?
@@ -97,7 +82,7 @@ class MenusController < ApplicationController
     redirect_to 'http://feeds2.feedburner.com/Menusdelasemaine'
   end 
   
-  protected
+protected
   def genereTags()      
     tag_tab = @menu.title.split
     @menu.tag_list=""

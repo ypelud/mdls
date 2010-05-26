@@ -37,7 +37,7 @@ protected
     menutype = menutypes(:midi)
     user = users(:quentin)
     record = Menu.new({ :menutype => menutype, :user => user, \
-      :title => 'Mon deuxième menu', :description => 'voila mon deuxième menu' }.merge(options))
+      :title => 'Mon deuxieme menu', :description => 'voila mon deuxieme menu' }.merge(options))
     record.save
     record
   end

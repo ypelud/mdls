@@ -1,5 +1,4 @@
 class CreateMenuslistes < ActiveRecord::Migration
-  extend MigrationHelpers
 
   def self.up
     create_table :menuslistes, :force => true  do |t|
@@ -8,8 +7,9 @@ class CreateMenuslistes < ActiveRecord::Migration
       t.column :planning_id, :integer, :default => 0, :null => false
       t.column :menu_id, :integer, :default => 0, :null => false
     end
-	foreign_key(:menuslistes, :planning_id, :plannings, :id)        
-	foreign_key(:menuslistes, :menu_id, :menus, :id)        
+    
+	add_index :menuslistes, ["planning_id"], :name => "fk_menuslistess_planning"
+	add_index :menuslistes, ["menu_id"] , :name => "fk_menuslistes_user"
   end
 
   def self.down

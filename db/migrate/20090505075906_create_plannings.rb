@@ -1,7 +1,4 @@
-require "migration_helpers" 
-
 class CreatePlannings < ActiveRecord::Migration
-  extend MigrationHelpers
   
   def self.up
     create_table :plannings, :force => true do |t|
@@ -10,7 +7,7 @@ class CreatePlannings < ActiveRecord::Migration
       t.column :user_id, :integer, :default => 0, :null => false     
       t.timestamps      
     end  
-	foreign_key(:plannings, :user_id, :users, :id)    
+  	add_index :plannings, ["user_id"], :name => "fk_plannings_user"
   end
 
   def self.down
