@@ -51,7 +51,7 @@ class MenutypesControllerTest < ActionController::TestCase
       UserSession.create(users(:quentin))
       post :create, :menutype => {:name => 'test'}
       assert_response :redirect
-      assert_redirected_to menutype_path(:list)
+      assert_redirected_to menutypes_path
     end
   end
   
@@ -116,7 +116,7 @@ class MenutypesControllerTest < ActionController::TestCase
     UserSession.create(users(:quentin))
     post :destroy, :id => 1
     assert_response :redirect
-    assert_redirected_to menutype_path(:list)
+    assert_redirected_to menutypes_path
   end
   
   def test_should_fail_destroy_not_login

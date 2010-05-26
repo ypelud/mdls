@@ -11,16 +11,13 @@
 </div> 
 
 <div class="post-footer">	
-<p class="byline">Posté par <%= @menu.user.login %> le <%= @menu.date.to_formatted_s(:short) %> </p>
+<p class="byline">Posté par <%= @menu.user.login %> le <%= l @menu.date, :format => :short%> </p>
 <p class="links">
-   <% if current_user && (@menu.user == current_user) %>
-      <%= link_to "Editer", :action => "edit", :id => @menu %> |
-   <% end %>
-   <% if admin? %>
-      <%= link_to("Editer", {:action => "edit", :id => @menu} ) %> |
+   <% if (current_user && (@menu.user == current_user)) || admin? %>
+      <%= link_to("Editer", edit_menu_path(@menu)) %> |
       <%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete)  %> |   
    <% end %>
-   <%= link_to "Retour", :action => "index" %>|
+   <%= link_to "Retour", menus_path %> |
    <%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id},
             :remote => true %>
 </p>

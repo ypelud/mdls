@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
-
+  before_filter :require_admin, :only => [:index]
+   
+  
   # render new.rhtml
   def new
     @user = User.new
@@ -35,10 +37,21 @@ class UsersController < ApplicationController
     end
   end
   
+  def index
+    @users = User.paginate  :page => params[:page],
+      :per_page => 100          
+  end  
+  
   def language
     code = params[:code] || 'fr-FR'
     session[:language] = code
     flash[:notice] = "language => #{code}"
     redirect_back_or_default :back  
   end
+  
+private
+  def require_admin
+    admin?
+  end
+
 end

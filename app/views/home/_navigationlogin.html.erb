@@ -9,5 +9,5 @@
 <%end %>
 <% if admin? %>
    <li><span><%= link_to t("mdls.menutype"), menutypes_path %></span></li>                        
-   <li><a href="/useradm/list"><span><%=t("mdls.userlist")%></span></a></li>                        
+   <li><span><%= link_to t("mdls.userlist"), users_url %></span></li>                        
 <% end %>

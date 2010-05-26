@@ -13,6 +13,10 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
+  
+  config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'config', 'locales', 'rails', '*.{rb,yml}')]
+  config.i18n.default_locale = :fr 
+  
   config.action_controller.session_store = :active_record_store 
   config.active_record.observers = :user_observer
 

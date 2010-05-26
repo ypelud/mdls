@@ -1,4 +1,4 @@
-fr-FR:
+fr:
   activerecord:
     errors:
       messages:
@@ -63,6 +63,7 @@ fr-FR:
   vendredi: 'vendredi'
   samedi: 'samedi'
   dimanche: 'dimanche'
+  new_menu: "Nouveau menu"
   mdls:
     sign_in : "Connexion"
     authorize_page: "Vous n'êtes pas authorisé à afficher cette page"
@@ -80,7 +81,30 @@ fr-FR:
     menutype: 'type'
     userlist: 'users'
     liste_menus: 'Liste des menus'
-    new_menu: "Nouveau menu"
     all_menu: "Tous les menus"
+    create: 'Créer'
+    new_menu: "Nouveau menu"
+  menus:
+    create_ok: 'Menu créé correctement.'
+    update_ok: 'Menu mis à jour correctement.'
+  choixmenu:
+    create: 'Créer'
+  user:
+    code_reinit: 'Un code de réinitialisation à été envoyé à  {{user.email}}'
+    pass_reinit: 'Mot de passe réinitialisé pour {{user.email}}'
+  comment:
+    authorize: 'Vous n''êtes pas authorisé à afficher cette page'
+  menutype:
+    new: 'Nouveau type de menu'
+    edit: 'Editer type de menu'
+    create: 'Menu type créé correctement.'
+    update: 'Menu type correctement mis à jour.'
+    valider: 'Valider'
+  profil:
+    update: 'Les options ont été correctement enregistrées.'
+    authorize: 'Vous n''êtes pas authorisé à afficher cette page'
+  planning:
+    new: 'Créer un nouveau planning'
+    create: 'Créer'
 
-   
+

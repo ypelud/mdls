@@ -7,7 +7,7 @@
 
 <div class="post-footer">	
 <p class="links">
-<%= link_to "Voir", :action => "show", :id => @menu %> |
-<%= link_to "Retour", :action => "list" %>
+<%= link_to "Voir", menu_path(@menu) %> |
+<%= link_to "Retour", menus_url %>
 </p>
 </div>

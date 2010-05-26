@@ -7,8 +7,10 @@ class MenutypesController < ApplicationController
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
+  verify :method => :post, :only => [ :destroy, :create ],
+         :redirect_to => :menutypes_url
+
+#  verify :method => :put, :only => [ :update ],:redirect_to => :menutypes_url
 
   def list
     @menutypes = Menutype.paginate :page => params[:page]
@@ -26,9 +28,9 @@ class MenutypesController < ApplicationController
     @menutype = Menutype.new(params[:menutype])
     if @menutype.save
       flash[:notice] = t("menutype.create")
-      redirect_to :action => 'list'
+      redirect_to menutypes_url
     else
-      render :action => 'new'
+      render :action => :new
     end
   end
 
@@ -40,15 +42,15 @@ class MenutypesController < ApplicationController
     @menutype = Menutype.find(params[:id])
     if @menutype.update_attributes(params[:menutype])
       flash[:notice] = t("menutype.update")
-      redirect_to :action => 'show', :id => @menutype
+      redirect_to menutype_path(@menutype)
     else
-      render :action => 'edit'
+      render :action => :edit
     end
   end
 
   def destroy
     Menutype.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to menutypes_url
   end
   
 private 

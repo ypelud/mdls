@@ -1,7 +1,6 @@
 
 <% javascript "jquery.ba-url", "pagination" %>
 
-
 <div id="menus">
 	<%= render :partial => 'menus' %>
 </div>
@@ -9,8 +8,8 @@
 <div class="post-footer">	
 <p class="links">
 <% if current_user %>
-  <%= link_to t("mdls.new_menu"), :action => "new" %> |
+  <%= link_to t("mdls.new_menu"), new_menu_url %> |
 <% end %>
-  <%= link_to t("mdls.all_menu"), :action => "index" %>
+  <%= link_to t("mdls.all_menu"), menus_url %>
 </p>
 </div>
