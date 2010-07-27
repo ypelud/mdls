@@ -1,17 +1,14 @@
 <div class="mnu"><%= will_paginate @menus %><h1><%= I18n.t("mdls.liste_menus")%></h1></div>
 
-<div id="liste_menus">
-<table id="newedit" width="100%">
-   <tbody>
-      <%for menu in @menus %>
-      	<tr class="<%=menu_position%>">
-        	<td><div id="mnuMidi_<%=menu.id%>" class="menu_cart"><%= image_tag "/images/icones/shopping-bag.gif" %></div></td>
-	        <td width="80%"><%= link_to %Q{#{menu.title}}, :controller => "menus",  :action => "show", :id => menu %></td>
-	        <td><%= link_to %Q{#{menu.user.login}}, {:action => "index", :user =>  menu.user} %></td>                  
-        	<%= draggable_element("mnuMidi_" + menu.id.to_s, :revert => true) %>
-        </tr>
+<table id="liste_menus">
+	<tbody>
+	<%for menu in @menus %>
+     <tr id="mnuMidi_<%=menu.id%>" class="<%=menu_position%>">
+     	<td class="menu_cart"><%= image_tag "/images/icones/shopping-bag.gif" %></td>
+	    <td><input id=":pl" class="oZ-jc" type="checkbox" aria-labelledby=""></td> 
+	 	<td><%= link_to %Q{#{menu.title}}, :controller => "menus",  :action => "show", :id => menu %></td>
+	 	<td><%= link_to %Q{#{menu.user.login}}, {:action => "index", :user_id =>  menu.user} %></td>
+     </tr>
      <% end %>  
-          
-   </tbody>
- </table>
-</div>
+	</tbody>
+</table>

@@ -10,8 +10,6 @@ class MenutypesController < ApplicationController
   verify :method => :post, :only => [ :destroy, :create ],
          :redirect_to => :menutypes_url
 
-#  verify :method => :put, :only => [ :update ],:redirect_to => :menutypes_url
-
   def list
     @menutypes = Menutype.paginate :page => params[:page]
   end
@@ -51,11 +49,6 @@ class MenutypesController < ApplicationController
   def destroy
     Menutype.find(params[:id]).destroy
     redirect_to menutypes_url
-  end
-  
-private 
-  def user_ok?
-    admin?
   end
   
 end

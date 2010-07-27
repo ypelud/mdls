@@ -1,10 +1,5 @@
 <div id="cart">
-	<div id="cartcount"><%=cartcount%></div>
-	<%= drop_receiving_element "cart", 
-	:update => "cartcount", :url => {:controller => "choixmenu", :action => "add"},
-	:accept => "menu_cart", :hoverclass => "cart-active",
-	:loading => visual_effect(:appear, "indicator", :duration => 2.00),
-	:complete => visual_effect(:fade, "indicator", :duration => 2.00) %>      
+	<%= render :partial => '/choixmenu/cart' %>
 </div>
 
 <a class="button" href="/choixmenu/empty">Effacer</a>

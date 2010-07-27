@@ -1,9 +1,5 @@
 class MenusController < ApplicationController
   before_filter :authorize_user, :except => [:show, :index, :feed, :feedurl]
-
-  # uses the cookie session store (then you don't need a separate :secret)
-  # protect_from_forgery :except => :recupere
-  
   
   def index
     @menus = Menu.paginate  :page => params[:page],
@@ -64,16 +60,7 @@ class MenusController < ApplicationController
     Menu.find(params[:id]).destroy
     redirect_to menus_url
   end
-  
-  
-  def user_ok?
-    @menu = Menu.find_by_id(params[:id]) if params[:id]
-    return false unless current_user    
-    return true unless @menu    
-    return true if (current_user.id==@menu.user_id) or admin?
-    false
-  end 
-  
+    
   def feed
     @menus = Menu.find(:all, :order => "date desc")   
   end
@@ -83,6 +70,14 @@ class MenusController < ApplicationController
   end 
   
 protected
+  def user_ok?
+    @menu = Menu.find_by_id(params[:id]) if params[:id]
+    return false unless current_user    
+    return true unless @menu    
+    return true if (current_user.id==@menu.user_id) or admin?
+    false
+  end 
+
   def genereTags()      
     tag_tab = @menu.title.split
     @menu.tag_list=""

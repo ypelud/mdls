@@ -1,8 +1,8 @@
-require 'test_helper'
-require 'rails/performance_test_help'
+require File.dirname(__FILE__) + "/../test_helper"
+require 'performance_test_help'
 
-# Profiling results for each test method are written to tmp/performance.
-class BrowsingTest < ActionDispatch::PerformanceTest
+class HomepageTest < ActionController::PerformanceTest
+  # Replace this with your real tests.
   def test_homepage
     get '/'
   end

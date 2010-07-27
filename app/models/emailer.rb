@@ -7,7 +7,7 @@ class Emailer < ActionMailer::Base
       @from = APP_CONFIG['mail_from']
       @cc = cc
       @sent_on = sent_at	   
-  	   @body["message"] = message
+  	  @body["message"] = message
       @body["login"] = login
       @headers = {}
    end

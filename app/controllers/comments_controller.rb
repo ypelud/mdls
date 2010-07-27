@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
   end
   
   def list5
-    debugger
     @comments = Comment(5)
     respond_to do |format| 
       format.html { render :partial => "list5", :layout => false }
@@ -30,7 +29,6 @@ class CommentsController < ApplicationController
   end
 
   def comment5
-    debugger
   end
   
   def authorize_user

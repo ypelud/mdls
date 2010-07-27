@@ -28,7 +28,7 @@ module ChoixmenuHelper
   end
   
   def cartcount
-    return "#{session[:choix].length} menu(s)" if session[:choix].length>0
+    return "#{session[:choix].length} menu(s)" if session_choix.length>0
     'aucun menu'
   end
 

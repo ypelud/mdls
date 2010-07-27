@@ -14,9 +14,12 @@
     <!-- %= javascript_include_tag :defaults % -->
     <!-- %= csrf_meta_tag % --> 
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"/>
+	<!-- script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"/ -->
+	<%= javascript_include_tag 'jquery-1.4.2.min' %>
+	<%= javascript_include_tag 'jquery-ui-1.8.2.min' %>
 
 	<%= yield  :head %>
+
 	<%= javascript_include_tag "rails" %>
 	<%= javascript_include_tag 'application'%>
 </head>

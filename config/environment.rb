@@ -18,7 +18,7 @@ Rails::Initializer.run do |config|
   config.i18n.default_locale = :fr 
   
   config.action_controller.session_store = :active_record_store 
-  config.active_record.observers = :user_observer
+  # config.active_record.observers = :user_observer
 
   config.gem 'will_paginate'
   config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable'
@@ -28,10 +28,3 @@ Rails::Initializer.run do |config|
   
   
 end
-
-
-#localization france
-#require 'french_errors_localization'
-
-#config prawn
-

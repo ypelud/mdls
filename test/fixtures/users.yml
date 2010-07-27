@@ -30,3 +30,18 @@ aaron:
   current_login_ip: ""
   last_login_ip: ""
 
+bob:
+  id: 3
+  login: bob
+  email: bob@example.com
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  login_count: 0  
+  failed_login_count: 0
+  last_request_at: <%= 5.days.ago.to_s :db %> 
+  current_login_at: <%= 5.days.ago.to_s :db %> 
+  last_login_at:  <%= 5.days.ago.to_s :db %> 
+  current_login_ip: ""
+  last_login_ip: ""
+

@@ -1,8 +1,8 @@
 <%if current_user %>
    <li><span><%=link_to t("log_out"), logout_path %></span></li>
-   <li><a href="/plannings"><span><%=t("mdls.planning")%></span></a></li>
+   <li><span><%= link_to t("mdls.planning"), plannings_path %></span></li>                        
    <li><a href="/emailer/index"><span><%=t("mdls.contact")%></span></a></li>
-   <li><a href="/profil"><span><%=t("mdls.options")%></span></a></li>
+   <li><span><%=link_to t("mdls.options"), edit_user_profil_url(current_user) %></span></li>
 <%else %>
    <li><span><%=link_to t("mdls.sign_in"), :new_user_session, :class => "login" %></span></li>
    <li><span><%=link_to t("sign_up"), signup_path %></span></li>

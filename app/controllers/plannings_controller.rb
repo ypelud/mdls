@@ -26,7 +26,7 @@ class PlanningsController < ApplicationController
         @planning = Planning.new(params[:planning])
         @planning.user = current_user
         @planning.save! 
-        session[:choix].each do |menusliste|
+        session_choix.each do |menusliste|
           menusliste = menusliste.clone if menusliste.planning
           menusliste.planning = @planning
           menusliste.save!
@@ -40,7 +40,7 @@ class PlanningsController < ApplicationController
       Planning.transaction do 
         @planning = Planning.find(params[:id])
         @planning.save! 
-        session[:choix].each do |menusliste|
+        session_choix.each do |menusliste|
           menusliste.planning = @planning
           menusliste.save!
         end
@@ -56,8 +56,7 @@ class PlanningsController < ApplicationController
         @planning = Planning.find(params[:id])
         @menuslistes = @planning.menuslistes      
       end
-      @planning ||=[]
-      week_array          
+      @planning ||=[]          
     end
 
     def edit

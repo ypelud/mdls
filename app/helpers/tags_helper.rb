@@ -1,6 +1,8 @@
 module TagsHelper
   def tag_cloud(classes) 
-     tags = Menu.tag_counts(:limit => 20, :order=>'Rand()' ) #count(*) desc')
+     # tags = Menu.tag_counts(:limit => 20, :order => :random ) 
+     
+     tags = Menu.tag_counts(:limit => 20)
 
      max, min = 0, 0 
      tags.each { |t| 

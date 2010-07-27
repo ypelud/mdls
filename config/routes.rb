@@ -2,10 +2,11 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'menus'
   map.home '', :controller => 'menus', :action => 'index'
   
-  map.menusrss  '/menus.rss',                 :controller => 'menus',     :action => 'feedurl'     
 
-
-  map.resources :users
+  map.resources :users do |user|
+    user.resource :profil
+  end
+  
   map.resources :menus
   map.resources :menutypes
   map.resources :recherche
@@ -22,22 +23,24 @@ ActionController::Routing::Routes.draw do |map|
   #match 'signup' => 'users#new'
   #match 'logout' => 'user_sessions#destroy'
   
-    
-  map.activate  '/activate/:activation_code', :controller => 'users',     :action => 'activate', :activation_code => nil
   map.signup    '/signup',                    :controller => 'users',     :action => 'new'
-  map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'
-  map.errors    '/errors',                    :controller => 'users',     :action => 'errors'
-  map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
-#  map.login     '/login',                     :controller => 'sessions',  :action => 'new'
   map.logout    '/logout',                    :controller => 'user_sessions',  :action => 'destroy'
-  map.profil    '/profil',                    :controller => 'profil',    :action => 'edit'
+    
+#  map.activate  '/activate/:activation_code', :controller => 'users',     :action => 'activate', :activation_code => nil
+#  map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'
+#  map.errors    '/errors',                    :controller => 'users',     :action => 'errors'
+#  map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
+#  map.login     '/login',                     :controller => 'sessions',  :action => 'new'
+#  map.profil    '/profil',                    :controller => 'profil',    :action => 'edit'
   
+  map.menusrss  '/menus.rss',                 :controller => 'menus',     :action => 'feedurl'      
+  map.menusfb   '/menus-fb',                  :controller => 'menus',     :action => 'feed',     :format => 'rss'
+
   map.fr        '/fr',                        :controller => 'users',     :action => 'language', :code => "fr-FR"
   map.en        '/en',                        :controller => 'users',     :action => 'language', :code => "en-US"
   map.de        '/de',                        :controller => 'users',     :action => 'language', :code => "de-DE"
   map.sp        '/sp',                        :controller => 'users',     :action => 'language', :code => "sp-SP"
   
-  map.menusfb   '/menus-fb',                  :controller => 'menus',     :action => 'feed',     :format => 'rss'
   
   # The priority is based upon order of creation: first created -> highest priority.
 

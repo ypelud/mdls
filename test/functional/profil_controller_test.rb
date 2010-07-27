@@ -2,15 +2,14 @@ require File.dirname(__FILE__) + "/../test_helper"
 
 class ProfilControllerTest < ActionController::TestCase
     
-  fixtures :users, :profils
+  fixtures :all
   
   def setup
-    @controller = ProfilController.new
+    @controller = ProfilsController.new
     @request    = ActionController::TestRequest.new
-    @request.env['HTTP_REFERER'] = 'http://back'
     @response   = ActionController::TestResponse.new
     activate_authlogic
-    
+    @request.env['HTTP_REFERER'] = 'http://back'
   end
   
   def test_should_failed_if_not_login
@@ -21,7 +20,6 @@ class ProfilControllerTest < ActionController::TestCase
   
   def test_should_edit
     UserSession.create(users(:quentin))
-    
     get :edit
     assert_response :success
     assert_not_nil assigns(:profil)
@@ -31,8 +29,7 @@ class ProfilControllerTest < ActionController::TestCase
   end
 
   def test_should_create_and_edit
-    UserSession.create(users(:aaron))
-    
+    UserSession.create(users(:bob))
     get :edit
     assert_response :success
     assert_not_nil assigns(:profil)
@@ -42,11 +39,27 @@ class ProfilControllerTest < ActionController::TestCase
   end
   
   def test_should_update
-    UserSession.create(users(:aaron))
-    post :update, {:id => '2'}, :profil => { :id => 2, :user_id => 2,\
-       :layout_name => 'test', :style_menu => 'liste_style'}
+    user = UserSession.create(users(:quentin))
+    Profil.any_instance.stubs(:update_attributes).returns(true)
+    post :update
     assert_response :redirect
-    assert_redirected_to 'http://back'
+    assert_redirected_to :root
+  end
+
+  def test_should_failed_update
+    user = UserSession.create(users(:quentin))
+    Profil.any_instance.stubs(:update_attributes).returns(false)
+    post :update
+    assert_response :redirect
+    assert_redirected_to edit_user_profil_path(users(:quentin))
+  end
+  
+  def test_should_create_and_update
+    user = UserSession.create(users(:aaron))
+    Profil.any_instance.stubs(:update_attributes).returns(true)
+    post :update
+    assert_response :redirect
+    assert_redirected_to :root
   end
   
 end

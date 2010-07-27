@@ -1,33 +1,26 @@
 class ChoixmenuController < ApplicationController
-  before_filter :week_array
-  #require 'pdf/writer'
-  #require 'pdf/simpletable'
-
+  
   def add
-    menu_id = params[:id].split("_")[1]    
-    day = 'tous' #params[:day]
-    ms = 'tous' #params[:midisoir]
+    menu_id = params[:id]
+    
     menusliste = Menusliste.new
-
     menusliste.day = 'tous'
     menusliste.when = 'tous'
     menusliste.menu_id = menu_id      
 
-    session[:choix].push(menusliste) 
-    render :text => "#{session[:choix].length} menu(s)"
+    session_choix.push(menusliste) 
+    render :partial => "cart"
   end
 
   def remove
     menu_id = params[:id] 
-    day = 'tous' #params[:day]
-    ms = 'tous' #params[:midisoir]
-    session[:choix].each do |menusliste| 
+    session_choix.each do |menusliste| 
       if menusliste.menu_id=menu_id
-        session[:choix].delete(menusliste) 
+        session_choix.delete(menusliste) 
         break
       end
     end
-    render :text => "#{session[:choix].length} menu(s)"
+    render :text => "#{session_choix.length} menu(s)"
   end
 
   def save
@@ -43,7 +36,7 @@ class ChoixmenuController < ApplicationController
     session[:choix] = []
     @planning = Planning.find(params[:id])
     @planning.menuslistes.each do |menusliste|
-      session[:choix].push(menusliste) 
+      session_choix.push(menusliste) 
     end  
     redirect_to :root
   end

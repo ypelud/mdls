@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/../test_helper"
 
 class MenutypesControllerTest < ActionController::TestCase
   
-  fixtures :menutypes
+  fixtures :all
 
   def setup
     @controller = MenutypesController.new
@@ -41,7 +41,7 @@ class MenutypesControllerTest < ActionController::TestCase
   end
   
   def test_should_fail_create_not_login
-    post :create, :menutype => {:name => 'test'}
+    post :create
     assert_response :redirect
     assert_redirected_to :root
   end
