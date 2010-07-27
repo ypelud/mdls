@@ -1,0 +1,5 @@
+<h1>Editer</h1>
+<% form_for @profil, :url => user_profil_path(@user) do |f| %>
+  <%= render :partial => 'form', :object => f %>
+  <p><%= submit_tag 'Valider' , :class => 'button' %></p>
+<% end %>
