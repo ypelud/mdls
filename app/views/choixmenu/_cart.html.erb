@@ -1,6 +1,1 @@
 <div id="cartcount"><%=cartcount%></div>
-<ul>
-<% session_choix.each do |menusliste| %>
-	<li><%= Menu.find(menusliste.menu_id).title %></li>
-<% end %>
-</ul>

@@ -40,4 +40,11 @@ module ApplicationHelper
     end
   end
   
+  
+  def selected_menu(name)
+    if @selectedMenu == name
+      return 'selected'
+    end
+    ''
+  end
 end

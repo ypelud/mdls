@@ -1,55 +1,90 @@
-/* #48ACDE : bleu légé */
-/* #2F7091 : bleu profond */
-/* #DEAC47 : jaune paille */
-/* #91602F : marron */
-/* #212121 : noir */
-/* #DEDEDE : gris */
 
-body {background: #ffffff;font-family: Arial, Helvetica, sans-serif;font-size: 13px;color: #000000;margin: 0;}
+/* générique */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+li{list-style:none;}
+a {text-decoration:none;}
 
-.left {float: left;} .right {float: right;}
+.full { width: 100%;}
+.hidden { display: none;}
+.right { float: right; }
+.left { float: left; }
+.cb { clear: both; height: 0px;}
 
-#top {height: 25px;background-color: black;}
+html{color:#000;background:#EFEBDF;}
+body{width:1020px; margin:0px auto;}
+.wrapper{background-color:#F4ECCA; border-radius: 60px;}
 
-#menu {float: right;}
-#menu ul {margin: 0;padding: 0;list-style: none;line-height: normal;}
-#menu li {float: left;padding: 4px 10px;border-right: solid 1px #DEDEDE;}
-#menu a {text-decoration: none;text-transform: lowercase;font: 12px "Trebuchet MS", Arial, Helvetica, sans-serif;color: #48ACDE;}
+#top{height:20px;background:#EFEBDF;padding: 6px;}
+#top a {color:#8F6C56;font: 14px Arial;margin: 7px;}
+#top li { display: inline; }
 
-#undertop {width: 100%;height: 25px;background-color: lightgray;}
-#undertop #search {float: right; padding: 1px 0;margin: 0 0; background-color: pink;width: 200px;}
-#undertop #search .button {display: none;}
-#undertop #search .search{width:149px;height:16px;padding:4px 10px 2px 21px;font-size:12px;border:none;background:url(/images/topnav/search_field.gif) 0 -22px no-repeat;}
-#undertop #alerte {height: 16px;}
-#undertop #alerte {font: 12px "Trebuchet MS", Arial, Helvetica, sans-serif;color: #48ACDE;}
+#footer { height: 50px;  background:#EFEBDF;}
 
-/* Header */
-#header {clear: both;}
-#logo {width: 100%;height: 60px;margin: 0 auto;}
-#logo h1 ,h2 {padding: 0 0 0 20px;}
-#logo h1 {margin: 0;padding: 0 0 0 20px;line-height: normal;font-family: Georgia, "Times New Roman", Times, serif;font-size:34px;font-style: italic;color: #48ACDE;}
-#logo h1 a, h2 {color: #48ACDE;}
-#logo h1 a .gray {color: #91602F}
-#logo h1 a .green {color: #DEDEDE;}
-#logo h1 a {text-decoration: none;}
-#logo h1 a:hover {text-decoration: underline;}
-#logo h2 {font: italic 13px Georgia, "Times New Roman", Times, serif;}
+#header {height: 80px;font: 30px Georgia;}
+#header .left {height: 100%; margin-left: 9px; margin-top: 10px;}
+#header .right { height: 100%;margin-right: 27px;margin-top: 17px;}
+#header .green {color: #E7685D;}
+#header a {color: #8F6C56;}
+#header .baseline {font: 10px Georgia; color: #E7685D; text-align: right;}
 
-#rightbar {position: absolute;right: 0px;width: 160;height:600px;}
+#page #leftbar { width: 170px; margin-left: 5px;}
+#page #leftbar .box { width: 160px; } 
+#page #leftbar li .title { width: 100%; height: 28px; padding-top: 10px;padding-left:10px;background-color:#8F6C56;color: #FFFFFF; font:bold 14px Georgia;border-radius: 10px;}
+#page .info { padding: 5px;}
 
-#leftbar {position: absolute;left: 0px;width: 230px;height:600px;padding-left: 5px;padding-right: 5px;}
-#leftbar ul {margin: 0;padding: 0;list-style: none;}
-#leftbar li {margin-bottom: 40px;}
-#leftbar li ul {}
-#leftbar li li {margin: 0;}
-#leftbar .box {border: solid 1px red;background-color: yellow;}
-#leftbar .box h2 {margin-bottom: 5px;font-size: 18px;color: #DADADA;}
+#content { width: 682px; margin-left: 185px; }
+#content h1 { display: none; }
+#content #toolbar {  height: 28px; padding-top: 10px;padding-left:10px;background-color:#8F6C56;color: #FFFFFF; font:bold 15px Georgia;border-radius: 10px;}
+#content #toolbar li {display: inline; font:bold 14px Georgia; color: #FFFFFF; padding: 2px; border-radius: 4px;}
+#content #toolbar .selected {  background-color:#F4ECCE; }
+#content #toolbar .selected a {  color: #8F6C56;}
+#content #toolbar a { color: #FFFFFF;margin: 7px;}
+#content #menus { padding-top: 5px; }
 
-#content {margin-left: 250px;margin-right:161px;height:100%;background-color:#DEAC47;padding-left: 10px;min-height: 800px;}
-#footer {height:8.6em;background:#bbccd9;overflow:hidden;color:#cadcea;min-width:75em;}
-#login_div {position: absolute; top: 50px; right: 10px; z-index: 99; background: lightblue; padding: 5px;}
+#content #liste_menus { width: 100%;}
+#content #liste_menus li { padding-top: 4px; height: 43px; font: 12px Verdana; color: #000000; border-bottom: 1px solid #B3B3B3}
+#content #liste_menus li a { color: #000000;}
+#content #liste_menus .link { font-size: 14px; margin-left: 30px;}
+#content #liste_menus .byline { float: left; margin-left: 30px; width: 194px;}
 
-.even {background: lightgreen;}
+#content #sousmenus { height: 30px; padding-top: 5px;}
+#content #sousmenus .pagination { float: right; color: #000000; margin-top: 5px;}
+#content #sousmenus .pagination .prevnexet { background-color: #E7685D;  border-radius: 4px; padding: 2px; }
+#content #sousmenus .pagination a { color: #000000; text-decoration: underline ; }
+#content #sousmenus .pagination li { display: inline; }
 
-.mnu .pagination {float: right;top: 0px;}
-#cart {width:100%; background: crimson;}
+.button { float: left; background-color: #E7685D; color: #FFFFFF; border-radius: 4px; padding: 2px; margin: 2px;cursor:pointer}
+.button .lib { float: left;}
+.button a {color: #FFFFFF; }
+.button .arrow { float: left; width: 10px; margin-left: 4px; background: url('/images/arrow1.png') no-repeat 0px 5px;}
+.button.expanded { background-color: #C9544F; }
+
+#sujet { height: 28px;} 
+#sujet label { margin: 4px; }
+#sujet input { width: 600px; height: 20px;}
+
+.dragicon { cursor: move;}
+.checkbox, .dragicon { padding: 2px; margin: 0px auto;}
+
+.dropDown {cursor: pointer;position: absolute; z-index: 99; background: #C9544F; padding: 5px; color: #FFFFFF; border-radius: 4px;}
+
+#organisemenu { width: 100%;  min-height: 43px; color: #000000; border-bottom: 1px solid #B3B3B3; font: 14px Verdana;}
+#organisemenu ul { margin-left: 30px; padding-top: 4px; }
+#organisemenu li { padding: 4px; }
+#organisemenu .sortable { min-height: 20px; }
+/*fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+
+
+
+/* gestion des menus */
+/*#header { height: 60px; }
+#undertop { height: 60px; }
+#leftbar { width: 180px; }
+#content {margin-left: 200px;margin-right: 200px;}
+
+.pagination { float: right; }
+
+.sortable { padding-bottom: 5px;}*/

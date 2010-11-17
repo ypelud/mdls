@@ -1,0 +1,13 @@
+<% javascript "jquery.ba-url", "pagination" %>
+
+<div>
+	<div id="sousmenus">
+	<%= link_to t("mdls.all_menu"), plannings_url, :class=>'button' %>
+	<div class='paginationAnchor'></div>
+	</div>
+	
+	<div id="menus"><%= render :partial => "list" %></div>
+</div>
+
+<div class="post-footer">	
+</div>

@@ -1,14 +1,31 @@
-<div class="mnu"><%= will_paginate @menus %><h1><%= I18n.t("mdls.liste_menus")%></h1></div>
 
-<table id="liste_menus">
-	<tbody>
+<div id="liste_menus">
+	<%= will_paginate @menus %><h1><%= I18n.t("mdls.liste_menus")%></h1>
+	
+	<ul>
 	<%for menu in @menus %>
-     <tr id="mnuMidi_<%=menu.id%>" class="<%=menu_position%>">
-     	<td class="menu_cart"><%= image_tag "/images/icones/shopping-bag.gif" %></td>
-	    <td><input id=":pl" class="oZ-jc" type="checkbox" aria-labelledby=""></td> 
-	 	<td><%= link_to %Q{#{menu.title}}, :controller => "menus",  :action => "show", :id => menu %></td>
-	 	<td><%= link_to %Q{#{menu.user.login}}, {:action => "index", :user_id =>  menu.user} %></td>
-     </tr>
+	 <li>
+     <div id="mnuMidi_<%=menu.id%>" class="menu_cart <%=menu_position%>">
+		<div class="left">
+    		<div class="checkbox"><input type="checkbox" id="chk_<%=menu.id%>"aria-labelledby=""></div> 
+     		<div class="dragicon"><%= image_tag "/images/icones/shopping-bag.gif" %></div>
+		</div>
+ 		<div class="link"><%= link_to %Q{#{menu.title}}, :controller => "menus",  :action => "show", :id => menu %></div>
+		<div class="byline">Posté le <%= l menu.date, :format => :short%> </div>
+	 	<div class="user"><%= link_to %Q{#{menu.user.login}}, {:action => "index", :user_id =>  menu.user} %></div>
+     </div>
+	 </li>
      <% end %>  
-	</tbody>
-</table>
+	</ul>
+</div>
+
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('.paginationAnchor').html('');
+		$('.pagination').appendTo($('.paginationAnchor')) ;
+
+		$('div[id^=mnuMidi]').dragDropMenus("#cart", '<%= url_for(:action => 'add', :controller => 'choixmenu') %>');
+
+	});
+</script>
+

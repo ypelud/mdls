@@ -1,13 +1,10 @@
+<li class='<%=selected_menu("menu")%>'><%= link_to t("mdls.menus"), menus_path%></li>                        
+<li class='<%=selected_menu("planning")%>'> <%= link_to t("mdls.planning"), plannings_path%></li>                        
 <%if current_user %>
-   <li><span><%=link_to t("log_out"), logout_path %></span></li>
-   <li><span><%= link_to t("mdls.planning"), plannings_path %></span></li>                        
-   <li><a href="/emailer/index"><span><%=t("mdls.contact")%></span></a></li>
-   <li><span><%=link_to t("mdls.options"), edit_user_profil_url(current_user) %></span></li>
-<%else %>
-   <li><span><%=link_to t("mdls.sign_in"), :new_user_session, :class => "login" %></span></li>
-   <li><span><%=link_to t("sign_up"), signup_path %></span></li>
+   <li class='<%=selected_menu("contact")%>'><%=link_to t("mdls.contact"), emailer_url%></li>
+   <li class='<%=selected_menu("profil")%>'><%=link_to t("mdls.options"), edit_user_profil_url(current_user)%></li>
 <%end %>
 <% if admin? %>
-   <li><span><%= link_to t("mdls.menutype"), menutypes_path %></span></li>                        
-   <li><span><%= link_to t("mdls.userlist"), users_url %></span></li>                        
+   <li class='<%=selected_menu("type")%>'><%= link_to t("mdls.menutype"), menutypes_path %></li>                        
+   <li class='<%=selected_menu("user")%>'><%= link_to t("mdls.userlist"), users_url %></li>                        
 <% end %>

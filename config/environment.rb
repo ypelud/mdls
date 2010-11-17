@@ -25,6 +25,6 @@ Rails::Initializer.run do |config|
   config.gem 'acts_as_taggable_on_steroids'
   config.gem 'authlogic', :version => '2.1.3'
   config.gem 'ambethia-recaptcha', :lib => 'recaptcha/rails'
-  
+  config.gem 'guid'
   
 end

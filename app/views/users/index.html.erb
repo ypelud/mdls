@@ -9,7 +9,7 @@
    <% for user in @users %>
       <tr class="liste">
          <td><%= user.login %></td>
-		 <td><%= l user.last_request_at %>
+		 <td><%= user.last_request_at %>
          <td><%= user.email.gsub(/@/, "(at)") %></td>
       </tr>  
    <% end %>

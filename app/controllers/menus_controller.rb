@@ -1,5 +1,10 @@
 class MenusController < ApplicationController
   before_filter :authorize_user, :except => [:show, :index, :feed, :feedurl]
+  before_filter :init
+  
+  def init
+    @selectedMenu = 'menu'
+  end
   
   def index
     @menus = Menu.paginate  :page => params[:page],

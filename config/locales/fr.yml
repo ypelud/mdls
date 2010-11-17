@@ -63,27 +63,40 @@ fr:
   vendredi: 'vendredi'
   samedi: 'samedi'
   dimanche: 'dimanche'
-  new_menu: "Nouveau menu"
+  tous: 'tous'
+  aucun: 'aucun'
+  new_menu: "Nouveau"
+  sur: 'sur'
+  precedent: '< Préc.'
+  suivant: 'Suiv.>'
+  select: 'Sélectionner'
+  ajouter: 'Ajouter'
+  sujet: 'Sujet'
+  envoyer: 'envoyer'
   mdls:
     sign_in : "Connexion"
     authorize_page: "Vous n'êtes pas authorisé à afficher cette page"
     home: "Accueil"
     search : "recherche"
-    my_menus: "mes menus"
-    keywords: "mots clés"
-    last_comments: "Derniers commentaires"
+    my_menus: "semaines"
+    keywords: "nuage de mots"
+    last_comments: "commentaires"
     how_it_works: "comment ça marche"
-    planning: "semainier"
+    planning: "semaines"
     midi: 'midi'
     soir: 'soir'
-    contact: 'contact'
+    contact: 'contacts'
     options: 'options'
-    menutype: 'type'
+    menutype: 'types'
     userlist: 'users'
     liste_menus: 'Liste des menus'
-    all_menu: "Tous les menus"
+    all_menu: "Tous"
     create: 'Créer'
-    new_menu: "Nouveau menu"
+    new_menu: "Nouveau"
+    organise: "Organiser"
+    update: "Modifier"
+    menus: "menus"
+    effacer: 'Effacer'
   menus:
     create_ok: 'Menu créé correctement.'
     update_ok: 'Menu mis à jour correctement.'
@@ -106,5 +119,6 @@ fr:
   planning:
     new: 'Créer un nouveau planning'
     create: 'Créer'
+    update: "Mise à jour"
 
 

@@ -11,15 +11,15 @@ module Mdls
       def week
         if @current_user and Profil.find_by_id(@current_user.id) 
           day = Profil.find_by_id(@current_user.id).first_day
-          deb = @week[0]
-          while day and @week[0]!=day do
-            dec = @week[0] 
-            @week.shift
-            @week.push(dec) 
-            break if @week[0]==deb 
-          end          
+          w2 = @week.slice!(0, @week.index(day))
+          @week = @week + w2
         end          
         @week  
+      end
+      
+      def weekAll
+        weekA = @week
+        weekA.unshift(I18n.t('tous'))
       end
     
       def self.included(base)

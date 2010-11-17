@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   helper_method :admin?, :session_choix, :current_user, :current_user_session
-
+  before_filter :init
+  
 private
+  def init
+    @selectedMenu ||= 'menu'    
+  end
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
@@ -62,7 +67,8 @@ private
     false
   end
 
-  def session_choix
+  def session_choix(jour=nil)
+    return session[:choix].select{|item| item.day == jour } if jour
     session[:choix] ||= []
   end
 

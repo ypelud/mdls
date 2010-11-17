@@ -1,5 +1,10 @@
 class ProfilsController < ApplicationController
   before_filter :authorize_user, :init_profil
+  before_filter :init
+  
+  def init
+    @selectedMenu = 'profil'
+  end
   
   def edit
     @user = current_user

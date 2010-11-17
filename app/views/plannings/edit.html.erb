@@ -1,8 +1,8 @@
 <h1>Editer</h1>
 <% form_for @planning, :url => plannings_path do |f| %>
-  <%= messages_error @user  %>
+  <%= messages_error(@planning) %>
   <%= render :partial => "form", :object => f %>
-  <%= f.submit "Update" %>
+  <%= f.submit I18n.t("planning.update"), :class => 'button' %>
 <% end %>
 
 

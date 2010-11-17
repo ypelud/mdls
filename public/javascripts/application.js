@@ -3,8 +3,10 @@
 
 
 $(document).ready(function() {
+	
   	$(".login").click(function() {
 		$.getScript(this.href)
 		return false;
-	});
+	});	
+	
 }) ;

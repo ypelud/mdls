@@ -1,5 +1,10 @@
 class MenutypesController < ApplicationController
   before_filter :authorize_user
+  before_filter :init
+  
+  def init
+    @selectedMenu = 'type'
+  end
   
   def index
     list

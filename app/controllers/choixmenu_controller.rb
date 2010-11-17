@@ -1,21 +1,41 @@
 class ChoixmenuController < ApplicationController
   
   def add
-    menu_id = params[:id]
+    addMenu(params)
+    render :partial => "cart"
+  end
+  
+  def addAll
+    session[:choix] = [] if params["empty"]
     
-    menusliste = Menusliste.new
-    menusliste.day = 'tous'
-    menusliste.when = 'tous'
-    menusliste.menu_id = menu_id      
+    fields = JSON(params[:fields])
+    fields.each do |param|
+      addMenu(param)
+    end
+    render :partial => "cart"
+  end
 
-    session_choix.push(menusliste) 
+
+  def addMenu(param)
+    menu_id = param["id"].split("_")[1]
+    day = param["day"]
+
+    m = Menusliste.new
+    m.day = (day) ? day : 0
+    m.when = 0
+    m.menu_id = menu_id     
+    session_choix.push(m)
+  end
+
+  
+  def index
     render :partial => "cart"
   end
 
   def remove
     menu_id = params[:id] 
     session_choix.each do |menusliste| 
-      if menusliste.menu_id=menu_id
+      if menusliste.menu_id==menu_id
         session_choix.delete(menusliste) 
         break
       end
@@ -24,7 +44,7 @@ class ChoixmenuController < ApplicationController
   end
 
   def save
-    #do nothing
+    p_name = params[:name]
   end
 
   #def print

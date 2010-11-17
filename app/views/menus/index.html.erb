@@ -1,15 +1,28 @@
 
 <% javascript "jquery.ba-url", "pagination" %>
 
-<div id="menus">
-	<%= render :partial => 'menus' %>
+<div>
+	<div id="sousmenus">
+	<%= link_to t("mdls.all_menu"), menus_url, :class=>'button' %>
+	<%= link_to t("mdls.new_menu"), new_menu_url, :class=>'button' if current_user%> 
+	<div class= 'button selectall'><div class='lib'><%= t("select") %></div><div class='arrow'>&nbsp;</div></div>
+	<div class= 'button addAll'><div class='lib'><%= t("ajouter") %></div><div class='arrow'>&nbsp;</div></div>
+	<div class='paginationAnchor'></div>
+	</div>
+	
+	<div id="menus"><%= render :partial => 'menus' %></div>
 </div>
 
 <div class="post-footer">	
 <p class="links">
-<% if current_user %>
-  <%= link_to t("mdls.new_menu"), new_menu_url %> |
-<% end %>
-  <%= link_to t("mdls.all_menu"), menus_url %>
 </p>
 </div>
+
+
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('.selectall').selectAll({tous: "<%=t('tous')%>", aucun: "<%=t('aucun')%>", selectBoxes: '#menus .checkbox input'}) ;
+		$('.addAll').selectAll({method: 'addDropDown', selectBoxes: '#menus .checkbox'
+		  , url: "<%= url_for(:action => 'addAll', :controller => 'choixmenu') %>", dropSelector: "#cart"}) ;
+	});
+</script>

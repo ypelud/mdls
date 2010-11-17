@@ -1,4 +1,10 @@
-<li><a href="/"><span><%=t("mdls.home")%></span></a></li>
+<li><a href="/"><%=t("mdls.home")%></a></li>
+<%if current_user %>
+   <li><%=link_to t("log_out"), logout_path %></li>
+<%else %>
+   <li><%=link_to t("mdls.sign_in"), :new_user_session, :class => "login" %></li>
+   <li><%=link_to t("sign_up"), signup_path %></li>
+   <div id="login_div" style="display:none;"></div>
+<%end %>
 <li><a href="/home/comment"><span><%=t("mdls.how_it_works")%></span></a></li>
 <li><a class="rss" href="/menus.rss">RSS</a></li>
-

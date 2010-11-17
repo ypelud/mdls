@@ -1,22 +1,14 @@
 <h1>Semaine : <%=@planning.name %></h1>
-<div id=>
-    <div id="planning_style">
-        <% @week.each do |day| %>
-        <h2><%=day %></h2>
-        <ul>
-            <% @midisoir.each do |midisoir| %>
-            <li><%= midisoir %></li>
-            <%= render :partial => "cart", :locals => { :day => day, :midisoir => midisoir } %>
-            <% end %>
-        </ul>
-        <% end %>
-    </div>
-</div>
+
+<%= render :partial => 'content' %>
+
+
 <div class="post-footer">
     <p class="links">
-        <%= link_to "Appliquer", :controller => "choixmenu", :action => "apply", :id => @planning.id %>|
-        <% if user_ok? then %>
-		  <%= link_to( "Supprimer", @planning,  :confirm => 'Are you sure?', :method => :delete)  %> |   
+        <%= link_to "Appliquer", :controller => "choixmenu", :action => "apply", :id => @planning.id %>
+        <% if (current_user && (@planning.user == current_user)) || admin? %>
+		<%= link_to t("mdls.update"), "#", { :id => 'update-planning'} %>
+		<%= link_to ("Supprimer", @planning,  :confirm => 'Are you sure?', :method => :delete)  %> 
 		<% end %>
         <%= link_to "Retour", :action => "index" %>
     </p>

@@ -1,5 +1,11 @@
 class EmailerController < ApplicationController
 
+  before_filter :init
+  
+  def init
+    @selectedMenu = 'contact'
+  end
+
   def sendmail
     email = params[:email]
     cc = current_user.email if  params[:cc_mail] == "1"

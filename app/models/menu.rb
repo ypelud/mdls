@@ -5,7 +5,7 @@ class Menu < ActiveRecord::Base
   validates_presence_of :menutype, :user, :title
   
   cattr_accessor :per_page
-  @@per_page = 25
+  @@per_page = 10
   
   acts_as_taggable
   acts_as_commentable

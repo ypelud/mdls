@@ -41,6 +41,9 @@ ActionController::Routing::Routes.draw do |map|
   map.de        '/de',                        :controller => 'users',     :action => 'language', :code => "de-DE"
   map.sp        '/sp',                        :controller => 'users',     :action => 'language', :code => "sp-SP"
   
+  map.emailer   'emailer',                    :controller => 'emailer',  :action => 'index'
+  
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
 
