@@ -97,6 +97,7 @@ fr:
     update: "Modifier"
     menus: "menus"
     effacer: 'Effacer'
+    Valider: 'Valider'
   menus:
     create_ok: 'Menu créé correctement.'
     update_ok: 'Menu mis à jour correctement.'
