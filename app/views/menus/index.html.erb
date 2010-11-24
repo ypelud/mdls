@@ -3,7 +3,7 @@
 
 <div>
 	<div id="sousmenus">
-	<%= link_to t("mdls.all_menu"), menus_url, :class=>'button' %>
+	<% if false %><%= link_to t("mdls.all_menu"), menus_url, :class=>'button' %><% end %>
 	<%= link_to t("mdls.new_menu"), new_menu_url, :class=>'button' if current_user%> 
 	<div class= 'button selectall'><div class='lib'><%= t("select") %></div><div class='arrow'>&nbsp;</div></div>
 	<div class= 'button addAll'><div class='lib'><%= t("ajouter") %></div><div class='arrow'>&nbsp;</div></div>
@@ -12,12 +12,6 @@
 	
 	<div id="menus"><%= render :partial => 'menus' %></div>
 </div>
-
-<div class="post-footer">	
-<p class="links">
-</p>
-</div>
-
 
 <script type='text/javascript'>
 	$(document).ready(function() {

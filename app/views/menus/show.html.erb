@@ -1,4 +1,14 @@
 <div id="menu_show">
+	<div id="sousmenus">
+   		<% if (current_user && (@menu.user == current_user)) || admin? %>
+      		<%= link_to("Editer", edit_menu_path(@menu), :class => :button) %>
+      		<%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete, :class => :button)  %> 
+   		<% end %>
+   		<%= link_to "Retour", menus_path, :class => :button %> 
+   		<%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id},
+            :remote => true, :class => :button %>
+	</div>
+
 <h1><%=@menu.title%></h1>
 <h2>Description </h2>
 <div class="desc">
@@ -13,13 +23,6 @@
 <div class="post-footer">	
 <p class="byline">Posté par <%= @menu.user.login %> le <%= l @menu.date, :format => :short%> </p>
 <p class="links">
-   <% if (current_user && (@menu.user == current_user)) || admin? %>
-      <%= link_to("Editer", edit_menu_path(@menu)) %> |
-      <%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete)  %> |   
-   <% end %>
-   <%= link_to "Retour", menus_path %> |
-   <%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id},
-            :remote => true %>
 </p>
 </div>
 <div id="comment_div" style="display: none">
