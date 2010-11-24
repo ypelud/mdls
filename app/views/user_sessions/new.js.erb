@@ -1,2 +1,21 @@
 $("#login_div").html("<%= escape_javascript(render("new")) %>")
-$("#login_div").toggle("blind");
+
+$("#login_div").dialog({
+			autoOpen: false,
+			height: 300,
+			width: 350,
+			modal: true,
+			buttons: {
+				"login": function() {
+					Alert("login");
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+				alert("close");
+			}
+		});
+		
+$( "#login_div" ).dialog( "open" );
