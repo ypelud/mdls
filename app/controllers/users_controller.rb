@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Registration successful."
+      flash[:notice] = t("signup_complete")
       redirect_to root_url
     else
       render :action => :new
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
+      flash[:notice] = t("user.update_ok")
       redirect_to account_url
     else
       render :action => :edit
@@ -51,6 +51,7 @@ class UsersController < ApplicationController
   def language
     code = params[:code] || 'fr-FR'
     session[:language] = code
+    I18n.default_locale = code
     flash[:notice] = "language => #{code}"
     redirect_back_or_default :back  
   end

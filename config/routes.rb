@@ -36,10 +36,10 @@ ActionController::Routing::Routes.draw do |map|
   map.menusrss  '/menus.rss',                 :controller => 'menus',     :action => 'feedurl'      
   map.menusfb   '/menus-fb',                  :controller => 'menus',     :action => 'feed',     :format => 'rss'
 
-  map.fr        '/fr',                        :controller => 'users',     :action => 'language', :code => "fr-FR"
+  map.fr        '/fr',                        :controller => 'users',     :action => 'language', :code => "fr"
   map.en        '/en',                        :controller => 'users',     :action => 'language', :code => "en-US"
-  map.de        '/de',                        :controller => 'users',     :action => 'language', :code => "de-DE"
-  map.sp        '/sp',                        :controller => 'users',     :action => 'language', :code => "sp-SP"
+  map.de        '/de',                        :controller => 'users',     :action => 'language', :code => "de"
+  map.sp        '/es',                        :controller => 'users',     :action => 'language', :code => "es"
   
   map.emailer   'emailer',                    :controller => 'emailer',  :action => 'index'
   
