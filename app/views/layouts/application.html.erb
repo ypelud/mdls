@@ -30,6 +30,7 @@
 	<%= javascript_include_tag 'mdls' %>
 </head>
 <body>
+	
 <div class='wrapper'>
 <!-- start header -->
 <div id="top" class="ui-state-default">
@@ -53,26 +54,34 @@
 	<div class='right'>
 		<%= render :partial => "/shared/pub1" %>
 	</div>
+	<div id="flash" class="flash_ajax"> 
+		<% unless flash[:notice].blank? %> 
+		<%= flash[:notice]%> 
+		<% end %> 
+		<% unless flash[:error].blank? %> 
+		<%= flash[:error]%> 
+		<% end %>
+	</div>
 </div>
 <% if (false) %>
 <div id="undertop" class="ui-state-default">
 	<div id="search" class="right"><%= render :partial => '/recherche/new' %></div>
 </div>
 <% end %>
-<div class='cb'>&nbsp;</div>
 <!-- end header -->
+<div class='cb'>&nbsp;</div>
 
 
 <!-- start page -->
 <div id="page"> 	
 	<!-- start rightbar -->
-	<div id="rightbar" class="right" >
+	<div class="rightbar right" >
 		<%= render :partial => '/shared/pub2'%>
 	</div>
 	<!-- end rightbar -->
 	
 	<!-- start leftbar -->   
-	<div id="leftbar" class="left">     
+	<div class="leftbar left">     
 		<ul>
 			<li class="box">
 				<div class='title'><%=t("mdls.my_menus")%></div>
@@ -95,11 +104,10 @@
 	<!-- end leftbar -->
 	
 	<!-- start content -->
-	<div id="content" >
+	<div id="content" >		
 		<div id="toolbar">
 			<ul><%= render :partial => "/home/navigationlogin" %></ul>
 		</div>
-		<div id="alerte" style="display:none;"><%= flash[:notice] %></div>
 		<%= yield %>
 	</div>
 	<!-- end content -->
@@ -115,17 +123,9 @@
 </div>
 <!-- end footer -->
 
+
 </div>
+
 </body>
 </html>
 
-<%= if false #flash[:notice]
-	update_page_tag do |page|
-		page.show("alerte") 
-		page.visual_effect(:highlight, "alerte")
-		page.delay(4.0) do
-			page.hide("alerte")
-		end
-	end
-end
-%>

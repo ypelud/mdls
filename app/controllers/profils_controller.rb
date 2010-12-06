@@ -2,10 +2,6 @@ class ProfilsController < ApplicationController
   before_filter :authorize_user, :init_profil
   before_filter :init
   
-  def init
-    @selectedMenu = 'profil'
-  end
-  
   def edit
     @user = current_user
   end
@@ -29,6 +25,8 @@ class ProfilsController < ApplicationController
   end   
    
   def init_profil
+    @selectedMenu = 'profil'
+    
     @profil = Profil.find_by_id(current_user.id) 
     unless @profil
       @profil = Profil.new
