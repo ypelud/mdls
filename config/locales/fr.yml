@@ -43,7 +43,7 @@ fr:
   logged_in_as : "Connecté en tant que {{login}}"
   logged_out : "Vous avez été déconnecté."
   login : "Pseudo"
-  login_failed : "Ne peut pas vous connecter comme {{login}}"
+  login_failed : "Une erreur est survenue lors de votre connexion"
   new_user_sign_up : "S'enregistrer comme nouvel utilisateur"
   not_logged_in : "Non connecté"
   password : "Mot de passe"

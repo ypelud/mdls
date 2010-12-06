@@ -13,18 +13,17 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Login successful!"
+      flash[:notice] = t("logged_in")
       redirect_to :root
-      #redirect_back_or_default account_url
     else
-      flash[:error] = "Utilisateur incorrecte"
+      flash[:error] = t("login_failed")
       redirect_to :root
     end
   end
 
   def destroy
     current_user_session.destroy
-    flash[:notice] = "Logout successful!"
+    flash[:notice] = t("logged_out")
     redirect_to :root
   end
 end
