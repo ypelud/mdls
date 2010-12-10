@@ -1,6 +1,5 @@
 class PlanningsController < ApplicationController
   before_filter :authorize_user, :except => [:show, :index, :move, :new]
-  before_filter :init
   
   def init
     @selectedMenu = 'planning'

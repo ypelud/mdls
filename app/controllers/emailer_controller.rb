@@ -1,6 +1,4 @@
 class EmailerController < ApplicationController
-
-  before_filter :init
   
   def init
     @selectedMenu = 'contact'

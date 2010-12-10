@@ -1,6 +1,5 @@
 class MenutypesController < ApplicationController
-  before_filter :authorize_user
-  before_filter :init
+  before_filter :require_admin
   
   def init
     @selectedMenu = 'type'

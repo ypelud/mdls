@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :authorize_user, :except => [:list]
+  before_filter :require_user, :only => [:create]
   
   def create
     @menu = Menu.find(params[:id])
@@ -31,11 +31,4 @@ class CommentsController < ApplicationController
   def comment5
   end
   
-  def authorize_user
-    unless current_user
-      flash[:error] = t("comment.authorize")
-      redirect_to :back
-      false
-    end
-  end  
 end

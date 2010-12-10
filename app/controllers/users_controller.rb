@@ -2,9 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   before_filter :require_admin, :only => [:index]
-   
-  before_filter :init
-  
+     
   def init
     @selectedMenu = 'user'
   end
