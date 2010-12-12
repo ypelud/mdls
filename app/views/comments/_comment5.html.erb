@@ -1,7 +1,6 @@
 <div class="byline">
-<% menu_from_comment(comment) do |menu| %>
-	<%= link_to %Q{#{menu.title}}, menu_path(menu) %>
-	<div><%= comment.comment %></div>
+<% @menu = menu_from_comment(comment)  %>
+	<%= link_to %Q{#{@menu.title}}, menu_path(@menu) %>
+	<div><%= summary(comment.comment) %></div>
 	<%= User.find(comment.user_id).login %> : <%= comment.created_at.to_formatted_s(:short) %> 
-<% end %>
 </div>

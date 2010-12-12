@@ -7,6 +7,11 @@ module CommentsHelper
   def menu_from_comment(comment)
     rel=Comment.find_commentable(comment.commentable_type, comment.commentable_id)
     rel=rel.first if rel.class!=Menu
-    Menu.find_by_id(rel.id) 
+    @menu = Menu.find_by_id(rel.id) 
   end 
+  
+  def summary(comment)
+    len = 50
+    return comment[0,len] << "..." if comment.length>len
+  end
 end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
-  before_filter :require_admin, :only => [:index]
+  before_filter :require_admin, :only => [:index, :compteur]
      
   def init
     @selectedMenu = 'user'
@@ -46,6 +46,13 @@ class UsersController < ApplicationController
       :per_page => 100          
   end  
   
+  def compteur
+     @nbM = User.count
+     @nbC = Menu.count
+     render :partial => "compteur"
+   end
+  
+private
   def language
     code = params[:code] || 'fr-FR'
     session[:language] = code
@@ -54,9 +61,5 @@ class UsersController < ApplicationController
     redirect_back_or_default :back  
   end
   
-private
-  def require_admin
-    admin?
-  end
 
 end

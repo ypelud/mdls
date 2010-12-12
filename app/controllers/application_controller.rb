@@ -12,17 +12,6 @@ private
     @selectedMenu ||= 'menu'    
   end
   
-  def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
-  end
-
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.user
-  end
-
-  
   def require_user
     unless current_user
       store_location
@@ -41,15 +30,15 @@ private
     end
   end
   
-  def store_location
-      session[:return_to] = request.request_uri
+  def require_admin
+    unless admin?
+      store_location
+      flash[:notice] = "You must be admin in to access this page"
+      redirect_to :root
+      return false
+    end
   end
-      
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
-  end
-
+  
   def authorize_user 
     unless user_ok? || admin?
       flash[:error] = t(:authorize_page) 
@@ -58,6 +47,16 @@ private
     end 
   end
   
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
+  end
+
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.user
+  end
+
   def admin?
     current_user && (current_user.login==APP_CONFIG['super_user']) 
   end
@@ -72,5 +71,13 @@ private
     session[:choix] ||= []
   end
 
-  
+  def store_location
+    session[:return_to] = request.request_uri
+  end
+      
+  def redirect_back_or_default(default)
+    redirect_to(session[:return_to] || default)
+    session[:return_to] = nil
+  end
+    
 end

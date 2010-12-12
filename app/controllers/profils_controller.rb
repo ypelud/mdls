@@ -6,7 +6,6 @@ class ProfilsController < ApplicationController
   end 
 
   def edit
-    @user = current_user
     @profil = Profil.find_by_id_or_init(current_user.id) 
   end    
   

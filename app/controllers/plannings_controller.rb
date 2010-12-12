@@ -1,4 +1,5 @@
 class PlanningsController < ApplicationController
+  before_filter :require_user, :except => [:show, :index, :move, :new]
   before_filter :authorize_user, :except => [:show, :index, :move, :new]
   
   def init
@@ -110,8 +111,6 @@ class PlanningsController < ApplicationController
   
   def user_ok?
     @planning=Planning.find(params[:id]) if (params[:id])
-  
-    return false unless current_user    
     return true unless @planning
     return true if (current_user.id==@planning.user_id) or admin?
     false

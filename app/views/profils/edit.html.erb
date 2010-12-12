@@ -1,5 +1,5 @@
 <h1>Editer</h1>
-<% form_for @profil, :url => user_profil_path(@user) do |f| %>
+<% form_for @profil, :url => user_profil_path(current_user) do |f| %>
 	<div id="sousmenus">
 		<%= link_to I18n.t("mdls.Valider") , '#', {:class => :button, :id => :valider} %>
 	</div>

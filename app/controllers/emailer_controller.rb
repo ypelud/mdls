@@ -1,4 +1,5 @@
 class EmailerController < ApplicationController
+  before_filter :require_user
   
   def init
     @selectedMenu = 'contact'

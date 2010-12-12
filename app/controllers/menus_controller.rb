@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+  before_filter :require_user, :except => [:show, :index, :feed, :feedurl]
   before_filter :authorize_user, :except => [:show, :index, :feed, :feedurl]
   
   def init
@@ -76,7 +77,6 @@ class MenusController < ApplicationController
 protected
   def user_ok?
     @menu = Menu.find_by_id(params[:id]) if params[:id]
-    return false unless current_user    
     return true unless @menu    
     return true if (current_user.id==@menu.user_id) or admin?
     false
