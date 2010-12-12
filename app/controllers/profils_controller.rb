@@ -1,5 +1,5 @@
 class ProfilsController < ApplicationController
-  before_filter :require_user
+  before_filter :login_required
   
   def init
     @selectedMenu = 'profil'

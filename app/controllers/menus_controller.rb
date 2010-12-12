@@ -1,6 +1,5 @@
 class MenusController < ApplicationController
-  before_filter :require_user, :except => [:show, :index, :feed, :feedurl]
-  before_filter :authorize_user, :except => [:show, :index, :feed, :feedurl]
+  before_filter :login_required, :except => [:show, :index, :feed, :feedurl]
   
   def init
     @selectedMenu = 'menu'
@@ -75,9 +74,10 @@ class MenusController < ApplicationController
   end 
   
 protected
-  def user_ok?
+  def authorized?
     @menu = Menu.find_by_id(params[:id]) if params[:id]
     return true unless @menu    
+    return false unless current_user
     return true if (current_user.id==@menu.user_id) or admin?
     false
   end 

@@ -5,8 +5,7 @@
       		<%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete, :class => :button)  %> 
    		<% end %>
    		<%= link_to "Retour", menus_path, :class => :button %> 
-   		<%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id},
-            :remote => true, :class => :button %>
+   		<%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id}, :class => :button, :id => :commentaires %>
 	</div>
 
 <h1><%=@menu.title%></h1>
@@ -28,3 +27,11 @@
 <div id="comment_div" style="display: none">
 </div>
 
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('#commentaires').live('click', function() {
+			$.post(this.href, '', null, "script");  
+			return false;	
+		});
+	})
+</script>

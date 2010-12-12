@@ -1,6 +1,5 @@
 class PlanningsController < ApplicationController
-  before_filter :require_user, :except => [:show, :index, :move, :new]
-  before_filter :authorize_user, :except => [:show, :index, :move, :new]
+  before_filter :login_required, :except => [:show, :index, :move, :new]
   
   def init
     @selectedMenu = 'planning'
@@ -109,9 +108,10 @@ class PlanningsController < ApplicationController
      session_choix
   end
   
-  def user_ok?
+  def authorized?
     @planning=Planning.find(params[:id]) if (params[:id])
     return true unless @planning
+    return false unless current_user
     return true if (current_user.id==@planning.user_id) or admin?
     false
   end 
