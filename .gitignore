@@ -13,3 +13,4 @@ lib/tasks/
 tmp/
 .bundle/
 *.sqlite3
+doc/
