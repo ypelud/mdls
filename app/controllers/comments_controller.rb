@@ -12,23 +12,23 @@ class CommentsController < ApplicationController
   end
   
   def list
-    @menu = Menu.find(params[:id])
-    @comment = Comment.new()
-    respond_to do |format| 
-      format.html { render :partial => "list" }
-      format.js
-    end
-  end
-  
-  def list5
-    @comments = Comment(5)
-    respond_to do |format| 
-      format.html { render :partial => "list5" }
-      format.js
-    end
-  end
-
-  def comment5
-  end
+            @menu = Menu.find(params[:id])
+            @comment = Comment.new()
+            respond_to do |format| 
+              format.html { render :partial => "list" }
+              format.js
+            end
+           end
+  #   
+  #   def index
+  #     @comments = Comment(5)
+  #     respond_to do |format| 
+  #       format.html { render :partial => "list5" }
+  #       format.js
+  #     end
+  #   end
+  #   
+  #   def comment5
+  #   end
   
 end
