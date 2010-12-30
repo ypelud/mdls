@@ -36,30 +36,28 @@ class PlanningsController < ApplicationController
   
   
   def update
+    debugger
     Planning.transaction do 
       @planning = Planning.find(params[:id])      
       @planning.update_attributes(params[:planning])
       @planning.save! 
-      save_planning_menus(params[:fields])
-    end
-    render :text => "OK"
-    #redirect_to home_path
-  end
+      @planning.menuslistes.each do |menusliste|
+        menusliste.destroy
+      end      
+      fields = JSON(params[:fields])
+      fields.each do |param|
+        menu_id = param["id"].split("_")[1]
+        day = param["day"]
 
-  def save_planning_menus(fields = [])
-    @planning.menuslistes.each do |menusliste|
-      menusliste.destroy
-    end      
-    fields.each do |jour|
-      indice = jour[0].split("_")[1]
-      jour[1].each do |menu|
         m = Menusliste.new
-        m.day = indice
-        m.menu_id = menu[1].to_i
+        m.day = (day) ? day : 0
+        m.when = 0
+        m.menu_id = menu_id
         m.planning = @planning
         m.save!
-      end
+      end    
     end
+    render :text => "OK"
   end
   
   
