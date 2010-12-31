@@ -1,6 +1,17 @@
-<div id="organisemenu">
-	<div id="wrappermenu">
+<div class="organisemenu">
+	<div class="wrappermenu">
 	<div class='organise'><%= title %></div>
-	<ul id='sortable_<%=jour%>' class='sortable'><%=listmenu(recupereJour(@liste, jour))%></ul>
+	<ul id='sortable_<%=jour%>' class='sortable'>
+	<% @liste.select{|m| m.day == jour}.each do |plan| %>
+		<% menu = Menu.find_by_id(plan.menu_id) %>
+		<li class='ui-state-default' id='<%= menu.id.to_s %>'>
+			<%= menu.title %>
+			<a href='#' class='delete_mnu icon right'>__</a>
+			<a href='#' class='up_mnu icon right'>__</a>
+			<a href='#' class='down_mnu icon right'>__</a>
+		</li>
+	<% end %>
+	</ul>
+		
 	</div>
 </div>

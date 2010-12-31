@@ -82,6 +82,12 @@ body{width:1020px; margin:0px auto;}
 #flash{  font-size:14px; text-align:center; padding: 4px;} 
 .flash_html { display:inline; } 
 .flash_ajax{ float: left; display: block; width:500px; top: 30px; background-color:#F4D369; padding:4px; bottom: 0; z-index: 1003; border-radius: 4px;}
+
+
+.icon { background-image: url(images/ui-icons_cd0a0a_256x240.png); height: 16px; width: 16px; }
+.delete_mnu {background-position: -176px -96px;}
+.up_mnu { background-position: 0px -48px;}
+.down_mnu {  background-position: -64px -48px;}
 /*fieldset,img {border:0;}
 address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
 caption,th{text-align:left;}

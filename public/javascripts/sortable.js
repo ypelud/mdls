@@ -57,7 +57,14 @@ $().ready(function() {
 		return false;
 	});
 	
+	$('.up_mnu').live('click', function() {
+		$(this).parent().appendTo($(this).parents(".organisemenu:first").prev().find('ul'));
+	});
 
+	$('.down_mnu').live('click', function() {
+		$(this).parent('li:first').appendTo($(this).parents(".organisemenu:first").next().find('ul'));
+	});
+	
 	$( "#create-planning" ).button().click(function() {
 			$( "#dialog-form" ).dialog( "open" );
 	});
