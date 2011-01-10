@@ -29,6 +29,7 @@ $().ready(function() {
 		autoOpen: false,
 		resizable: false,
 		modal: true,
+		width: 500,
 		buttons: {
 			"Valider": function() {
 				var form = $("#dialog-form form") ;
@@ -52,25 +53,21 @@ $().ready(function() {
 		return false;
 	});
 	
-	$('.delete_mnu').live('click', function() {
+	$('#delete_mnu').live('click', function() {
 		$(this).parent().remove();
 		return false;
 	});
 	
-	$('.up_mnu').live('click', function() {
+	$('#up_mnu').live('click', function() {
 		$(this).parent().appendTo($(this).parents(".organisemenu:first").prev().find('ul'));
 	});
 
-	$('.down_mnu').live('click', function() {
+	$('#down_mnu').live('click', function() {
 		$(this).parent('li:first').appendTo($(this).parents(".organisemenu:first").next().find('ul'));
 	});
 	
-	$( "#create-planning" ).button().click(function() {
-			$( "#dialog-form" ).dialog( "open" );
-	});
-	
-	$( "#update-planning" ).button().click(function() {
-			$( "#dialog-form" ).dialog( "open" );
+	$( "#create-planning,#update-planning" ).click(function() {
+			$("#dialog-form" ).dialog( "open" );
 	});
 	
 	$(".organise").addClass("ui-state-active");

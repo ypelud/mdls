@@ -36,7 +36,6 @@ class PlanningsController < ApplicationController
   
   
   def update
-    debugger
     Planning.transaction do 
       @planning = Planning.find(params[:id])      
       @planning.update_attributes(params[:planning])

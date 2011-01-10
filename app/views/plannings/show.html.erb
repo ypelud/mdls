@@ -1,15 +1,12 @@
 <h1>Semaine : <%=@planning.name %></h1>
+<div id="sousmenus">
+        <%= link_to "Appliquer", {:controller => "choixmenu", :action => "apply", :id => @planning.id}, :class => :button %>
+        <% if (current_user && (@planning.user == current_user)) || admin? %>
+			<%= link_to t("mdls.update"), "#", { :id => 'update-planning', :class => :button } %>
+			<%= link_to ("Supprimer", @planning,  :confirm => 'Are you sure?', :method => :delete, :class => :button )  %> 
+		<% end %>
+        <%= link_to "Retour", {:action => "index"}, :class => :button  %>
+</div>
 
 <%= render :partial => 'content' %>
 
-
-<div class="post-footer">
-    <p class="links">
-        <%= link_to "Appliquer", :controller => "choixmenu", :action => "apply", :id => @planning.id %>
-        <% if (current_user && (@planning.user == current_user)) || admin? %>
-		<%= link_to t("mdls.update"), "#", { :id => 'update-planning'} %>
-		<%= link_to ("Supprimer", @planning,  :confirm => 'Are you sure?', :method => :delete)  %> 
-		<% end %>
-        <%= link_to "Retour", :action => "index" %>
-    </p>
-</div>

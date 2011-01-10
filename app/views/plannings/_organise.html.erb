@@ -4,11 +4,12 @@
 	<ul id='sortable_<%=jour%>' class='sortable'>
 	<% @liste.select{|m| m.day == jour}.each do |plan| %>
 		<% menu = Menu.find_by_id(plan.menu_id) %>
-		<li class='ui-state-default' id='<%= menu.id.to_s %>'>
+		<li id='<%= menu.id.to_s %>'>
+			<div id="grab_mnu" class="ui-icon ui-icon-grip-dotted-vertical left cr_move"></div>
 			<%= menu.title %>
-			<a href='#' class='delete_mnu icon right'>__</a>
-			<a href='#' class='up_mnu icon right'>__</a>
-			<a href='#' class='down_mnu icon right'>__</a>
+			<div id='delete_mnu' class='ui-icon ui-icon-trash right cr_pointer'></div>
+			<div id='up_mnu' class="ui-icon ui-icon-arrowthick-1-n right cr_pointer"></div>
+			<div id='down_mnu' class="ui-icon ui-icon-arrowthick-1-s right cr_pointer"></div>
 		</li>
 	<% end %>
 	</ul>
