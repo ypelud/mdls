@@ -54,10 +54,9 @@ body{width:1020px; margin:0px auto;}
 #content #sousmenus .pagination a { color: #000000; text-decoration: underline ; }
 #content #sousmenus .pagination li { display: inline; }
 
-.button { float: left; background-color: #E7685D; color: #FFFFFF; border-radius: 4px; padding: 2px; margin: 2px;cursor:pointer}
+.button { float: left; background-color: #E7685D; color: #FFFFFF; border-radius: 4px; padding: 1px; margin: 2px;cursor:pointer; height: 20px;}
 .button .lib { float: left;}
 .button a {color: #FFFFFF; }
-.button .arrow { float: left; width: 10px; margin-left: 4px; background: url('/images/arrow1.png') no-repeat 0px 5px;}
 .button.expanded { background-color: #C9544F; }
 
 #sujet { height: 28px;} 

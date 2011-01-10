@@ -45,22 +45,7 @@
 	
 	
 	var methods = {
-	
-	   	selectDropDown : function(settings) {
-			var li = $('<li>',{
-					html:   '<span>'+settings.tous+'</span>'
-				}).click(function() {
-					$(settings.selectBoxes).attr("checked", true)
-				}) ;
-			$(this).append(li);
-			var li2 = $('<li>',{
-					html:   '<span>'+settings.aucun+'</span>'
-				}).click(function() {
-					$(settings.selectBoxes).attr("checked", false)
-				}) ;
-			$(this).append(li2);
-		},
-				
+					
 		addDropDown : function(settings) {
 			var elem = $(this) ;
 			var map = { Lundi: 1, Mardi: 2, Mercredi: 3, Jeudi:4, Vendredi:5, Samedi:6, Dimanche:7, 'Je ne sais pas': 0} ;
@@ -89,22 +74,32 @@
 		}
 	};
 	
-	var settings = {
-		tous: 'tous',
-		aucun: 'aucun',
-		selectBoxes: '#menus .checkbox input',
-		method: 'selectDropDown',
-		size: 100
+	$.fn.__selectAll = function(allBoxes, checkBoxe, val) {
+
+		$(this).click(function() {
+			allBoxes.attr("checked", val);
+			checkBoxe.attr("checked", val);
+		});
+		return $(this);
 	};
 	
 	$.fn.selectAll = function(options) {
 		
-		$.extend(settings, options) ;
+		var settings = {
+			tous: 'tous',
+			aucun: 'aucun',
+			selectBoxes: '#menus .checkbox input',
+			method: 'selectDropDown',
+			size: 100
+		};
+	
+	 	$.extend(settings, options) ;
 		
 		// The select element to be replaced:
-		var select = $(this);
-		
-		var offset = select.offset() ;
+		var container = $(this);
+		var select = $(this).find('.arrow');
+        var checkbox = $(this).find('.chk_all');		
+		var offset = container.offset() ;
 		
 		var selectBoxContainer = $('<div>',{
 				className	: 'tzSelect',
@@ -114,13 +109,14 @@
 		var dropDown = $('<ul>',{
 			width		: settings.size,
 			className   :'dropDown'
-			}).css("top", select.offset().top + select.outerHeight() - 2 ).css("left",offset.left);
+			}).css("top", container.offset().top + container.outerHeight()  ).css("left",offset.left);
 			
 		var selectBox = selectBoxContainer.find('.selectBox');
 		
-		if ( methods[settings.method] ) {
-			methods[settings.method].apply( dropDown , arguments );
-		}
+		dropDown.append($('<li>',{html:   '<span>'+settings.tous+'</span>' })
+			.__selectAll($(settings.selectBoxes), $(checkbox),  true) );
+		dropDown.append($('<li>',{html:   '<span>'+settings.aucun+'</span>'})
+			.__selectAll($(settings.selectBoxes), $(checkbox),  false) );
 		
 		selectBoxContainer.append(dropDown.hide());
 		select.after(selectBoxContainer);
@@ -151,7 +147,21 @@
 			}
 			else dropDown.trigger('show');
 		});
-        
+		
+		checkbox.click(function() {
+			var chk = $(this).attr("checked");
+			$(settings.selectBoxes).attr("checked", chk)
+		});
+		
+		$(settings.selectBoxes).live('click', function() {
+			if ($(this).attr("checked")) {
+				checkbox.attr("checked", true);
+			}
+			
+		});
+		
+		
+		
 		select.click(function(){
 			dropDown.trigger('toggle');
 			return false;
