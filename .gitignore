@@ -14,3 +14,4 @@ tmp/
 .bundle/
 *.sqlite3
 doc/
+todo.txt
