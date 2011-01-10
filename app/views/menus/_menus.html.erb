@@ -6,7 +6,6 @@
 	<%for menu in @menus %>
 	 <li>
      <div id="mnuMidi_<%=menu.id%>" class="menu_cart <%=menu_position%>">
-		<div class="add_cart ui-icon ui-icon-cart right cr_pointer"></div>
 		<div class="left">
      		<div class="ui-icon ui-icon-grip-dotted-vertical left cr_move"></div>
     		<div class="checkbox left"><input type="checkbox" id="chk_<%=menu.id%>"aria-labelledby=""></div> 
@@ -25,11 +24,6 @@
 		$('.paginationAnchor').html('');
 		$('.pagination').appendTo($('.paginationAnchor')) ;
 		$('div[id^=mnuMidi]').dragDropMenus("#cart", '<%= url_for(:action => 'add', :controller => 'choixmenu') %>');
-		$('.add_cart').live('click',function() {
-			$.get('<%= url_for(:action => 'add', :controller => 'choixmenu') %>' + '/' + $(this).parent().attr("id"), function(data) {
-			  $('#cart').html(data);
-			});	
-		});
 	});
 </script>
 
