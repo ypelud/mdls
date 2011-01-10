@@ -71,12 +71,16 @@
 					}).click(function() {
 						
 						var fields = new Array() ;
+						var cpte = 0;
 						$(':checked', settings.selectBoxes).each(function(ii, val) {
 							var menu = { id: $(this).attr("id"), day: value }
 							fields.push(menu);
+							$(this).attr("checked", false);
+							cpte++;							
 						});
 						$.post(settings.url, {fields : JSON.stringify(fields)}, function(data) {
 								$(settings.dropSelector).html(data);
+								$("#flash").notifyFlash(cpte+' repas ajouté(s)')
 						      }
 						);
 					}) ;
@@ -170,6 +174,31 @@
 		var select = $(this);
 		
 	}
+	
+	
+	
+	
+	$.fn.notifyFlash = function(flash_message) { 
+		var flash_div = $(this) 
+		flash_div.hide() ;
+		
+		if (!flash_message) {
+			flash_message = flash_div.html().trim(); 			
+		}
+
+		if (flash_message) {
+			flash_div.html(flash_message); 
+			flash_div.fadeIn(400); 
+			// use Javascript timeout function to delay calling 
+			// our jQuery fadeOut, and hide 
+			setTimeout(function(){ 
+				flash_div.fadeOut(500, function(){ 
+					flash_div.html(""); 
+					flash_div.hide()
+				})
+			}, 1400); 
+		}
+	} 
 	
 	
 })(jQuery);
