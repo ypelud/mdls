@@ -78,26 +78,25 @@ fr:
     authorize_page: "Vous n'êtes pas authorisé à afficher cette page"
     home: "Accueil"
     search : "recherche"
-    my_menus: "semaines"
-    keywords: "nuage de mots"
-    last_comments: "commentaires"
-    how_it_works: "comment ça marche"
-    planning: "semaines"
     midi: 'midi'
     soir: 'soir'
-    contact: 'contacts'
-    options: 'options'
-    menutype: 'types'
-    userlist: 'users'
     liste_menus: 'Liste des menus'
     all_menu: "Tous"
     create: 'Créer'
     new_menu: "Nouveau"
     organise: "Organiser"
     update: "Modifier"
-    menus: "menus"
     effacer: 'Effacer'
     Valider: 'Valider'
+    menus: "Repas"
+    planning: "Menus"
+    contact: 'Contacts'
+    options: 'Options'
+    menutype: 'Types'
+    userlist: 'Users'
+    keywords: "Nuage de mots"
+    last_comments: "Commentaires"
+    how_it_works: "Comment ça marche"
   menus:
     create_ok: 'Menu créé correctement.'
     update_ok: 'Menu mis à jour correctement.'
