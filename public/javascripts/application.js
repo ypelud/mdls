@@ -7,9 +7,14 @@
 $(document).ready(function() {
 	$("#flash").notifyFlash();
 		
-  	$(".login").click(function() {
-		$.getScript(this.href)
-		return false;
-	});	
+	//   	$(".login").click(function() {
+	// 	$.getScript(this.href)
+	// 	return false;
+	// });	
 	
+	$('.buttonz').button();
+	$('.sousmenu').addClass('ui-button ui-widget ui-state-default ui-button-text-only');
+	$('.sousmenu a:first-child').addClass('ui-button-text');
+	//$('.button').addClass('ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-active');
+		
 }) ;

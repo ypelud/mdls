@@ -11,6 +11,10 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
+    if session[:omniauth]
+      @user.apply_omniauth(session[:omniauth])
+      @user.valid?
+    end
   end
 
   def create
@@ -52,13 +56,12 @@ class UsersController < ApplicationController
      render :partial => "compteur"
    end
   
-private
   def language
     code = params[:code] || 'fr-FR'
-    session[:language] = code
     I18n.default_locale = code
-    flash[:notice] = "language => #{code}"
-    redirect_back_or_default :back  
+    flash[:notice] = t("welcome")
+    redirect_to root_url
+    #redirect_back_or_default :back  
   end
   
 

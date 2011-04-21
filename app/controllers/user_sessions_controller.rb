@@ -4,10 +4,6 @@ class UserSessionsController < ApplicationController
 
   def new
     @user_session = UserSession.new
-    respond_to do |format| 
-      format.html { render :partial => 'new', :layout => false }
-      format.js
-    end
   end
 
   def create

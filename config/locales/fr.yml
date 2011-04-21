@@ -1,32 +1,4 @@
 fr:
-  activerecord:
-    errors:
-      messages:
-        inclusion: "n'est pas inclut dans la liste"
-        exclusion: "est réservé"
-        invalid: "n'est pas valide"
-        confirmation: "ne correspond pas à la confirmation"
-        accepted: "doit être accepté"
-        empty: "ne peut être vide"
-        blank: "ne peut être à blanc"
-        too_long: "est trop long (maximum est {{count}} caractères)"
-        too_short: "est trop court (minimum est {{count}} caractères)"
-        wrong_length: "n'a pas la bonne longueur (doit être de {{count}} caractères)"
-        taken: "a déjà été pris"
-        not_a_number: "n'est pas un nombre"
-        greater_than: "doit être superieur à {{count}}"
-        greater_than_or_equal_to: "doit être plus grand ou égal à {{count}}"
-        equal_to: "doit être égal à {{count}}"
-        less_than: "doit être inférieur à {{count}}"
-        less_than_or_equal_to: "doit être inférieur ou égal à {{count}}"
-        odd: "must be odd"
-        even: "must be even"
-      template:
-        header:
-          one:    "1 erreur : {{model}} ne peut être sauvegardé"
-          other:  "{{count}} erreurs : {{model}} ne peut être sauvegardé"
-        # The variable :count is also available
-        body: "Il y a un problème avec les champs suivants:"
   account_activated : "{{login}} votre compte a été activé.  Bienvenue à bord!"
   account_activation_url_message : "Visitez cette adresse pour activer votre compte:"
   account_created : "Votre compte a été crée."
@@ -42,13 +14,14 @@ fr:
   logged_in : "Connexion réussie"
   logged_in_as : "Connecté en tant que {{login}}"
   logged_out : "Vous avez été déconnecté."
-  login : "Pseudo"
+  login : "Utilisateur"
   login_failed : "Une erreur est survenue lors de votre connexion"
   new_user_sign_up : "S'enregistrer comme nouvel utilisateur"
   not_logged_in : "Non connecté"
   password : "Mot de passe"
   password_confirmation : "Mot de passe confirmé"
   remember_me : "Se souvenir de moi"
+  sign_in : "Se connecter"
   sign_up : "S'enregistrer"
   signup_complete : "Enregistrement complet!"
   signup_complete_and_do_login : "Enregistrement complet! S'il vous plaît, connectez-vous pour continuer."
@@ -56,15 +29,15 @@ fr:
   signup_problem : "Désolé, nous ne pouvons enregistrer ce compte. Essayez de nouveau ou contactez l'administrateur (lien plus bas)."
   pick_new_password: 'nouveau mot de passe pour {{mail}}'
   reset_password_button: 'Changer'
-  lundi: 'lundi'
-  mardi: 'mardi'
-  mercredi: 'mercredi'
-  jeudi: 'jeudi'
-  vendredi: 'vendredi'
-  samedi: 'samedi'
-  dimanche: 'dimanche'
-  tous: 'tous'
-  aucun: 'aucun'
+  lundi: 'Lundi'
+  mardi: 'Mardi'
+  mercredi: 'Mercredi'
+  jeudi: 'Jeudi'
+  vendredi: 'Vendredi'
+  samedi: 'Samedi'
+  dimanche: 'Dimanche'
+  tous: 'Tous'
+  aucun: 'Aucun'
   new_menu: "Nouveau"
   sur: 'sur'
   precedent: '< Préc.'
@@ -73,18 +46,20 @@ fr:
   ajouter: 'Ajouter'
   sujet: 'Sujet'
   envoyer: 'envoyer'
+  dologin: 'Connexion'
+  welcome: "Bienvenue"
   mdls:
-    sign_in : "Connexion"
     authorize_page: "Vous n'êtes pas authorisé à afficher cette page"
     home: "Accueil"
     search : "recherche"
     midi: 'midi'
     soir: 'soir'
+    liste_repas: 'Liste des repas'
     liste_menus: 'Liste des menus'
     all_menu: "Tous"
     create: 'Créer'
     new_menu: "Nouveau"
-    organise: "Organiser"
+    organise: "Modifier"
     update: "Modifier"
     effacer: 'Effacer'
     Valider: 'Valider'
@@ -97,6 +72,11 @@ fr:
     keywords: "Nuage de mots"
     last_comments: "Commentaires"
     how_it_works: "Comment ça marche"
+    aucunchoix: "Aucun repas"
+    name: "Nom"
+    public: "Visible de tout le monde"
+    dontuseservice: "Vous n'utilisez pas ces services ?"
+    or: "ou"
   menus:
     create_ok: 'Menu créé correctement.'
     update_ok: 'Menu mis à jour correctement.'
@@ -119,7 +99,7 @@ fr:
     authorize: 'Vous n''êtes pas authorisé à afficher cette page'
   planning:
     new: 'Créer un nouveau planning'
-    create: 'Créer'
+    create: 'Enregistrer'
     update: "Mise à jour"
 
 

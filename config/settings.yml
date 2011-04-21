@@ -1,0 +1,22 @@
+development:
+    host: http://localhost:3000
+    mail_to:  mail_to@localhost
+    mail_from: mail_from@localhost
+    super_user: ypelud
+
+test:
+    host: http://localhost:3000
+    mail_to:  mail_to@example.com
+    mail_from: mail_from@example.com
+    super_user: quentin 
+
+production:
+    host: http://www.menusdelasemaine.com
+    mail_to:  Menusdelasemaine <postmaster@menusdelasemaine.com>
+    mail_from: Menusdelasemaine <postmaster@menusdelasemaine.com>
+    super_user: ypelud
+
+
+all:
+    captcha_pub_key: '6Le6xwsAAAAAAGOjxNzZc9OrcqpBRzwgxSRAqd0t'
+    captcha_pri_key: '6Le6xwsAAAAAAPtEHuX5EAitVNkMIL6h8C9KRNt_'

@@ -1,0 +1,20 @@
+$("#login_div").html("<%= escape_javascript(render("new")) %>")
+
+$("#login_div").dialog({
+	autoOpen: false,
+	height: 200,
+	width: 350,
+	modal: true,
+	buttons: {
+		"login": function() {
+			$("form").submit();
+		},
+		Cancel: function() {
+			$( this ).dialog( "close" );
+		}
+	},
+	title: "<%= t('login_form_title')%>"
+		
+});
+$("#login").hide();	
+$( "#login_div" ).dialog( "open" );

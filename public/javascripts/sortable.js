@@ -2,8 +2,8 @@
 
 	$.fn.GetPlannings = function() {
 		var fields = new Array() ;
-		$("ul[id^='sortable']").each(function(value, elem) {
-			$(this).children().each(function(ii,mnu){
+		$(".sortable").each(function(value, elem) {
+			$(this).find("tr").each(function(ii,mnu){
 				var menu = { id: 'mnu_'+$(this).attr("id"), day: value }
 				fields.push(menu);
 			})
@@ -15,14 +15,14 @@
 
 $().ready(function() {
 	
-	$("ul[id^='sortable']").sortable({
+/*	$(".sortable").sortable({
 		cancel: '.ui-state-disabled',
-		connectWith: 'ul',
+		connectWith: '.sortable tbody',
 		cursor: 'move',
 		receive: function (event, ui) {			
 			$.post('/choixmenu/addAll', {fields : JSON.stringify($(this).GetPlannings()), empty: true});
 		}	
-	}).disableSelection();	
+	}).disableSelection();*/
 	
 	
 	$( "#dialog-form" ).dialog({
@@ -43,7 +43,7 @@ $().ready(function() {
 				$( this ).dialog( "close" );
 				return false;
 			},
-			Cancel: function() {
+			"Annuler": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -53,22 +53,21 @@ $().ready(function() {
 		return false;
 	});
 	
-	$('#delete_mnu').live('click', function() {
+	$(document).delegate(".delete_mnu", "click", function() {
 		$(this).parent().remove();
 		return false;
 	});
 	
-	$('#up_mnu').live('click', function() {
-		$(this).parent().appendTo($(this).parents(".organisemenu:first").prev().find('ul'));
+	$(document).delegate(".up_mnu", "click", function() {
+		$(this).parent("tr").appendTo($(this).parents(".organise").prev().find("tbody"));
 	});
 
-	$('#down_mnu').live('click', function() {
-		$(this).parent('li:first').appendTo($(this).parents(".organisemenu:first").next().find('ul'));
+	$(document).delegate(".down_mnu", "click", function() {
+		$(this).parent("tr").appendTo($(this).parents(".organise").next().find("tbody"));
 	});
 	
 	$( "#create-planning,#update-planning" ).click(function() {
 			$("#dialog-form" ).dialog( "open" );
 	});
 	
-	$(".organise").addClass("ui-state-active");
 });

@@ -1,38 +1,25 @@
-class PaginationLinkRenderer < WillPaginate::LinkRenderer
+class PaginationLinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
 
-  def to_html
-    links = [] ; #@options[:page_links] ? windowed_links : []
-    pagenumber = @collection.current_page.to_s + ' ' + I18n.t(:sur) + ' ' + @collection.total_pages.to_s;
+  protected
 
-    links.unshift(page_link_or_span(@collection.previous_page, 'prevnext', I18n.t(:precedent))) if @collection.previous_page
-    links.push(page_link_or_span(@collection.current_page, 'pagenumber', pagenumber))    
-    links.push(page_link_or_span(@collection.next_page, 'prevnext', I18n.t(:suivant))) if @collection.next_page
-
-    html = links.join(@options[:separator])
-    @options[:container] ? @template.content_tag(:ul, html, html_attributes) : html
-  end
-
-protected
-
-  def windowed_links
-    visible_page_numbers.map { page_link_or_span(n, (n == @collection.current_page ? 'current' : nil)) }
-  end
-
-  def page_link_or_span(page, span_class, text = nil)
-    #text ||= page.to_s
-    if text && page && page != @collection.current_page
-      page_link(page, text, :class => span_class)
-    else
-      page_span(page, text, :class => span_class)
+    def page_number(page)
+      unless page == current_page
+        tag(:li, link(page, page, :rel => rel_value(page)))
+      else
+        tag(:li, page, :class => "current")
+      end
     end
-  end
 
-  def page_link(page, text, attributes = {})
-    @template.content_tag(:li, @template.link_to(text, url_for(page)), attributes)
-  end
+    def previous_or_next_page(page, text, classname)
+      if page
+        tag(:li, link(text, page), :class => classname)
+      else
+        tag(:li, text, :class => classname + ' disabled')
+      end
+    end
 
-  def page_span(page, text, attributes = {})
-    @template.content_tag(:li, text, attributes)
-  end
+    def html_container(html)
+      tag(:ul, html, container_attributes)
+    end
 
 end

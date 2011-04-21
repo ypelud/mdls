@@ -1,5 +1,8 @@
 <% @menu.comments.each do |comment|%>
-	<blockquote><%= User.find(comment.user_id).login %> : <%= comment.created_at.to_formatted_s(:short) %>
-	  <%= comment.comment %>
-	</blockquote>
+	<div class="comment">
+		<h3><%= User.find(comment.user_id).login %> : <%= comment.created_at.to_formatted_s(:short) %></h3>
+		<blockquote>
+		  <%= comment.comment %>
+		</blockquote>
+	</div>
 <% end %>

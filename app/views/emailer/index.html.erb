@@ -1,25 +1,27 @@
-<h1>Contact</h1>
 
-<div>
-	<div id="sousmenus">
-		<%= link_to t(:envoyer), '#', :class => :button %>
+	<div class="sousmenus">
+		<%= link_to t(:envoyer), '#', {:class => :button, :id => "envoyer"} %>
 	</div>
 
+	<h1>Contact</h1>
 
-<% form_tag :action => "sendmail" do %>
-<div id='sujet'>
-<div class='left'><label for="email_subject"><%= t('sujet') %> : </label></div>
-<div class='left'><%= text_field "email", "subject" %></div>
-</div>
+	<% form_tag :action => "sendmail" do %>
+		<div id='sujet'>
+			<div class='left'><label for="email_subject"><%= t('sujet') %> : </label></div>
+			<div class='left'><%= text_field "email", "subject" %></div>
+		</div>
 
-<%= text_area "email", "message", :size => "80x20" %>
-<%= raw recaptcha_tags %>
-<%= submit_tag "Envoyer", :class => 'button hidden' %>
+		<%= text_area "email", "message", :size => "80x20" %>
+		<%= recaptcha_tags %>
+		<%= submit_tag "Envoyer", {:class => 'button', :style => "display: none;"} %>
 
-<% end %>
+		<% end %>
 
 <script type='text/javascript'>
 	$(document).ready(function() {
 		CKEDITOR.replace( 'email[message]');
+		$("#envoyer").click(function() {
+			$("form").submit();
+		});
 	})
 </script>

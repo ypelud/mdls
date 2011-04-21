@@ -1,6 +1,6 @@
 
 <div id="liste_menus">
-	<%= will_paginate @menus %><h1><%= I18n.t("mdls.liste_menus")%></h1>
+	<%= will_paginate @menus %><h1><%= I18n.t("mdls.liste_repas")%></h1>
 	
 	<ul>
 	<%for menu in @menus %>
@@ -23,7 +23,7 @@
 	$(document).ready(function() {
 		$('.paginationAnchor').html('');
 		$('.pagination').appendTo($('.paginationAnchor')) ;
-		$('div[id^=mnuMidi]').dragDropMenus("#cart", '<%= url_for(:action => 'add', :controller => 'choixmenu') %>');
+		$('.cr_move').dragDropMenus("#cart", '<%= url_for(:action => 'add', :controller => 'choixmenu') %>');
 	});
 </script>
 

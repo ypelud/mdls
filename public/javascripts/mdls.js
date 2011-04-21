@@ -16,7 +16,7 @@
 			hoverClass: 'ui-state-active',
 			accept: $(this).selector,
 			drop: function(event, ui) {
-				$.get(urlDrop + '/' + $(ui.draggable).attr("id"), function(data) {
+				$.get(urlDrop + '/' + ui.draggable.parents("div[id^=mnuMidi]").attr("id"), function(data) {
 				  $(dropSelector).html(data);
 				});
 			}
@@ -44,34 +44,24 @@
 	};
 	
 	
-	var methods = {
-					
-		addDropDown : function(settings) {
-			var elem = $(this) ;
-			var map = { Lundi: 1, Mardi: 2, Mercredi: 3, Jeudi:4, Vendredi:5, Samedi:6, Dimanche:7, 'Je ne sais pas': 0} ;
-			 
-			$.each(map, function(index, value){
-				var li = $('<li>',{
-						html:   '<span>'+index+'</span>'
-					}).click(function() {
-						
-						var fields = new Array() ;
-						var cpte = 0;
-						$(':checked', settings.selectBoxes).each(function(ii, val) {
-							var menu = { id: $(this).attr("id"), day: value }
-							fields.push(menu);
-							$(this).attr("checked", false);
-							cpte++;							
-						});
-						$.post(settings.url, {fields : JSON.stringify(fields)}, function(data) {
-								$(settings.dropSelector).html(data);
-								$("#flash").notifyFlash(cpte+' repas ajouté(s)')
-						      }
-						);
-					}) ;
-				elem.append(li);
+	$.fn.addAllMenu = function(settings) {
+		var elem = $(this) ;
+		$(this).click(function() {
+		
+			var fields = new Array() ;
+			var cpte = 0;
+			$(':checked', settings.selectBoxes).each(function(ii, val) {
+				var menu = { id: $(this).attr("id")}
+				fields.push(menu);
+				$(this).attr("checked", false);
+				cpte++;							
 			});
-		}
+			$.post(settings.url, {fields : JSON.stringify(fields)}, function(data) {
+					$(settings.dropSelector).html(data);
+					$("#flash").notifyFlash(cpte+' repas ajouté(s)')
+			      }
+			);
+		});
 	};
 	
 	$.fn.__selectAll = function(allBoxes, checkBoxe, val) {
@@ -108,62 +98,71 @@
 			
 		var dropDown = $('<ul>',{
 			width		: settings.size,
-			className   :'dropDown'
-			}).css("top", container.offset().top + container.outerHeight()  ).css("left",offset.left);
+			className   :'dropDown ui-state-hover'
+			}); //.css("top", container.offset().top + container.outerHeight()  ).css("left",offset.left);
 			
 		var selectBox = selectBoxContainer.find('.selectBox');
 		
-		dropDown.append($('<li>',{html:   '<span>'+settings.tous+'</span>' })
-			.__selectAll($(settings.selectBoxes), $(checkbox),  true) );
-		dropDown.append($('<li>',{html:   '<span>'+settings.aucun+'</span>'})
-			.__selectAll($(settings.selectBoxes), $(checkbox),  false) );
+		dropDown.append($('<li>',{html:   '<span class="all">'+settings.tous+'</span>' }) );
+			//.__selectAll($(settings.selectBoxes), $(checkbox),  true) );
+		dropDown.append($('<li>',{html:   '<span class="none">'+settings.aucun+'</span>'}) );
+			//.__selectAll($(settings.selectBoxes), $(checkbox),  false) );
 		
 		selectBoxContainer.append(dropDown.hide());
 		select.after(selectBoxContainer);
 		
 		// Binding custom show and hide events on the dropDown:
 
-		dropDown.bind('show',function(){
+		$('.dropDown').bind('show',function(){
         
-			if(dropDown.is(':animated')){
+			if($(this).is(':animated')){
 				return false;
 			}
         
-			select.addClass('expanded');
-			dropDown.slideDown();
+			$(this).addClass('expanded');
+			$(this).slideDown();
         
 		}).bind('hide',function(){
         
-			if(dropDown.is(':animated')){
+			if($(this).is(':animated')){
 				return false;
 			}
         
-			select.removeClass('expanded');
-			dropDown.slideUp();
+			$(this).removeClass('expanded');
+			$(this).slideUp();
         
 		}).bind('toggle',function(){
-			if(select.hasClass('expanded')){
-				dropDown.trigger('hide');
-			}
-			else dropDown.trigger('show');
+			if($(this).hasClass('expanded')) 
+				$(this).trigger('hide');
+			else 
+				$(this).trigger('show');
+		}).delegate(".all", "click", function() {
+			$(settings.selectBoxes).attr("checked", true);
+			$(checkbox).attr("checked", true);
+		}).delegate(".none", "click", function() {
+			$(settings.selectBoxes).attr("checked", false);
+			$(checkbox).attr("checked", false);
 		});
+		
 		
 		checkbox.click(function() {
 			var chk = $(this).attr("checked");
-			$(settings.selectBoxes).attr("checked", chk)
+			$(settings.selectBoxes).attr("checked", chk);
+			checkbox.attr("checked", chk);
 		});
 		
 		$(settings.selectBoxes).live('click', function() {
 			if ($(this).attr("checked")) {
 				checkbox.attr("checked", true);
-			}
-			
+			}			
 		});
 		
-		
-		
 		select.click(function(){
-			dropDown.trigger('toggle');
+			var ddnow = $(this).next('.tzSelect').find(".dropDown:first");
+			top = $(this).parent().innerHeight();
+			//left = $(this).parent().offset().left;
+			ddnow.css("top", top).css("left", 0);
+			ddnow.trigger('toggle');
 			return false;
 		});
         
@@ -171,7 +170,7 @@
 		// dropdown is shown, it is going to be hidden:
         
 		$(document).click(function(){
-			dropDown.trigger('hide');
+			$('.dropDown').trigger('hide');
 		});
 		
 	}
@@ -188,7 +187,7 @@
 	
 	
 	
-	$.fn.notifyFlash = function(flash_message) { 
+	$.fn.notifyFlash = function(flash_message, error) { 
 		var flash_div = $(this) 
 		flash_div.hide() ;
 		
@@ -198,6 +197,7 @@
 
 		if (flash_message) {
 			flash_div.html(flash_message); 
+			flash_div.addClass(error?"ui-state-error":"ui-state-highlight");
 			flash_div.fadeIn(400); 
 			// use Javascript timeout function to delay calling 
 			// our jQuery fadeOut, and hide 
@@ -206,9 +206,25 @@
 					flash_div.html(""); 
 					flash_div.hide()
 				})
-			}, 1400); 
+			}, 1400);
 		}
 	} 
+	
+	
+	$.fn.replaceCK = function() {
+		CKEDITOR.replace($(this).get(0));
+	}
+	
+	$.fn.afficheComments = function() {
+		$(this).dialog({ 
+			width: 600, 
+			buttons: { 
+				"Ok": function() {
+					$(this).dialog("close"); 
+				}
+			}
+		});
+	}
 	
 	
 })(jQuery);

@@ -1,0 +1,8 @@
+<%= form_for @user_session, :url => user_session_path do |f| %>
+  <table id="cnx">
+  <tr><td><%= f.label t("login") %></td><td><%= f.text_field :login %></td></tr>
+  <tr><td><%= f.label t("password") %> </td><td> <%= f.password_field :password %></td></tr>
+  <tr><td colspan="2"><%= f.check_box :remember_me, :checked => true %><%= f.label t("remember_me") %></td></tr>
+  <%= f.submit t("login"), :id => "login" %>
+  </table>
+<% end %>

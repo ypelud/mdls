@@ -1,22 +1,17 @@
 <div id="cart">
 	<%= render :partial => '/choixmenu/cart' %>
 </div>
-
-<%= link_to t("mdls.effacer"), '/choixmenu/empty', :class=>'button' %>
-<%= link_to t("mdls.organise"), new_planning_url, :class=>'button' %>
-<% if false %>
-<a class="button" href="/choixmenu/print">Format PDF</a> 
-<a class="button" href="/choixmenu/courses">Ingrédients</a> 
-<%= link_to_create_planning %>
-<%= link_to_save_planning %>
-<%= link_to_duplicate_planning %>
-<% end %>
-
-<div style="height:40px;padding-top:10px;">
-  <p id="indicator" style="display:none;margin-top:0px;border:0px;">
-     <%= image_tag "/images/icones/indicator.gif" %> Mise à jour ...
-  </p>
-</div>   
+<div class="bottom-button">
+	<%= link_to t("mdls.effacer"), '/choixmenu/empty', :class=>'button' %>
+	<%= link_to t("mdls.organise"), new_planning_url, :class=>'button' %>
+	<% if false %>
+	<a class="button" href="/choixmenu/print">Format PDF</a> 
+	<a class="button" href="/choixmenu/courses">Ingrédients</a> 
+	<%= link_to_create_planning %>
+	<%= link_to_save_planning %>
+	<%= link_to_duplicate_planning %>
+	<% end %>
+</div>
 
 
 

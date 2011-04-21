@@ -1,18 +1,20 @@
-<div class="organisemenu">
-	<div class="wrappermenu">
-	<div class='organise'><%= title %></div>
-	<ul id='sortable_<%=jour%>' class='sortable'>
-	<% @liste.select{|m| m.day == jour}.each do |plan| %>
-		<% menu = Menu.find_by_id(plan.menu_id) %>
-		<li id='<%= menu.id.to_s %>'>
-			<div id="grab_mnu" class="ui-icon ui-icon-grip-dotted-vertical left cr_move"></div>
-			<%= menu.title %>
-			<div id='delete_mnu' class='ui-icon ui-icon-trash right cr_pointer'></div>
-			<div id='up_mnu' class="ui-icon ui-icon-arrowthick-1-n right cr_pointer"></div>
-			<div id='down_mnu' class="ui-icon ui-icon-arrowthick-1-s right cr_pointer"></div>
-		</li>
-	<% end %>
-	</ul>
-		
-	</div>
+<div class='organise ui-widget-content'>
+<div class="title ui-widget-header"><%= title %></div>
+<table id='sortable_<%=jour%>' class='sortable'>
+	<col class="null">
+	<col class="coldel">
+	<col class="colup">
+	<col class="coldown">
+	<tbody>
+		<% @liste.select{|m| m.day == jour}.each do |plan| %>
+			<% menu = Menu.find_by_id(plan.menu_id) %>
+			<tr id='<%= menu.id.to_s %>'>
+				<td class="tdtext"><%= menu.title %></td>
+				<td class='delete_mnu ui-icon ui-icon-trash right cr_pointer'></td>
+				<td class='up_mnu ui-icon ui-icon-arrowthick-1-n right cr_pointer'></td>
+				<td class='down_mnu ui-icon ui-icon-arrowthick-1-s right cr_pointer'></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table> 
 </div>

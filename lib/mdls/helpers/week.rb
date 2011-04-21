@@ -5,15 +5,15 @@ module Mdls
     
       def initialize(current_user)
         @current_user = current_user
-        @week = I18n.t('lundi'), I18n.t('mardi'), I18n.t('mercredi'), I18n.t('jeudi'), I18n.t('vendredi'), I18n.t('samedi'), I18n.t('dimanche')
+        @weekCode = %w( lundi mardi mercredi jeudi vendredi samedi dimanche)                
+        @weekCode.each { |x| @week ||= []; @week << I18n.t(x) }
       end
       
       def week
-        if @current_user and Profil.find_by_id(@current_user.id) 
-          day = Profil.find_by_id(@current_user.id).first_day
-          w2 = @week.slice!(0, @week.index(day))
-          @week = @week + w2
-        end          
+        profil = Profil.find_by_id(@current_user.id) if @current_user 
+        day = Profil.find_by_id(@current_user.id).first_day if profil
+        w2 = @week.slice!(0, @weekCode.index(day)) if @weekCode.index(day)            
+        @week << w2 if w2
         @week  
       end
       

@@ -1,9 +1,9 @@
 <% javascript "jquery.ba-url", "pagination" %>
 
 <div>
-	<div id="sousmenus">
-	<% if false %><%= link_to t("mdls.all_menu"), plannings_url, :class=>'button' %><% end %>
-	<div class='paginationAnchor'></div>
+	<div class="sousmenus">
+		<div class='paginationAnchor'></div>
+		<% if false %><%= link_to t("mdls.all_menu"), plannings_url, :class=>'button' %><% end %>
 	</div>
 	
 	<div id="menus"><%= render :partial => "list" %></div>

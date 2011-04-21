@@ -1,1 +1,10 @@
-<div id="cartcount"><%=cartcount%></div>
+<div id="cartcount">
+	<% if !session_choix || session_choix.length==0 then %>
+	<%= t("mdls.aucunchoix") %>
+	<% else %>
+    	<% session_choix.each do |plan|%>
+			<% menu = Menu.find_by_id(plan.menu_id) %>
+			<div id='<%= menu.id.to_s %>' title="TEST"><%= summary(menu.title, 25) %></div>
+		<% end %>
+	<% end %>
+</div>

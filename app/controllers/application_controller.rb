@@ -1,19 +1,27 @@
+# Filters added to this controller apply to all controllers in the application.
+# Likewise, all the methods added will be available for all controllers.
+
 class ApplicationController < ActionController::Base
-#  include AuthenticatedSystem
-  
-  protect_from_forgery
-  layout 'application'
-  
   helper :all # include all helpers, all the time
-  helper_method :admin?, :session_choix,  :current_user_session, :current_user
-  before_filter :init
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+
+  # Scrub sensitive parameters from your log
+  # filter_parameter_logging :password
   
+  layout 'application'
+
+  helper_method :admin?, :session_choix,  :current_user_session, :current_user
+  before_filter :init, :init_Locale
+  
+  def init_Locale
+    I18n.locale = params[:lang] if params[:lang] 
+  end
   # Initialise le nom du menu de la barre de navigation.
   # Permet d'identifier le menu séléctionné.
   #
   # voir ApplicationHelper#selected_menu
   def init
-    @selectedMenu ||= 'menu'    
+    @selectedMenu ||= 'menu'   
   end
   
   # Permet de gérer un filtre pour s'assurer de la connexion d'un utilisateur.
@@ -52,41 +60,42 @@ class ApplicationController < ActionController::Base
     end
   end  
 
-protected
-  def login_required
-    authorized? || access_denied
-  end
-  
-  def authorized?
-    admin?
-  end
-  
-private
-  def access_denied 
-    flash[:error] = t(:authorize_page) 
-    redirect_to :root 
-    false 
-  end
-  
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.user
-  end
-  
-  # Définie la session courante
-  def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
-  end
+  protected
+    def login_required
+      authorized? || access_denied
+    end
 
-  # Valide la connexion d'un administrateur
-  def admin?
-    current_user && (current_user.login==APP_CONFIG['super_user']) 
-  end
+    def authorized?
+      admin?
+    end
+
+  private
+    def access_denied 
+      flash[:error] = t(:authorize_page) 
+      redirect_to :root 
+      false 
+    end
+
+    def current_user
+      return @current_user if defined?(@current_user)
+      @current_user = current_user_session && current_user_session.user
+    end
+
+    # Définie la session courante
+    def current_user_session
+      return @current_user_session if defined?(@current_user_session)
+      @current_user_session = UserSession.find
+    end
+
+    # Valide la connexion d'un administrateur
+    def admin?
+      current_user && (current_user.login==APP_CONFIG['super_user']) 
+    end
+
+    def session_choix(jour=nil)
+      return session[:choix].select{|item| item.day == jour } if jour
+      session[:choix] ||= []
+    end
   
-  def session_choix(jour=nil)
-    return session[:choix].select{|item| item.day == jour } if jour
-    session[:choix] ||= []
-  end
-    
+  
 end

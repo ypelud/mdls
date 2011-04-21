@@ -10,8 +10,4 @@ module CommentsHelper
     @menu = Menu.find_by_id(rel.id) 
   end 
   
-  def summary(comment)
-    len = 50
-    return comment[0,len] << "..." if comment.length>len
-  end
 end

@@ -1,5 +1,4 @@
-<h1>Semaine : <%=@planning.name %></h1>
-<div id="sousmenus">
+<div class="sousmenus">
         <%= link_to "Appliquer", {:controller => "choixmenu", :action => "apply", :id => @planning.id}, :class => :button %>
         <% if (current_user && (@planning.user == current_user)) || admin? %>
 			<%= link_to t("mdls.update"), "#", { :id => 'update-planning', :class => :button } %>
@@ -7,6 +6,7 @@
 		<% end %>
         <%= link_to "Retour", {:action => "index"}, :class => :button  %>
 </div>
+<h1><%=@planning.name %></h1>
 
 <%= render :partial => 'content' %>
 

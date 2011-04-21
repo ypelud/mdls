@@ -1,7 +1,7 @@
 <h1><%= I18n.t(:new_menu) %></h1>
 
 <% form_for @menu, :url => menus_path do |f| %>
-	<div id="sousmenus">
+	<div class="sousmenus">
   		<%= link_to I18n.t("mdls.create") , '#', {:class => :button, :id => :create} %>
 		<%= link_to "Retour", menus_url, :class => :button %>
 	</div>

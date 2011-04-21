@@ -1,5 +1,5 @@
 <div id="menu_show">
-	<div id="sousmenus">
+	<div class="sousmenus">
    		<% if (current_user && (@menu.user == current_user)) || admin? %>
       		<%= link_to("Editer", edit_menu_path(@menu), :class => :button) %>
       		<%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete, :class => :button)  %> 
@@ -8,15 +8,19 @@
    		<%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id}, :class => :button, :id => :commentaires %>
 	</div>
 
-<h1><%=@menu.title%></h1>
-<h2>Description </h2>
-<div class="desc">
-  <%= simple_format h(@menu.description) %>
-</div>
-<h2>Lien </h2>
-<%= link_to h(@menu.url), h(@menu.url) %>
-<h2>Ingredients </h2>
-  <%= simple_format h(@menu.ingredients) %>  
+	<h1><%=@menu.title%></h1>
+	<h2>Description </h2>
+	<div class="desc">
+	  <%= simple_format h(@menu.description) %>
+	</div>
+	<h2>Lien </h2>
+	<div class="desc">
+		<%= link_to h(@menu.url), h(@menu.url) %>
+	</div>
+	<h2>Ingredients </h2>
+	<div class="desc">  
+		<%= simple_format h(@menu.ingredients) %>  
+	</div>
 </div> 
 
 <div class="post-footer">	
