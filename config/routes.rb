@@ -1,5 +1,7 @@
 Mdls::Application.routes.draw do
   
+  devise_for :users
+
   match '/auth/:provider/callback' => 'authentications#create' 
   
   resources :authentications
@@ -22,9 +24,6 @@ Mdls::Application.routes.draw do
     resources :tags
     resources :comments
     
-    resource :session
-    
-    resource :user_session
     resource :account, :controller => "users"
 
     match 'signup' => 'users#new'

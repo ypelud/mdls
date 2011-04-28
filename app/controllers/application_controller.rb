@@ -76,17 +76,6 @@ class ApplicationController < ActionController::Base
       false 
     end
 
-    def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = current_user_session && current_user_session.user
-    end
-
-    # Définie la session courante
-    def current_user_session
-      return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
-    end
-
     # Valide la connexion d'un administrateur
     def admin?
       current_user && (current_user.login==APP_CONFIG['super_user']) 

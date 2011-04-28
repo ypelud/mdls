@@ -7,12 +7,13 @@ gem "rails"
 gem "will_paginate", "~> 3.0.pre2"
 #gem 'acts_as_taggable_on_steroids'
 gem 'acts-as-taggable-on'
-gem 'authlogic'
+#gem 'authlogic'
 gem 'mysql2'
 gem 'acts_as_commentable'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'omniauth'
 gem 'jquery-rails', '>= 0.2.6'
+gem 'devise'
 
 #gem 'jackdempsey-acts_as_commentable', :require => 'acts_as_commentable'
 

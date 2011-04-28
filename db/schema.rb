@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321205930) do
+ActiveRecord::Schema.define(:version => 20110422201802) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -109,20 +109,22 @@ ActiveRecord::Schema.define(:version => 20110321205930) do
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"
-    t.string   "crypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",      :limit => 128, :default => "", :null => false
-    t.string   "persistence_token",                 :default => "", :null => false
-    t.integer  "login_count",                       :default => 0,  :null => false
-    t.integer  "failed_login_count",                :default => 0,  :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",        :limit => 128, :default => "", :null => false
+    t.integer  "sign_in_count",                       :default => 0,  :null => false
+    t.integer  "failed_attempts",                     :default => 0,  :null => false
     t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
   end
 
-  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["login"], :name => "index_users_on_login"
-  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
