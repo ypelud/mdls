@@ -10,4 +10,10 @@ vendor/rails
 .DS_Store
 scratch_directory/
 lib/tasks/
+.bundle
+*.rails2
+Gemfile.lock
+db/*.sqlite3
+tmp/
+todo.txt
 
