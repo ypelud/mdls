@@ -12,5 +12,6 @@ vendor/rails
 .bundle/
 scratch_directory/
 lib/tasks/
+*.rails2
 Gemfile.lock
 todo.txt
