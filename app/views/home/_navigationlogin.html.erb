@@ -1,0 +1,27 @@
+<%if (false) %>
+<div class='sousmenu <%=selected_menu("menu")%>  ui-corner-left'><%= link_to t("mdls.menus"), menus_path%></div>                        
+<div class='sousmenu <%=selected_menu("planning")%> '> <%= link_to t("mdls.planning"), plannings_path%></div>                        
+<%if current_user %>
+   <div class='sousmenu <%=selected_menu("contact")%> '><%=link_to t("mdls.contact"), emailer_url%></div>
+   <div class='sousmenu <%=selected_menu("profil")%> '><%=link_to t("mdls.options"), edit_user_profil_url(current_user)%></div>
+<%end %>
+<% if admin? %>
+   <div class='sousmenu <%=selected_menu("type")%> '><%= link_to t("mdls.menutype"), menutypes_path %></div>                        
+   <div class='sousmenu <%=selected_menu("user")%> ui-corner-right'><%= link_to t("mdls.userlist"), users_url %></div>                        
+<% end %>
+<% else %>
+<ul>
+<li><%= link_to t("mdls.menus"), menus_path%></li>                     
+<li><%= link_to t("mdls.planning"), plannings_path%></li>
+<%if current_user %>
+   <li><%=link_to t("mdls.contact"), emailer_url%></li>
+  <li><%=link_to t("mdls.options"), edit_user_profil_url(current_user)%></li>
+<%end %>
+<% if admin? %>
+   <li><%= link_to t("mdls.menutype"), menutypes_path %></li>
+   <li><%= link_to t("mdls.userlist"), users_url %></li>
+<% end %>
+</ul>
+<%end%>
+
+

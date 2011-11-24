@@ -1,0 +1,29 @@
+
+<div id="liste_menus">
+	<%= will_paginate @menus %><h1><%= I18n.t("mdls.liste_repas")%></h1>
+	
+	<ul>
+	<%for menu in @menus %>
+	 <li>
+     <div id="mnuMidi_<%=menu.id%>" class="menu_cart <%=menu_position%>">
+		<div class="left">
+     		<div class="ui-icon ui-icon-grip-dotted-vertical left cr_move"></div>
+    		<div class="checkbox left"><input type="checkbox" id="chk_<%=menu.id%>"aria-labelledby=""></div> 
+		</div>
+ 		<div class="link"><%= link_to %Q{#{menu.title}}, :controller => "menus",  :action => "show", :id => menu %></div>
+		<div class="byline">Posté le <%= l menu.date, :format => :short%> </div>
+	 	<div class="user"><%= link_to %Q{#{menu.user.login}}, {:action => "index", :user_id =>  menu.user} %></div>
+     </div>
+	 </li>
+     <% end %>  
+	</ul>
+</div>
+
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('.paginationAnchor').html('');
+		$('.pagination').appendTo($('.paginationAnchor')) ;
+		$('.cr_move').dragDropMenus("#cart", '<%= url_for(:action => 'add', :controller => 'choixmenu') %>');
+	});
+</script>
+

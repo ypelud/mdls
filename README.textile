@@ -1,0 +1,51 @@
+== Welcome to mdls
+
+mdls => Menus de la semaine 
+
+RESUME
+------
+Cette application est un petit laboratoire d'idées et de techniques que je teste avec RAILS.
+Le but de cette application est de permettre à l'utilisateur de faire des plannings de menus
+sur une semaine donnée.
+
+INSTALLATION
+------------
+Pour executer cette application commencez par télécharger la version :
+git clone git://github.com/ypelud/mdls.git 
+
+Ensuite mettez à jour les pugins (dans le répertoire cloné):
+git-submodule init
+git-submodule update
+
+Créez un fichier config/database.yml :
+development:
+  adapter:  mysql
+  database: mdls_dev
+  username: user
+  password: password
+  host:     localhost
+
+Créez un fichier config/settings.yml :
+development:
+  host: http://localhost:3000
+  mail_to:  mail_to@localhost
+  mail_from: mail_from@localhost
+  super_user: superuser
+  
+Créez un fichier config/initializers/action_mailer.rb :
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address => "localhost",
+  :port => 25,
+  :domain => "menusdelasemaine.com",
+  :user_name => "postmaster",
+  :password => "postmaster",
+  :authentication => :login  
+}
+
+
+Executez l'application:
+ruby script/server
+
+Enjoy !
+

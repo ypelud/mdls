@@ -1,0 +1,31 @@
+menu1:
+    id: 1
+    menutype: 1
+    user_id: 2
+    title: Mon premier menu
+    date:  <%= 5.days.ago.to_s :db %>
+    description: voila mon premier menu
+    ingredients: un deux trois
+    url: http://localhost:3000
+
+
+menu2:
+    id: 2
+    menutype: 1
+    user_id: 1
+    title: Mon deuxieme menu
+    date:  <%= 5.days.ago.to_s :db %>
+    description: voila mon deuxieme menu
+    ingredients: un deux trois
+    url: http://localhost:3000
+    
+    
+menu3:
+    id: 3
+    menutype: 2
+    user_id: 2
+    title: Mon troisieme menu
+    date:  <%= 5.days.ago.to_s :db %>
+    description: voila mon troisieme menu
+    ingredients: un deux trois
+    url: http://localhost:3000

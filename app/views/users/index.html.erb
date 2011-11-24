@@ -1,0 +1,18 @@
+<h1>Liste des utilisateurs </h1>
+<div>Nombre d'utilisateurs <%= User.count %></div>
+<table class="user">
+    <tr class="titre">
+      <th>Utilisateur</th>
+      <th>Dernière requête</th>
+      <th>Mail</th>
+   </tr>
+   <% for user in @users %>
+      <tr class="liste">
+         <td><%= user.login %></td>
+		 <td><%= user.last_request_at %>
+         <td><%= user.email.gsub(/@/, "(at)") %></td>
+      </tr>  
+   <% end %>
+</table>
+
+<%= will_paginate @users %>

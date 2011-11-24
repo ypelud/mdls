@@ -1,8 +1,10 @@
 <h1>Editer</h1>
-<% form_tag "/plannings/update/"+@planning.id.to_s do %>
-  <%= render :partial => "form" %>
-  <p><%= submit_tag "Modifier" , :class => "button"%></p>
+<% form_for @planning, :url => plannings_path do |f| %>
+  <%= messages_error(@planning) %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit I18n.t("planning.update"), :class => 'button' %>
 <% end %>
+
 
 <div class="post-footer">	
 <p class="links">

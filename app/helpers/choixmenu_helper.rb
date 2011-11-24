@@ -10,7 +10,8 @@ module ChoixmenuHelper
   end
   
   def link_to_save_planning
-  	if planning_id>0 and current_user and Planning.find(planning_id).user_id==current_user.id then
+    planning = Planning.find_by_id(planning_id)
+  	if planning and current_user and planning.user_id==current_user.id then
 	  '<a class="button" href="/plannings/edit/'+planning_id.to_s+'">Sauvegarder</a>'
 	end
   end
@@ -23,9 +24,16 @@ module ChoixmenuHelper
   
   def link_to_create_planning
     if session[:choix]==[] and current_user then
-      '<a class="button" href="/plannings/new">Créer</a>'
+      '<a class="button" href="/plannings/new">TODO choixmenu_create</a>'
     end
   end
+  
+  def cartcount
+    return "Menu#{session_choix.length>1?'s':''} de la semaine (#{session[:choix].length})" if session_choix.length>0
+    'aucun menu'
+  end
+
+
 
 end
 

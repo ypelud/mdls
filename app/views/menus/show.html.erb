@@ -1,35 +1,41 @@
 <div id="menu_show">
-<h1><%=@menu.title%></h1>
-<h2>Description </h2>
-<div class="desc">
-  <%= simple_format h(@menu.description) %>
-</div>
-<h2>Lien </h2>
-<%= link_to h(@menu.url), h(@menu.url) %>
-<h2>Ingredients </h2>
-  <%= simple_format h(@menu.ingredients) %>  
+	<div class="sousmenus">
+   		<% if (current_user && (@menu.user == current_user)) || admin? %>
+      		<%= link_to("Editer", edit_menu_path(@menu), :class => :button) %>
+      		<%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete, :class => :button)  %> 
+   		<% end %>
+   		<%= link_to "Retour", menus_path, :class => :button %> 
+   		<%= link_to "Commentaires ("+@menu.comments.count.to_s+")", {:controller => "comments", :action => "list", :id => @menu.id}, :class => :button, :id => :commentaires %>
+	</div>
+
+	<h1><%=@menu.title%></h1>
+	<h2>Description </h2>
+	<div class="desc">
+	  <%= simple_format h(@menu.description) %>
+	</div>
+	<h2>Lien </h2>
+	<div class="desc">
+		<%= link_to h(@menu.url), h(@menu.url) %>
+	</div>
+	<h2>Ingredients </h2>
+	<div class="desc">  
+		<%= simple_format h(@menu.ingredients) %>  
+	</div>
 </div> 
 
 <div class="post-footer">	
-<p class="byline">Posté par <%= @menu.user.login %> le <%= @menu.date.to_formatted_s(:short) %> </p>
+<p class="byline">Posté par <%= @menu.user.login %> le <%= l @menu.date, :format => :short%> </p>
 <p class="links">
-   <% if logged_in? && (@menu.user_id==current_user.id) %>
-      <%= link_to "Editer", :action => "edit", :id => @menu %> |
-   <% end %>
-   <% if admin? %>
-      <%= link_to("Editer", {:action => "edit", :id => @menu} ) %> |
-      <%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete)  %> |   
-   <% end %>
-   <%= link_to "Retour", :action => "index" %>|
-
-   <%= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
-               :update => "comment_div",
-               :url => { :controller => "comments", :action => "list", :id => @menu.id },    
-               :complete => visual_effect(:toggle_appear, "comment_div", :duration => 1.00),
-               :html => { :class  => "comments" }
-               %>
 </p>
 </div>
 <div id="comment_div" style="display: none">
 </div>
 
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('#commentaires').live('click', function() {
+			$.post(this.href, '', null, "script");  
+			return false;	
+		});
+	})
+</script>

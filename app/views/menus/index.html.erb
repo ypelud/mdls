@@ -1,15 +1,12 @@
-<h1><%= I18n.t("mdls.liste_menus")%></h1>
-<p>
-<%= render :partial => @affichage %>
-</p>
-
-<%= will_paginate @menus %>
-
-<div class="post-footer">	
-<p class="links">
-<% if logged_in? %>
-  <%= link_to t("mdls.new_menu"), :action => "new" %> |
-<% end %>
-  <%= link_to t("mdls.all_menu"), :action => "list" %>
-</p>
+<div>
+	<%= render :partial => 'ssmenu' %>
+	<div id="menus"><%= render :partial => 'menus' %></div>
+	<%= render :partial => 'ssmenu' %>
 </div>
+
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('.selectall').selectAll({tous: "<%=t('tous')%>", aucun: "<%=t('aucun')%>", selectBoxes: '#menus .checkbox input'}) ;
+		$('.addAll').addAllMenu({selectBoxes: '#menus .checkbox', url: "<%= url_for(:action => 'addAll', :controller => 'choixmenu') %>", dropSelector: "#cart"}) ;
+	});
+</script>

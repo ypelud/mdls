@@ -1,5 +1,5 @@
-    <% @comments.each do |comment|%>
-<div class="comments">
-      <%= render :partial => "comments/comment5", :locals => {:comment => comment } %>           
+<% comments(5).each do |comment|%>
+<div class="comment5">
+	<%= render :partial => comment_path(:comment5), :locals => {:comment => comment } %>           
 </div>
-    <% end %>
+<% end %>

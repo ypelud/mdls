@@ -1,0 +1,14 @@
+<% javascript "jquery.ba-url", "sortable" %>
+
+<div class="organise_all">
+	<% week = Mdls::Helpers::Week.new(current_user).weekAll %>
+	<% week.each_index do |index| %>
+		<%= render :partial => 'organise', :locals => { :title => week[index], :jour => index }%>
+	<% end %>
+</div>
+
+<div id="dialog-form" title="Nom du planning">
+	<% form_for @planning do |f| %>
+		<%= render :partial => '/plannings/form', :object => f %>
+	<% end %>
+</div>

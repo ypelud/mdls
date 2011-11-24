@@ -1,15 +1,11 @@
 <h1>Commentaires</h1>
-<div id="comments">
-    <% @menu.comments.each do |comment|%>
-      <%= render :partial => "comments/comment", :locals => {:comment => comment } %>           
-    <% end %>
-<% if logged_in? %>
+<%= render :partial => "comments/comment" %>
+<div class="inpcomm">
+<% if current_user %>
    <h2>Laisser un commentaire</h2>
    <% remote_form_for :comment, :url=>{:controller=>"comments", :action=>"new", :id=>@menu.id } do |f| %>
-       <p>Title: <%= f.text_field "title" %><br></p>
-       <p>Comment:</p>
-       <p><%= f.text_area "comment", :rows=>5, :cols=>35 %></p>
-       <p><%= submit_tag "Ajouter un commentaire", :class => 'button'%></p>
+       <%= f.text_area "comment", :rows=>6, :cols=>60 %><br />
+       <%= f.submit  "Ajouter un commentaire", :class => 'button'%>
    <% end %>
 <% end %>
 </div>

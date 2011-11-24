@@ -1,22 +1,10 @@
-<% okok = false %>
-<% session[:choix].each do |menusliste| %>
-  <% if @week[menusliste.day]==day and @midisoir[menusliste.when]==midisoir %>
-  <% okok = true %>
-   <div id="item_<%=menusliste.menu_id%>" class="menu-items"> 
-      <div class="cart_elt">
-         <%=link_to_remote image_tag("/images/icones/delete.gif"), :update => "items_#{day}_#{midisoir}", 
-            :url => {:controller => "choixmenu", :action => "remove", :id => menusliste.menu_id, :day => day, :midisoir => midisoir },
-            :loading => visual_effect(:appear, 'indicator', :duration => 2.00),
-            :complete => visual_effect(:fade, 'indicator', :duration => 2.00),
-            :html => { :class => "destroy" } %>  
-         <%= Menu.find(menusliste.menu_id).title %>
-      </div>            
-   </div>
-   <div class="menu-items-bottom">
-   </div>
-   <% end %>
-<% end %>
-<% unless okok %>
-  <div class="empty_cart"><%=midisoir%></div>
-<% end %>
-
+<div id="cartcount">
+	<% if !session_choix || session_choix.length==0 then %>
+	<%= t("mdls.aucunchoix") %>
+	<% else %>
+    	<% session_choix.each do |plan|%>
+			<% menu = Menu.find_by_id(plan.menu_id) %>
+			<div id='<%= menu.id.to_s %>' title="TEST"><%= summary(menu.title, 25) %></div>
+		<% end %>
+	<% end %>
+</div>

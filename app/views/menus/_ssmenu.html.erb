@@ -1,0 +1,9 @@
+<div class="sousmenus">
+	<div class='paginationAnchor'></div>
+	<div class= 'button selectall'>
+		<div class="checkbox left"><input type="checkbox" class="chk_all" aria-labelledby=""></div>
+		<span class='ui-icon ui-icon-triangle-1-s arrow'>&nbsp;</span>
+	</div>
+	<%= link_to t("mdls.new_menu"), new_menu_url, :class=>'button' if current_user%> 
+	<div class= 'button addAll'><div><%= t("ajouter") %></div></div>
+</div>

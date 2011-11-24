@@ -1,0 +1,7 @@
+Script started on Fri Mar 12 23:24:45 2010
+]0;yann@MacBook: ~/Documents/Developpement/Rails/mdls[1m[7m%[m[1m[m                                                                                                                                 [m[m[m[J[01;31m➜ [01;32m [36mmdls [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kscript/generate helper comments
+zsh: correct 'helper' to 'helpers' [nyae]? y
+]0;yann@MacBook: script/generate helpers commentsCouldn't find 'helpers' generator
+]0;yann@MacBook: ~/Documents/Developpement/Rails/mdls[1m[7m%[m[1m[m                                                                                                                                 [m[m[m[J[01;31m➜ [01;32m [36mmdls [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Keexit
+]0;yann@MacBook: exit
+Script done on Fri Mar 12 23:30:40 2010

@@ -2,66 +2,89 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include AuthenticatedSystem
-  
-  acts_as_iphone_controller(false)
-  
   helper :all # include all helpers, all the time
-  helper_method :admin?, :user_ok?
-  protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+
+  # Scrub sensitive parameters from your log
+  # filter_parameter_logging :password
   
-  before_filter :set_user_language
+  layout 'application'
+
+  helper_method :admin?, :session_choix,  :current_user_session, :current_user
+  before_filter :init, :init_Locale
   
-  protected
-  #gestion des autorisations
-  def authorize_user
-    unless user_ok?
-      flash[:error] = t(:authorize_page)
-      redirect_to home_path
-      false
+  def init_Locale
+    I18n.locale = params[:lang] if params[:lang] 
+  end
+  # Initialise le nom du menu de la barre de navigation.
+  # Permet d'identifier le menu séléctionné.
+  #
+  # voir ApplicationHelper#selected_menu
+  def init
+    @selectedMenu ||= 'menu'   
+  end
+  
+  # Permet de gérer un filtre pour s'assurer de la connexion d'un utilisateur.
+  #
+  # Redirection vers l'écran de connexion en cas d'échec
+  def require_user
+    unless current_user
+      store_location
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to new_user_session_url
+      return false
+    end
+  end
+  
+  # Permet de gérer un filtre pour s'assurer qu'aucun utilisateur n'est connecté.
+  #
+  # Redirection vers l'écran d'inscription en cas d'échec
+  def require_no_user
+    if current_user
+      store_location
+      flash[:notice] = "You must be logged out to access this page"
+      redirect_to account_url
+      return false
+    end
+  end
+  
+  # Permet de gérer un filtre pour s'assurer de la connexion d'un administrateur
+  #
+  # Redirection vers l'écran d'accueil en cas d'échec
+  def require_admin
+    unless admin?
+      store_location
+      flash[:notice] = "You must be admin in to access this page"
+      redirect_to :root
+      return false
     end
   end  
+
+  protected
+    def login_required
+      authorized? || access_denied
+    end
+
+    def authorized?
+      admin?
+    end
+
+  private
+    def access_denied 
+      flash[:error] = t(:authorize_page) 
+      redirect_to :root 
+      false 
+    end
+
+    # Valide la connexion d'un administrateur
+    def admin?
+      current_user && (current_user.login==MDSL_SUPER_USER) 
+    end
+
+    def session_choix(jour=nil)
+      return session[:choix].select{|item| item.day == jour } if jour
+      session[:choix] ||= []
+    end
   
-  def user_ok?
-    admin?
-  end
-    
-  def admin?
-    logged_in? && (current_user.login==APP_CONFIG['super_user']) 
-  end   
-  
-  #gestion de la langue
-  def set_user_language
-    session[:language] ||= 'fr-FR'
-    I18n.locale = session[:language]
-  end
-  
-  #méthodes pour les gestions du temps
-  def midisoir
-    md = t("mdls.midi"),t("mdls.soir")
-    return md
-  end 
-  
-  def week
-    w = t('lundi'), t('mardi'), t('mercredi'), t('jeudi'), t('vendredi'), t('samedi'), t('dimanche')
-    return w
-  end 
-  
-  def week_array
-    @week = week
-    if current_user and Profil.find_by_id(current_user.id) 
-      profil = Profil.find_by_id(current_user.id)
-      day = profil.first_day           
-      deb = @week[0]
-      while day and @week[0]!=day do
-        dec = @week[0] 
-        @week.shift
-        @week.push(dec) 
-        break if @week[0]==deb 
-      end          
-    end            
-    @midisoir = midisoir
-  end
-    
   
 end

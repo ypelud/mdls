@@ -1,16 +1,10 @@
 class Menusliste < ActiveRecord::Base
   belongs_to :planning
   
+  attr_accessor :guid
   
-  def iui_caption
-    'test'
-  end
-  
-  def iui_url
-    '/menus/'+to_param
-  end
-  
-  def iui_title
-    "Mdls"
-  end    
+  def after_initialize
+      # do stuff
+      @guid = Guid.new
+  end  
 end

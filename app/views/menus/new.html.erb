@@ -1,11 +1,20 @@
-<h1>Nouveau</h1>
-<% form_tag :action => "create" do %>
-  <%= render :partial => "form" %>
-  <p><%= submit_tag "Créer" , :class => "button"%></p>
+<h1><%= I18n.t(:new_menu) %></h1>
+
+<% form_for @menu, :url => menus_path do |f| %>
+	<div class="sousmenus">
+  		<%= link_to I18n.t("mdls.create") , '#', {:class => :button, :id => :create} %>
+		<%= link_to "Retour", menus_url, :class => :button %>
+	</div>
+  <%= messages_error @menu  %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit I18n.t("mdls.create"), :style => "display: none;" %>
 <% end %>
 
-<div class="post-footer">	
-<p class="links">
-<%= link_to "Retour", :action => "list" %>
-</p>
-</div>
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('#create').click(function() {
+			$("form").submit();
+			return false;
+		});
+	});
+</script>

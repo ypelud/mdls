@@ -1,0 +1,2 @@
+module MenutypesHelper
+end

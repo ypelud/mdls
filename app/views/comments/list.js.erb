@@ -1,0 +1,13 @@
+$("#comment_div").html("<%= escape_javascript(render("list")) %>")
+$("#comment_div").dialog({ 
+	width: 650, 
+	height: 400,
+	buttons: { 
+		"Ok": function() {
+			$(this).dialog("close"); 
+		}
+	},
+	title: $("#content h1").html()
+});
+
+$(".button").button();

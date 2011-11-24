@@ -1,81 +1,81 @@
 class PlanningsController < ApplicationController
-  before_filter :authorize_user, :except => [:show, :index]
-
+  before_filter :login_required, :except => [:show, :index, :move, :new]
+  
+  def init
+    @selectedMenu = 'planning'
+  end
+  
   def index
-    list
-    respond_to do |format|
-      format.html {render :action => 'list'}
-      format.iphone {render :layout => false}
-    end    
-  end
-  
-  
-  def list  
-    if current_user!=nil then
-	  actual_id=current_user.id
-	else
-	  actual_id=""
-	end
+    my_private_too = current_user && (!params[:user_id] || params[:user].id)
     @plannings = Planning.paginate  :page => params[:page],
-    :conditions => ["(user_id like ? and public=true) or (user_id=? and ?)",
-                                       "%#{params[:user_id]}%",
-                                       "#{actual_id}",
-                                       (params[:user_id]==actual_id.to_s|| !params[:user_id])?true:false],
-    :order => 'created_at desc',
-    :per_page => Planning.per_page    
+      :conditions => ["(user_id like ? and public=?) or (user_id=? and 1=?)",
+                      "%#{params[:user_id]}%", true,"#{current_user.id if current_user}",
+                      (!params[:user_id] || User.find_by_id(params[:user_id])==current_user)?1:2],
+      :order => 'created_at desc'
   end
-  
+
   def new
     @planning = Planning.new
+    @liste = session_choix
+    session[:menuslistes] = nil
   end
-
+  
   def create
     Planning.transaction do 
       @planning = Planning.new(params[:planning])
-      @planning.user_id = current_user.id
+      @planning.user = current_user
       @planning.save! 
-      session[:choix].each do |menusliste|
-        if menusliste.planning then
-          menusliste = menusliste.clone
-        end
+      monChoix.each do |menusliste|
+        menusliste = menusliste.clone if menusliste.planning
         menusliste.planning = @planning
         menusliste.save!
       end
-      redirect_to :action => 'index'
     end 
-  end
-
-
-  def update
-    Planning.transaction do 
-      @planning = Planning.find(params[:id])
-      @planning.save! 
-      session[:choix].each do |@menusliste|
-        @menusliste.planning = @planning
-        @menusliste.save!
-      end
-      redirect_to home_path
-    end 
+    redirect_to :action => 'index'
   end
   
-  def show    
-    if params[:id]=='choix' then
-      @planning = Planning.new()
-      @menuslistes= session[:choix]
-    else
-      @planning = Planning.find(params[:id])
-      @menuslistes = @planning.menuslistes      
+  
+  def update
+    Planning.transaction do 
+      @planning = Planning.find(params[:id])      
+      @planning.update_attributes(params[:planning])
+      @planning.save! 
+      @planning.menuslistes.each do |menusliste|
+        menusliste.destroy
+      end      
+      fields = JSON(params[:fields])
+      fields.each do |param|
+        menu_id = param["id"].split("_")[1]
+        day = param["day"]
+
+        m = Menusliste.new
+        m.day = (day) ? day : 0
+        m.when = 0
+        m.menu_id = menu_id
+        m.planning = @planning
+        m.save!
+      end    
     end
-    @planning ||=[]
-    week_array    
-    respond_to do |format|
-      format.html 
-      format.iphone {render :layout => false}
-    end       
+    render :text => "OK"
+  end
+  
+  
+  def show    
+    @planning = Planning.find(params[:id])
+    @liste = @planning.menuslistes     
+    session[:menuslistes] = []
+    @planning.menuslistes.each do |menusliste|
+      session[:menuslistes].push(menusliste)   
+    end              
   end
   
   def edit
     @planning = Planning.find(params[:id])
+    @liste = @planning.menuslistes                      
+    session[:menuslistes] = []
+    @planning.menuslistes.each do |menusliste|
+      session[:menuslistes].push(menusliste)      
+    end           
   end
   
   def destroy
@@ -87,13 +87,31 @@ class PlanningsController < ApplicationController
     redirect_to :action => 'index'
   end
   
+  def move
+    fields = JSON(params[:fields])
+    guid = params[:guid] 
+    day = params[:day]  
+    monChoix.each do |menusliste| 
+      if menusliste.guid == Guid.from_s(guid)
+        menusliste.day = day
+        break
+      end
+    end
+    render :text => "OK"    
+  end
   
-  def user_ok?
-    @planning=Planning.find(params[:id])
-	
-    return false unless current_user    
+  def monChoix
+     return session[:menuslistes] if session[:menuslistes]
+     session_choix
+  end
+  
+  def authorized?
+    @planning=Planning.find(params[:id]) if (params[:id])
     return true unless @planning
+    return false unless current_user
     return true if (current_user.id==@planning.user_id) or admin?
     false
   end 
-end
+
+    
+  end

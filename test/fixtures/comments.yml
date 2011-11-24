@@ -1,0 +1,7 @@
+one:
+    title: 'titre 1'
+    comment: 'commentaire 1'
+    commentable_id: 1
+    commentable_type: 'Menu'
+    user_id: 1
+    

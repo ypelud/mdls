@@ -1,7 +1,7 @@
-require "migration_helpers" 
+#require "migration_helpers" 
 
 class CreateMenus < ActiveRecord::Migration
-  	extend MigrationHelpers
+
   def self.up
 		create_table :menus do |t|
 		   t.column :menutype_id, :integer, :null => false
@@ -10,8 +10,8 @@ class CreateMenus < ActiveRecord::Migration
 		   t.column :date, :date
 		   t.column :description, :text
 		end
-	foreign_key(:menus, :user_id, :users, :id)
-	foreign_key(:menus, :menutype_id, :menutypes, :id)
+	add_index :menus, ["menutype_id"], :name => "fk_menus_menutype"
+  add_index :menus, ["user_id"], :name => "fk_menus_user"
   end
 
   def self.down

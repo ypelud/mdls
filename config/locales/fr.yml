@@ -1,0 +1,83 @@
+fr:
+  account_activated : "{{login}} votre compte a été activé.  Bienvenue à bord!"
+  account_activation_url_message : "Visitez cette adresse pour activer votre compte:"
+  account_created : "Votre compte a été crée."
+  activation_complete_email_subject : "Votre compte a été activé!"
+  activation_required_email_subject : "Veuillez activer votre nouveau compte"
+  reset_notification_email_subject : "Lien pour changer votre mot de passe"
+  blank_activation_code : "Le code d'activation n'existe pas. S'il vous plaît suivez les URL de votre e-mail."
+  bogus_activation_code : "Nous n'avons pas pu trouver un {{model}} avec ce code d'activation - vérifiez votre e-mail? Ou peut-être que vous avez déjà activé - essayez de vous connecter"
+  lundi: 'Lundi'
+  mardi: 'Mardi'
+  mercredi: 'Mercredi'
+  jeudi: 'Jeudi'
+  vendredi: 'Vendredi'
+  samedi: 'Samedi'
+  dimanche: 'Dimanche'
+  tous: 'Tous'
+  aucun: 'Aucun'
+  new_menu: "Nouveau"
+  sur: 'sur'
+  precedent: '< Préc.'
+  suivant: 'Suiv.>'
+  select: 'Sélectionner'
+  ajouter: 'Ajouter'
+  sujet: 'Sujet'
+  envoyer: 'envoyer'
+  dologin: 'Connexion'
+  welcome: "Bienvenue"
+  mdls:
+    authorize_page: "Vous n'êtes pas authorisé à afficher cette page"
+    home: "Accueil"
+    search : "recherche"
+    midi: 'midi'
+    soir: 'soir'
+    liste_repas: 'Liste des repas'
+    liste_menus: 'Liste des menus'
+    all_menu: "Tous"
+    create: 'Créer'
+    new_menu: "Nouveau"
+    organise: "Modifier"
+    update: "Modifier"
+    effacer: 'Effacer'
+    Valider: 'Valider'
+    menus: "Repas"
+    planning: "Menus"
+    contact: 'Contacts'
+    options: 'Options'
+    menutype: 'Types'
+    userlist: 'Users'
+    keywords: "Nuage de mots"
+    last_comments: "Commentaires"
+    how_it_works: "Comment ça marche"
+    aucunchoix: "Aucun repas"
+    name: "Nom"
+    public: "Visible de tout le monde"
+    dontuseservice: "Vous n'utilisez pas ces services ?"
+    or: "ou"
+  menus:
+    create_ok: 'Menu créé correctement.'
+    update_ok: 'Menu mis à jour correctement.'
+  choixmenu:
+    create: 'Créer'
+  user:
+    code_reinit: 'Un code de réinitialisation à été envoyé à  {{user.email}}'
+    pass_reinit: 'Mot de passe réinitialisé pour {{user.email}}'
+    update_ok: "Votre compte à été mis à jour"
+  comment:
+    authorize: 'Vous n''êtes pas authorisé à afficher cette page'
+  menutype:
+    new: 'Nouveau type de menu'
+    edit: 'Editer type de menu'
+    create: 'Menu type créé correctement.'
+    update: 'Menu type correctement mis à jour.'
+    valider: 'Valider'
+  profil:
+    update: 'Les options ont été correctement enregistrées.'
+    authorize: 'Vous n''êtes pas authorisé à afficher cette page'
+  planning:
+    new: 'Créer un nouveau planning'
+    create: 'Enregistrer'
+    update: "Mise à jour"
+
+

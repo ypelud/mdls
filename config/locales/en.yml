@@ -1,0 +1,81 @@
+en:
+  account_activated : "{{login}} your account has been activated.  Welcome aboard!"
+  account_activation_url_message : "Visit this url to activate your account:"
+  account_created : "Your account has been created."
+  activation_complete_email_subject : 'Your account has been activated!'
+  activation_required_email_subject : 'Please activate your new account'
+  reset_notification_email_subject : "Link to change your password"
+  blank_activation_code : "The activation code was missing.  Please follow the URL from your email."
+  bogus_activation_code : "We couldn't find a {{model}} with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+  lundi: 'monday'
+  mardi: 'tuesday'
+  mercredi: 'wednesday'
+  jeudi: 'thursday'
+  vendredi: 'friday'
+  samedi: 'saturday'
+  dimanche: 'sunday'  
+  tous: 'All'
+  aucun: 'Non'
+  new_menu: "New"
+  sur: 'on'
+  precedent: '< Prév.'
+  suivant: 'Next>'
+  select: 'Select'
+  ajouter: 'Add'
+  sujet: 'Subject'
+  envoyer: 'send'
+  login_form_title: 'Connexion'
+  welcome: "Welcome"
+  mdls:
+    sign_in : 'Sign in' 
+    authorize_page: "You are not authorized to view this page."
+    home: 'Home'
+    search : 'search'
+    midi: 'lunch'
+    soir: 'dinner'
+    liste_repas: "Receipe's list"
+    liste_menus: "Planning's list"
+    all_menu: "All"
+    create: 'Create'
+    new_menu: "New"
+    organise: "Modify"
+    update: "Modify"
+    effacer: 'Clear'
+    Valider: 'Validate'
+    menus: "Receipe"
+    planning: "Planning"
+    contact: 'Contacts'
+    options: 'Options'
+    menutype: 'Types'
+    userlist: 'Users'
+    keywords: "Tags"
+    last_comments: "Comments"
+    how_it_works: "How it works"
+    aucunchoix: "None"
+    name: "Name"
+    public: "public"
+  menus:
+    create_ok: 'Receipe created.'
+    update_ok: 'Receipe updated.'
+  choixmenu:
+    create: 'Create'
+  user:
+    code_reinit: 'Un code de réinitialisation à été envoyé à  {{user.email}}'
+    pass_reinit: 'Mot de passe réinitialisé pour {{user.email}}'
+    update_ok: "Votre compte à été mis à jour"
+  comment:
+    authorize: 'Vous n''êtes pas authorisé à afficher cette page'
+  menutype:
+    new: 'Nouveau type de menu'
+    edit: 'Editer type de menu'
+    create: 'Menu type créé correctement.'
+    update: 'Menu type correctement mis à jour.'
+    valider: 'Valider'
+  profil:
+    update: 'Les options ont été correctement enregistrées.'
+    authorize: 'Vous n''êtes pas authorisé à afficher cette page'
+  planning:
+    new: 'Créer un nouveau planning'
+    create: 'Enregistrer'
+    update: "Mise à jour"
+    

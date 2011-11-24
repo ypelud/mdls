@@ -8,7 +8,7 @@
         <%= iui_toolbar "Mdls", new_recherche_url %>
 
    <ul selected="true">
-   <% form_tag "/recherche/update", :class => "panel", :title => "Recherche" do %>
+   <% form_for "/recherche/update", :class => "panel", :title => "Recherche" do %>
    <fieldset>
        <div class="row">
            <%= select_tag "jour", @options %>

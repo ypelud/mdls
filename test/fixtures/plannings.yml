@@ -1,7 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
+    id: 1
+    name:  'semaine 1'
+    public: true 
+    user_id: 1
 
 two:
-  name: MyString
+    id: 2
+    name:  'semaine 2'
+    public: false
+    user_id: 2
+    
+ 
+

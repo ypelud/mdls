@@ -1,10 +1,3 @@
-<%= error_messages_for "planning" %>
-
-<!--[form:planning]-->
-<p><label for="planning_name">Nom</label><br/>
-<%= text_field "planning", "name"  %></p>
-
-<p><label for="planning_public">Laisser les autres utilisateurs voir cette liste</label><br/>
-<%= check_box "planning", "public"   %></p>
-<!--[eoform:planning]-->
+<p><%= form.label t('mdls.name') %> <%= form.text_field :name %></p>
+<p><%= form.check_box :public %> <%= form.label t("mdls.public") %></p>
 

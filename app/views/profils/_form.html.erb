@@ -1,0 +1,6 @@
+
+<%= form.label :style_menu %><br />
+<%= form.select :style_menu, [["Standard","semaine_style"],["Liste","liste_style"]]  %><br />
+
+<%= form.label :first_day %><br />
+<%= form.select :first_day, Mdls::Helpers::Week.new(current_user).week  %><br />

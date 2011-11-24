@@ -1,23 +1,7 @@
-<li><a href="/"><span><%=t("mdls.home")%></span></a></li>
-<!--li><a href="/menu/list"><span>Menus</span></a></li-->
-<li><a href="/plannings"><span><%=t("mdls.planning")%></span></a></li>
-<%if logged_in? %>
-   <li><%=link_to "<span>Deconnexion</span>", logout_path %></li>
-<%else %>
-   <li><%=link_to_remote "<span>#{t("mdls.sign_in")}</span>", :update => "login_div",
-      :url => { :controller => "sessions", :action => "log"},
-      :complete => visual_effect(:toggle_appear, "login_div") %>
-   </li>
-   <li><%=link_to "<span>#{t("sign_up")}</span>", signup_path %></li>
+<li><a href="/"><%=t("mdls.home")%></a></li>
+<li><%= link_to t("dologin"), authentications_path %> </li>
+<%if current_user %>
+   <li><%=link_to t("log_out"), destroy_user_session_path %></li>
 <%end %>
 <li><a href="/home/comment"><span><%=t("mdls.how_it_works")%></span></a></li>
-<%if logged_in? %>
-   <li><a href="/emailer/index"><span><%=t("mdls.contact")%></span></a></li>
-   <li><a href="/profil"><span><%=t("mdls.options")%></span></a></li>
-<% end %>
-<!--li><a href="/menu/list"><span>Comment ça marche ?</span></a></li-->
-<% if admin? %>
-   <li><a href="/menutype/list"><span><%=t("mdls.menutype")%></span></a></li>                        
-   <li><a href="/useradm/list"><span><%=t("mdls.userlist")%></span></a></li>                        
-<% end %>
-
+<li><a class="rss" href="/menus.rss">RSS</a></li>

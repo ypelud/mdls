@@ -1,12 +1,13 @@
-   <h1>Editer</h1>
-<% form_tag "/menus/update/"+@menu.id.to_s do %>
-  <%= render :partial => "form" %>
-  <p><%= submit_tag "Valider", :class => "button"  %></p>
+<h1>Editer</h1>
+<% form_for @menu, :url => menus_path do |f| %>
+  <%= messages_error @menu %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Update" %>
 <% end %>
 
 <div class="post-footer">	
 <p class="links">
-<%= link_to "Voir", :action => "show", :id => @menu %> |
-<%= link_to "Retour", :action => "list" %>
+<%= link_to "Voir", menu_path(@menu) %> 
+<%= link_to "Retour", menus_url %>
 </p>
 </div>

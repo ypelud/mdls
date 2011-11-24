@@ -1,83 +1,69 @@
 class ChoixmenuController < ApplicationController
-  before_filter :week_array
-  require 'pdf/writer'
-  require 'pdf/simpletable'
   
-  
-  def list
-      session[:choix] ||= []
-      render :partial => "menu_list"
-  end
-   
   def add
-      menu_id = params[:id].split("_")[1]    
-      day = params[:day]
-      ms = params[:midisoir]
-      menusliste = Menusliste.new
-
-      menusliste.day = @week.index(day)
-      menusliste.when = @midisoir.index(ms)
-      menusliste.menu_id = menu_id      
-
-      session[:choix].push(menusliste) 
-      render :partial => 'cart', :locals => { :day => day, :midisoir => ms } 
+    addMenu(params)
+    render :partial => "cart"
   end
   
+  def addAll
+    session[:choix] = [] if params["empty"]
+    
+    fields = JSON(params[:fields])
+    fields.each do |param|
+      addMenu(param)
+    end
+    render :partial => "cart"
+  end
+
+
+  def addMenu(param)
+    menu_id = param["id"].split("_")[1]
+    day = param["day"]
+
+    m = Menusliste.new
+    m.day = (day) ? day : 0
+    m.when = 0
+    m.menu_id = menu_id     
+    session_choix.push(m)
+  end
+
+  
+  def index
+    render :partial => "cart"
+  end
+
   def remove
-      menu_id = params[:id] 
-      day = params[:day]
-      ms = params[:midisoir]
-      session[:choix].each do |menusliste| 
-        if @week[menusliste.day]==day and @midisoir[menusliste.when]==ms and menusliste.menu_id=menu_id
-          session[:choix].delete(menusliste) 
-          break
-        end
+    menu_id = params[:id] 
+    session_choix.each do |menusliste| 
+      if menusliste.menu_id==menu_id
+        session_choix.delete(menusliste) 
+        break
       end
-          
-      render :partial => 'cart', :locals => { :day => day, :midisoir => ms } 
+    end
+    render :text => "#{session_choix.length} menu(s)"
   end
 
   def save
-  
+    p_name = params[:name]
   end
-  
-  def print
-    fname = 'Menus_'+Time.now.to_i.to_s+'.pdf'
-    send_data ChoixmenuDrawer.draw(@week,@midisoir,session[:choix]), :filename => fname, :type => "application/pdf", :disposition => 'inline'    
-  end
-  
+
+  #def print
+  #  fname = 'Menus_'+Time.now.to_i.to_s+'.pdf'
+  #  send_data ChoixmenuDrawer.draw(@week,@midisoir,session[:choix]), :filename => fname, :type => "application/pdf", :disposition => 'inline'    
+  #end
+
   def apply
     session[:choix] = []
     @planning = Planning.find(params[:id])
     @planning.menuslistes.each do |menusliste|
-      session[:choix].push(menusliste) 
+      session_choix.push(menusliste) 
     end  
-
-    respond_to do |format|
-      format.html {redirect_to home_path}
-      format.iphone {render :text => "", :layout => false}
-    end    
+    redirect_to :root
   end
-  
+
   def empty
     session[:choix] = []
-    respond_to do |format|
-      format.html {redirect_to home_path}
-      format.iphone {render :text => "", :layout => false}
-    end    
+    redirect_to :root
   end
-  
-  def addform
-     @options = ''
-     week.each do |w| 
-       @options += '<option>'+w+'</option>'
-       
-     end
-     respond_to do |format|
-      format.html {redirect_to home_path}
-      format.iphone {render  :layout => false}
-    end        
-  end
-  
-  
+
 end
