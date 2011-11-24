@@ -5,5 +5,12 @@ config/mongrel_cluster.yml
 config/settings.yml
 config/initializers/action_mailer.rb
 db/schema.rb
-tmp/**/*
+db/*.sqlite3
+tmp/
 vendor/rails
+.DS_Store
+.bundle/
+scratch_directory/
+lib/tasks/
+Gemfile.lock
+todo.txt

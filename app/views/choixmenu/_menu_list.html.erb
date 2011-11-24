@@ -20,7 +20,9 @@
 
 <a class="button" href="/choixmenu/print">Format PDF</a> 
 <a class="button" href="/choixmenu/courses">Ingrédients</a> 
-<a class="button" href="/plannings/new">Sauvegarder</a> 
+<% if admin? %>
+  <a class="button" href="/plannings/new">Sauvegarder</a> 
+<% end %>
 <a class="button" href="/choixmenu/empty">Vider</a> 
 
 <div style="height:40px;padding-top:10px;">
