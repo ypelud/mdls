@@ -1,7 +1,7 @@
 <li><a href="/"><%=t("mdls.home")%></a></li>
 <li><%= link_to t("dologin"), authentications_path %> </li>
 <%if current_user %>
-   <li><%=link_to t("log_out"), logout_path %></li>
+   <li><%=link_to t("log_out"), destroy_user_session_path %></li>
 <%end %>
 <li><a href="/home/comment"><span><%=t("mdls.how_it_works")%></span></a></li>
 <li><a class="rss" href="/menus.rss">RSS</a></li>

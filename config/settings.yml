@@ -15,8 +15,3 @@ production:
     mail_to:  Menusdelasemaine <postmaster@menusdelasemaine.com>
     mail_from: Menusdelasemaine <postmaster@menusdelasemaine.com>
     super_user: ypelud
-
-
-all:
-    captcha_pub_key: '6Le6xwsAAAAAAGOjxNzZc9OrcqpBRzwgxSRAqd0t'
-    captcha_pri_key: '6Le6xwsAAAAAAPtEHuX5EAitVNkMIL6h8C9KRNt_'

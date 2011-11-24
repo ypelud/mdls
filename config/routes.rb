@@ -1,50 +1,27 @@
 Mdls::Application.routes.draw do
+  root :to => "menus#index"
   
-  devise_for :users
-
+  devise_for :users 
   match '/auth/:provider/callback' => 'authentications#create' 
   
   resources :authentications
 
-    #map.root :controller => 'menus'
-    #map.home '', :controller => 'menus', :action => 'index'
-    root :to => "menus#index"
+  resources :users do 
+    resource :profil
+  end
     
-
-    resources :users do 
-      resource :profil
-    end
-
-
-    resources :menus
-    resources :menutypes
-    resources :recherche
+  resources :menus
+  resources :menutypes
+  resources :recherche
+  
+  resources :plannings
+  resources :tags
+  resources :comments
     
-    resources :plannings
-    resources :tags
-    resources :comments
-    
-    resource :account, :controller => "users"
+  match 'menus.rss' => 'menus#feedurl'      
+  match 'menus-fb' => 'menus#feed', :format => 'rss'
 
-    match 'signup' => 'users#new'
-    match 'logout' => 'user_sessions#destroy'
-
-  #  map.activate  '/activate/:activation_code', :controller => 'users',     :action => 'activate', :activation_code => nil
-  #  map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'
-  #  map.errors    '/errors',                    :controller => 'users',     :action => 'errors'
-  #  map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
-  #  map.login     '/login',                     :controller => 'sessions',  :action => 'new'
-  #  map.profil    '/profil',                    :controller => 'profil',    :action => 'edit'
-
-    match 'menus.rss' => 'menus#feedurl'      
-    match 'menus-fb' => 'menus#feed', :format => 'rss'
-
-    match 'fr' => 'users#language', :code => "fr"
-    match 'en' => 'users#language', :code => "en-US"
-    match 'de' => 'users#language', :code => "de"
-    match 'es' => 'users#language', :code => "es"
-
-    match 'emailer' => 'emailer#index'
+  match 'emailer' => 'emailer#index'
 
   
   # The priority is based upon order of creation:

@@ -206,7 +206,7 @@
 					flash_div.html(""); 
 					flash_div.hide()
 				})
-			}, 1400);
+			}, 3000);
 		}
 	} 
 	

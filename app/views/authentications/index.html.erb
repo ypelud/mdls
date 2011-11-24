@@ -18,7 +18,7 @@
   <% else %>  
   <p><strong>Sign in through one of these services:</strong></p>  
 <% end %>  
-  
+
 <a href="/auth/twitter" class="auth_provider">  
   <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>Twitter</a>  
 <a href="/auth/facebook" class="auth_provider">  
@@ -32,7 +32,7 @@
 <% unless current_user %>
 	<p>
 		<strong><%=t('mdls.dontuseservice')%></strong>
-	<%=link_to t("sign_in"), :new_user_session, :class => "login" %> <%=t("mdls.or")%>
-	<%=link_to t("sign_up"), signup_path %>
+	<%=link_to t("devise.shared.sign_in"), new_user_session_path %> <%=t("mdls.or")%>
+	<%=link_to t("devise.shared.sign_up"), new_user_registration_path %>
 	</p>
 <% end %>

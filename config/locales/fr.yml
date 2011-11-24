@@ -7,28 +7,6 @@ fr:
   reset_notification_email_subject : "Lien pour changer votre mot de passe"
   blank_activation_code : "Le code d'activation n'existe pas. S'il vous plaît suivez les URL de votre e-mail."
   bogus_activation_code : "Nous n'avons pas pu trouver un {{model}} avec ce code d'activation - vérifiez votre e-mail? Ou peut-être que vous avez déjà activé - essayez de vous connecter"
-  create_account : "Créer un compte"
-  email : "Email"
-  log_in : "Connexion"
-  log_out : "Déconnexion"
-  logged_in : "Connexion réussie"
-  logged_in_as : "Connecté en tant que {{login}}"
-  logged_out : "Vous avez été déconnecté."
-  login : "Utilisateur"
-  login_failed : "Une erreur est survenue lors de votre connexion"
-  new_user_sign_up : "S'enregistrer comme nouvel utilisateur"
-  not_logged_in : "Non connecté"
-  password : "Mot de passe"
-  password_confirmation : "Mot de passe confirmé"
-  remember_me : "Se souvenir de moi"
-  sign_in : "Se connecter"
-  sign_up : "S'enregistrer"
-  signup_complete : "Enregistrement complet!"
-  signup_complete_and_do_login : "Enregistrement complet! S'il vous plaît, connectez-vous pour continuer."
-  signup_complete_with_activation : "Merci pour votre enregistrement !  Nous vous envoyons un e-mail pour activer votre compte."
-  signup_problem : "Désolé, nous ne pouvons enregistrer ce compte. Essayez de nouveau ou contactez l'administrateur (lien plus bas)."
-  pick_new_password: 'nouveau mot de passe pour {{mail}}'
-  reset_password_button: 'Changer'
   lundi: 'Lundi'
   mardi: 'Mardi'
   mercredi: 'Mercredi'

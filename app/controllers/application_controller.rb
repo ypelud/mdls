@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
 
     # Valide la connexion d'un administrateur
     def admin?
-      current_user && (current_user.login==APP_CONFIG['super_user']) 
+      current_user && (current_user.login==MDSL_SUPER_USER) 
     end
 
     def session_choix(jour=nil)

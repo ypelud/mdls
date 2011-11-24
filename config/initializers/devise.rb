@@ -34,8 +34,7 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  #config.case_insensitive_keys = [ :email ]
-  config.case_insensitive_keys = [ :login ]
+  config.case_insensitive_keys = [ :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
@@ -52,12 +51,10 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
-  # config.stretches = 10
   config.stretches = 10
-
+  
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "38b6ced1d7a943c5cc50069c88543124061aff2a14c7cca2e69159ea6d6968fd4b96efa44160285186274265c64da23b155c0ee2e9d5d67b2b51d4360f47d44d"
-  config.pepper = ""
+  config.pepper = "38b6ced1d7a943c5cc50069c88543124061aff2a14c7cca2e69159ea6d6968fd4b96efa44160285186274265c64da23b155c0ee2e9d5d67b2b51d4360f47d44d"
   
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
@@ -140,8 +137,8 @@ Devise.setup do |config|
   # :authlogic_sha512 (then you should set stretches above to 20 for default behavior)
   # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
   # REST_AUTH_SITE_KEY to pepper)
-  # config.encryptor = :sha512
-  config.encryptor = :restful_authentication_sha1
+  config.encryptor = :sha512
+  #config.encryptor = :restful_authentication_sha1
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
@@ -184,7 +181,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  #config.omniauth :github, GITHUB_CONSUMER_KEY, GITHUB_SECRET_KEY, :scope => 'user,public_repo'
+  #config.omniauth :twitter, TWITTER_CONSUMER_KEY, TWITTER_SECRET_KEY, :scope => 'user,public_repo'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
