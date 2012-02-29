@@ -25,7 +25,10 @@
 #liste_style #login {
     border-left: 1px solid #FFA500;
 }
-
+#liste_style tr {
+   height: 40px;
+   background: #242424;
+}
 /* semaine_style */ 
 #semaine_style {
     clear: both;

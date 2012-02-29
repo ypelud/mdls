@@ -15,7 +15,7 @@ class MenusController < ApplicationController
   
   def list    
     profil = Profil.find_by_id(current_user.id) if current_user 
-    @affichage = profil ? profil.style_menu : 'semaine_style' 
+    @affichage = 'liste_style' #profil ? profil.style_menu : 'liste_style' 
     items_per_page = @affichage == 'semaine_style' ? 10 : Menu.per_page
     @menus = Menu.paginate  :page => params[:page],
     :conditions => ["title like ? and user_id like ? and menutype_id like ?",
