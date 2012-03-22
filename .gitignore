@@ -15,3 +15,4 @@ lib/tasks/
 *.rails2
 Gemfile.lock
 todo.txt
+vendor/plugins/rails_upgrade
