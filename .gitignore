@@ -16,3 +16,4 @@ lib/tasks/
 Gemfile.lock
 todo.txt
 vendor/plugins/rails_upgrade
+coverage
