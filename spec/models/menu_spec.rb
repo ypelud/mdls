@@ -18,7 +18,9 @@ describe Menu do
   
   it "should regenerate tags" do
     @menu.title = "un deux trois quatre"
-    @menu.before_save(@menu)
+    @menu.menutype_id = 1
+    @menu.user_id = 1
+    @menu.save!()
     @menu.tag_list.count.should == 3
     @menu.tag_list[0].should == "deux"
     @menu.tag_list[1].should == "trois"
