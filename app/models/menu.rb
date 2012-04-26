@@ -10,14 +10,14 @@ class Menu < ActiveRecord::Base
   acts_as_commentable
   
   
-  def before_save(record)
+  def before_save()
     Tag.destroy_unused = true
 
-    tag_tab = record.title.split
+    tag_tab = self.title.split
 
-    record.tag_list=""
+    self.tag_list=""
     #suppression des tags inferieur à 3 car.
-    tag_tab.each {|w| record.tag_list.add(w) if w.size>3 }
+    tag_tab.each {|w| self.tag_list.add(w) if w.size>3 }
   end
   
   def self.presentation(current_user)
