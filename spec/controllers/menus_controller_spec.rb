@@ -71,7 +71,7 @@ describe MenusController, "POST Create" do
       @menu.should_receive(:save).and_return(true)
     end
     
-    it "should render create template" do
+    it "should redirect to menus_path" do
       post :create, :menu => {  }
       controller.should redirect_to(menus_path)  
     end
