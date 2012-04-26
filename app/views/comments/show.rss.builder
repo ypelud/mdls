@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
     xml.description "Les derniers commentaires"
     xml.link formatted_comments_url(:rss)
     
-    for comment in @comment
+    for comment in @comments
       xml.item do
         xml.title "Titre : "+comment.title
         xml.description comment.comment

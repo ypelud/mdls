@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
+  before_filter :authorize_user, :only => [:new]
+  
   def new
     @menu = Menu.find(params[:id])
-   
     @comment = Comment.new(params[:comment])
     @comment.user_id = current_user.id
     @comment.created_at = Time.now
-    @menu.comments <<@comment
+    @menu.comments << @comment
     render :layout=>false
   end
   
@@ -20,6 +21,16 @@ class CommentsController < ApplicationController
   end
   
   def show
-    @comment = Comment.find(:all)
+    @comments = Comment.find(:all)
   end  
+  
+private
+  def authorize_user
+    unless current_user
+      flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
+      redirect_to home_path
+      false
+    end
+  end
+  
 end
