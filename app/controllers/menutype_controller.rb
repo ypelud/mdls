@@ -46,8 +46,10 @@ class MenutypeController < ApplicationController
     end
   end
 
-  def destroy
-    Menutype.find(params[:id]).destroy
-    redirect_to :action => 'list'
+  def destroy    
+    if (Menutype.find(params[:id]).destroy)
+      flash[:notice] = 'Menutype supprimé correctement.'      
+    end
+    redirect_to menutype_path
   end
 end
