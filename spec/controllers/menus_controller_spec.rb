@@ -4,7 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 # test de show
 describe MenusController, "show" do  
   before(:each) do
-    controller.stub!(:current_user).and_return(:test)
+    controller.stub!(:current_user).and_return(mock_model(User, :login => "user"))
     Menu.stub!(:find).with('1').and_return(@menu = mock_model(Menu, :save=>false))
   end
         
@@ -34,7 +34,7 @@ end
 # test de New
 describe MenusController, "new" do
   before(:each) do    
-    controller.stub!(:current_user).and_return("test")
+    controller.stub!(:current_user).and_return(mock_model(User, :login => "user"))
     Menu.stub!(:new).and_return(@menu = mock_model(Menu, :save=>false))
   end
     
@@ -59,7 +59,7 @@ end
 # test de Create
 describe MenusController, "POST Create" do
   before(:each) do
-    controller.stub!(:current_user).and_return(mock_model(User))
+    controller.stub!(:current_user).and_return(mock_model(User, :login => "user"))
     Time.stub!(:new)
     Menu.stub!(:new).and_return(@menu = mock_model(Menu))
     @menu.should_receive(:date=)
@@ -124,7 +124,7 @@ end
 # test de destroy
 describe MenusController, "destroy" do
   before(:each) do
-    controller.stub!(:authorize_user).and_return(true)
+    controller.stub!(:authorize).and_return(true)
     Tag.stub!(:destroy_unused)
     Menu.stub!(:find).with('1').and_return(@menu = mock_model(Menu, :destroy => true))
   end
@@ -178,7 +178,7 @@ end
 # test de update
 describe MenusController, "POST menus/:id" do
   before(:each) do
-    controller.stub!(:authorize_user).and_return(true)
+    controller.stub!(:authorize).and_return(true)
     controller.stub!(:genereTags).and_return(true)
     Tag.stub!(:destroy_unused)
   end
@@ -190,12 +190,10 @@ describe MenusController, "POST menus/:id" do
     end
   
     it "should find a menu an return object" do
-      Menu.should_receive(:find).with('1').and_return(@menu)
       post :update, :id => 1, :menu => {}
     end
   
     it "should update the menu object's attributes" do
-      @menu.should_receive(:update_attributes).and_return(true)
       post :update, :id => '1', :menu => {}
     end
   

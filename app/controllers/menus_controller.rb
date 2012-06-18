@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   before_filter :find_menu, :only => [:destroy, :update, :edit, :show]
-  before_filter :authorize_user, :except => [:recupere, :list, :show, :index, :feed, :feedurl]
+  before_filter :authorize, :except => [:recupere, :list, :show, :index, :feed, :feedurl]
   # uses the cookie session store (then you don't need a separate :secret)
   # protect_from_forgery :except => :recupere
   
@@ -62,7 +62,7 @@ class MenusController < ApplicationController
   
   def destroy
     Tag.destroy_unused = true
-    if (@menu && authorize_user && @menu.destroy)
+    if (@menu && authorize && @menu.destroy)
       flash[:notice] = 'Menu supprimé correctement.'      
     end
     redirect_to menus_path
@@ -86,15 +86,7 @@ private
   def find_menu
     @menu = Menu.find(params[:id])
   end
-  
-  def authorize_user
-    unless user_ok?
-      flash[:error] = "Vous n'êtes pas authorisé à afficher cette page"
-      redirect_to home_path
-      false
-    end
-  end
-  
+
   def user_ok?
     return false unless current_user    
     return true unless @menu    
@@ -102,5 +94,6 @@ private
     return true if admin?
     false
   end 
+  
   
 end

@@ -1,11 +1,10 @@
 class ChoixmenuController < ApplicationController
-  before_filter :week_array
+  before_filter  :fill_session
   require 'pdf/writer'
   require 'pdf/simpletable'
   
   
   def list
-      session[:choix] ||= []
       render :partial => "menu_list"
   end
    
@@ -28,7 +27,7 @@ class ChoixmenuController < ApplicationController
       day = params[:day]
       ms = params[:midisoir]
       session[:choix].each do |menusliste| 
-        if @week[menusliste.day]==day and @midisoir[menusliste.when]==ms and menusliste.menu_id=menu_id
+        if @week[menusliste.day]==day and @midisoir[menusliste.when]==ms and menusliste.menu_id==menu_id
           session[:choix].delete(menusliste) 
           break
         end
@@ -48,8 +47,8 @@ class ChoixmenuController < ApplicationController
   
   def apply
     session[:choix] = []
-    @planning = Planning.find(params[:id])
-    @planning.menuslistes.each do |menusliste|
+    planning = Planning.find(params[:id])
+    planning.menuslistes.each do |menusliste|
       session[:choix].push(menusliste) 
     end  
 
@@ -61,5 +60,9 @@ class ChoixmenuController < ApplicationController
     redirect_to :back 
   end
   
+private
+  def fill_session
+    session[:choix] ||= []
+  end
   
 end

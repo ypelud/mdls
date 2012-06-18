@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :menus
   map.resources :menutype
+  map.resources :plannings
   map.resource :comments
     
   map.activate  '/activate/:activation_code', :controller => 'users',     :action => 'activate', :activation_code => nil

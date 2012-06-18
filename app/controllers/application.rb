@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  include MdlsSystem
   
   helper :all # include all helpers, all the time
   helper_method :admin? 
@@ -11,9 +12,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_user_language
   before_filter :adjust_format_for_iphone
   
-  protected
+protected
   def authorize
-    unless admin?
+    unless (self.respond_to?(:user_ok?, true) && user_ok?) || admin? 
       flash[:error] = t(:authorize_page)
       redirect_to home_path
       false
@@ -23,36 +24,10 @@ class ApplicationController < ActionController::Base
   def admin?
     logged_in? && (current_user.login==APP_CONFIG['super_user']) 
   end   
-  
+    
   def set_user_language
     session[:language] ||= 'fr-FR'
     I18n.locale = session[:language]
-  end
-  
-  def midisoir
-    md = t("mdls.midi"),t("mdls.soir")
-    return md
-  end 
-  
-  def week
-    w = t('lundi'), t('mardi'), t('mercredi'), t('jeudi'), t('vendredi'), t('samedi'), t('dimanche')
-    return w
-  end 
-  
-  def week_array
-    @week = week
-    if current_user and Profil.find_by_id(current_user.id) 
-      profil = Profil.find_by_id(current_user.id)
-      day = profil.first_day           
-      deb = @week[0]
-      while day and @week[0]!=day do
-        dec = @week[0] 
-        @week.shift
-        @week.push(dec) 
-        break if @week[0]==deb 
-      end          
-    end            
-    @midisoir = midisoir
   end
   
   

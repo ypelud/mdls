@@ -16,7 +16,7 @@
 <% end %>
 <!--li><a href="/menu/list"><span>Comment ça marche ?</span></a></li-->
 <% if admin? %>
-   <li><a href="/menutype/list"><span><%=t("mdls.menutype")%></span></a></li>                        
-   <li><a href="/useradm/list"><span><%=t("mdls.userlist")%></span></a></li>                        
+   <li><a href="/menutype"><span><%=t("mdls.menutype")%></span></a></li>                        
+   <li><%=link_to "<span>#{t("mdls.userlist")}</span>", users_path %></li>                        
 <% end %>
 

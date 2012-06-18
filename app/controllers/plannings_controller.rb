@@ -1,4 +1,5 @@
 class PlanningsController < ApplicationController
+  before_filter :authorize, :except => [:list, :show, :index]
 
   def index
     list
@@ -22,14 +23,14 @@ class PlanningsController < ApplicationController
     Planning.transaction do 
       @planning = Planning.new(params[:planning])
       @planning.user_id = current_user.id
-      @planning.save! 
-      puts @planning
+      @planning.save!
       session[:choix].each do |@menusliste|
-        puts @menusliste
         @menusliste.planning = @planning
         @menusliste.save!
       end
-      redirect_to :action => 'list'
+
+      flash[:notice] = 'Planning créé correctement.'
+      redirect_to plannings_path
     end 
     
    #rescue ActiveRecord::RecordInvalid => e 
@@ -40,10 +41,15 @@ class PlanningsController < ApplicationController
   
   def show    
     @planning = Planning.find(params[:id])
-    week_array    
   end
   
   
-  
+  def user_ok?
+    return false unless current_user    
+    return true unless @planning    
+    return true if (current_user.id==@planning.user_id) 
+    return true if admin?
+    false
+  end
   
 end
