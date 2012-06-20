@@ -15,6 +15,7 @@ Mdls::Application.routes.draw do
     match '/errors' => 'users#errors', :as => :errors
     match 'reset/:reset_code' => 'users#reset', :as => :reset
     match '/login' => 'sessions#new', :as => :login
+    match '/signin' => 'sessions#signin', :as => :signin
     match '/logout' => 'sessions#destroy', :as => :logout
     match '/profil' => 'profil#edit', :as => :profil
     match '/fr' => 'users#language', :as => :fr, :code => 'fr-FR'

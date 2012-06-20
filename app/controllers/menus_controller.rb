@@ -58,7 +58,6 @@ class MenusController < ApplicationController
   end
   
   def destroy
-    Tag.destroy_unused = true
     if (@menu && authorize && @menu.destroy)
       flash[:notice] = 'Menu supprimé correctement.'      
     end

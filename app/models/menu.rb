@@ -2,6 +2,7 @@ class Menu < ActiveRecord::Base
   belongs_to :menutype
   belongs_to :user
   
+  before_save :handle_tags
   cattr_accessor :per_page
   @@per_page = 30
   
@@ -9,12 +10,12 @@ class Menu < ActiveRecord::Base
   acts_as_commentable
   
   
-  def before_save()
-    Tag.destroy_unused = true
+  def handle_tags()
 
     tag_tab = self.title.split
-
+    
     self.tag_list=""
+    
     #suppression des tags inferieur à 3 car.
     tag_tab.each {|w| self.tag_list.add(w) if w.size>3 }
   end

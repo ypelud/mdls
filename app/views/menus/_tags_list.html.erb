@@ -1,5 +1,5 @@
    <div class="tag_cloud">
-      <p><% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class|  %>
+      <p><% tag_cloud tag_counts, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class|  %>
       <%= link_to name, {:controller => 'menus', :action => "list", :tags_id => name},:class => css_class %>
       <% end %></p>
 </div>

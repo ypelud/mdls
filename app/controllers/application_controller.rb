@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   helper_method :admin? 
   
-  before_filter :set_user_language
+  before_filter :init_all
   before_filter :adjust_format_for_iphone
   
 protected
@@ -24,8 +24,9 @@ protected
     logged_in? && (current_user.login==APP_CONFIG['super_user']) 
   end   
     
-  def set_user_language
+  def init_all
     session[:language] ||= 'fr-FR'
+    session[:choix]||=[]
     I18n.locale = session[:language]
   end
   

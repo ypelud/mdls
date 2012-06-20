@@ -13,4 +13,8 @@ module MenusHelper
       }
   end
   
+  def tag_counts()
+    Menu.tag_counts(:limit => 20, :order=>'Random()' ) 
+  end
+  
 end

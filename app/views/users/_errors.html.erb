@@ -1,0 +1,6 @@
+<% if @user.errors.any? %>
+  <h2> Il y a un problème dans votre saisie </h2>
+  <% @user.errors.full_messages.each do |msg| %>
+    <ul><%=msg%></ul>
+  <% end %>
+<% end %>

@@ -10,4 +10,8 @@
  *
  *= require_self
  *= require_tree .
+ *= require pagination
+ *= require menus
+ *= require Harvest
  */
+

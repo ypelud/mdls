@@ -3,11 +3,8 @@
 <%if logged_in? %>
    <li><%=link_to "<span>Deconnexion</span>", logout_path %></li>
 <%else %>
-   <li><%=link_to_remote "<span>#{t("mdls.sign_in")}</span>", :update => "login_div",
-      :url => { :controller => "sessions", :action => "log"},
-      :complete => visual_effect(:toggle_appear, "login_div") %>
-   </li>
-   <li><%=link_to "<span>#{t("sign_up")}</span>", signup_path %></li>
+   <li><%=link_to(login_path) do %><span><%= t("mdls.sign_in") %></span><% end %></li>
+   <li><%=link_to(signup_path) do %><span><%= t("sign_up") %></span><% end %></li>
 <%end %>
 <li><a href="/home/comment"><span><%=t("mdls.how_it_works")%></span></a></li>
 <%if logged_in? %>
@@ -17,6 +14,7 @@
 <!--li><a href="/menu/list"><span>Comment ça marche ?</span></a></li-->
 <% if admin? %>
    <li><a href="/menutype"><span><%=t("mdls.menutype")%></span></a></li>                        
-   <li><%=link_to "<span>#{t("mdls.userlist")}</span>", users_path %></li>                        
+   <li><%=link_to(users_path) do %><span><%= t("mdls.userlist") %></span><% end %>
+	</li>                        
 <% end %>
 

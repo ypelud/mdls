@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_back_or_default('/')
       flash[:notice] = "Connecte"
     else
-      flash[:notice] = "Connexion echouée"
+      flash[:error] = "Connexion echouée"
       #render :action => 'new'
       redirect_back_or_default('/')
     end
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     redirect_back_or_default('/')
   end
 
-  def log
+  def signin
     render :partial => "new", :layout => false
   end
 

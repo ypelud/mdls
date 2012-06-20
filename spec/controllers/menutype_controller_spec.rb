@@ -107,7 +107,7 @@ describe MenutypeController, "POST Create" do
     
     it "should redirect to menutype_path" do
       post :create, :menutype => {  }
-      controller.should redirect_to('menutype/list')  
+      controller.should redirect_to('/menutype/list')  
     end
   
     it "should assign value to flash[:notice]" do

@@ -1,4 +1,4 @@
-    <% @comments.each do |comment|%>
+    <% last_five_comments.each do |comment|%>
 <div class="comments">
       <%= render :partial => "comments/comment5", :locals => {:comment => comment } %>           
 </div>

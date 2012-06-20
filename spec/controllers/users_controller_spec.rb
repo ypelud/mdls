@@ -32,22 +32,22 @@ describe UsersController, "POST /create" do
 
   it "should require login on signup" do
     post :create, :user => { :login => nil, :email => 'test@example.com', :password => 'test', :password_confirmation => 'test' }
-    assigns(:user).errors.on(:login).should_not be_nil
+    assigns(:user).errors[:login].should_not be_nil
   end
 
   it "should require password on signup" do
     post :create, :user => { :login => 'test', :email => 'test@example.com', :password => nil, :password_confirmation => "test" }
-    assigns(:user).errors.on(:password).should_not be_nil
+    assigns(:user).errors[:password].should_not be_nil
   end
 
   it "should require password confirmation on signup" do
     post :create, :user => { :login => 'test', :email => 'test@example.com', :password => "test", :password_confirmation => nil }
-    assigns(:user).errors.on(:password_confirmation).should_not be_nil
+    assigns(:user).errors[:password_confirmation].should_not be_nil
   end
 
   it "should require email on signup" do
     post :create, :user => { :login => 'test', :email => nil, :password => "test", :password_confirmation => "test" }
-    assigns(:user).errors.on(:email).should_not be_nil
+    assigns(:user).errors[:email].should_not be_nil
   end
 
   it "should sign up user with activation code" do
@@ -133,8 +133,7 @@ describe UsersController, "POST /reset" do
     @user.should_receive(:update_attributes).and_return(false)
     post :reset, :reset_code => "", :user => {  :password => "test", :password_confirmation => "test" }
     controller.should render_template(:errors) 
-    response.layout.should == "layouts/simple"
-    #rails 3 controller.should render_template("layouts/simple") 
+    controller.should render_template("layouts/simple") 
   end
   
   it "should not reset code for nil" do
@@ -156,13 +155,13 @@ describe UsersController, "GET /language" do
 
   it "should put language to en-US" do
     post :language, :code => "en-US"
-    response.should redirect_to "where_i_came_from"
+    response.should redirect_to "/where_i_came_from"
     session[:language].should == "en-US"
   end
 
   it "should put language to default fr-FR" do
     post :language, :code => nil
-    response.should redirect_to "where_i_came_from"
+    response.should redirect_to "/where_i_came_from"
     session[:language].should == "fr-FR"
   end
     
