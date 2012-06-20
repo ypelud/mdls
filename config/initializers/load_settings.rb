@@ -19,4 +19,4 @@
 #   super_user: root 
 #
 
-APP_CONFIG = YAML::load_file(File.join(RAILS_ROOT, "config", "settings.yml"))[RAILS_ENV]
+APP_CONFIG = YAML::load_file(File.join(Rails.root, "config", "settings.yml"))[Rails.env]

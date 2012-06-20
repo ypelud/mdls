@@ -1,6 +1,5 @@
 class ProfilController < ApplicationController
   before_filter :authorize
-  verify :method => :post, :only => [:update ], :redirect_to => { :action => :list }
   
   def edit
     unless @profil = Profil.find_by_id(current_user.id)

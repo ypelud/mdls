@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   before_filter :authorize, :only => [ :index ]
-  
-
-  verify :method => :post, :only => [ :forgot, :create, :reset ], :redirect_to => :home_path
-
    
   def index
     @users = User.paginate  :page => params[:page]                                              

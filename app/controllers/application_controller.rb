@@ -1,13 +1,12 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include MdlsSystem
+
+  protect_from_forgery
+  
   
   helper :all # include all helpers, all the time
   helper_method :admin? 
-  protect_from_forgery #:secret => '2d1b863b143e5467a25d7af12a48aebd'
   
   before_filter :set_user_language
   before_filter :adjust_format_for_iphone
@@ -42,6 +41,7 @@ protected
   def iphone_request?
     return (request.subdomains.first == "iphone" || params[:format] == "iphone")
   end
+  
   
   
 end

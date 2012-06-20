@@ -10,7 +10,7 @@ describe ChoixmenuController, "GET /empty" do
     
   it "redirects back to the referring page" do
     get :empty
-    response.should redirect_to "where_i_came_from"
+    response.should redirect_to "/where_i_came_from"
   end
 
   it "empty the session[:choix]" do
@@ -56,7 +56,7 @@ describe ChoixmenuController, "GET /apply" do
     
   it "redirects back to the referring page" do
     get :apply, :id => 1
-    response.should redirect_to "where_i_came_from"
+    response.should redirect_to "/where_i_came_from"
   end
 
   it "fill the session[:choix]" do
