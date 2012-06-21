@@ -1,7 +1,7 @@
 <li><a href="/"><span><%=t("mdls.home")%></span></a></li>
 <!--li><a href="/menu/list"><span>Menus</span></a></li-->
 <%if logged_in? %>
-   <li><%=link_to "<span>Deconnexion</span>", logout_path %></li>
+   <li><%=link_to(logout_path) do %><span>Deconnexion</span><% end %></li>
 <%else %>
    <li><%=link_to(login_path) do %><span><%= t("mdls.sign_in") %></span><% end %></li>
    <li><%=link_to(signup_path) do %><span><%= t("sign_up") %></span><% end %></li>

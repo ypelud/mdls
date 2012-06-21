@@ -1,14 +1,7 @@
 class EmailerController < ApplicationController
 
   def sendmail
-    email = params[:email]
-    if  params[:cc_mail] == "1"
-      cc = current_user.email
-    end
-	  subject = email[:subject]
-	  message = email[:message]
-    login = current_user.login
-    Emailer.deliver_contact(login, cc, subject, message)
+    Emailer.contact(current_user, params[:email][:cc_mail] == "1" ? current_user.email : "", params[:email][:subject], params[:email][:message]).deliver
     return if request.xhr?
       
     redirect_to :action => 'thanks'

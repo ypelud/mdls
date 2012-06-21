@@ -1,30 +1,23 @@
 class UserMailer < ActionMailer::Base
-  def signup_notification(user)
-    setup_email(user)
-    @subject    += I18n.t(:activation_required_email_subject)
-    @body[:url]  = "#{APP_CONFIG['host']}/activate/#{user.activation_code}"
+  default :from => "#{APP_CONFIG['mail_from']}"
   
+  def signup_notification(user)
+    @user = user
+    @url  = "#{APP_CONFIG['host']}/activate/#{user.activation_code}"
+    mail(:to => user.email, :subject => I18n.t(:activation_required_email_subject))  
   end
   
   def activation(user)
-    setup_email(user)
-    @subject    += I18n.t(:activation_complete_email_subject)
-    @body[:url]  = "#{APP_CONFIG['host']}"
+    @user = user
+    @url  = "#{APP_CONFIG['host']}"
+    mail(:to => user.email, :subject => I18n.t(:activation_complete_email_subject))  
   end
      
      
    def reset_notification(user)
-     setup_email(user)
-     @subject    += I18n.t(:reset_notification_email_subject)
-     @body[:url]  = "#{APP_CONFIG['host']}/reset/#{user.reset_code}"
+     @user = user
+     @url  = "#{APP_CONFIG['host']}/reset/#{user.reset_code}"
+     mail(:to => user.email, :subject => I18n.t(:reset_notification_email_subject))  
    end
 
-  protected
-    def setup_email(user)
-      @recipients  = "#{user.email}"
-      @from        = "#{APP_CONFIG['mail_from']}"
-      @subject     = "#{APP_CONFIG['host']} "
-      @sent_on     = Time.now
-      @body[:user] = user
-    end
 end
