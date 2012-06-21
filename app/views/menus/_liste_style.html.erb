@@ -5,10 +5,10 @@
       <%for menu in @menus %>
          <div class="menu_liste_<%= indice%2 %>">     
             <tr>
-               <td><div id="mnuMidi_<%=menu.id%>" class="menu_cart"><%= image_tag "/images/icones/shopping-bag.gif" %></div></td>
+               <td><div id="mnuMidi_<%=menu.id%>" class="menu_cart"><%= image_tag "icones/shopping-bag.gif" %></div></td>
                <td width="80%"><%= link_to %Q{#{menu.title}}, :controller => "menus",  :action => "show", :id => menu %></td>
                <td><%= link_to %Q{#{menu.user.login}}, {:action => "list", :user_id =>  menu.user_id} %></td>                  
-               <%= draggable_element("mnuMidi_" + menu.id.to_s, :revert => true) %>
+               <%#= draggable_element("mnuMidi_" + menu.id.to_s, :revert => true) %>
             </tr>
          </div>
       <% indice = indice + 1 %>

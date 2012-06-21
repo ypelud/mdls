@@ -1,0 +1,237 @@
+﻿/***********************************************/
+/*  special */
+/***********************************************/
+/* list-style */ 
+#liste_style {
+    clear: both;
+    margin: 0;
+} 
+#liste_style ul {
+    margin: 0;
+    padding: 0 0 0 8px;
+    width: 100%;
+} 
+#liste_style ul li {
+    list-style: none inside;
+    margin: 2px;
+    width: 95%;
+    padding: 1px 0px 2px 30px;
+} 
+#liste_style ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 0 15px;
+} 
+#liste_style #login {
+    border-left: 1px solid #FFA500;
+}
+#liste_style tr {
+   height: 40px;
+   background: #242424;
+}
+/* semaine_style */ 
+#semaine_style {
+    clear: both;
+} 
+#semaine_style tr {
+    margin: 0;
+    width: 100%;
+} 
+#semaine_style td {
+} 
+#semaine_style #login {
+    display: none;
+} 
+#semaine_style .mnu_elt:hover {
+    cursor: move;
+}
+
+/* définition des menus carrés */
+.menu_gauche {
+    display: block;
+    height: 10px;
+    text-align: center;
+    background: url(<%= asset_path 'Harvest/img14.jpg' %>) no-repeat left top;
+} 
+
+.menu_droit {
+    display: block;
+    padding: 20px 5px 10px 5px;
+    height: 90px;
+    text-align: center;
+    background: url(<%= asset_path 'Harvest/img13.jpg' %>) no-repeat left bottom;
+} 
+
+/*configuration du panier */
+/* passage de l'élémént sur le panier */ 
+.cart-active {
+    border: 1px solid #FFF;
+} 
+.cart {
+    clear: both;
+    top: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Mes menus */ 
+#msg_cart {
+    padding: 1px;
+    text-align: center;
+} 
+.menu-items {
+	margin-left: 2px;
+	padding-top: 3px;
+    background: url(<%= asset_path 'Harvest/img16.jpg' %>) no-repeat left top;
+} 
+.menu-items-bottom {
+	height: 6px;
+    background: url(<%= asset_path 'Harvest/img17.jpg' %>) no-repeat right bottom;
+} 
+.cart_elt {
+    text-align: left;
+    margin-left: 10px;
+} 
+.empty_cart {
+    text-align: center;
+    color: #808080;
+    background-color: #333333;
+    height: 20px;
+    font-size: 0.8em;
+} 
+.midisoir_cart {
+    border-bottom: 1px solid #FFF;
+} 
+.menu-print {
+    float: right;
+    border: 0px;
+    width: 30px;
+    background-image: url(<%= asset_path 'icones/printer-grey.gif' %>);
+    background-repeat: no-repeat;
+} 
+.menu-print:hover {
+    background-image: url(<%= asset_path 'icones/printer-grey.gif' %>);
+    background-repeat: no-repeat;
+} 
+.menu-print a {
+    border: 0px;
+} 
+.desc p {
+    line-height: 16px;
+} 
+
+#indicator img {
+    border: 0px;
+}
+
+/* tags */ 
+.nube1 {
+    font-size: 1.0em;
+} 
+.nube2 {
+    font-size: 1.2em;
+} 
+.nube3 {
+    font-size: 1.4em;
+} 
+.nube4 {
+    font-size: 1.6em;
+}
+
+/* compteur */ 
+#compteur {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/* surcharge de la pagination */
+div.pagination {
+    padding: 3px;
+    margin: 3px;
+    text-align: center;
+}
+
+div.pagination a {
+    padding: 2px 5px 2px 5px;
+    margin-right: 2px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #306bc1;
+}
+
+div.pagination a:hover, div.pagination a:active {
+    border: 1px solid #85BD1E;
+    color: #FFFFFF;
+    background-color: #306bc1; 
+}
+
+div.pagination span.current {
+    padding: 2px 5px 2px 5px;
+    margin-right: 2px;
+    border: 1px solid #306bc1; 
+    font-weight: bold;
+    background-color: #306bc1; 
+    color: #FFF;
+}
+
+div.pagination span.disabled {
+    padding: 2px 5px 2px 5px;
+    margin-right: 2px;
+    border: 1px solid #f3f3f3;
+    color: #ccc;
+}
+
+/* menu_show */ 
+#menu_show ul {
+    padding: 0;
+} 
+
+#menu_show li {
+    list-style: none;
+    width: 95%;
+}
+
+/* comments */ 
+.comments {
+    border-top: 1px dashed #333333;
+    font-size: 10px;
+}
+
+/* plannins */ 
+#planning_style {
+    clear: both;
+} 
+#planning_style li {
+	list-style: none;
+    margin: 0;
+    width: 100%;
+} 
+#planning_style td {
+} 
+#planning_ms {
+	
+} 
+
+/* définition des menus carrés */
+#planning_style .menu_gauche {
+    display: block;
+    height: 10px;
+    background: url(<%= asset_path 'Harvest/img16.jpg' %>) no-repeat left top;
+} 
+
+#planning_style .menu_droit {
+    display: block;
+    padding: 0px 0px 15px 0px;
+    height: 20px;
+    text-align: center;
+	width: 208px;
+    background: url(<%= asset_path 'Harvest/img17.jpg' %>) no-repeat left bottom;
+} 
+
+
+

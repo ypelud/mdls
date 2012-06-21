@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Menus de la semaine</title>  
-  <link rel="shortcut icon" href="/images/icones/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="<%= asset_path('icones/favicon.ico'%>" type="image/x-icon">
   <link rel="alternate" type="application/rss+xml" title="MenusDeLaSemaine" href="/menus.rss" />
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag 'application' %>   
@@ -17,10 +17,10 @@
    <h1><a href="#">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
 	<h2>les  menus  sans  peine...</h2> 
    <div id="flags">
-     <a href="/fr"><img src="/images/flags/France.png"></img></a>
-     <a href="/en"><img src="/images/flags/USA.png"></img></a>
-     <a href="/sp"><img src="/images/flags/Spain.png"></img></a>
-     <a href="/de"><img src="/images/flags/Germany.png"></img></a>   
+       <a href="/fr"><%= image_tag "flags/France.png" %></a>
+       <a href="/en"><%= image_tag "flags/USA.png" %></a>
+       <a href="/sp"><%= image_tag "flags/Spain.png" %></a>
+       <a href="/de"><%= image_tag "flags/Germany.png" %></a>    
    </div>
 
   <div id="pub">
@@ -45,7 +45,7 @@
 <div id="header">
      <div id="menu">     
        <ul><%= render :partial => "/home/navigation" %></ul>
-       <a class="rss" href="/menus.rss"><img src="/images/icones/Feed-icon.png"></img></a>       
+       <a class="rss" href="/menus.rss"><%= image_tag("icones/Feed-icon.png") %></a>       
      </div>
 </div>
 <!-- end header -->

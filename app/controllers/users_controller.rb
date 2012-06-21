@@ -39,8 +39,9 @@ class UsersController < ApplicationController
     if logged_in? && !current_user.active?
       current_user.activate
       flash[:notice] = "Enregistrement complet !"
-    end else
+    else
       flash[:error] = "L'activation de votre compte ne s'est pas déroulée correctement"
+    end
     redirect_back_or_default('/')
   end
   

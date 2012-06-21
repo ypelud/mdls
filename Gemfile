@@ -49,5 +49,8 @@ gem 'pdf-writer', '1.1.8', :require => 'pdf/writer'
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
 end
-#gem 'rspec-rails', :group => [:test, :development]
+
+group :production do
+  gem 'mysql'
+end
 

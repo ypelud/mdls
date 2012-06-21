@@ -22,7 +22,7 @@ describe UsersController, "POST /create" do
   fixtures :users
   
   before :each do
-    UserMailer.stub!(:deliver_signup_notification)
+    #UserMailer.stub!(:signup_notification)
   end
 
   it 'should allow signup' do
@@ -62,7 +62,7 @@ describe UsersController, "GET /activate" do
   fixtures :users
   
   before :each do
-    UserMailer.stub!(:deliver_activation)
+    #UserMailer.stub!(:deliver_activation)
   end
 
 
@@ -91,7 +91,7 @@ describe UsersController, "POST /forgot" do
   fixtures :users
   
   before :each do
-    UserMailer.stub!(:deliver_reset_notification)
+    #UserMailer.stub!(:deliver_reset_notification)
   end
 
 
@@ -116,7 +116,7 @@ describe UsersController, "POST /reset" do
   fixtures :users
   
   before :each do
-    UserMailer.stub!(:deliver_activation)
+    #UserMailer.stub!(:deliver_activation)
   end
 
 

@@ -1,0 +1,35 @@
+$(document).ready(function() {
+	$('#alert').hide();
+	$('#alert').show('highlight', {} , 1000, function() { 
+			setTimeout(function() {
+				$('#alert').removeAttr( "style" ).fadeOut();
+			}, 1000)});
+	
+	
+	$('.menu_cart').draggable({ revert: true, helper: "clone" });
+	
+	$('.drop_cart').droppable({
+		    accept:'.menu_cart', 
+		    hoverclass:'cart-active',
+				drop: function( event, ui ) {
+					var dc = $(this)
+					var url = dc.attr("data-url")+"&id="+$(ui.draggable).attr("id");
+					$.ajax({
+					  url: url,
+					}).done(function(data) { 
+					  dc.html(data)
+					});
+				}
+			});
+
+	$(this).delegate(".rm_cart", "click", function() {
+			var url = $(this).attr("href");
+			var dc = $(this).parents(".drop_cart");
+			$.ajax({
+			  url: url,
+			}).done(function(data) { 
+			  dc.html(data)
+			});
+			return false;
+	});
+})
