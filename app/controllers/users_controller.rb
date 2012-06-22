@@ -47,31 +47,35 @@ class UsersController < ApplicationController
   
   
   def forgot
-    user = User.find_by_email(params[:user][:email])
-    if user
-      user.create_reset_code
-      flash[:notice] = "Un code de réinitialisation à été envoyé à  #{user.email}"
-    else
-      flash[:error] = "#{params[:user][:email]} n'existe pas"
+    if request.post?
+      user = User.find_by_email(params[:user][:email])
+      if user
+        user.create_reset_code
+        flash[:notice] = "Un code de réinitialisation à été envoyé à  #{user.email}"
+      else
+        flash[:error] = "#{params[:user][:email]} n'existe pas"
+      end
+      redirect_back_or_default('/')
     end
-    redirect_back_or_default('/')
   end
    
   def reset
-    user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
-    if user
-      if user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
-        self.current_user = user
-        current_user.delete_reset_code
-        current_user.activate unless current_user.active?
-        flash[:notice] = "Mot de passe réinitialisé pour #{user.email}"
-        redirect_back_or_default('/')
+    @user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
+    if request.post?
+      if @user
+        if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+          self.current_user = @user
+          current_user.delete_reset_code
+          current_user.activate unless current_user.active?
+          flash[:notice] = "Mot de passe réinitialisé pour #{@user.email}"
+          redirect_back_or_default('/')
+        else
+          self.class.layout 'simple'
+          render :action => 'errors'
+        end
       else
-        self.class.layout 'simple'
-        render :action => 'errors'
+        redirect_back_or_default('/')
       end
-    else
-      redirect_back_or_default('/')
     end
   end
    

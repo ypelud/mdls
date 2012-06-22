@@ -4,37 +4,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Menus de la semaine</title>  
-  <link rel="shortcut icon" href="<%= asset_path('icones/favicon.ico'%>" type="image/x-icon">
+  <title>Menus de la semaine</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="alternate" type="application/rss+xml" title="MenusDeLaSemaine" href="/menus.rss" />
   <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag 'application' %>   
+  <%= javascript_include_tag "application" %>   
 </head>
 <body>
 
 <div id="logo-wrap">
 <div id="logo">
-   <h1><a href="#">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
-	<h2>les  menus  sans  peine...</h2> 
-   <div id="flags">
-       <a href="/fr"><%= image_tag "flags/France.png" %></a>
-       <a href="/en"><%= image_tag "flags/USA.png" %></a>
-       <a href="/sp"><%= image_tag "flags/Spain.png" %></a>
-       <a href="/de"><%= image_tag "flags/Germany.png" %></a>    
+   <div id="logo-left">
+      <h1><a href="#">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
+   	<h2>les  menus  sans  peine...</h2>     
    </div>
-
-  <div id="pub">
-  <script type="text/javascript"><!--
-      google_ad_client = "pub-6935144034213351";
-      /* mdls 234x60 */
-      google_ad_slot = "7419099693";
-      google_ad_width = 234;
-      google_ad_height = 60;
-      //-->
-   </script>
-   <script type="text/javascript"
-      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-   </script>
+   <div id="logo-right">
+   <div id="pub">
+      <% unless APP_CONFIG["host"]=="http://localhost:3000" %>
+     <script type="text/javascript"><!--
+         google_ad_client = "pub-6935144034213351";
+         /* mdls_illu */
+         google_ad_slot = "0177394572";
+         google_ad_width = 468;
+         google_ad_height = 60;
+         //-->
+         </script>
+         <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+         <% end %>
+   </div>
   </div>
 </div>
 </div>
@@ -45,7 +42,7 @@
 <div id="header">
      <div id="menu">     
        <ul><%= render :partial => "/home/navigation" %></ul>
-       <a class="rss" href="/menus.rss"><%= image_tag("icones/Feed-icon.png") %></a>       
+       <a class="rss" href="/menus.rss"><%= image_tag "icones/Feed-icon.png" %></img></a>       
      </div>
 </div>
 <!-- end header -->
@@ -57,19 +54,93 @@
 <div id="page"> 
    
 	<!-- start content -->
-	<div id="content2">
-		<div id="banner">&nbsp;</div>
-       <div id="alerte" style="display:none;"><p><%= flash[:notice] %></p></div>
-       <div class="post">
-       <%=yield %>
-       </div>
+	<div id="content">
+		<div id="banner">
+      <% unless APP_CONFIG["host"]=="http://localhost:3000" %>
+         <script type="text/javascript"><!--
+          google_ad_client = "pub-6935144034213351";
+          /* mdls_2 */
+          google_ad_slot = "1809936215";
+          google_ad_width = 468;
+          google_ad_height = 60;
+          //-->
+      </script>
+      <script type="text/javascript"
+          src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+      <% end %>
+      </div>
+	  <% flash.each do |name, msg| %>
+	      <div id="alert" class="alert-<%= name == :notice ? "success" : "error" %>">
+	          <%= msg %>
+	      </div>
+	  <% end %>
+      <div class="post">
+      <%=yield %>
+      </div>
 
    </div>
 	<!-- end content -->
 
 	<!-- start sidebar -->   
    <div id="sidebar">     
-     
+     <ul>
+     	<% if iphone_user_agent? # Show message for iPhone users -%>
+         <li>
+             <div class="message">
+                 <a href="http://iphone.localhost.com:3000/">iPhone version ?</a>.
+             </div>
+         </li>
+		<% end -%>
+
+        <% if admin? %>
+        <li>
+          <div id="flags">
+             <a href="/fr"><%= image_tag "flags/France.png" %></a>
+             <a href="/en"><%= image_tag "flags/USA.png" %></a>
+             <a href="/sp"><%= image_tag "flags/Spain.png" %></a>
+             <a href="/de"><%= image_tag "flags/Germany.png" %></a>   
+          </div>
+        </li>
+        <%end%>
+        <li id="login_div"  style="display:none;"> 
+          <div>
+          	<%= render :partial => "sessions/new"  %>
+          </div>
+        </li>
+        <li style="display:none;" id="search">
+          <h2><%=t("mdls.search")%></h2>
+          <div id="searchGoogle">
+            <form action="http://www.google.fr/cse" id="cse-search-box">
+              <div>
+                <input type="hidden" name="cx" value="partner-pub-6935144034213351:bfllcdpd9xh" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <input type="text" name="q" size="20" />
+                <input type="submit" class="button" name="sa" value="<%=t("mdls.search")%>" />
+                <input id="www" name="sitesearch" value="" type="radio"><label for="www">web</label>
+                <input id="site1" name="sitesearch" value="menusdelasemaine.com" checked="checked" type="radio"><label for="site1">menudelasemaine.com</label>
+              </div>
+            </form>
+            <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script>  
+          </div>
+        </li>
+        <li>
+          <h2><%=t("mdls.search")%></h2>
+          <%= render :partial => "recherche/new"  %>
+        </li>
+        <li id="mesmenus">
+          <h2><%=t("mdls.my_menus")%></h2>
+          <%= render :partial => "choixmenu/menu_list"  %>
+        </li>
+        <li>
+          <h2><%=t("mdls.keywords")%></h2>
+          <%= render :partial => "menus/tags_list"  %>
+        </li>
+        <li>
+          <h2><%=t("mdls.last_comments")%></h2>
+		  <%= render :partial => "comments/list5" %>	
+        </li>
+     </ul>
    </div>
 	<!-- end sidebar -->
    
@@ -90,7 +161,7 @@
 </body>
 </html>
 
-<%= if flash[:notice]
+<%#= if flash[:notice]
       update_page_tag do |page|
          page.show("alerte") 
          page.visual_effect(:highlight, "alerte")
@@ -100,6 +171,3 @@
        end
     end
 %>
-
-</body>
-</html>

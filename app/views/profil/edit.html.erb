@@ -1,5 +1,5 @@
 <h1>Editer</h1>
-<% form_tag :action => 'update', :id => @profil do %>
+<%= form_tag :action => 'update', :id => @profil do %>
   <%= render :partial => 'form' %>
   <p><%= submit_tag 'Valider' , :class => 'button' %></p>
 <% end %>

@@ -32,4 +32,9 @@ $(document).ready(function() {
 			});
 			return false;
 	});
+	
+	$(this).delegate(".login_ref", "click", function() {
+			$("#login_div").show('blind');
+			return false;
+	});
 })

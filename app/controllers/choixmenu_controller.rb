@@ -27,9 +27,6 @@ class ChoixmenuController < ApplicationController
       day = params[:day]
       ms = params[:midisoir]
       session[:choix].each do |menusliste| 
-        puts "#{menusliste.day}==#{@week.index(day)}"
-        puts "#{menusliste.when}==#{@midisoir.index(ms)}"
-        puts "#{menusliste.menu_id}==#{menu_id}"
         if menusliste.day==@week.index(day) and menusliste.when==@midisoir.index(ms) and  menusliste.menu_id.to_s==menu_id
             session[:choix].delete(menusliste) 
             break

@@ -27,6 +27,10 @@ en-US:
           other:  "{{count}} errors prohibited this {{model}} from being saved"
         # The variable :count is also available
         body: "There were problems with the following fields:"
+  will_paginate:
+      previous_label: "&#8592;"
+      next_label: "&#8594;"
+      page_gap: "&hellip;"
   account_activated : "{{login}} your account has been activated.  Welcome aboard!"
   account_activation_url_message : "Visit this url to activate your account:"
   account_created : "Your account has been created."

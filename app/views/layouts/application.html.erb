@@ -103,8 +103,10 @@
           </div>
         </li>
         <%end%>
-        <li> 
-          <div id="login_div"  style="display:none;"></div>
+        <li id="login_div"  style="display:none;"> 
+          <div>
+          	<%= render :partial => "sessions/new"  %>
+          </div>
         </li>
         <li style="display:none;" id="search">
           <h2><%=t("mdls.search")%></h2>

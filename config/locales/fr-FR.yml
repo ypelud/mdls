@@ -27,6 +27,10 @@ fr-FR:
           other:  "{{count}} erreurs : {{model}} ne peut être sauvegardé"
         # The variable :count is also available
         body: "Il y a un problème avec les champs suivants:"
+  will_paginate:
+      previous_label: "&#8592;"
+      next_label: "&#8594;"
+      page_gap: "&hellip;"
   account_activated : "{{login}} votre compte a été activé.  Bienvenue à bord!"
   account_activation_url_message : "Visitez cette adresse pour activer votre compte:"
   account_created : "Votre compte a été crée."
@@ -81,5 +85,4 @@ fr-FR:
     liste_menus: 'Liste des menus'
     new_menu: "Nouveau menu"
     all_menu: "Tous les menus"
-
    

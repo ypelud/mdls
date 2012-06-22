@@ -21,6 +21,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem "rspec-rails", "~> 2.0"
+  gem 'simplecov', '>=0.3.8', :require => false
+  gem "rcov", "~> 1.0.0"
+end
+
+group :development do
+  gem "rspec-rails", "~> 2.0"
+end
+
 gem 'jquery-rails', '>= 1.0.12'
 
 gem 'restful-authentication', :git => 'https://github.com/Satish/restful-authentication.git', :branch => 'rails3'
@@ -46,9 +56,7 @@ gem 'pdf-writer', '1.1.8', :require => 'pdf/writer'
 
 # To use debugger
 # gem 'ruby-debug'
-group :test, :development do
-  gem "rspec-rails", "~> 2.0"
-end
+
 
 group :production do
   gem 'mysql'

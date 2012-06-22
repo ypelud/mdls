@@ -1,6 +1,6 @@
- <%= error_messages_for :user %>
+<%= render :partial => 'errors', :object => @user %>
 <h1><%=I18n.t(:pick_new_password, :mail => @user.email )%></h1>
- <% form_for :user do |f| -%>
+ <%= form_for :user do |f| -%>
  <table id="newedit">
      <thead>
          <tr>

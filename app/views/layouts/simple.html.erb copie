@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Menus de la semaine</title>  
+  <link rel="shortcut icon" href="<%= asset_path('icones/favicon.ico'%>" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="MenusDeLaSemaine" href="/menus.rss" />
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag 'application' %>   
+</head>
+<body>
+
+<div id="logo-wrap">
+<div id="logo">
+   <h1><a href="#">Menus<span class="green">de</span>la<span class="gray">semaine</span></a></h1>	
+	<h2>les  menus  sans  peine...</h2> 
+   <div id="flags">
+       <a href="/fr"><%= image_tag "flags/France.png" %></a>
+       <a href="/en"><%= image_tag "flags/USA.png" %></a>
+       <a href="/sp"><%= image_tag "flags/Spain.png" %></a>
+       <a href="/de"><%= image_tag "flags/Germany.png" %></a>    
+   </div>
+
+  <div id="pub">
+  <script type="text/javascript"><!--
+      google_ad_client = "pub-6935144034213351";
+      /* mdls 234x60 */
+      google_ad_slot = "7419099693";
+      google_ad_width = 234;
+      google_ad_height = 60;
+      //-->
+   </script>
+   <script type="text/javascript"
+      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+   </script>
+  </div>
+</div>
+</div>
+
+
+
+<!-- start header -->
+<div id="header">
+     <div id="menu">     
+       <ul><%= render :partial => "/home/navigation" %></ul>
+       <a class="rss" href="/menus.rss"><%= image_tag("icones/Feed-icon.png") %></a>       
+     </div>
+</div>
+<!-- end header -->
+
+<!-- start page -->
+<div id="wrapper">
+
+<div id="wrapper-btm">
+<div id="page"> 
+   
+	<!-- start content -->
+	<div id="content2">
+		<div id="banner">&nbsp;</div>
+       <div id="alerte" style="display:none;"><p><%= flash[:notice] %></p></div>
+       <div class="post">
+       <%=yield %>
+       </div>
+
+   </div>
+	<!-- end content -->
+
+	<!-- start sidebar -->   
+   <div id="sidebar">     
+     
+   </div>
+	<!-- end sidebar -->
+   
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+</div>
+</div>
+
+<!-- start footer -->
+<div id="footer">
+	<div id="footer-wrap">
+	<p id="legal">(c) 2008 <strong>Menusdelasemaine</strong>. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+
+	</div>
+</div>
+<!-- end footer -->
+</body>
+</html>
+
+<%= if flash[:notice]
+      update_page_tag do |page|
+         page.show("alerte") 
+         page.visual_effect(:highlight, "alerte")
+         page.delay(4.0) do
+           page.hide("alerte")
+         end
+       end
+    end
+%>
+
+</body>
+</html>

@@ -27,6 +27,10 @@ de-DE:
           one: "{{count}} Fehler: {{model}} konnte nicht gespeichert werden."
           other: "{{count}} Fehler: {{model}} konnte nicht gespeichert werden."
         body: "Die folgenden Fehler traten auf:"
+  will_paginate:
+      previous_label: "&#8592;"
+      next_label: "&#8594;"
+      page_gap: "&hellip;"
   account_activated : "Der Zugang '{{login}}' wurde aktiviert. Herzlich Willkommmen!"
   account_activation_url_message : "Bitte öffnen Sie folgende Seite um Ihren Zugang zu aktivieren:"
   account_created : "Ihr Zugang wurde eingerichtet."

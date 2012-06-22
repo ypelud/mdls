@@ -3,7 +3,7 @@
 <%if logged_in? %>
    <li><%=link_to(logout_path) do %><span>Deconnexion</span><% end %></li>
 <%else %>
-   <li><%=link_to(login_path) do %><span><%= t("mdls.sign_in") %></span><% end %></li>
+   <li><%=link_to(login_path, :class => "login_ref") do %><span><%= t("mdls.sign_in") %></span><% end %></li>
    <li><%=link_to(signup_path) do %><span><%= t("sign_up") %></span><% end %></li>
 <%end %>
 <li><a href="/home/comment"><span><%=t("mdls.how_it_works")%></span></a></li>

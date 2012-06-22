@@ -1,5 +1,5 @@
 <h1>Nouveau</h1>
-<% form_tag :action => "create" do %>
+<%= form_tag :action => "create" do %>
   <%= render :partial => "form" %>
   <p><%= submit_tag "Créer" , :class => "button"%></p>
 <% end %>
