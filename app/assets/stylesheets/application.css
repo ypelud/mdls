@@ -8,10 +8,128 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+ *= require reset
+ *= require 960
  *= require pagination
- *= require menus
- *= require Harvest
+ *= require_self
  */
 
+/* styles de base */
+h1 {
+	padding: 5px;
+	font-size: 1.5em;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+}
+
+/* barre de coté */
+#sidebar {
+	position: fixed; 
+	top: 50px;	
+}
+
+#sidebar h2 {
+	padding: 3px;
+	font-size: 1.2em;  
+}
+
+li#mesmenus > div {
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	min-height: 50px;	
+	position: relative;
+}
+
+li#mesmenus > div h3 {
+	position: absolute;
+	right: 0;
+}
+
+li#mesmenus > div div {
+	padding: 5px ;
+}
+
+
+/* barre de navigation */
+div#navbar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1000;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	background-color: #DBFF92;
+	height: 40px;
+}
+
+div#navbar ul {
+	list-style: none;
+	display: block;
+	margin: 0 10px;
+}
+
+div#navbar ul li {
+	float: left;
+	margin: 10px 1.5em;
+	font: bold 1em Arial;
+}
+
+div#navbar .rss {
+	float: right;
+}
+
+#logo {
+	display: none;
+}
+
+
+/* styles des pieds de pages */
+div#footer {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 1000;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	background-color: #DBFF92;
+}
+
+
+/* styles des posts */
+div#post h1 {
+	height: 40px;  
+} 
+
+
+#wrapper {
+	margin-top: 50px;
+}
+
+
+.mnu {
+	position: relative;
+	padding: 5px;
+	height: 50px;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+}
+
+div#mnu_bar {
+	display: none;
+	background-color: #DBFF92;
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
+
+.actif {
+	background-color: #DBFF92;
+}

@@ -21,8 +21,9 @@
       <%= link_to("Delete",  @menu , :confirm => 'Are you sure?', :method => :delete)  %> |   
    <% end %>
    <%= link_to "Retour", :action => "list" %>|
+   <%= link_to("Commentaires ("+@menu.comments.count.to_s+")", comment_path(@menu.id), :class => 'lnk_comment') %>
 
-   <%= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
+   <%#= link_to_remote "Commentaires ("+@menu.comments.count.to_s+")", 
                :update => "comment_div",
                :url => { :controller => "comments", :action => "list", :id => @menu.id },    
                :complete => visual_effect(:toggle_appear, "comment_div", :duration => 1.00),

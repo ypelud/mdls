@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '~>3.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -23,12 +23,7 @@ end
 
 group :test do
   gem "rspec-rails", "~> 2.0"
-  gem 'simplecov', '>=0.3.8', :require => false
-  gem "rcov", "~> 1.0.0"
-end
-
-group :development do
-  gem "rspec-rails", "~> 2.0"
+  gem 'simplecov'
 end
 
 gem 'jquery-rails', '>= 1.0.12'
@@ -37,7 +32,7 @@ gem 'restful-authentication', :git => 'https://github.com/Satish/restful-authent
 gem 'will_paginate'
 gem 'acts_as_commentable'
 gem 'acts-as-taggable-on'
-gem 'pdf-writer', '1.1.8', :require => 'pdf/writer'
+gem 'pdf-writer' , :git => 'git://github.com/metaskills/pdf-writer.git', :require => 'pdf/writer'
 
 #gem acts_as_taggable_on_steroids
 #gem restful-authentication
@@ -58,7 +53,5 @@ gem 'pdf-writer', '1.1.8', :require => 'pdf/writer'
 # gem 'ruby-debug'
 
 
-group :production do
-  gem 'mysql'
-end
+gem 'activerecord-postgresql-adapter'
 

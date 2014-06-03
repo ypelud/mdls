@@ -9,25 +9,22 @@ class ChoixmenuController < ApplicationController
   end
    
   def add
-      menu_id = params[:id].split("_")[1]    
-      day = params[:day]
-      ms = params[:midisoir]
+      menu_id = params[:id].include?("_") ? params[:id].split("_")[1] : params[:id];
       menusliste = Menusliste.new
       
-      menusliste.day = @week.index(day)
-      menusliste.when = @midisoir.index(ms)
+      menusliste.day = params[:day] || 0
+      menusliste.when = params[:midisoir] || 0
       menusliste.menu_id = menu_id      
-
       session[:choix].push(menusliste) 
-      render :partial => 'cart', :locals => { :day => day, :midisoir => ms } 
+      render :partial => 'cart', :locals => { :day => menusliste.day, :midisoir => menusliste.when } 
   end
   
   def remove
       menu_id = params[:id] 
-      day = params[:day]
-      ms = params[:midisoir]
+      day = params[:day].to_i
+      ms = params[:midisoir].to_i
       session[:choix].each do |menusliste| 
-        if menusliste.day==@week.index(day) and menusliste.when==@midisoir.index(ms) and  menusliste.menu_id.to_s==menu_id
+        if menusliste.day==day and menusliste.when==ms and  menusliste.menu_id.to_s==menu_id
             session[:choix].delete(menusliste) 
             break
         end

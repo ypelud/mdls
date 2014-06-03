@@ -85,4 +85,6 @@ fr-FR:
     liste_menus: 'Liste des menus'
     new_menu: "Nouveau menu"
     all_menu: "Tous les menus"
-   
+    created_menu: 'Menu créé correctement.'
+    deleted_menu: 'Menu supprimé correctement.'
+    updated_menu: 'Menu mis à jour correctement.'

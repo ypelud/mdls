@@ -1,13 +1,56 @@
-<%if logged_in? %>
-<strong>Bienvenue, <%= current_user.login %></strong>
-<%end %>
+<ul>
+  <% if iphone_user_agent? # Show message for iPhone users -%>
+  <li>
+    <div class="message">
+      <a href="http://iphone.localhost.com:3000/">iPhone version ?</a>.
+    </div>
+  </li>
+  <% end -%>
 
-<ul class="sidemenu">
-  <%= render :partial => 'navigation' %>
+  <% if admin? %>
+  <li>
+    <div id="flags">
+      <a href="/fr"><%= image_tag "flags/France.png" %></a>
+      <a href="/en"><%= image_tag "flags/USA.png" %></a>
+      <a href="/sp"><%= image_tag "flags/Spain.png" %></a>
+      <a href="/de"><%= image_tag "flags/Germany.png" %></a>   
+    </div>
+  </li>
+  <%end%>
+  
+  <li id="login_div"  style="display:none;"> 
+    <div><%= render :partial => "sessions/new"  %></div>
+  </li>
+  <li style="display:none;" id="search">
+    <h2><%=t("mdls.search")%></h2>
+    <div id="searchGoogle">
+      <form action="http://www.google.fr/cse" id="cse-search-box">
+        <div>
+          <input type="hidden" name="cx" value="partner-pub-6935144034213351:bfllcdpd9xh" />
+          input type="hidden" name="ie" value="UTF-8" />
+          <input type="text" name="q" size="20" />
+          <input type="submit" class="button" name="sa" value="<%=t("mdls.search")%>" />
+          <input id="www" name="sitesearch" value="" type="radio"><label for="www">web</label>
+          <input id="site1" name="sitesearch" value="menusdelasemaine.com" checked="checked" type="radio"><label for="site1">menudelasemaine.com</label>
+         </div>
+       </form>
+       <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script>  
+     </div>
+   </li>
+   <li>
+     <h2><%=t("mdls.search")%></h2>
+     <%= render :partial => "recherche/new"  %>
+   </li>
+   <li id="mesmenus">
+     <h2><%=t("mdls.my_menus")%></h2>
+     <%= render :partial => "choixmenu/menu_list"  %>
+   </li>
+   <li>
+     <h2><%=t("mdls.keywords")%></h2>
+     <%= render :partial => "menus/tags_list"  %>
+   </li>
+   <li>
+     <h2><%=t("mdls.last_comments")%></h2>
+     <%= render :partial => "comments/list5" %>	
+   </li>
 </ul>
-
-<div id="login_div">
-</div>
-
-
-

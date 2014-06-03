@@ -1,0 +1,12 @@
+<div id="mnu_bar">
+	<% @week_list.each_with_index do |week, cpt|%>
+		<%= link_to(week, {:controller => "choixmenu", :action => "add", :id => 0, :day => cpt}, :class => "add", :id => cpt) %>
+	<% end %>
+	<%= link_to("Supprimer", menu_path(0), :method => :delete, :confirm => "Etes-vous sur ?", :class => "del") %>
+
+</div>
+
+<% @menus.each do |menu| %>
+  <div class="mnu" id="<%=menu.id%>"><%=menu.title%></div>
+<% end %>
+

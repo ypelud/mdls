@@ -8,7 +8,7 @@ $(document).ready(function() {
 	
 	$('.menu_cart').draggable({ revert: true, helper: "clone" });
 	
-	$('.drop_cart').droppable({
+	$('.cart_drop').droppable({
 		    accept:'.menu_cart', 
 		    hoverclass:'cart-active',
 				drop: function( event, ui ) {
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 	$(this).delegate(".rm_cart", "click", function() {
 			var url = $(this).attr("href");
-			var dc = $(this).parents(".drop_cart");
+			var dc = $(this).parents(".cart_drop");
 			$.ajax({
 			  url: url,
 			}).done(function(data) { 
@@ -37,4 +37,69 @@ $(document).ready(function() {
 			$("#login_div").show('blind');
 			return false;
 	});
+	
+	$(this).delegate(".lnk_comment", "click", function() {
+			var url = $(this).attr("href");
+			$.ajax({
+			  url: url,
+			}).done(function(data) { 
+				var cd = $("#comment_div");
+			  cd.html(data);
+			  cd.show('blind');
+			});
+			return false;
+	});
+	
+	$(this).delegate("#commit_comment", "click", function() {
+		var form = $(this).parents("form")
+		var url = form.attr("action");
+		$.ajax({
+		  url: url,
+		  data: form.serialize()
+		}).done(function(data) { 
+			var cd = $("#comment_div");
+		  cd.hide("blind")
+		  cd.html(data);
+		  cd.show("blind")
+		});
+		return false;
+	});
+	
+	function replaceAfterLastSlash( ref, str) {
+		ref.each( function() {
+			var url = $(this).attr("href");
+			var end = url.match("[^?]+$");
+
+			var reg=new RegExp("[^/]+$", "g");
+			var url2 = url.replace(reg, str);
+			$(this).attr("href", url2 + "?" + end);
+			
+		});
+		
+	}
+	
+	$(this).delegate(".mnu", "mouseenter", function() {
+		$(this).addClass("actif");
+		$(this).append( $("#mnu_bar").show());
+		replaceAfterLastSlash($("#mnu_bar > .del"), $(this).attr("id") ) ;
+		replaceAfterLastSlash($("#mnu_bar > .add"), $(this).attr("id") ) ;
+	});
+
+	$(this).delegate(".mnu", "mouseleave", function() {
+		$(this).removeClass("actif");
+		$("#mnu_bar").hide();
+	});
+	
+	$(this).delegate("#mnu_bar > .add", "click", function() {
+		var url = $(this).attr("href");
+		var idx = $(this).attr("id");
+		$.ajax({
+		  url: url,
+		}).done(function(data) { 
+			var cd = $("#cart_"+idx+" > .cart_drop");
+		  cd.html(data);
+		});
+		return false;
+	});
+	
 })

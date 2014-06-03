@@ -1,0 +1,13 @@
+<%if logged_in? %>
+<strong>Bienvenue, <%= current_user.login %></strong>
+<%end %>
+
+<ul class="sidemenu">
+  <%= render :partial => 'navigation' %>
+</ul>
+
+<div id="login_div">
+</div>
+
+
+

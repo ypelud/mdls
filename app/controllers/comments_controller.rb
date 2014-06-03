@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CommentsController < ApplicationController
   before_filter :authorize_user, :only => [:new]
   
@@ -7,12 +8,12 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.created_at = Time.now
     @menu.comments << @comment
-    render :layout=>false
+    render :partial => "show", :locals => {:comment => @comment } 
   end
   
-  def list
-    @menu = Menu.find(params[:id])
-    render :partial => "list"
+  def show
+    @comment = Comment.find(params[:id])
+    render :layout=>false  if request.xhr?
   end
   
   def list5
@@ -20,7 +21,7 @@ class CommentsController < ApplicationController
     render :partial => "list5"
   end
   
-  def show
+  def index
     @comments = Comment.find(:all)
   end  
   

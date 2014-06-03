@@ -16,7 +16,8 @@ module MdlsSystem
   #   end 
   
   def week_array
-    @week =  I18n.t('lundi'), I18n.t('mardi'), I18n.t('mercredi'), I18n.t('jeudi'), I18n.t('vendredi'), I18n.t('samedi'), I18n.t('dimanche')
+    @week_list =  I18n.t('lundi'), I18n.t('mardi'), I18n.t('mercredi'), I18n.t('jeudi'), I18n.t('vendredi'), I18n.t('samedi'), I18n.t('dimanche')
+    @week = I18n.t('lundi'), I18n.t('mardi'), I18n.t('mercredi'), I18n.t('jeudi'), I18n.t('vendredi'), I18n.t('samedi'), I18n.t('dimanche')
     if current_user and profil = Profil.find_by_id(current_user.id) 
       #profil = Profil.find_by_id(current_user.id)
       day = profil.first_day           

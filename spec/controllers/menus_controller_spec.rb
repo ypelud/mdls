@@ -240,12 +240,12 @@ describe MenusController, "feed" do
   end
     
   it "should render to feed" do
-    get :feed
+    get :feed, { :format => 'rss' }
     response.should render_template(:feed)
   end
 
   it "should assign menus" do
-    get :feed
+    get :feed, { :format => 'rss' }
     assigns[:menus].should == @menus
   end
 end

@@ -7,7 +7,8 @@ Mdls::Application.routes.draw do
     resources :menus
     resources :menutype
     resources :plannings
-    resource :comments
+    resources :comments
+    match 'comments/list5' => 'comments#list5'
     
     match '/activate/:activation_code' => 'users#activate', :as => :activate #, :activation_code => 
     match '/signup' => 'users#new', :as => :signup

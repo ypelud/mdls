@@ -6,6 +6,8 @@ describe CommentsController, "show" do
   before(:each) do
     @cmts = [ mock_model(Comment) ]
     Comment.stub!(:find).with(:all).and_return(@cmts)
+    Comment.stub!(:find).with("1").and_return(@cmts.first)
+
   end
 
   it "should find comments" do
@@ -13,14 +15,19 @@ describe CommentsController, "show" do
     find.should == @cmts
   end
   
+  it "should find first comment" do
+    find = Comment.find("1")
+    find.should == @cmts.first
+  end
+  
   it "should render to show" do
-    get :show
+    get :show, :id => 1
     response.should render_template(:show)
   end
 
   it "should assign comments" do
-    get :show
-    assigns[:comments].should == @cmts
+    get :show, :id => 1
+    assigns[:comment].should == @cmts.first
   end
 end
 
@@ -41,8 +48,8 @@ describe CommentsController, "new" do
     end
   
     it "should render new template" do
-      get :new => { }
-      controller.should render_template(:new)
+      get :new
+      controller.should render_template("comments/_show")
     end
 
     it "should create a new comment" do
@@ -65,22 +72,6 @@ describe CommentsController, "new" do
   end
 end
 
-# test de List
-describe CommentsController, "list" do
-  before(:each) do        
-    Menu.stub!(:find).and_return(@menu = mock_model(Menu, :user_id => 1))
-  end
-  
-  it "should render _list partial template" do
-    get :list => { }
-    controller.should render_template('comments/_list')
-  end
-
-  it "should find a menu" do
-    get :list => {} 
-    assigns[:menu].should == @menu
-  end
-end
 
 # test de List
 describe CommentsController, "list5" do
@@ -90,12 +81,12 @@ describe CommentsController, "list5" do
   end
   
   it "should render _list5 partial template" do
-    get :list5 => { }
+    get :list5
     controller.should render_template('comments/_list5')
   end
 
   it "should find a comment" do
-    get :list5 => {} 
+    get :list5 
     assigns[:comments].should == @comment
   end
 end

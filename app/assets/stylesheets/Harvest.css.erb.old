@@ -4,14 +4,6 @@ http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
 
-body {
-	margin-top: 49px;
-	padding: 0;
-	background: #242424;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	color: #BBBBBB;
-}
 
 h1, h2, h3 {
 	margin: 0;
@@ -61,6 +53,7 @@ img.right {
 	float: right;
 	margin-left: 15px;
 }
+
 
 /* Form */
 

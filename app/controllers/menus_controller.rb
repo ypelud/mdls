@@ -11,13 +11,13 @@ class MenusController < ApplicationController
   end
   
   def list    
+    conditions = ["title like ?", "%#{params[:tags_id]}%"]
+#     and user_id=? and menutype_id like ?", "#{params[:user_id]}",  "%#{params[:menutype_id]}%"]
+    
     pres = Menu.presentation(current_user)
     @affichage = pres[:affichage]
     @menus = Menu.paginate  :page => params[:page],
-    :conditions => ["title like ? and user_id like ? and menutype_id like ?",
-                                       "%#{params[:tags_id]}%", 
-                                       "%#{params[:user_id]}%", 
-                                       "%#{params[:menutype_id]}%"],
+    :conditions => conditions,
     :order => 'date DESC',
     :per_page => pres[:items_per_page]
     @without_ul = (iphone_request? and params[:page]!=nil)
@@ -36,7 +36,7 @@ class MenusController < ApplicationController
     @menu.user_id = current_user.id
     
     if @menu.save
-      flash[:notice] = 'Menu créé correctement.'
+      flash[:notice] = t('created_menu')
       redirect_to menus_path
     else
       render :action => :new
@@ -50,7 +50,7 @@ class MenusController < ApplicationController
     @menu.date = Time.now #pour forcer la date
     
     if @menu.update_attributes(params[:menu])
-      flash[:notice] = 'Menu mis à jour correctement.'
+      flash[:notice] = t('updated_menu')
       redirect_to(@menu)
     else
       render :action => 'edit'
@@ -58,8 +58,8 @@ class MenusController < ApplicationController
   end
   
   def destroy
-    if (@menu && authorize && @menu.destroy)
-      flash[:notice] = 'Menu supprimé correctement.'      
+    if (@menu && @menu.destroy)
+      flash[:notice] = t("deleted_menu")      
     end
     redirect_to menus_path
   end

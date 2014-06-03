@@ -1,3 +1,4 @@
+#encoding: utf-8
 class MenutypeController < ApplicationController
   before_filter :authorize
   
@@ -21,7 +22,7 @@ class MenutypeController < ApplicationController
   def create
     @menutype = Menutype.new(params[:menutype])
     if @menutype.save
-      flash[:notice] = 'Menu type créé correctement.'
+      flash[:notice] = 'Menu type crÃ©Ã© correctement.'
       redirect_to :action => 'list'
     else
       render :action => 'new'
@@ -35,7 +36,7 @@ class MenutypeController < ApplicationController
   def update
     @menutype = Menutype.find(params[:id])
     if @menutype.update_attributes(params[:menutype])
-      flash[:notice] = 'Menu type correctement mis à jour.'
+      flash[:notice] = 'Menu type correctement mis Ã  jour.'
       redirect_to :action => 'show', :id => @menutype
     else
       render :action => 'edit'
@@ -44,7 +45,7 @@ class MenutypeController < ApplicationController
 
   def destroy    
     if (Menutype.find(params[:id]).destroy)
-      flash[:notice] = 'Menutype supprimé correctement.'      
+      flash[:notice] = 'Menutype supprimÃ© correctement.'      
     end
     redirect_to menutype_path
   end

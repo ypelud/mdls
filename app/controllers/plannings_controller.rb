@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class PlanningsController < ApplicationController
   before_filter :authorize, :except => [:list, :show, :index]
 
@@ -24,9 +26,9 @@ class PlanningsController < ApplicationController
       @planning = Planning.new(params[:planning])
       @planning.user_id = current_user.id
       @planning.save!
-      session[:choix].each do |@menusliste|
-        @menusliste.planning = @planning
-        @menusliste.save!
+      session[:choix].each do |menusliste|
+        menusliste.planning = @planning
+        menusliste.save!
       end
 
       flash[:notice] = 'Planning créé correctement.'
